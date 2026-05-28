@@ -121,7 +121,7 @@ nav {
 }
 .hero-overlay {
   position: absolute; inset: 0;
-  background: linear-gradient(135deg, rgba(15,31,48,.85) 0%, rgba(26,60,94,.6) 60%, rgba(232,135,58,.25) 100%);
+  background: linear-gradient(135deg, rgba(15,31,48,.45) 0%, rgba(26,60,94,.3) 60%, rgba(232,135,58,.1) 100%);
 }
 .hero-content {
   position: relative;
