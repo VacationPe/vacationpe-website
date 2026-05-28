@@ -243,6 +243,109 @@
   line-height:1.7;
   font-size:16px;
 }
+/* ===== VISA PAGE POLISH ===== */
+
+body{
+  background:#f5f7fb;
+}
+
+nav{
+  backdrop-filter:blur(12px);
+  background:rgba(255,255,255,0.92);
+}
+
+.nav-links{
+  gap:18px;
+}
+
+.visa-hero{
+  height:58vh !important;
+}
+
+.visa-section{
+  padding-top:40px !important;
+}
+
+.visa-trust-strip,
+.quick-facts,
+.why-grid,
+.process-grid,
+.docs-grid,
+.visa-grid{
+  max-width:1200px;
+  margin-left:auto;
+  margin-right:auto;
+}
+
+.trust-box,
+.fact-card,
+.why-card,
+.process-card,
+.doc-card,
+.visa-card{
+  border:1px solid rgba(0,0,0,0.04);
+}
+
+.trust-box:hover,
+.fact-card:hover,
+.why-card:hover,
+.process-card:hover,
+.doc-card:hover,
+.visa-card:hover{
+  transform:translateY(-6px);
+  transition:0.3s;
+}
+
+.section-title{
+  margin-bottom:55px !important;
+}
+
+.section-title h2{
+  font-size:44px !important;
+  color:#14263c !important;
+}
+
+.section-title p{
+  font-size:18px;
+  color:#667085;
+}
+
+.visa-card-body h3{
+  color:#14263c;
+}
+
+.visa-form-wrap{
+  max-width:1200px;
+  margin:auto;
+  margin-top:80px;
+  box-shadow:0 15px 45px rgba(0,0,0,0.12);
+}
+
+details{
+  border:1px solid rgba(0,0,0,0.05);
+}
+
+.top-ribbon{
+  background:#14263c;
+  color:white;
+  text-align:center;
+  padding:14px;
+  font-size:14px;
+  font-weight:500;
+}
+
+@media(max-width:768px){
+
+  .section-title h2{
+    font-size:34px !important;
+  }
+
+  .visa-hero{
+    height:auto !important;
+    padding:100px 20px;
+  }
+
+}
 
 @media(max-width:768px){
 
