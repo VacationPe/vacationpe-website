@@ -789,7 +789,7 @@ footer {
   transform:translateY(-2px);
   box-shadow:0 8px 20px rgba(232,135,58,0.3);
 }
-```css
+/* ===== VISA PAGE ===== */
 /* ===== VISA PAGE ===== */
 
 .visa-trust-strip{
@@ -802,7 +802,7 @@ footer {
 }
 
 .trust-box{
-  background:white;
+  background:#fff;
   padding:35px;
   border-radius:20px;
   text-align:center;
@@ -825,7 +825,7 @@ footer {
 }
 
 .fact-card{
-  background:white;
+  background:#fff;
   padding:30px;
   border-radius:20px;
   box-shadow:0 10px 25px rgba(0,0,0,0.08);
@@ -858,7 +858,7 @@ footer {
 }
 
 .why-card{
-  background:white;
+  background:#fff;
   padding:35px;
   border-radius:22px;
   box-shadow:0 10px 30px rgba(0,0,0,0.08);
