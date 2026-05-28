@@ -1,1 +1,613 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Visa Services | VacationPe</title>
 
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"/>
+
+  <style>
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+      font-family:Arial, sans-serif;
+    }
+
+    body{
+      background:#f7f7f7;
+      color:#222;
+      line-height:1.6;
+    }
+
+    a{
+      text-decoration:none;
+    }
+
+    .hero{
+      height:90vh;
+      background:
+      linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.55)),
+      url('https://images.unsplash.com/photo-1521295121783-8a321d551ad2?q=80&w=1600&auto=format&fit=crop');
+      background-size:cover;
+      background-position:center;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      text-align:center;
+      color:white;
+      padding:20px;
+    }
+
+    .hero-content{
+      max-width:850px;
+    }
+
+    .hero h1{
+      font-size:55px;
+      margin-bottom:20px;
+      font-weight:bold;
+    }
+
+    .hero p{
+      font-size:20px;
+      margin-bottom:30px;
+    }
+
+    .hero-btns{
+      display:flex;
+      justify-content:center;
+      gap:15px;
+      flex-wrap:wrap;
+    }
+
+    .btn{
+      padding:14px 28px;
+      border-radius:50px;
+      font-size:16px;
+      font-weight:bold;
+      transition:0.3s;
+    }
+
+    .btn-primary{
+      background:#ff6600;
+      color:white;
+    }
+
+    .btn-primary:hover{
+      background:#e45700;
+    }
+
+    .btn-secondary{
+      background:white;
+      color:#111;
+    }
+
+    .btn-secondary:hover{
+      background:#ddd;
+    }
+
+    section{
+      padding:70px 8%;
+    }
+
+    .section-title{
+      text-align:center;
+      margin-bottom:45px;
+    }
+
+    .section-title h2{
+      font-size:38px;
+      color:#111;
+      margin-bottom:10px;
+    }
+
+    .visa-grid{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+      gap:25px;
+    }
+
+    .visa-card{
+      background:white;
+      border-radius:18px;
+      overflow:hidden;
+      box-shadow:0 5px 15px rgba(0,0,0,0.08);
+      transition:0.3s;
+    }
+
+    .visa-card:hover{
+      transform:translateY(-8px);
+    }
+
+    .visa-card img{
+      width:100%;
+      height:180px;
+      object-fit:cover;
+    }
+
+    .visa-card-content{
+      padding:20px;
+    }
+
+    .visa-card h3{
+      margin-bottom:10px;
+      font-size:24px;
+    }
+
+    .visa-card p{
+      margin-bottom:15px;
+      color:#555;
+    }
+
+    .price{
+      color:#ff6600;
+      font-weight:bold;
+      margin-bottom:15px;
+      display:block;
+    }
+
+    .features{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+      gap:25px;
+    }
+
+    .feature-box{
+      background:white;
+      padding:30px;
+      border-radius:18px;
+      text-align:center;
+      box-shadow:0 5px 15px rgba(0,0,0,0.08);
+    }
+
+    .feature-box i{
+      font-size:40px;
+      color:#ff6600;
+      margin-bottom:15px;
+    }
+
+    .steps{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+      gap:25px;
+    }
+
+    .step{
+      background:white;
+      padding:30px;
+      border-radius:18px;
+      text-align:center;
+      box-shadow:0 5px 15px rgba(0,0,0,0.08);
+    }
+
+    .step-number{
+      width:60px;
+      height:60px;
+      background:#ff6600;
+      color:white;
+      border-radius:50%;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      margin:auto;
+      font-size:24px;
+      font-weight:bold;
+      margin-bottom:15px;
+    }
+
+    .documents{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+      gap:20px;
+    }
+
+    .doc{
+      background:white;
+      padding:25px;
+      border-radius:15px;
+      text-align:center;
+      box-shadow:0 5px 15px rgba(0,0,0,0.08);
+    }
+
+    .doc i{
+      font-size:35px;
+      color:#ff6600;
+      margin-bottom:12px;
+    }
+
+    .form-section{
+      background:#111;
+      color:white;
+      border-radius:25px;
+      padding:50px;
+    }
+
+    .form-grid{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:20px;
+    }
+
+    .form-grid input,
+    .form-grid select,
+    textarea{
+      width:100%;
+      padding:15px;
+      border:none;
+      border-radius:10px;
+      font-size:15px;
+    }
+
+    textarea{
+      margin-top:20px;
+      min-height:120px;
+    }
+
+    .submit-btn{
+      margin-top:20px;
+      width:100%;
+      background:#ff6600;
+      color:white;
+      padding:16px;
+      border:none;
+      border-radius:10px;
+      font-size:18px;
+      cursor:pointer;
+      font-weight:bold;
+    }
+
+    .submit-btn:hover{
+      background:#e45700;
+    }
+
+    .faq{
+      max-width:900px;
+      margin:auto;
+    }
+
+    details{
+      background:white;
+      margin-bottom:15px;
+      padding:20px;
+      border-radius:12px;
+      box-shadow:0 5px 15px rgba(0,0,0,0.05);
+    }
+
+    summary{
+      font-weight:bold;
+      cursor:pointer;
+      font-size:18px;
+    }
+
+    footer{
+      background:#111;
+      color:white;
+      text-align:center;
+      padding:30px;
+    }
+
+    .whatsapp{
+      position:fixed;
+      bottom:20px;
+      right:20px;
+      width:65px;
+      height:65px;
+      background:#25D366;
+      border-radius:50%;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      color:white;
+      font-size:34px;
+      box-shadow:0 5px 20px rgba(0,0,0,0.25);
+      z-index:999;
+    }
+
+    @media(max-width:768px){
+
+      .hero h1{
+        font-size:38px;
+      }
+
+      .hero p{
+        font-size:17px;
+      }
+
+      .form-grid{
+        grid-template-columns:1fr;
+      }
+
+      .form-section{
+        padding:30px 20px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- HERO -->
+
+  <section class="hero">
+    <div class="hero-content">
+      <h1>International Visa Assistance Made Simple</h1>
+
+      <p>
+        Tourist • Business • Schengen • Dubai • Thailand • Singapore
+      </p>
+
+      <div class="hero-btns">
+        <a href="#apply" class="btn btn-primary">Apply Now</a>
+
+        <a href="https://wa.me/919999999999" class="btn btn-secondary">
+          WhatsApp Us
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- VISA DESTINATIONS -->
+
+  <section>
+    <div class="section-title">
+      <h2>Popular Visa Destinations</h2>
+      <p>Fast & reliable visa support for top international destinations</p>
+    </div>
+
+    <div class="visa-grid">
+
+      <div class="visa-card">
+        <img src="https://images.unsplash.com/photo-1512453979798-5ea266f8880c?q=80&w=1200&auto=format&fit=crop">
+        <div class="visa-card-content">
+          <h3>Dubai Visa</h3>
+          <span class="price">Starting ₹6,999</span>
+          <p>Quick UAE tourist visa processing.</p>
+          <a href="#apply" class="btn btn-primary">Apply Now</a>
+        </div>
+      </div>
+
+      <div class="visa-card">
+        <img src="https://images.unsplash.com/photo-1508009603885-50cf7c579365?q=80&w=1200&auto=format&fit=crop">
+        <div class="visa-card-content">
+          <h3>Thailand Visa</h3>
+          <span class="price">Starting ₹4,999</span>
+          <p>Easy documentation support.</p>
+          <a href="#apply" class="btn btn-primary">Apply Now</a>
+        </div>
+      </div>
+
+      <div class="visa-card">
+        <img src="https://images.unsplash.com/photo-1525625293386-3f8f99389edd?q=80&w=1200&auto=format&fit=crop">
+        <div class="visa-card-content">
+          <h3>Singapore Visa</h3>
+          <span class="price">Starting ₹5,499</span>
+          <p>Trusted visa guidance & approvals.</p>
+          <a href="#apply" class="btn btn-primary">Apply Now</a>
+        </div>
+      </div>
+
+      <div class="visa-card">
+        <img src="https://images.unsplash.com/photo-1499856871958-5b9627545d1a?q=80&w=1200&auto=format&fit=crop">
+        <div class="visa-card-content">
+          <h3>Schengen Visa</h3>
+          <span class="price">Starting ₹11,999</span>
+          <p>Europe travel made hassle-free.</p>
+          <a href="#apply" class="btn btn-primary">Apply Now</a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- WHY US -->
+
+  <section style="background:#fff;">
+    <div class="section-title">
+      <h2>Why Choose VacationPe</h2>
+    </div>
+
+    <div class="features">
+
+      <div class="feature-box">
+        <i class="fa-solid fa-passport"></i>
+        <h3>Visa Guidance</h3>
+        <p>Complete assistance for documentation & processing.</p>
+      </div>
+
+      <div class="feature-box">
+        <i class="fa-solid fa-plane-departure"></i>
+        <h3>Holiday Experts</h3>
+        <p>International customized travel planning support.</p>
+      </div>
+
+      <div class="feature-box">
+        <i class="fa-brands fa-whatsapp"></i>
+        <h3>WhatsApp Updates</h3>
+        <p>Easy communication and quick status updates.</p>
+      </div>
+
+      <div class="feature-box">
+        <i class="fa-solid fa-headset"></i>
+        <h3>Personal Assistance</h3>
+        <p>Dedicated support throughout your visa journey.</p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- PROCESS -->
+
+  <section>
+    <div class="section-title">
+      <h2>Visa Process</h2>
+    </div>
+
+    <div class="steps">
+
+      <div class="step">
+        <div class="step-number">1</div>
+        <h3>Submit Enquiry</h3>
+        <p>Share your destination and travel plan.</p>
+      </div>
+
+      <div class="step">
+        <div class="step-number">2</div>
+        <h3>Share Documents</h3>
+        <p>Upload passport and required documents.</p>
+      </div>
+
+      <div class="step">
+        <div class="step-number">3</div>
+        <h3>Visa Processing</h3>
+        <p>Our experts handle the complete process.</p>
+      </div>
+
+      <div class="step">
+        <div class="step-number">4</div>
+        <h3>Get Visa</h3>
+        <p>Receive your approved visa with support.</p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- DOCUMENTS -->
+
+  <section style="background:#fff;">
+    <div class="section-title">
+      <h2>Documents Required</h2>
+    </div>
+
+    <div class="documents">
+
+      <div class="doc">
+        <i class="fa-solid fa-passport"></i>
+        <h3>Passport</h3>
+      </div>
+
+      <div class="doc">
+        <i class="fa-solid fa-camera"></i>
+        <h3>Photographs</h3>
+      </div>
+
+      <div class="doc">
+        <i class="fa-solid fa-building-columns"></i>
+        <h3>Bank Statement</h3>
+      </div>
+
+      <div class="doc">
+        <i class="fa-solid fa-ticket"></i>
+        <h3>Flight Tickets</h3>
+      </div>
+
+      <div class="doc">
+        <i class="fa-solid fa-hotel"></i>
+        <h3>Hotel Booking</h3>
+      </div>
+
+      <div class="doc">
+        <i class="fa-solid fa-file-invoice"></i>
+        <h3>ITR / Income Proof</h3>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- FORM -->
+
+  <section id="apply">
+
+    <div class="form-section">
+
+      <div class="section-title">
+        <h2 style="color:white;">Get Visa Assistance</h2>
+        <p>Fill the form and our travel expert will contact you.</p>
+      </div>
+
+      <form action="https://formspree.io/f/yourformid" method="POST">
+
+        <div class="form-grid">
+
+          <input type="text" name="name" placeholder="Your Name" required>
+
+          <input type="tel" name="phone" placeholder="Phone Number" required>
+
+          <input type="text" name="destination" placeholder="Destination">
+
+          <input type="date" name="traveldate">
+
+          <select name="travellers">
+            <option>Number of Travellers</option>
+            <option>1 Traveller</option>
+            <option>2 Travellers</option>
+            <option>3 Travellers</option>
+            <option>4+ Travellers</option>
+          </select>
+
+          <input type="email" name="email" placeholder="Email Address">
+
+        </div>
+
+        <textarea name="message" placeholder="Additional Details"></textarea>
+
+        <button type="submit" class="submit-btn">
+          Submit Enquiry
+        </button>
+
+      </form>
+
+    </div>
+
+  </section>
+
+  <!-- FAQ -->
+
+  <section>
+
+    <div class="section-title">
+      <h2>Frequently Asked Questions</h2>
+    </div>
+
+    <div class="faq">
+
+      <details>
+        <summary>How long does visa processing take?</summary>
+        <p>Processing depends on the destination country and visa type.</p>
+      </details>
+
+      <details>
+        <summary>Do you help with documentation?</summary>
+        <p>Yes, our team assists you with complete visa documentation support.</p>
+      </details>
+
+      <details>
+        <summary>Can I apply through WhatsApp?</summary>
+        <p>Yes, you can contact our team directly through WhatsApp.</p>
+      </details>
+
+      <details>
+        <summary>Do you provide holiday packages too?</summary>
+        <p>Yes, VacationPe specializes in personalized international holidays.</p>
+      </details>
+
+    </div>
+
+  </section>
+
+  <!-- FOOTER -->
+
+  <footer>
+    <h3>VacationPe</h3>
+    <p>Your Personalized Holiday Partner</p>
+  </footer>
+
+  <!-- WHATSAPP -->
+
+  <a href="https://wa.me/919999999999" class="whatsapp">
+    <i class="fa-brands fa-whatsapp"></i>
+  </a>
+
+</body>
+</html>
