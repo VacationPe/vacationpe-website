@@ -708,7 +708,7 @@ footer {
   .video-grid { grid-template-columns: repeat(2, 1fr); }
   .footer-grid { grid-template-columns: 1fr; }
   .topbar { font-size: 11px; }
-
+}
   /* VISA SEARCH SECTION */
 
 .visa-search-section{
@@ -903,4 +903,4 @@ footer {
   }
 
 }
-}
+
