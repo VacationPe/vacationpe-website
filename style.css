@@ -110,7 +110,7 @@ nav {
   display: flex;
   align-items: center;
   overflow: hidden;
-  background: var(--dark);
+  background: transparent;
 }
 .hero-video {
   position: absolute; inset: 0;
