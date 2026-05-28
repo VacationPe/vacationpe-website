@@ -861,8 +861,95 @@ footer {
 
 .why-card h3{
   margin-bottom:15px;
+}.why-us{
+  padding:90px 20px;
+  background:#f7f8fa;
 }
-```
+
+.why-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+  gap:28px;
+  max-width:1200px;
+  margin:auto;
+  margin-top:50px;
+}
+
+.why-card{
+  background:white;
+  padding:35px;
+  border-radius:22px;
+  box-shadow:0 10px 30px rgba(0,0,0,0.08);
+  transition:0.3s;
+  border-top:4px solid #e8873a;
+}
+
+.why-card:hover{
+  transform:translateY(-8px);
+}
+
+.why-card h3{
+  font-size:26px;
+  margin-bottom:16px;
+  color:#111;
+}
+
+.why-card p{
+  color:#666;
+  line-height:1.7;
+  font-size:16px;
+}
+
+.visa-trust-strip{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:25px;
+  max-width:1200px;
+  margin:auto;
+  padding:70px 20px 30px;
+}
+
+.trust-box{
+  background:white;
+  padding:35px;
+  border-radius:20px;
+  text-align:center;
+  box-shadow:0 10px 25px rgba(0,0,0,0.08);
+}
+
+.trust-box h3{
+  color:#e8873a;
+  font-size:42px;
+  margin-bottom:10px;
+}
+
+.quick-facts{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:25px;
+  max-width:1200px;
+  margin:40px auto 80px;
+  padding:0 20px;
+}
+
+.fact-card{
+  background:white;
+  padding:30px;
+  border-radius:20px;
+  box-shadow:0 10px 25px rgba(0,0,0,0.08);
+  text-align:center;
+}
+
+.fact-card h4{
+  color:#888;
+  margin-bottom:10px;
+}
+
+.fact-card p{
+  font-size:20px;
+  font-weight:700;
+  color:#111;
+}
 
 @media(max-width:768px){
 
