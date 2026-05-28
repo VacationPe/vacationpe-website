@@ -3,211 +3,750 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Destinations – VacationPe</title>
   <meta name="description" content="Explore all destinations offered by VacationPe — International, Domestic & Cruise packages from Jaipur." />
-  <link rel="stylesheet" href="style.css" />
+  <title>Destinations – VacationPe</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Nunito+Sans:wght@400;600;700&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --orange: #E8880A;
+      --orange-dark: #c97408;
+      --dark: #1a1a2e;
+      --text: #333;
+      --muted: #666;
+      --light-bg: #f9f7f4;
+      --white: #fff;
+      --radius: 14px;
+      --shadow: 0 4px 24px rgba(0,0,0,0.10);
+    }
+
+    body {
+      font-family: 'Nunito Sans', sans-serif;
+      color: var(--text);
+      background: var(--light-bg);
+    }
+
+    /* ── TOP BAR ── */
+    .topbar {
+      background: var(--dark);
+      color: #ccc;
+      font-size: 13px;
+      padding: 8px 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .topbar a { color: #ccc; text-decoration: none; margin-right: 16px; }
+    .topbar a:hover { color: var(--orange); }
+
+    /* ── NAVBAR ── */
+    nav {
+      background: var(--white);
+      padding: 0 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.07);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .logo { padding: 16px 0; }
+    .logo strong { font-family: 'Playfair Display', serif; font-size: 22px; color: var(--dark); }
+    .logo span { display: block; font-size: 11px; color: var(--muted); letter-spacing: 2px; text-transform: uppercase; }
+    .nav-links { list-style: none; display: flex; gap: 28px; }
+    .nav-links a { text-decoration: none; color: var(--text); font-weight: 600; font-size: 14px; transition: color .2s; }
+    .nav-links a:hover, .nav-links a.active { color: var(--orange); }
+    .nav-book {
+      background: var(--orange);
+      color: var(--white) !important;
+      padding: 8px 20px;
+      border-radius: 30px;
+      font-weight: 700 !important;
+    }
+    .nav-book:hover { background: var(--orange-dark); color: var(--white) !important; }
+
+    /* ── HERO ── */
+    .hero {
+      background: linear-gradient(135deg, var(--dark) 0%, #16213e 60%, #0f3460 100%);
+      color: var(--white);
+      text-align: center;
+      padding: 70px 20px 60px;
+    }
+    .hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(32px, 5vw, 52px);
+      margin-bottom: 14px;
+    }
+    .hero p { font-size: 17px; color: #b0bec5; max-width: 520px; margin: 0 auto; }
+
+    /* ── TABS ── */
+    .tabs-wrap {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      padding: 36px 20px 20px;
+      flex-wrap: wrap;
+    }
+    .tab-btn {
+      background: var(--white);
+      border: 2px solid #ddd;
+      color: var(--text);
+      font-family: 'Nunito Sans', sans-serif;
+      font-weight: 700;
+      font-size: 15px;
+      padding: 10px 30px;
+      border-radius: 30px;
+      cursor: pointer;
+      transition: all .22s;
+    }
+    .tab-btn:hover { border-color: var(--orange); color: var(--orange); }
+    .tab-btn.active { background: var(--orange); border-color: var(--orange); color: var(--white); }
+
+    /* ── GRID ── */
+    .section { display: none; padding: 10px 40px 60px; max-width: 1280px; margin: 0 auto; }
+    .section.visible { display: block; }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 28px;
+      margin-top: 10px;
+    }
+
+    /* ── CARD ── */
+    .card {
+      background: var(--white);
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      transition: transform .25s, box-shadow .25s;
+      cursor: pointer;
+      text-decoration: none;
+      color: inherit;
+      display: flex;
+      flex-direction: column;
+    }
+    .card:hover { transform: translateY(-6px); box-shadow: 0 12px 36px rgba(0,0,0,0.15); }
+
+    .card-img {
+      width: 100%;
+      height: 190px;
+      object-fit: cover;
+      display: block;
+      transition: transform .4s;
+    }
+    .card:hover .card-img { transform: scale(1.05); }
+    .card-img-wrap { overflow: hidden; position: relative; }
+
+    .card-badge {
+      position: absolute;
+      top: 12px;
+      left: 12px;
+      background: rgba(0,0,0,0.55);
+      color: #fff;
+      font-size: 20px;
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .card-body { padding: 18px 20px 22px; flex: 1; display: flex; flex-direction: column; }
+    .card-body h3 { font-family: 'Playfair Display', serif; font-size: 20px; margin-bottom: 6px; color: var(--dark); }
+    .card-body p { font-size: 13.5px; color: var(--muted); line-height: 1.55; flex: 1; }
+
+    .card-btn {
+      display: inline-block;
+      margin-top: 16px;
+      background: var(--orange);
+      color: var(--white);
+      font-weight: 700;
+      font-size: 13px;
+      padding: 9px 22px;
+      border-radius: 30px;
+      text-decoration: none;
+      transition: background .2s;
+      align-self: flex-start;
+    }
+    .card-btn:hover { background: var(--orange-dark); }
+
+    /* ── CTA ── */
+    .cta-strip {
+      background: linear-gradient(135deg, var(--orange) 0%, #f5a623 100%);
+      text-align: center;
+      padding: 50px 20px;
+      margin: 20px 0 0;
+    }
+    .cta-strip h2 { font-family: 'Playfair Display', serif; font-size: 28px; color: var(--white); margin-bottom: 10px; }
+    .cta-strip p { color: rgba(255,255,255,0.88); font-size: 15px; margin-bottom: 24px; }
+    .cta-btn {
+      display: inline-block;
+      background: var(--white);
+      color: var(--orange);
+      font-weight: 700;
+      font-size: 15px;
+      padding: 13px 34px;
+      border-radius: 30px;
+      text-decoration: none;
+      transition: transform .2s;
+    }
+    .cta-btn:hover { transform: scale(1.04); }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--dark);
+      color: #aaa;
+      padding: 50px 40px 24px;
+    }
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 36px;
+      max-width: 1200px;
+      margin: 0 auto 36px;
+    }
+    .footer-logo strong { font-family: 'Playfair Display', serif; font-size: 20px; color: var(--white); }
+    .footer-logo span { display: block; font-size: 10px; letter-spacing: 2px; color: #777; margin-bottom: 12px; }
+    .footer-logo p { font-size: 13px; line-height: 1.7; }
+    footer h4 { color: var(--white); font-size: 14px; margin-bottom: 14px; text-transform: uppercase; letter-spacing: 1px; }
+    footer ul { list-style: none; }
+    footer ul li { margin-bottom: 8px; }
+    footer ul a { color: #aaa; text-decoration: none; font-size: 13px; transition: color .2s; }
+    footer ul a:hover { color: var(--orange); }
+    .footer-bottom { border-top: 1px solid #2a2a3e; padding-top: 20px; text-align: center; font-size: 12px; max-width: 1200px; margin: 0 auto; }
+
+    @media (max-width: 768px) {
+      nav { padding: 0 20px; }
+      .nav-links { gap: 14px; }
+      .section { padding: 10px 16px 50px; }
+      .footer-grid { grid-template-columns: 1fr 1fr; }
+      .topbar { display: none; }
+    }
+    @media (max-width: 500px) {
+      .footer-grid { grid-template-columns: 1fr; }
+      .nav-links { display: none; }
+    }
+  </style>
 </head>
 <body>
 
-  <!-- TOPBAR -->
-  <div class="topbar">
-    <div class="topbar-left">
-      <a href="tel:+919998952926">📞 +91 9998952926</a>
-      <a href="mailto:info@vacationpe.com">✉️ info@vacationpe.com</a>
-    </div>
-    <div class="topbar-right">
-      <a href="https://api.whatsapp.com/send?phone=919998952926" target="_blank">💬 WhatsApp</a>
-      <a href="https://www.instagram.com/vacationpe/" target="_blank">📸 Instagram</a>
-      <a href="https://www.facebook.com/VacationPe/" target="_blank">📘 Facebook</a>
-    </div>
+<!-- TOP BAR -->
+<div class="topbar">
+  <div>
+    <a href="tel:+919998952926">📞 +91 9998952926</a>
+    <a href="mailto:info@vacationpe.com">✉️ info@vacationpe.com</a>
   </div>
-
-  <!-- NAVBAR -->
-  <nav>
-    <a href="index.html" class="logo">Vacation<span>Pe</span><small>Dream.. Click.. Travel..</small></a>
-    <div class="hamburger"><span></span><span></span><span></span></div>
-    <ul class="nav-links">
-      <li><a href="index.html">Home</a></li>
-      <li><a href="destinations.html">Destinations</a></li>
-      <li><a href="about.html">About Us</a></li>
-      <li><a href="contact.html">Contact</a></li>
-      <li><a href="payment.html">Payment</a></li>
-      <li><a href="https://api.whatsapp.com/send?phone=919998952926" class="btn-nav" target="_blank">💬 Book Now</a></li>
-    </ul>
-  </nav>
-
-  <!-- PAGE HERO -->
-  <div class="page-hero">
-    <h1>Our Destinations</h1>
-    <p>Handpicked experiences for every type of traveller</p>
+  <div>
+    <a href="https://api.whatsapp.com/send?phone=919998952926">💬 WhatsApp</a>
+    <a href="https://www.instagram.com/vacationpe/">📸 Instagram</a>
+    <a href="https://www.facebook.com/VacationPe/">📘 Facebook</a>
   </div>
-
-  <!-- DESTINATIONS SECTION -->
-  <section class="section" style="background:#fff;">
-    <div class="tab-btns">
-      <button class="tab-btn active" data-tab="d-intl">International</button>
-      <button class="tab-btn" data-tab="d-dom">Domestic</button>
-      <button class="tab-btn" data-tab="d-cruise">Cruise</button>
-    </div>
-
-    <!-- INTERNATIONAL -->
-  <div id="tab-intl" class="tab-content active dest-grid">
-  <div class="dest-card"><div class="dest-card-img">🇦🇺</div><div class="dest-card-body"><h4>Australia</h4><p>Sydney, Great Barrier Reef & Outback</p></div></div>
-  <div class="dest-card"><div class="dest-card-img">🇦🇹</div><div class="dest-card-body"><h4>Austria</h4><p>Vienna, Alps & classical music</p></div></div>
-  <div class="dest-card"><div class="dest-card-img">🇧🇷</div><div class="dest-card-body"><h4>Brazil</h4><p>Amazon, Rio & Carnival vibes</p></div></div>
-  <div class="dest-card"><div class="dest-card-img">🇨🇦</div><div class="dest-card-body"><h4>Canada</h4><p>Niagara, Rockies & maple trails</p></div></div>
-  <div class="dest-card"><div class="dest-card-img">🇫🇷</div><div class="dest-card-body"><h4>France</h4><p>Paris, Eiffel Tower & wine country</p></div></div>
-  <div class="dest-card"><div class="dest-card-img">🇩🇪</div><div class="dest-card-body"><h4>Germany</h4><p>Castles, Oktoberfest & Rhine valley</p></div></div>
-  <div class="dest-card"><div class="dest-card-img">🇬🇷</div><div class="dest-card-body"><h4>Greece</h4><p>Santorini, Mykonos & ancient ruins</p></div></div>
-  <div class="dest-card"><div class="dest-card-img">🇮🇩</div><div class="dest-card-body"><h4>Indonesia</h4><p>Bali, Komodo & island hopping</p></div></div>
-  <div class="dest-card"><div class="dest-card-img">🇮🇹</div><div class="dest-card-body"><h4>Italy</h4><p>Rome, Venice & Amalfi Coast</p></div></div>
-  <div class="dest-card"><div class="dest-card-img">🇯🇵</div><div class="dest-card-body"><h4>Japan</h4><p>Cherry blossoms, culture & cuisine</p></div></div>
-  <div class="dest-card"><div class="dest-card-img">🇲🇾</div><div class="dest-card-body"><h4>Malaysia</h4><p>Culture, rainforests & Petronas</p></div></div>
-  <div class="dest-card"><div class="dest-card-img">🏝️</div><div class="dest-card-body"><h4>Maldives</h4><p>Overwater villas & coral reefs</p></div></div>
-  <div class="dest-card"><div class="dest-card-img">🇳🇵</div><div class="dest-card-body"><h4>Nepal</h4><p>Everest, temples & trekking trails</p></div></div>
-  <div class="dest-card"><div class="dest-card-img">🇳🇱</div><div class="dest-card-body"><h4>Netherlands</h4><p>Tulips, windmills & Amsterdam</p></div></div>
-  <div class="dest-card"><div class="dest-card-img">🇳🇿</div><div class="dest-card-body"><h4>New Zealand</h4><p>Fjords, Hobbiton & adventure sports</p></div></div>
-  <div class="dest-card"><div class="dest-card-img">🇸🇬</div><div class="dest-card-body"><h4>Singapore</h4><p>Futuristic city-state wonder</p></div></div>
-  <div class="dest-card"><div class="dest-card-img">🇿🇦</div><div class="dest-card-body"><h4>South Africa</h4><p>Safari, Cape Town & wine valleys</p></div></div>
-  <div class="dest-card"><div class="dest-card-img">🇪🇸</div><div class="dest-card-body"><h4>Spain</h4><p>Barcelona, Flamenco & Costa del Sol</p></div></div>
-  <div class="dest-card"><div class="dest-card-img">🇱🇰</div><div class="dest-card-body"><h4>Sri Lanka</h4><p>Tea hills, temples & beaches</p></div></div>
-  <div class="dest-card"><div class="dest-card-img">🇨🇭</div><div class="dest-card-body"><h4>Switzerland</h4><p>Alpine peaks & scenic train rides</p></div></div>
-  <div class="dest-card"><div class="dest-card-img">🇹🇭</div><div class="dest-card-body"><h4>Thailand</h4><p>Temples, beaches & street food</p></div></div>
-  <div class="dest-card"><div class="dest-card-img">🇹🇷</div><div class="dest-card-body"><h4>Turkey</h4><p>Cappadocia, bazaars & Bosphorus</p></div></div>
-  <div class="dest-card"><div class="dest-card-img">🇦🇪</div><div class="dest-card-body"><h4>UAE</h4><p>Desert luxury & skyline views</p></div></div>
-  <div class="dest-card"><div class="dest-card-img">🇺🇸</div><div class="dest-card-body"><h4>USA</h4><p>New York, Grand Canyon & more</p></div></div>
-  <div class="dest-card"><div class="dest-card-img">🇻🇳</div><div class="dest-card-body"><h4>Vietnam</h4><p>Ha Long Bay, Hoi An & Pho</p></div></div>
-  <div class="dest-card"><div class="dest-card-img">🇹🇿</div><div class="dest-card-body"><h4>Tanzania</h4><p>Serengeti, Kilimanjaro & Zanzibar</p></div></div>
-  <div class="dest-card"><div class="dest-card-img">🇺🇬</div><div class="dest-card-body"><h4>Uganda</h4><p>Gorillas, wildlife & Lake Victoria</p></div></div>
-  <div class="dest-card"><div class="dest-card-img">🇬🇧</div><div class="dest-card-body"><h4>United Kingdom</h4><p>London, Scotland & countryside</p></div></div>
-  <div class="dest-card"><div class="dest-card-img">🇸🇪</div><div class="dest-card-body"><h4>Sweden</h4><p>Northern lights & Viking heritage</p></div></div>
-  <div class="dest-card"><div class="dest-card-img">🇸🇨</div><div class="dest-card-body"><h4>Seychelles</h4><p>Pristine beaches & rare wildlife</p></div></div>
-  <div class="dest-card"><div class="dest-card-img">🇸🇮</div><div class="dest-card-body"><h4>Slovenia</h4><p>Lake Bled, caves & alpine charm</p></div></div>
-  <div class="dest-card"><div class="dest-card-img">🇵🇹</div><div class="dest-card-body"><h4>Portugal</h4><p>Lisbon, Algarve & Fado music</p></div></div>
-  <div class="dest-card"><div class="dest-card-img">🇲🇦</div><div class="dest-card-body"><h4>Morocco</h4><p>Sahara, Marrakech & medinas</p></div></div>
-  <div class="dest-card"><div class="dest-card-img">🎰</div><div class="dest-card-body"><h4>Macau</h4><p>Casinos, temples & Portuguese heritage</p></div></div>
-  <div class="dest-card"><div class="dest-card-img">🇰🇿</div><div class="dest-card-body"><h4>Kazakhstan</h4><p>Steppe, mountains & modern Astana</p></div></div>
-  <div class="dest-card"><div class="dest-card-img">🇯🇴</div><div class="dest-card-body"><h4>Jordan</h4><p>Petra, Wadi Rum & Dead Sea</p></div></div>
-  <div class="dest-card"><div class="dest-card-img">🇮🇱</div><div class="dest-card-body"><h4>Israel</h4><p>Jerusalem, Tel Aviv & Holy Land</p></div></div>
-  <div class="dest-card"><div class="dest-card-img">🇮🇸</div><div class="dest-card-body"><h4>Iceland</h4><p>Northern lights, geysers & glaciers</p></div></div>
-  <div class="dest-card"><div class="dest-card-img">🇭🇰</div><div class="dest-card-body"><h4>Hong Kong</h4><p>Skyline, dim sum & Victoria Peak</p></div></div>
-  <div class="dest-card"><div class="dest-card-img">🇫🇮</div><div class="dest-card-body"><h4>Finland</h4><p>Santa's home, saunas & auroras</p></div></div>
-  <div class="dest-card"><div class="dest-card-img">🇪🇪</div><div class="dest-card-body"><h4>Estonia</h4><p>Medieval Tallinn & Baltic coast</p></div></div>
-  <div class="dest-card"><div class="dest-card-img">🇪🇬</div><div class="dest-card-body"><h4>Egypt</h4><p>Pyramids, Nile & ancient wonders</p></div></div>
-  <div class="dest-card"><div class="dest-card-img">🇨🇿</div><div class="dest-card-body"><h4>Czech Republic</h4><p>Prague, castles & beer culture</p></div></div>
-  <div class="dest-card"><div class="dest-card-img">🇨🇳</div><div class="dest-card-body"><h4>China</h4><p>Great Wall, Shanghai & ancient culture</p></div></div>
-  <div class="dest-card"><div class="dest-card-img">🇰🇭</div><div class="dest-card-body"><h4>Cambodia</h4><p>Angkor Wat & Mekong River</p></div></div>
-  <div class="dest-card"><div class="dest-card-img">🇧🇪</div><div class="dest-card-body"><h4>Belgium</h4><p>Bruges, chocolate & Grand Place</p></div></div>
-  <div class="dest-card"><div class="dest-card-img">🇦🇿</div><div class="dest-card-body"><h4>Azerbaijan</h4><p>Baku, fire temples & Caspian Sea</p></div></div>
-  <div class="dest-card"><div class="dest-card-img">🇷🇺</div><div class="dest-card-body"><h4>Russia</h4><p>Moscow, Red Square & Trans-Siberian</p></div></div>
-  <div class="dest-card"><div class="dest-card-img">🇵🇱</div><div class="dest-card-body"><h4>Poland</h4><p>Krakow, Warsaw & Auschwitz history</p></div></div>
-  <div class="dest-card"><div class="dest-card-img">🇵🇭</div><div class="dest-card-body"><h4>Philippines</h4><p>Islands, diving & pristine beaches</p></div></div>
-  <div class="dest-card"><div class="dest-card-img">🇵🇪</div><div class="dest-card-body"><h4>Peru</h4><p>Machu Picchu, Amazon & Inca trails</p></div></div>
-  <div class="dest-card"><div class="dest-card-img">🇴🇲</div><div class="dest-card-body"><h4>Oman</h4><p>Deserts, forts & Arabian hospitality</p></div></div>
-  <div class="dest-card"><div class="dest-card-img">🇳🇴</div><div class="dest-card-body"><h4>Norway</h4><p>Fjords, Northern Lights & Viking trails</p></div></div>
-  <div class="dest-card"><div class="dest-card-img">🇲🇺</div><div class="dest-card-body"><h4>Mauritius</h4><p>Pristine beaches & turquoise lagoons</p></div></div>
-  <div class="dest-card"><div class="dest-card-img">🇲🇬</div><div class="dest-card-body"><h4>Madagascar</h4><p>Baobabs, lemurs & unique wildlife</p></div></div>
-  <div class="dest-card"><div class="dest-card-img">🇱🇦</div><div class="dest-card-body"><h4>Laos</h4><p>Temples, Mekong & slow travel</p></div></div>
-  <div class="dest-card"><div class="dest-card-img">🇰🇪</div><div class="dest-card-body"><h4>Kenya</h4><p>Masai Mara, safaris & Nairobi</p></div></div>
-  <div class="dest-card"><div class="dest-card-img">🇮🇪</div><div class="dest-card-body"><h4>Ireland</h4><p>Cliffs of Moher, pubs & green hills</p></div></div>
-  <div class="dest-card"><div class="dest-card-img">🇭🇺</div><div class="dest-card-body"><h4>Hungary</h4><p>Budapest, thermal baths & Danube</p></div></div>
-  <div class="dest-card"><div class="dest-card-img">🇫🇯</div><div class="dest-card-body"><h4>Fiji</h4><p>Tropical islands & coral reefs</p></div></div>
-  <div class="dest-card"><div class="dest-card-img">🇭🇷</div><div class="dest-card-body"><h4>Croatia</h4><p>Dubrovnik, waterfalls & Adriatic coast</p></div></div>
 </div>
 
-    <!-- DOMESTIC -->
-    <div id="d-dom" class="tab-content dest-grid">
-      <div class="dest-card"><div class="dest-card-img">🏖️</div><div class="dest-card-body"><h4>Goa</h4><p>Beaches, sun &amp; vibrant nightlife</p></div></div>
-      <div class="dest-card"><div class="dest-card-img">🏰</div><div class="dest-card-body"><h4>Rajasthan</h4><p>Forts, palaces &amp; desert safari</p></div></div>
-      <div class="dest-card"><div class="dest-card-img">🏔️</div><div class="dest-card-body"><h4>Kashmir</h4><p>Heaven on Earth – Dal Lake &amp; Gulmarg</p></div></div>
-      <div class="dest-card"><div class="dest-card-img">🌴</div><div class="dest-card-body"><h4>Kerala</h4><p>Backwaters, spice gardens &amp; Munnar</p></div></div>
-      <div class="dest-card"><div class="dest-card-img">⛰️</div><div class="dest-card-body"><h4>Himachal Pradesh</h4><p>Snow peaks, Manali &amp; Spiti valley</p></div></div>
-      <div class="dest-card"><div class="dest-card-img">🦁</div><div class="dest-card-body"><h4>Madhya Pradesh</h4><p>Tigers, temples &amp; Khajuraho</p></div></div>
-      <div class="dest-card"><div class="dest-card-img">🌊</div><div class="dest-card-body"><h4>Odisha</h4><p>Temples, beaches &amp; tribal culture</p></div></div>
-      <div class="dest-card"><div class="dest-card-img">🏔️</div><div class="dest-card-body"><h4>Ladakh</h4><p>Moonscapes, Pangong &amp; monastery trails</p></div></div>
-      <div class="dest-card"><div class="dest-card-img">🌿</div><div class="dest-card-body"><h4>Uttarakhand</h4><p>Yoga, Ganga &amp; Himalayan treks</p></div></div>
-      <div class="dest-card"><div class="dest-card-img">🦅</div><div class="dest-card-body"><h4>Arunachal Pradesh</h4><p>Unexplored tribal highlands</p></div></div>
-      <div class="dest-card"><div class="dest-card-img">🦏</div><div class="dest-card-body"><h4>Assam</h4><p>Tea estates, wildlife &amp; Brahmaputra</p></div></div>
-      <div class="dest-card"><div class="dest-card-img">☁️</div><div class="dest-card-body"><h4>Meghalaya</h4><p>Abode of clouds &amp; living root bridges</p></div></div>
-      <div class="dest-card"><div class="dest-card-img">🏔️</div><div class="dest-card-body"><h4>Sikkim</h4><p>Monasteries, Gangtok &amp; snow peaks</p></div></div>
-      <div class="dest-card"><div class="dest-card-img">🌺</div><div class="dest-card-body"><h4>Karnataka</h4><p>Coorg, Hampi &amp; coastal Mangalore</p></div></div>
-      <div class="dest-card"><div class="dest-card-img">🛕</div><div class="dest-card-body"><h4>Tamil Nadu</h4><p>Temples, culture &amp; Ooty hills</p></div></div>
-      <div class="dest-card"><div class="dest-card-img">🦚</div><div class="dest-card-body"><h4>Andhra Pradesh</h4><p>Tirupati, Araku valley &amp; coastline</p></div></div>
-    </div>
+<!-- NAVBAR -->
+<nav>
+  <div class="logo">
+    <a href="index.html" style="text-decoration:none">
+      <strong>VacationPe</strong>
+      <span>Dream.. Click.. Travel..</span>
+    </a>
+  </div>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="destinations.html" class="active">Destinations</a></li>
+    <li><a href="visa.html">Visa</a></li>
+    <li><a href="about.html">About Us</a></li>
+    <li><a href="contact.html">Contact</a></li>
+    <li><a href="payment.html">Payment</a></li>
+    <li><a href="https://api.whatsapp.com/send?phone=919998952926" class="nav-book">💬 Book Now</a></li>
+  </ul>
+</nav>
 
-    <!-- CRUISE -->
-    <div id="d-cruise" class="tab-content dest-grid">
-      <div class="dest-card"><div class="dest-card-img">🚢</div><div class="dest-card-body"><h4>Mediterranean Cruise</h4><p>Europe's finest coastlines &amp; ports</p></div></div>
-      <div class="dest-card"><div class="dest-card-img">⛵</div><div class="dest-card-body"><h4>Indian Ocean Cruise</h4><p>Exotic island hopping &amp; tropical ports</p></div></div>
-      <div class="dest-card"><div class="dest-card-img">🌏</div><div class="dest-card-body"><h4>Southeast Asia Cruise</h4><p>Singapore to Bali by sea</p></div></div>
-      <div class="dest-card"><div class="dest-card-img">🌊</div><div class="dest-card-body"><h4>Arabian Sea Cruise</h4><p>Mumbai, Goa &amp; Lakshadweep</p></div></div>
-    </div>
+<!-- HERO -->
+<div class="hero">
+  <h1>Our Destinations</h1>
+  <p>Handpicked experiences for every type of traveller</p>
+</div>
 
-    <div style="text-align:center;margin-top:48px;padding:30px;background:var(--light);border-radius:var(--radius);">
-      <p style="font-size:1.05rem;color:var(--text-light);margin-bottom:18px;">Don't see your dream destination? We customize tours for any location worldwide!</p>
-      <a href="https://api.whatsapp.com/send?phone=919998952926" class="btn-primary" style="display:inline-flex;" target="_blank">💬 Enquire About Any Destination →</a>
-    </div>
-  </section>
+<!-- TABS -->
+<div class="tabs-wrap">
+  <button class="tab-btn active" onclick="showTab('international', this)">🌍 International</button>
+  <button class="tab-btn" onclick="showTab('domestic', this)">🇮🇳 Domestic</button>
+  <button class="tab-btn" onclick="showTab('cruise', this)">🚢 Cruise</button>
+</div>
 
-  <!-- CTA -->
-  <section class="cta-section">
-    <h2>Can't Find Your Dream Destination?</h2>
-    <p>We customize tours for any location worldwide. Just tell us where you want to go!</p>
-    <div class="cta-btns">
-      <a href="https://api.whatsapp.com/send?phone=919998952926" class="btn-cta-white" target="_blank">💬 WhatsApp Now</a>
-      <a href="contact.html" class="btn-cta-outline">📩 Send Enquiry</a>
-    </div>
-  </section>
+<!-- ── INTERNATIONAL ── -->
+<div class="section visible" id="tab-international">
+  <div class="grid">
 
-  <!-- FOOTER -->
-  <footer>
-    <div class="footer-grid">
-      <div class="footer-brand">
-        <div class="logo" style="color:#fff;">Vacation<span style="color:var(--accent)">Pe</span><small>Dream.. Click.. Travel..</small></div>
-        <p>VacationPe is a Jaipur-based travel company backed by 13+ years of industry expertise.</p>
-        <p style="margin-top:10px;">📍 Jaipur, Rajasthan, India</p>
-        <div class="social-links">
-          <a class="social-link" href="https://api.whatsapp.com/send?phone=919998952926" target="_blank">💬</a>
-          <a class="social-link" href="https://www.instagram.com/vacationpe/" target="_blank">📸</a>
-          <a class="social-link" href="https://www.facebook.com/VacationPe/" target="_blank">📘</a>
-        </div>
+    <a class="card" href="https://api.whatsapp.com/send?phone=919998952926&text=I'm interested in Thailand package">
+      <div class="card-img-wrap">
+        <img class="card-img" src="https://images.unsplash.com/photo-1508009603885-50cf7c579365?q=80&w=800&auto=format&fit=crop" alt="Thailand" loading="lazy" />
+        <div class="card-badge">🇹🇭</div>
       </div>
-      <div class="footer-col">
-        <h5>Quick Links</h5>
-        <ul>
-          <li><a href="index.html">Home</a></li>
-          <li><a href="destinations.html">Destinations</a></li>
-          <li><a href="about.html">About Us</a></li>
-          <li><a href="contact.html">Contact</a></li>
-          <li><a href="payment.html">Payment</a></li>
-        </ul>
+      <div class="card-body">
+        <h3>Thailand</h3>
+        <p>Temples, beaches & street food paradise</p>
+        <span class="card-btn">Enquire Now</span>
       </div>
-      <div class="footer-col">
-        <h5>Our Services</h5>
-        <ul>
-          <li><a href="#">Holiday Packages</a></li>
-          <li><a href="#">Flight Booking</a></li>
-          <li><a href="#">Hotel Reservation</a></li>
-          <li><a href="#">Travel Insurance</a></li>
-          <li><a href="#">Forex Services</a></li>
-          <li><a href="#">Visa Assistance</a></li>
-        </ul>
-      </div>
-      <div class="footer-col">
-        <h5>Contact Us</h5>
-        <ul>
-          <li><a href="tel:+919998952926">📞 +91 9998952926</a></li>
-          <li><a href="mailto:info@vacationpe.com">✉️ info@vacationpe.com</a></li>
-          <li><a href="https://api.whatsapp.com/send?phone=919998952926" target="_blank">💬 WhatsApp</a></li>
-        </ul>
-      </div>
-    </div>
-    <div class="footer-bottom">
-      <span>© 2026 VacationPe. All Rights Reserved. | Founded by Bajrang Singh Shekhawat | Est. 2019</span>
-    </div>
-  </footer>
+    </a>
 
-  <a class="wa-float" href="https://api.whatsapp.com/send?phone=919998952926" target="_blank" title="Chat on WhatsApp">💬</a>
-  <script src="main.js"></script>
+    <a class="card" href="https://api.whatsapp.com/send?phone=919998952926&text=I'm interested in Malaysia package">
+      <div class="card-img-wrap">
+        <img class="card-img" src="https://images.unsplash.com/photo-1508985307552-bc5d1a8f7e42?q=80&w=800&auto=format&fit=crop" alt="Malaysia" loading="lazy" />
+        <div class="card-badge">🇲🇾</div>
+      </div>
+      <div class="card-body">
+        <h3>Malaysia</h3>
+        <p>Culture, rainforests & Petronas Towers</p>
+        <span class="card-btn">Enquire Now</span>
+      </div>
+    </a>
+
+    <a class="card" href="https://api.whatsapp.com/send?phone=919998952926&text=I'm interested in Singapore package">
+      <div class="card-img-wrap">
+        <img class="card-img" src="https://images.unsplash.com/photo-1525625293386-3f8f99389edd?q=80&w=800&auto=format&fit=crop" alt="Singapore" loading="lazy" />
+        <div class="card-badge">🇸🇬</div>
+      </div>
+      <div class="card-body">
+        <h3>Singapore</h3>
+        <p>Futuristic city-state wonder</p>
+        <span class="card-btn">Enquire Now</span>
+      </div>
+    </a>
+
+    <a class="card" href="https://api.whatsapp.com/send?phone=919998952926&text=I'm interested in Dubai package">
+      <div class="card-img-wrap">
+        <img class="card-img" src="https://images.unsplash.com/photo-1512453979798-5ea266f8880c?q=80&w=800&auto=format&fit=crop" alt="Dubai" loading="lazy" />
+        <div class="card-badge">🇦🇪</div>
+      </div>
+      <div class="card-body">
+        <h3>Dubai</h3>
+        <p>Desert luxury & skyline views</p>
+        <span class="card-btn">Enquire Now</span>
+      </div>
+    </a>
+
+    <a class="card" href="https://api.whatsapp.com/send?phone=919998952926&text=I'm interested in Bali package">
+      <div class="card-img-wrap">
+        <img class="card-img" src="https://images.unsplash.com/photo-1537996194471-e657df975ab4?q=80&w=800&auto=format&fit=crop" alt="Bali" loading="lazy" />
+        <div class="card-badge">🇮🇩</div>
+      </div>
+      <div class="card-body">
+        <h3>Bali</h3>
+        <p>Tropical paradise & ancient temples</p>
+        <span class="card-btn">Enquire Now</span>
+      </div>
+    </a>
+
+    <a class="card" href="https://api.whatsapp.com/send?phone=919998952926&text=I'm interested in Mauritius package">
+      <div class="card-img-wrap">
+        <img class="card-img" src="https://images.unsplash.com/photo-1544644181-1484b3fdfc62?q=80&w=800&auto=format&fit=crop" alt="Mauritius" loading="lazy" />
+        <div class="card-badge">🇲🇺</div>
+      </div>
+      <div class="card-body">
+        <h3>Mauritius</h3>
+        <p>Pristine beaches & turquoise lagoons</p>
+        <span class="card-btn">Enquire Now</span>
+      </div>
+    </a>
+
+    <a class="card" href="https://api.whatsapp.com/send?phone=919998952926&text=I'm interested in Maldives package">
+      <div class="card-img-wrap">
+        <img class="card-img" src="https://images.unsplash.com/photo-1514282401047-d79a71a590e8?q=80&w=800&auto=format&fit=crop" alt="Maldives" loading="lazy" />
+        <div class="card-badge">🏝️</div>
+      </div>
+      <div class="card-body">
+        <h3>Maldives</h3>
+        <p>Overwater villas & coral reefs</p>
+        <span class="card-btn">Enquire Now</span>
+      </div>
+    </a>
+
+    <a class="card" href="https://api.whatsapp.com/send?phone=919998952926&text=I'm interested in Europe Customised package">
+      <div class="card-img-wrap">
+        <img class="card-img" src="https://images.unsplash.com/photo-1499856871958-5b9627545d1a?q=80&w=800&auto=format&fit=crop" alt="Europe" loading="lazy" />
+        <div class="card-badge">🌍</div>
+      </div>
+      <div class="card-body">
+        <h3>Europe Customised</h3>
+        <p>Tailor-made European journeys</p>
+        <span class="card-btn">Enquire Now</span>
+      </div>
+    </a>
+
+    <a class="card" href="https://api.whatsapp.com/send?phone=919998952926&text=I'm interested in South Africa package">
+      <div class="card-img-wrap">
+        <img class="card-img" src="https://images.unsplash.com/photo-1501854140801-50d01698950b?q=80&w=800&auto=format&fit=crop" alt="South Africa" loading="lazy" />
+        <div class="card-badge">🇿🇦</div>
+      </div>
+      <div class="card-body">
+        <h3>South Africa</h3>
+        <p>Safari, Cape Town & wine valleys</p>
+        <span class="card-btn">Enquire Now</span>
+      </div>
+    </a>
+
+    <a class="card" href="https://api.whatsapp.com/send?phone=919998952926&text=I'm interested in Japan package">
+      <div class="card-img-wrap">
+        <img class="card-img" src="https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?q=80&w=800&auto=format&fit=crop" alt="Japan" loading="lazy" />
+        <div class="card-badge">🇯🇵</div>
+      </div>
+      <div class="card-body">
+        <h3>Japan</h3>
+        <p>Cherry blossoms, culture & cuisine</p>
+        <span class="card-btn">Enquire Now</span>
+      </div>
+    </a>
+
+    <a class="card" href="https://api.whatsapp.com/send?phone=919998952926&text=I'm interested in Switzerland package">
+      <div class="card-img-wrap">
+        <img class="card-img" src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?q=80&w=800&auto=format&fit=crop" alt="Switzerland" loading="lazy" />
+        <div class="card-badge">🇨🇭</div>
+      </div>
+      <div class="card-body">
+        <h3>Switzerland</h3>
+        <p>Alpine peaks & scenic train rides</p>
+        <span class="card-btn">Enquire Now</span>
+      </div>
+    </a>
+
+    <a class="card" href="https://api.whatsapp.com/send?phone=919998952926&text=I'm interested in Turkey package">
+      <div class="card-img-wrap">
+        <img class="card-img" src="https://images.unsplash.com/photo-1541432901042-2d8bd64b4a9b?q=80&w=800&auto=format&fit=crop" alt="Turkey" loading="lazy" />
+        <div class="card-badge">🇹🇷</div>
+      </div>
+      <div class="card-body">
+        <h3>Turkey</h3>
+        <p>Cappadocia, bazaars & Bosphorus</p>
+        <span class="card-btn">Enquire Now</span>
+      </div>
+    </a>
+
+  </div>
+</div>
+
+<!-- ── DOMESTIC ── -->
+<div class="section" id="tab-domestic">
+  <div class="grid">
+
+    <a class="card" href="https://api.whatsapp.com/send?phone=919998952926&text=I'm interested in Goa package">
+      <div class="card-img-wrap">
+        <img class="card-img" src="https://images.unsplash.com/photo-1512343879784-a960bf40e7f2?q=80&w=800&auto=format&fit=crop" alt="Goa" loading="lazy" />
+        <div class="card-badge">🏖️</div>
+      </div>
+      <div class="card-body">
+        <h3>Goa</h3>
+        <p>Beaches, sun & vibrant nightlife</p>
+        <span class="card-btn">Enquire Now</span>
+      </div>
+    </a>
+
+    <a class="card" href="https://api.whatsapp.com/send?phone=919998952926&text=I'm interested in Rajasthan package">
+      <div class="card-img-wrap">
+        <img class="card-img" src="https://images.unsplash.com/photo-1524492412937-b28074a5d7da?q=80&w=800&auto=format&fit=crop" alt="Rajasthan" loading="lazy" />
+        <div class="card-badge">🏰</div>
+      </div>
+      <div class="card-body">
+        <h3>Rajasthan</h3>
+        <p>Forts, palaces & desert safari</p>
+        <span class="card-btn">Enquire Now</span>
+      </div>
+    </a>
+
+    <a class="card" href="https://api.whatsapp.com/send?phone=919998952926&text=I'm interested in Kashmir package">
+      <div class="card-img-wrap">
+        <img class="card-img" src="https://images.unsplash.com/photo-1566837945700-30057527ade0?q=80&w=800&auto=format&fit=crop" alt="Kashmir" loading="lazy" />
+        <div class="card-badge">🏔️</div>
+      </div>
+      <div class="card-body">
+        <h3>Kashmir</h3>
+        <p>Heaven on Earth – Dal Lake & Gulmarg</p>
+        <span class="card-btn">Enquire Now</span>
+      </div>
+    </a>
+
+    <a class="card" href="https://api.whatsapp.com/send?phone=919998952926&text=I'm interested in Kerala package">
+      <div class="card-img-wrap">
+        <img class="card-img" src="https://images.unsplash.com/photo-1602216056096-3b40cc0c9944?q=80&w=800&auto=format&fit=crop" alt="Kerala" loading="lazy" />
+        <div class="card-badge">🌴</div>
+      </div>
+      <div class="card-body">
+        <h3>Kerala</h3>
+        <p>Backwaters, spice gardens & Munnar</p>
+        <span class="card-btn">Enquire Now</span>
+      </div>
+    </a>
+
+    <a class="card" href="https://api.whatsapp.com/send?phone=919998952926&text=I'm interested in Himachal Pradesh package">
+      <div class="card-img-wrap">
+        <img class="card-img" src="https://images.unsplash.com/photo-1626621341517-bbf3d9990a23?q=80&w=800&auto=format&fit=crop" alt="Himachal Pradesh" loading="lazy" />
+        <div class="card-badge">⛰️</div>
+      </div>
+      <div class="card-body">
+        <h3>Himachal Pradesh</h3>
+        <p>Snow peaks, Manali & Spiti valley</p>
+        <span class="card-btn">Enquire Now</span>
+      </div>
+    </a>
+
+    <a class="card" href="https://api.whatsapp.com/send?phone=919998952926&text=I'm interested in Madhya Pradesh package">
+      <div class="card-img-wrap">
+        <img class="card-img" src="https://images.unsplash.com/photo-1585135497273-1a86b09fe70e?q=80&w=800&auto=format&fit=crop" alt="Madhya Pradesh" loading="lazy" />
+        <div class="card-badge">🦁</div>
+      </div>
+      <div class="card-body">
+        <h3>Madhya Pradesh</h3>
+        <p>Tigers, temples & Khajuraho</p>
+        <span class="card-btn">Enquire Now</span>
+      </div>
+    </a>
+
+    <a class="card" href="https://api.whatsapp.com/send?phone=919998952926&text=I'm interested in Odisha package">
+      <div class="card-img-wrap">
+        <img class="card-img" src="https://images.unsplash.com/photo-1680444481955-bda2e0d3e7bb?q=80&w=800&auto=format&fit=crop" alt="Odisha" loading="lazy" />
+        <div class="card-badge">🌊</div>
+      </div>
+      <div class="card-body">
+        <h3>Odisha</h3>
+        <p>Temples, beaches & tribal culture</p>
+        <span class="card-btn">Enquire Now</span>
+      </div>
+    </a>
+
+    <a class="card" href="https://api.whatsapp.com/send?phone=919998952926&text=I'm interested in Ladakh package">
+      <div class="card-img-wrap">
+        <img class="card-img" src="https://images.unsplash.com/photo-1597466599360-3b9775841aec?q=80&w=800&auto=format&fit=crop" alt="Ladakh" loading="lazy" />
+        <div class="card-badge">🏔️</div>
+      </div>
+      <div class="card-body">
+        <h3>Ladakh</h3>
+        <p>Moonscapes, Pangong & monastery trails</p>
+        <span class="card-btn">Enquire Now</span>
+      </div>
+    </a>
+
+    <a class="card" href="https://api.whatsapp.com/send?phone=919998952926&text=I'm interested in Uttarakhand package">
+      <div class="card-img-wrap">
+        <img class="card-img" src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?q=80&w=800&auto=format&fit=crop" alt="Uttarakhand" loading="lazy" />
+        <div class="card-badge">🌿</div>
+      </div>
+      <div class="card-body">
+        <h3>Uttarakhand</h3>
+        <p>Yoga, Ganga & Himalayan treks</p>
+        <span class="card-btn">Enquire Now</span>
+      </div>
+    </a>
+
+    <a class="card" href="https://api.whatsapp.com/send?phone=919998952926&text=I'm interested in Arunachal Pradesh package">
+      <div class="card-img-wrap">
+        <img class="card-img" src="https://images.unsplash.com/photo-1593528800296-5b21ace1a1e0?q=80&w=800&auto=format&fit=crop" alt="Arunachal Pradesh" loading="lazy" />
+        <div class="card-badge">🦅</div>
+      </div>
+      <div class="card-body">
+        <h3>Arunachal Pradesh</h3>
+        <p>Unexplored tribal highlands</p>
+        <span class="card-btn">Enquire Now</span>
+      </div>
+    </a>
+
+    <a class="card" href="https://api.whatsapp.com/send?phone=919998952926&text=I'm interested in Assam package">
+      <div class="card-img-wrap">
+        <img class="card-img" src="https://images.unsplash.com/photo-1622397933015-d1a48d2b67b7?q=80&w=800&auto=format&fit=crop" alt="Assam" loading="lazy" />
+        <div class="card-badge">🦏</div>
+      </div>
+      <div class="card-body">
+        <h3>Assam</h3>
+        <p>Tea estates, wildlife & Brahmaputra</p>
+        <span class="card-btn">Enquire Now</span>
+      </div>
+    </a>
+
+    <a class="card" href="https://api.whatsapp.com/send?phone=919998952926&text=I'm interested in Meghalaya package">
+      <div class="card-img-wrap">
+        <img class="card-img" src="https://images.unsplash.com/photo-1624369671826-a6b0049db5b5?q=80&w=800&auto=format&fit=crop" alt="Meghalaya" loading="lazy" />
+        <div class="card-badge">☁️</div>
+      </div>
+      <div class="card-body">
+        <h3>Meghalaya</h3>
+        <p>Abode of clouds & living root bridges</p>
+        <span class="card-btn">Enquire Now</span>
+      </div>
+    </a>
+
+    <a class="card" href="https://api.whatsapp.com/send?phone=919998952926&text=I'm interested in Sikkim package">
+      <div class="card-img-wrap">
+        <img class="card-img" src="https://images.unsplash.com/photo-1606847958595-9e617f5cf174?q=80&w=800&auto=format&fit=crop" alt="Sikkim" loading="lazy" />
+        <div class="card-badge">🏔️</div>
+      </div>
+      <div class="card-body">
+        <h3>Sikkim</h3>
+        <p>Monasteries, Gangtok & snow peaks</p>
+        <span class="card-btn">Enquire Now</span>
+      </div>
+    </a>
+
+    <a class="card" href="https://api.whatsapp.com/send?phone=919998952926&text=I'm interested in Karnataka package">
+      <div class="card-img-wrap">
+        <img class="card-img" src="https://images.unsplash.com/photo-1582510003544-4d00b7f74220?q=80&w=800&auto=format&fit=crop" alt="Karnataka" loading="lazy" />
+        <div class="card-badge">🌺</div>
+      </div>
+      <div class="card-body">
+        <h3>Karnataka</h3>
+        <p>Coorg, Hampi & coastal Mangalore</p>
+        <span class="card-btn">Enquire Now</span>
+      </div>
+    </a>
+
+    <a class="card" href="https://api.whatsapp.com/send?phone=919998952926&text=I'm interested in Tamil Nadu package">
+      <div class="card-img-wrap">
+        <img class="card-img" src="https://images.unsplash.com/photo-1582510003544-4d00b7f74220?q=80&w=800&auto=format&fit=crop" alt="Tamil Nadu" loading="lazy" />
+        <div class="card-badge">🛕</div>
+      </div>
+      <div class="card-body">
+        <h3>Tamil Nadu</h3>
+        <p>Temples, culture & Ooty hills</p>
+        <span class="card-btn">Enquire Now</span>
+      </div>
+    </a>
+
+    <a class="card" href="https://api.whatsapp.com/send?phone=919998952926&text=I'm interested in Andhra Pradesh package">
+      <div class="card-img-wrap">
+        <img class="card-img" src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?q=80&w=800&auto=format&fit=crop" alt="Andhra Pradesh" loading="lazy" />
+        <div class="card-badge">🦚</div>
+      </div>
+      <div class="card-body">
+        <h3>Andhra Pradesh</h3>
+        <p>Tirupati, Araku valley & coastline</p>
+        <span class="card-btn">Enquire Now</span>
+      </div>
+    </a>
+
+  </div>
+</div>
+
+<!-- ── CRUISE ── -->
+<div class="section" id="tab-cruise">
+  <div class="grid">
+
+    <a class="card" href="https://api.whatsapp.com/send?phone=919998952926&text=I'm interested in Mediterranean Cruise package">
+      <div class="card-img-wrap">
+        <img class="card-img" src="https://images.unsplash.com/photo-1548115184-bc6544d06a58?q=80&w=800&auto=format&fit=crop" alt="Mediterranean Cruise" loading="lazy" />
+        <div class="card-badge">🚢</div>
+      </div>
+      <div class="card-body">
+        <h3>Mediterranean Cruise</h3>
+        <p>Europe's finest coastlines & ports</p>
+        <span class="card-btn">Enquire Now</span>
+      </div>
+    </a>
+
+    <a class="card" href="https://api.whatsapp.com/send?phone=919998952926&text=I'm interested in Indian Ocean Cruise package">
+      <div class="card-img-wrap">
+        <img class="card-img" src="https://images.unsplash.com/photo-1544644181-1484b3fdfc62?q=80&w=800&auto=format&fit=crop" alt="Indian Ocean Cruise" loading="lazy" />
+        <div class="card-badge">⛵</div>
+      </div>
+      <div class="card-body">
+        <h3>Indian Ocean Cruise</h3>
+        <p>Exotic island hopping & tropical ports</p>
+        <span class="card-btn">Enquire Now</span>
+      </div>
+    </a>
+
+    <a class="card" href="https://api.whatsapp.com/send?phone=919998952926&text=I'm interested in Southeast Asia Cruise package">
+      <div class="card-img-wrap">
+        <img class="card-img" src="https://images.unsplash.com/photo-1537996194471-e657df975ab4?q=80&w=800&auto=format&fit=crop" alt="Southeast Asia Cruise" loading="lazy" />
+        <div class="card-badge">🌏</div>
+      </div>
+      <div class="card-body">
+        <h3>Southeast Asia Cruise</h3>
+        <p>Singapore to Bali by sea</p>
+        <span class="card-btn">Enquire Now</span>
+      </div>
+    </a>
+
+    <a class="card" href="https://api.whatsapp.com/send?phone=919998952926&text=I'm interested in Arabian Sea Cruise package">
+      <div class="card-img-wrap">
+        <img class="card-img" src="https://images.unsplash.com/photo-1512343879784-a960bf40e7f2?q=80&w=800&auto=format&fit=crop" alt="Arabian Sea Cruise" loading="lazy" />
+        <div class="card-badge">🌊</div>
+      </div>
+      <div class="card-body">
+        <h3>Arabian Sea Cruise</h3>
+        <p>Mumbai, Goa & Lakshadweep</p>
+        <span class="card-btn">Enquire Now</span>
+      </div>
+    </a>
+
+  </div>
+</div>
+
+<!-- CTA -->
+<div class="cta-strip">
+  <h2>Don't see your dream destination?</h2>
+  <p>We customize tours for any location worldwide!</p>
+  <a class="cta-btn" href="https://api.whatsapp.com/send?phone=919998952926">💬 Enquire About Any Destination →</a>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-grid">
+    <div class="footer-logo">
+      <strong>VacationPe</strong>
+      <span>Dream.. Click.. Travel..</span>
+      <p>VacationPe is a Jaipur-based travel company backed by 13+ years of industry expertise.</p>
+      <p style="margin-top:10px">📍 Jaipur, Rajasthan, India</p>
+    </div>
+    <div>
+      <h4>Quick Links</h4>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="destinations.html">Destinations</a></li>
+        <li><a href="about.html">About Us</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="payment.html">Payment</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Our Services</h4>
+      <ul>
+        <li><a href="#">Holiday Packages</a></li>
+        <li><a href="#">Flight Booking</a></li>
+        <li><a href="#">Hotel Reservation</a></li>
+        <li><a href="#">Travel Insurance</a></li>
+        <li><a href="#">Forex Services</a></li>
+        <li><a href="visa.html">Visa Assistance</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Contact Us</h4>
+      <ul>
+        <li><a href="tel:+919998952926">📞 +91 9998952926</a></li>
+        <li><a href="mailto:info@vacationpe.com">✉️ info@vacationpe.com</a></li>
+        <li><a href="https://api.whatsapp.com/send?phone=919998952926">💬 WhatsApp</a></li>
+        <li><a href="https://www.instagram.com/vacationpe/">📸 Instagram</a></li>
+        <li><a href="https://www.facebook.com/VacationPe/">📘 Facebook</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    © 2026 VacationPe. All Rights Reserved. | Founded by Bajrang Singh Shekhawat | Est. 2019
+  </div>
+</footer>
+
+<script>
+  function showTab(name, btn) {
+    // hide all sections
+    document.querySelectorAll('.section').forEach(s => s.classList.remove('visible'));
+    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+    document.getElementById('tab-' + name).classList.add('visible');
+    btn.classList.add('active');
+  }
+</script>
 </body>
 </html>
