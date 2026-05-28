@@ -708,4 +708,97 @@ footer {
   .video-grid { grid-template-columns: repeat(2, 1fr); }
   .footer-grid { grid-template-columns: 1fr; }
   .topbar { font-size: 11px; }
+
+  /* VISA SEARCH SECTION */
+
+.visa-search-section{
+  width:100%;
+  margin-top:-55px;
+  position:relative;
+  z-index:20;
+  padding:0 20px;
+}
+
+.visa-search-box{
+  background:#fff;
+  max-width:1200px;
+  margin:auto;
+  padding:30px;
+  border-radius:24px;
+  box-shadow:0 12px 35px rgba(0,0,0,0.15);
+}
+
+.visa-tab-top{
+  margin-bottom:25px;
+}
+
+.visa-tab-btn{
+  background:linear-gradient(135deg,#e8873a,#d46c1c);
+  color:white;
+  border:none;
+  padding:14px 24px;
+  border-radius:14px;
+  font-size:18px;
+  font-weight:700;
+}
+
+.visa-form-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:20px;
+  align-items:end;
+}
+
+.visa-field label{
+  display:block;
+  margin-bottom:10px;
+  font-size:14px;
+  font-weight:600;
+  color:#222;
+}
+
+.visa-field input,
+.visa-field select{
+  width:100%;
+  padding:15px;
+  border:1px solid #ddd;
+  border-radius:12px;
+  font-size:15px;
+  outline:none;
+}
+
+.visa-field input:focus,
+.visa-field select:focus{
+  border-color:#e8873a;
+}
+
+.visa-search-btn{
+  width:100%;
+  padding:16px;
+  border:none;
+  border-radius:12px;
+  background:linear-gradient(135deg,#e8873a,#d46c1c);
+  color:white;
+  font-size:17px;
+  font-weight:700;
+  cursor:pointer;
+  transition:0.3s;
+}
+
+.visa-search-btn:hover{
+  transform:translateY(-2px);
+  box-shadow:0 8px 20px rgba(232,135,58,0.3);
+}
+
+@media(max-width:768px){
+
+  .visa-search-section{
+    margin-top:20px;
+  }
+
+  .visa-search-box{
+    padding:22px;
+  }
+
+}
 }
