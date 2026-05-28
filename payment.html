@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Payment – VacationPe</title>
+  <meta name="description" content="Make a secure payment to VacationPe for your travel booking." />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+  <!-- TOPBAR -->
+  <div class="topbar">
+    <div class="topbar-left">
+      <a href="tel:+919998952926">📞 +91 9998952926</a>
+      <a href="mailto:info@vacationpe.com">✉️ info@vacationpe.com</a>
+    </div>
+    <div class="topbar-right">
+      <a href="https://api.whatsapp.com/send?phone=919998952926" target="_blank">💬 WhatsApp</a>
+      <a href="https://www.instagram.com/vacationpe/" target="_blank">📸 Instagram</a>
+      <a href="https://www.facebook.com/VacationPe/" target="_blank">📘 Facebook</a>
+    </div>
+  </div>
+
+  <!-- NAVBAR -->
+  <nav>
+    <a href="index.html" class="logo">Vacation<span>Pe</span><small>Dream.. Click.. Travel..</small></a>
+    <div class="hamburger"><span></span><span></span><span></span></div>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="destinations.html">Destinations</a></li>
+      <li><a href="about.html">About Us</a></li>
+      <li><a href="contact.html">Contact</a></li>
+      <li><a href="payment.html">Payment</a></li>
+      <li><a href="https://api.whatsapp.com/send?phone=919998952926" class="btn-nav" target="_blank">💬 Book Now</a></li>
+    </ul>
+  </nav>
+
+  <!-- PAGE HERO -->
+  <div class="page-hero">
+    <h1>Make a Payment</h1>
+    <p>Secure &amp; hassle-free payment for your travel booking</p>
+  </div>
+
+  <!-- PAYMENT FORM -->
+  <section class="section" style="background:var(--light);">
+    <div class="payment-form-wrap">
+      <h3>💳 Secure Payment</h3>
+      <div class="form-group">
+        <label for="pay-name">Full Name</label>
+        <input type="text" id="pay-name" placeholder="Enter your full name" />
+      </div>
+      <div class="form-group">
+        <label for="pay-email">Email Address</label>
+        <input type="email" id="pay-email" placeholder="your@email.com" />
+      </div>
+      <div class="form-group">
+        <label for="pay-mobile">Mobile Number</label>
+        <input type="tel" id="pay-mobile" placeholder="+91 XXXXX XXXXX" />
+      </div>
+      <div class="form-group">
+        <label for="pay-amount">Amount (INR ₹)</label>
+        <input type="number" id="pay-amount" placeholder="Enter amount in ₹" min="1" />
+      </div>
+      <div class="form-group">
+        <label for="pay-ref">Booking Reference (optional)</label>
+        <input type="text" id="pay-ref" placeholder="e.g. VP-2026-001" />
+      </div>
+      <button class="btn-pay" onclick="handlePayment()">💳 Pay Now</button>
+      <p class="payment-note">🔒 Your payment is secured. For queries, contact us on WhatsApp.</p>
+    </div>
+
+    <!-- UPI / Bank Details -->
+    <div style="max-width:520px;margin:40px auto 0;background:var(--white);border-radius:var(--radius);padding:32px;box-shadow:var(--shadow);text-align:center;">
+      <h4 style="font-family:'Playfair Display',serif;color:var(--primary);font-size:1.2rem;margin-bottom:18px;">Direct Payment Options</h4>
+      <p style="font-size:14px;color:var(--text-light);margin-bottom:18px;">You can also pay directly via UPI or bank transfer. Share the payment screenshot on WhatsApp.</p>
+      <div class="upi-grid">
+        <div class="upi-tag">📱 Google Pay</div>
+        <div class="upi-tag">📱 PhonePe</div>
+        <div class="upi-tag">📱 Paytm</div>
+        <div class="upi-tag">🏦 NEFT / IMPS</div>
+      </div>
+      <a href="https://api.whatsapp.com/send?phone=919998952926&text=Hi%20Bajrang%20bhai%2C%20I%20want%20to%20make%20a%20payment%20for%20my%20booking." class="btn-primary" style="display:inline-flex;margin-top:24px;" target="_blank">💬 Share Payment Screenshot</a>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta-section">
+    <h2>Questions About Your Booking?</h2>
+    <p>Reach out to Bajrang Singh directly for any payment queries.</p>
+    <div class="cta-btns">
+      <a href="https://api.whatsapp.com/send?phone=919998952926" class="btn-cta-white" target="_blank">💬 WhatsApp Now</a>
+      <a href="tel:+919998952926" class="btn-cta-outline">📞 Call Us</a>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="logo" style="color:#fff;">Vacation<span style="color:var(--accent)">Pe</span><small>Dream.. Click.. Travel..</small></div>
+        <p>VacationPe is a Jaipur-based travel company backed by 13+ years of industry expertise.</p>
+        <p style="margin-top:10px;">📍 Jaipur, Rajasthan, India</p>
+        <div class="social-links">
+          <a class="social-link" href="https://api.whatsapp.com/send?phone=919998952926" target="_blank">💬</a>
+          <a class="social-link" href="https://www.instagram.com/vacationpe/" target="_blank">📸</a>
+          <a class="social-link" href="https://www.facebook.com/VacationPe/" target="_blank">📘</a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h5>Quick Links</h5>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="destinations.html">Destinations</a></li>
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          <li><a href="payment.html">Payment</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Our Services</h5>
+        <ul>
+          <li><a href="#">Holiday Packages</a></li>
+          <li><a href="#">Flight Booking</a></li>
+          <li><a href="#">Hotel Reservation</a></li>
+          <li><a href="#">Travel Insurance</a></li>
+          <li><a href="#">Forex Services</a></li>
+          <li><a href="#">Visa Assistance</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Contact Us</h5>
+        <ul>
+          <li><a href="tel:+919998952926">📞 +91 9998952926</a></li>
+          <li><a href="mailto:info@vacationpe.com">✉️ info@vacationpe.com</a></li>
+          <li><a href="https://api.whatsapp.com/send?phone=919998952926" target="_blank">💬 WhatsApp</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 VacationPe. All Rights Reserved. | Founded by Bajrang Singh Shekhawat | Est. 2019</span>
+    </div>
+  </footer>
+
+  <a class="wa-float" href="https://api.whatsapp.com/send?phone=919998952926" target="_blank" title="Chat on WhatsApp">💬</a>
+
+  <script src="js/main.js"></script>
+  <script>
+    function handlePayment() {
+      const name = document.getElementById('pay-name').value.trim();
+      const email = document.getElementById('pay-email').value.trim();
+      const mobile = document.getElementById('pay-mobile').value.trim();
+      const amount = document.getElementById('pay-amount').value.trim();
+      if (!name || !email || !mobile || !amount) {
+        alert('Please fill in all required fields.');
+        return;
+      }
+      // Redirect to WhatsApp with payment details
+      const msg = encodeURIComponent(`Hi Bajrang bhai, I want to make a payment.\nName: ${name}\nEmail: ${email}\nMobile: ${mobile}\nAmount: ₹${amount}`);
+      window.open(`https://api.whatsapp.com/send?phone=919998952926&text=${msg}`, '_blank');
+    }
+  </script>
+</body>
+</html>

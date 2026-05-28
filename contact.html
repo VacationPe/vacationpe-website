@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact Us – VacationPe</title>
+  <meta name="description" content="Get in touch with VacationPe – Jaipur's trusted travel partner. Call, WhatsApp or email Bajrang Singh Shekhawat." />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+  <!-- TOPBAR -->
+  <div class="topbar">
+    <div class="topbar-left">
+      <a href="tel:+919998952926">📞 +91 9998952926</a>
+      <a href="mailto:info@vacationpe.com">✉️ info@vacationpe.com</a>
+    </div>
+    <div class="topbar-right">
+      <a href="https://api.whatsapp.com/send?phone=919998952926" target="_blank">💬 WhatsApp</a>
+      <a href="https://www.instagram.com/vacationpe/" target="_blank">📸 Instagram</a>
+      <a href="https://www.facebook.com/VacationPe/" target="_blank">📘 Facebook</a>
+    </div>
+  </div>
+
+  <!-- NAVBAR -->
+  <nav>
+    <a href="index.html" class="logo">Vacation<span>Pe</span><small>Dream.. Click.. Travel..</small></a>
+    <div class="hamburger"><span></span><span></span><span></span></div>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="destinations.html">Destinations</a></li>
+      <li><a href="about.html">About Us</a></li>
+      <li><a href="contact.html">Contact</a></li>
+      <li><a href="payment.html">Payment</a></li>
+      <li><a href="https://api.whatsapp.com/send?phone=919998952926" class="btn-nav" target="_blank">💬 Book Now</a></li>
+    </ul>
+  </nav>
+
+  <!-- PAGE HERO -->
+  <div class="page-hero">
+    <h1>Contact Us</h1>
+    <p>We're just a call or message away — let's plan your dream trip!</p>
+  </div>
+
+  <!-- CONTACT INFO CARDS -->
+  <section class="section" style="background:#fff;">
+    <div class="contact-info-grid" style="grid-template-columns:repeat(3,1fr);margin-bottom:60px;">
+      <div class="contact-info-card">
+        <div class="icon">📍</div>
+        <h4>Our Location</h4>
+        <p>Jaipur, Rajasthan, India</p>
+      </div>
+      <div class="contact-info-card">
+        <div class="icon">📞</div>
+        <h4>Phone / WhatsApp</h4>
+        <a href="tel:+919998952926">+91 9998952926</a>
+      </div>
+      <div class="contact-info-card">
+        <div class="icon">✉️</div>
+        <h4>Email</h4>
+        <a href="mailto:info@vacationpe.com">info@vacationpe.com</a>
+      </div>
+    </div>
+
+    <div class="contact-grid">
+      <!-- FORM -->
+      <div class="contact-form-card">
+        <h3>Send Us a Message</h3>
+        <div class="form-group">
+          <label for="c-name">Full Name *</label>
+          <input type="text" id="c-name" placeholder="Your full name" />
+        </div>
+        <div class="form-group">
+          <label for="c-email">Email Address *</label>
+          <input type="email" id="c-email" placeholder="your@email.com" />
+        </div>
+        <div class="form-group">
+          <label for="c-mobile">Mobile Number *</label>
+          <input type="tel" id="c-mobile" placeholder="+91 XXXXX XXXXX" />
+        </div>
+        <div class="form-group">
+          <label for="c-dest">Interested Destination</label>
+          <input type="text" id="c-dest" placeholder="e.g. Bali, Kashmir, Europe..." />
+        </div>
+        <div class="form-group">
+          <label for="c-msg">Message *</label>
+          <textarea id="c-msg" placeholder="Tell us about your travel plans, dates, group size, budget..."></textarea>
+        </div>
+        <button class="btn-submit" onclick="sendMessage()">📩 Send Message via WhatsApp</button>
+      </div>
+
+      <!-- MAP -->
+      <div>
+        <div class="map-wrap">
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d227748.38256593!2d75.65046!3d26.88514!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x396c4adf4c57e281%3A0xce1c63a0cf22e09!2sJaipur%2C%20Rajasthan!5e0!3m2!1sen!2sin!4v1685000000000"
+            width="100%"
+            height="420"
+            style="border:0;"
+            allowfullscreen=""
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+          ></iframe>
+        </div>
+        <div style="margin-top:24px;background:var(--light);border-radius:var(--radius);padding:28px;">
+          <h4 style="font-family:'Playfair Display',serif;color:var(--primary);margin-bottom:16px;">Business Hours</h4>
+          <p style="font-size:14px;margin-bottom:8px;">📅 <strong>Mon – Sat:</strong> 9:00 AM – 8:00 PM</p>
+          <p style="font-size:14px;margin-bottom:8px;">📅 <strong>Sunday:</strong> 10:00 AM – 5:00 PM</p>
+          <p style="font-size:14px;color:var(--accent);font-weight:600;">💬 WhatsApp: Available 24/7</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta-section">
+    <h2>Your Dream Vacation Awaits!</h2>
+    <p>Don't wait — let's start planning your perfect trip today.</p>
+    <div class="cta-btns">
+      <a href="https://api.whatsapp.com/send?phone=919998952926" class="btn-cta-white" target="_blank">💬 WhatsApp Now</a>
+      <a href="destinations.html" class="btn-cta-outline">🗺️ Browse Destinations</a>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="logo" style="color:#fff;">Vacation<span style="color:var(--accent)">Pe</span><small>Dream.. Click.. Travel..</small></div>
+        <p>VacationPe is a Jaipur-based travel company backed by 13+ years of industry expertise.</p>
+        <p style="margin-top:10px;">📍 Jaipur, Rajasthan, India</p>
+        <div class="social-links">
+          <a class="social-link" href="https://api.whatsapp.com/send?phone=919998952926" target="_blank">💬</a>
+          <a class="social-link" href="https://www.instagram.com/vacationpe/" target="_blank">📸</a>
+          <a class="social-link" href="https://www.facebook.com/VacationPe/" target="_blank">📘</a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h5>Quick Links</h5>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="destinations.html">Destinations</a></li>
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          <li><a href="payment.html">Payment</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Our Services</h5>
+        <ul>
+          <li><a href="#">Holiday Packages</a></li>
+          <li><a href="#">Flight Booking</a></li>
+          <li><a href="#">Hotel Reservation</a></li>
+          <li><a href="#">Travel Insurance</a></li>
+          <li><a href="#">Forex Services</a></li>
+          <li><a href="#">Visa Assistance</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Contact Us</h5>
+        <ul>
+          <li><a href="tel:+919998952926">📞 +91 9998952926</a></li>
+          <li><a href="mailto:info@vacationpe.com">✉️ info@vacationpe.com</a></li>
+          <li><a href="https://api.whatsapp.com/send?phone=919998952926" target="_blank">💬 WhatsApp</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 VacationPe. All Rights Reserved. | Founded by Bajrang Singh Shekhawat | Est. 2019</span>
+    </div>
+  </footer>
+
+  <a class="wa-float" href="https://api.whatsapp.com/send?phone=919998952926" target="_blank" title="Chat on WhatsApp">💬</a>
+
+  <script src="js/main.js"></script>
+  <script>
+    function sendMessage() {
+      const name = document.getElementById('c-name').value.trim();
+      const email = document.getElementById('c-email').value.trim();
+      const mobile = document.getElementById('c-mobile').value.trim();
+      const dest = document.getElementById('c-dest').value.trim();
+      const msg = document.getElementById('c-msg').value.trim();
+      if (!name || !email || !mobile || !msg) {
+        alert('Please fill all required fields.');
+        return;
+      }
+      const text = encodeURIComponent(`Hi Bajrang bhai,\nName: ${name}\nEmail: ${email}\nMobile: ${mobile}\nDestination: ${dest || 'Not specified'}\nMessage: ${msg}`);
+      window.open(`https://api.whatsapp.com/send?phone=919998952926&text=${text}`, '_blank');
+    }
+  </script>
+</body>
+</html>
