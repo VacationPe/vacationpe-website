@@ -1,192 +1,528 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Contact Us – VacationPe</title>
-  <meta name="description" content="Get in touch with VacationPe – Jaipur's trusted travel partner. Call, WhatsApp or email Bajrang Singh Shekhawat." />
-  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+    :root{
+      --blue:#1a8fd1;--blue-dark:#1270a8;--blue-light:#4db8f0;
+      --accent:#0a5f8a;--dark:#0d1f2d;--text:#2b3a47;--muted:#5f7485;
+      --light:#f0f8ff;--sky:#e6f5fd;--white:#fff;--border:#cce6f7;--gold:#f0a500;
+    }
+    html{scroll-behavior:smooth;}
+    body{font-family:'DM Sans',sans-serif;color:var(--text);background:var(--white);overflow-x:hidden;}
+
+    /* ── TOP BAR ── */
+    .top-bar{background:var(--accent);color:#fff;font-size:.8rem;padding:7px 5%;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:6px;}
+    .top-bar a{color:#fff;text-decoration:none;margin-right:14px;transition:color .2s;}
+    .top-bar a:hover{color:var(--blue-light);}
+
+    /* ── NAV ── */
+    nav{position:sticky;top:0;z-index:999;background:var(--white);box-shadow:0 2px 18px rgba(26,143,209,.13);display:flex;align-items:center;justify-content:space-between;padding:10px 5%;}
+    .logo-wrap{display:flex;align-items:center;gap:10px;}
+    .logo-text{font-family:'Playfair Display',serif;font-size:1.7rem;font-weight:900;color:var(--blue);letter-spacing:1px;}
+    .logo-text span{color:var(--accent);}
+    .logo-tagline{font-size:.65rem;color:var(--muted);letter-spacing:2px;text-transform:uppercase;display:block;margin-top:-2px;}
+    .nav-links{list-style:none;display:flex;gap:26px;align-items:center;}
+    .nav-links a{text-decoration:none;color:var(--dark);font-weight:500;font-size:.92rem;transition:color .2s;}
+    .nav-links a:hover,.nav-links a.active{color:var(--blue);}
+    .nav-links .btn-cta{background:var(--blue);color:#fff!important;padding:9px 22px;border-radius:30px;font-weight:600;transition:background .2s;}
+    .nav-links .btn-cta:hover{background:var(--blue-dark);}
+    .hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;}
+    .hamburger span{width:25px;height:2px;background:var(--dark);display:block;}
+    #nav-toggle{display:none;}
+
+    /* ── HERO BANNER ── */
+    .contact-hero{
+      background:linear-gradient(135deg,var(--dark) 0%,#0a3354 100%);
+      padding:70px 5% 60px;text-align:center;position:relative;overflow:hidden;
+    }
+    .contact-hero::before{content:'';position:absolute;width:500px;height:500px;border-radius:50%;background:radial-gradient(circle,rgba(77,184,240,.12) 0%,transparent 70%);top:-150px;right:-100px;}
+    .contact-hero::after{content:'';position:absolute;width:300px;height:300px;border-radius:50%;background:radial-gradient(circle,rgba(26,143,209,.10) 0%,transparent 70%);bottom:-100px;left:100px;}
+    .contact-hero h1{font-family:'Playfair Display',serif;font-size:clamp(2rem,5vw,3.2rem);font-weight:900;color:#fff;margin-bottom:12px;position:relative;z-index:1;}
+    .contact-hero p{color:#8dc8e8;font-size:1rem;position:relative;z-index:1;}
+
+    /* ── MAIN CONTENT ── */
+    .contact-main{padding:60px 5% 20px;max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1fr 300px;gap:28px;align-items:start;}
+    @media(max-width:900px){.contact-main{grid-template-columns:1fr;}}
+
+    /* ── INFO SIDEBAR (vertical) ── */
+    .info-sidebar{display:flex;flex-direction:column;gap:14px;}
+    .info-card{background:var(--white);border-radius:16px;padding:22px 20px;box-shadow:0 4px 20px rgba(26,143,209,.09);border:1px solid var(--border);display:flex;align-items:flex-start;gap:14px;transition:box-shadow .2s;}
+    .info-card:hover{box-shadow:0 6px 28px rgba(26,143,209,.16);}
+    .info-icon{font-size:1.6rem;flex-shrink:0;margin-top:2px;}
+    .info-card-text{}
+    .info-card h4{font-size:.72rem;font-weight:700;text-transform:uppercase;letter-spacing:2px;color:var(--blue);margin-bottom:5px;}
+    .info-card p,.info-card a{font-size:.9rem;color:var(--text);text-decoration:none;display:block;line-height:1.6;}
+    .info-card a:hover{color:var(--blue);}
+
+    .contact-bottom{padding:0 5% 60px;display:grid;grid-template-columns:1fr 1fr;gap:40px;max-width:1200px;margin:0 auto;align-items:start;}
+    @media(max-width:900px){.contact-bottom{grid-template-columns:1fr;}}
+
+    /* ── FORM CARD ── */
+    .form-card{background:var(--white);border-radius:20px;padding:36px;box-shadow:0 4px 30px rgba(26,143,209,.10);border:1px solid var(--border);}
+    .form-card h2{font-family:'Playfair Display',serif;font-size:1.6rem;color:var(--dark);margin-bottom:6px;}
+    .form-card .sub{font-size:.88rem;color:var(--muted);margin-bottom:28px;}
+    .form-group{margin-bottom:18px;}
+    .form-group label{display:block;font-size:.8rem;font-weight:600;color:var(--accent);text-transform:uppercase;letter-spacing:.8px;margin-bottom:7px;}
+    .form-group input,.form-group select,.form-group textarea{
+      width:100%;padding:12px 16px;border:1.5px solid var(--border);border-radius:10px;
+      font-family:'DM Sans',sans-serif;font-size:.93rem;color:var(--text);
+      background:var(--light);transition:border-color .2s,box-shadow .2s;outline:none;
+    }
+    .form-group input:focus,.form-group select:focus,.form-group textarea:focus{border-color:var(--blue);box-shadow:0 0 0 3px rgba(26,143,209,.12);background:#fff;}
+    .form-group textarea{resize:vertical;min-height:110px;}
+    .form-row{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+    @media(max-width:500px){.form-row{grid-template-columns:1fr;}}
+    .btn-send{
+      width:100%;padding:15px;background:var(--blue);color:#fff;border:none;border-radius:12px;
+      font-family:'DM Sans',sans-serif;font-size:1rem;font-weight:600;cursor:pointer;
+      display:flex;align-items:center;justify-content:center;gap:10px;
+      transition:background .2s,transform .2s;box-shadow:0 4px 18px rgba(26,143,209,.35);
+      margin-top:8px;text-decoration:none;
+    }
+    .btn-send:hover{background:var(--blue-dark);transform:translateY(-1px);}
+
+    /* ── RIGHT PANEL ── */
+    .right-panel{display:flex;flex-direction:column;gap:24px;}
+
+    /* Map */
+    .map-card{border-radius:20px;overflow:hidden;box-shadow:0 4px 30px rgba(26,143,209,.10);border:1px solid var(--border);}
+    .map-card iframe{width:100%;height:260px;border:none;display:block;}
+
+    /* Hours */
+    .hours-card{background:var(--dark);border-radius:20px;padding:28px;color:#fff;}
+    .hours-card h3{font-family:'Playfair Display',serif;font-size:1.2rem;margin-bottom:18px;color:#fff;}
+    .hours-row{display:flex;justify-content:space-between;align-items:center;padding:10px 0;border-bottom:1px solid rgba(255,255,255,.08);}
+    .hours-row:last-of-type{border-bottom:none;}
+    .hours-day{font-size:.88rem;color:#8dc8e8;font-weight:500;}
+    .hours-time{font-size:.88rem;color:#fff;font-weight:600;}
+    .hours-badge{display:inline-flex;align-items:center;gap:6px;background:rgba(37,211,102,.15);color:#25D366;border:1px solid rgba(37,211,102,.3);padding:8px 14px;border-radius:20px;font-size:.82rem;font-weight:600;margin-top:14px;}
+
+    /* Quick contact */
+    .quick-card{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+    .qc-btn{
+      display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;
+      padding:18px 12px;border-radius:16px;text-decoration:none;font-weight:600;font-size:.85rem;
+      transition:transform .2s,box-shadow .2s;text-align:center;
+    }
+    .qc-btn:hover{transform:translateY(-3px);}
+    .qc-btn .icon{font-size:1.6rem;}
+    .qc-wa{background:#e8fdf1;color:#1a7a3a;border:1.5px solid #b3eecb;}
+    .qc-wa:hover{box-shadow:0 6px 20px rgba(37,211,102,.2);}
+    .qc-call{background:var(--sky);color:var(--accent);border:1.5px solid var(--border);}
+    .qc-call:hover{box-shadow:0 6px 20px rgba(26,143,209,.15);}
+    .qc-ig{background:#fff0f8;color:#c2185b;border:1.5px solid #f8bbda;}
+    .qc-ig:hover{box-shadow:0 6px 20px rgba(194,24,91,.15);}
+    .qc-fb{background:#f0f4ff;color:#1a56c4;border:1.5px solid #c7d7f8;}
+    .qc-fb:hover{box-shadow:0 6px 20px rgba(26,86,196,.15);}
+
+    /* ── CTA STRIP ── */
+    .cta-strip{background:linear-gradient(135deg,var(--blue-dark),var(--accent));padding:56px 5%;text-align:center;color:#fff;}
+    .cta-strip h2{font-family:'Playfair Display',serif;font-size:2.1rem;margin-bottom:10px;}
+    .cta-strip p{color:#a8d4ec;margin-bottom:28px;font-size:1rem;}
+    .cta-btns{display:flex;justify-content:center;gap:14px;flex-wrap:wrap;}
+    .cta-btn{display:inline-flex;align-items:center;gap:8px;padding:13px 28px;border-radius:35px;text-decoration:none;font-weight:700;font-size:.95rem;transition:transform .2s,box-shadow .2s;}
+    .cta-btn:hover{transform:translateY(-2px);}
+    .cta-btn.wa{background:#25D366;color:#fff;}
+    .cta-btn.dest{background:#fff;color:var(--blue-dark);}
+
+    /* ── FOOTER ── */
+    footer{background:#071520;color:#6a9ab8;padding:56px 5% 24px;}
+    .footer-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:40px;margin-bottom:36px;}
+    .footer-col h4{font-family:'Playfair Display',serif;color:#fff;font-size:1.1rem;margin-bottom:14px;}
+    .footer-col p,.footer-col a{font-size:.88rem;color:#6a9ab8;text-decoration:none;display:block;margin-bottom:7px;line-height:1.65;}
+    .footer-col a:hover{color:var(--blue-light);}
+    .footer-logo{font-family:'Playfair Display',serif;font-size:1.5rem;font-weight:900;color:var(--blue-light);margin-bottom:10px;display:block;}
+    .footer-logo span{color:#fff;}
+    .footer-social{display:flex;gap:10px;margin-top:12px;}
+    .footer-social a{width:36px;height:36px;border-radius:50%;background:#0d2d42;color:#6a9ab8;display:flex;align-items:center;justify-content:center;text-decoration:none;font-size:1rem;transition:background .2s,color .2s;}
+    .footer-social a:hover{background:var(--blue);color:#fff;}
+    .footer-bottom{border-top:1px solid #0d2d42;padding-top:18px;text-align:center;font-size:.79rem;color:#2e5a78;}
+
+    /* ── WA FAB ── */
+    .wa-fab{position:fixed;bottom:28px;right:28px;z-index:9999;background:#25D366;color:#fff;width:56px;height:56px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.6rem;text-decoration:none;box-shadow:0 4px 22px rgba(37,211,102,.45);transition:transform .2s;}
+    .wa-fab:hover{transform:scale(1.1);}
+
+    /* ── MOBILE ── */
+    @media(max-width:768px){
+      .info-card{border-right:none;border-bottom:1px solid var(--border);}
+      .info-card:last-child{border-bottom:none;}
+      .nav-links{display:none;flex-direction:column;position:absolute;top:74px;left:0;right:0;background:#fff;padding:20px 5%;box-shadow:0 8px 24px rgba(26,143,209,.12);z-index:998;gap:16px;}
+      #nav-toggle:checked ~ nav .nav-links{display:flex;}
+      .hamburger{display:flex;}
+      .contact-main{padding:40px 5%;}
+      .quick-card{grid-template-columns:1fr 1fr;}
+    }
+
+    /* ── SUCCESS STATE ── */
+    .success-msg{display:none;background:#e8fdf1;border:1.5px solid #b3eecb;color:#1a7a3a;border-radius:12px;padding:16px 20px;font-size:.93rem;font-weight:500;margin-top:16px;text-align:center;}
+    .success-msg.show{display:block;}
+  </style>
 </head>
 <body>
 
-  <!-- TOPBAR -->
-  <div class="topbar">
-    <div class="topbar-left">
-      <a href="tel:+919998952926">📞 +91 9998952926</a>
-      <a href="mailto:info@vacationpe.com">✉️ info@vacationpe.com</a>
-    </div>
-    <div class="topbar-right">
-      <a href="https://api.whatsapp.com/send?phone=919998952926" target="_blank">💬 WhatsApp</a>
-      <a href="https://www.instagram.com/vacationpe/" target="_blank">📸 Instagram</a>
-      <a href="https://www.facebook.com/VacationPe/" target="_blank">📘 Facebook</a>
+<!-- TOP BAR -->
+<div class="top-bar">
+  <div>
+    <a href="tel:+919998952926">📞 +91 9998952926</a>
+    <a href="mailto:info@vacationpe.com">✉️ info@vacationpe.com</a>
+  </div>
+  <div>
+    <a href="https://api.whatsapp.com/send?phone=919998952926" target="_blank">💬 WhatsApp</a>
+    <a href="https://www.instagram.com/vacationpe/" target="_blank">📸 Instagram</a>
+    <a href="https://www.facebook.com/VacationPe/" target="_blank">📘 Facebook</a>
+  </div>
+</div>
+
+<!-- NAV -->
+<input type="checkbox" id="nav-toggle"/>
+<nav>
+  <div class="logo-wrap">
+    <div>
+      <div class="logo-text">Vacation<span>Pe</span></div>
+      <span class="logo-tagline">Dream.. Click.. Travel..</span>
     </div>
   </div>
+  <label for="nav-toggle" class="hamburger"><span></span><span></span><span></span></label>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="destinations.html">Destinations</a></li>
+    <li><a href="about.html">About Us</a></li>
+    <li><a href="contact.html" class="active">Contact</a></li>
+    <li><a href="payment.html">Payment</a></li>
+    <li><a href="https://api.whatsapp.com/send?phone=919998952926" class="btn-cta" target="_blank">💬 Book Now</a></li>
+  </ul>
+</nav>
 
-  <!-- NAVBAR -->
-  <nav>
-    <a href="index.html" class="logo">Vacation<span>Pe</span><small>Dream.. Click.. Travel..</small></a>
-    <div class="hamburger"><span></span><span></span><span></span></div>
-    <ul class="nav-links">
-      <li><a href="index.html">Home</a></li>
-      <li><a href="destinations.html">Destinations</a></li>
-      <li><a href="about.html">About Us</a></li>
-      <li><a href="contact.html">Contact</a></li>
-      <li><a href="payment.html">Payment</a></li>
-      <li><a href="https://api.whatsapp.com/send?phone=919998952926" class="btn-nav" target="_blank">💬 Book Now</a></li>
-    </ul>
-  </nav>
+<!-- HERO -->
+<div class="contact-hero">
+  <h1>Contact Us</h1>
+  <p>We're just a call or message away — let's plan your dream trip!</p>
+</div>
 
-  <!-- PAGE HERO -->
-  <div class="page-hero">
-    <h1>Contact Us</h1>
-    <p>We're just a call or message away — let's plan your dream trip!</p>
-  </div>
+<!-- MAIN CONTENT: FORM + VERTICAL INFO SIDEBAR -->
+<div class="contact-main">
 
-  <!-- CONTACT INFO CARDS -->
-  <section class="section" style="background:#fff;">
-    <div class="contact-info-grid" style="grid-template-columns:repeat(3,1fr);margin-bottom:60px;">
-      <div class="contact-info-card">
-        <div class="icon">📍</div>
+  <!-- FORM -->
+  <div class="form-card">
+    <h2>Send Us a Message</h2>
+    <p class="sub">Fill in your details and we'll get back to you via WhatsApp instantly.</p>
+
+    <!-- Row 1: Name + Phone -->
+    <div class="form-row">
+      <div class="form-group">
+        <label>Full Name *</label>
+        <input type="text" id="fname" placeholder="Your full name"/>
+      </div>
+      <div class="form-group">
+        <label>Contact Number *</label>
+        <input type="tel" id="fphone" placeholder="+91 XXXXX XXXXX"/>
+      </div>
+    </div>
+
+    <!-- Row 2: Email -->
+    <div class="form-group">
+      <label>Email ID *</label>
+      <input type="email" id="femail" placeholder="your@email.com"/>
+    </div>
+
+    <!-- Row 3: Adults + Children -->
+    <div class="form-row">
+      <div class="form-group">
+        <label>No. of Adults *</label>
+        <select id="fadults">
+          <option value="">Select...</option>
+          <option>1 Adult</option><option>2 Adults</option><option>3 Adults</option>
+          <option>4 Adults</option><option>5 Adults</option><option>6 Adults</option>
+          <option>7 Adults</option><option>8 Adults</option><option>9 Adults</option>
+          <option>10+ Adults</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>No. of Children
+          <span style="display:block;font-size:.72rem;color:#e07800;font-weight:500;text-transform:none;letter-spacing:0;margin-top:2px;">⚠️ Age 2–12 yrs &nbsp;|&nbsp; Above 11.9 yrs = Adult</span>
+        </label>
+        <select id="fchildren">
+          <option value="">Select...</option>
+          <option>0 Children</option><option>1 Child</option><option>2 Children</option>
+          <option>3 Children</option><option>4 Children</option><option>5+ Children</option>
+        </select>
+      </div>
+    </div>
+
+    <!-- Row 4: Travel Date + Departure City -->
+    <div class="form-row">
+      <div class="form-group">
+        <label>Tentative Date of Travel *</label>
+        <input type="date" id="ftraveldate"/>
+      </div>
+      <div class="form-group">
+        <label>City to Fly / Board From *</label>
+        <input type="text" id="fdeptcity" placeholder="e.g. Jaipur, Delhi, Mumbai"/>
+      </div>
+    </div>
+
+    <!-- Row 5: Destination -->
+    <div class="form-group">
+      <label>Destination *</label>
+      <select id="fdest">
+        <option value="">Select destination...</option>
+        <optgroup label="✈️ International">
+          <option>Thailand</option><option>Malaysia</option><option>Singapore</option>
+          <option>Dubai</option><option>Bali, Indonesia</option><option>Mauritius</option>
+          <option>Maldives</option><option>Europe Customised</option>
+        </optgroup>
+        <optgroup label="🇮🇳 Domestic">
+          <option>Goa</option><option>Rajasthan</option><option>Kashmir</option>
+          <option>Kerala</option><option>Himachal Pradesh</option><option>Madhya Pradesh</option>
+          <option>Ladakh</option><option>Uttarakhand</option><option>Andaman</option>
+          <option>Arunachal Pradesh</option><option>Assam</option><option>Meghalaya</option>
+          <option>Sikkim</option><option>Karnataka</option><option>Tamil Nadu</option>
+          <option>Andhra Pradesh</option><option>Odisha</option><option>Other</option>
+        </optgroup>
+        <optgroup label="🚢 Cruise">
+          <option>Mediterranean Cruise</option><option>Indian Ocean Cruise</option>
+          <option>Southeast Asia Cruise</option>
+        </optgroup>
+      </select>
+    </div>
+
+    <!-- Row 6: Message -->
+    <div class="form-group">
+      <label>Message</label>
+      <textarea id="fmsg" placeholder="Tell us about your travel plans, budget, special requests, preferences..."></textarea>
+    </div>
+
+    <a href="#" class="btn-send" id="send-btn" onclick="sendWhatsApp(event)">
+      💬 Send Message via WhatsApp
+    </a>
+    <div class="success-msg" id="success-msg">✅ Opening WhatsApp with your details. We'll respond shortly!</div>
+  </div><!-- /form-card -->
+
+  <!-- VERTICAL INFO SIDEBAR -->
+  <div class="info-sidebar">
+    <div class="info-card">
+      <span class="info-icon">📍</span>
+      <div class="info-card-text">
         <h4>Our Location</h4>
         <p>Jaipur, Rajasthan, India</p>
       </div>
-      <div class="contact-info-card">
-        <div class="icon">📞</div>
+    </div>
+    <div class="info-card">
+      <span class="info-icon">📞</span>
+      <div class="info-card-text">
         <h4>Phone / WhatsApp</h4>
         <a href="tel:+919998952926">+91 9998952926</a>
       </div>
-      <div class="contact-info-card">
-        <div class="icon">✉️</div>
+    </div>
+    <div class="info-card">
+      <span class="info-icon">✉️</span>
+      <div class="info-card-text">
         <h4>Email</h4>
         <a href="mailto:info@vacationpe.com">info@vacationpe.com</a>
       </div>
     </div>
-
-    <div class="contact-grid">
-      <!-- FORM -->
-      <div class="contact-form-card">
-        <h3>Send Us a Message</h3>
-        <div class="form-group">
-          <label for="c-name">Full Name *</label>
-          <input type="text" id="c-name" placeholder="Your full name" />
-        </div>
-        <div class="form-group">
-          <label for="c-email">Email Address *</label>
-          <input type="email" id="c-email" placeholder="your@email.com" />
-        </div>
-        <div class="form-group">
-          <label for="c-mobile">Mobile Number *</label>
-          <input type="tel" id="c-mobile" placeholder="+91 XXXXX XXXXX" />
-        </div>
-        <div class="form-group">
-          <label for="c-dest">Interested Destination</label>
-          <input type="text" id="c-dest" placeholder="e.g. Bali, Kashmir, Europe..." />
-        </div>
-        <div class="form-group">
-          <label for="c-msg">Message *</label>
-          <textarea id="c-msg" placeholder="Tell us about your travel plans, dates, group size, budget..."></textarea>
-        </div>
-        <button class="btn-submit" onclick="sendMessage()">📩 Send Message via WhatsApp</button>
-      </div>
-
-      <!-- MAP -->
-      <div>
-        <div class="map-wrap">
-          <iframe
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d227748.38256593!2d75.65046!3d26.88514!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x396c4adf4c57e281%3A0xce1c63a0cf22e09!2sJaipur%2C%20Rajasthan!5e0!3m2!1sen!2sin!4v1685000000000"
-            width="100%"
-            height="420"
-            style="border:0;"
-            allowfullscreen=""
-            loading="lazy"
-            referrerpolicy="no-referrer-when-downgrade"
-          ></iframe>
-        </div>
-        <div style="margin-top:24px;background:var(--light);border-radius:var(--radius);padding:28px;">
-          <h4 style="font-family:'Playfair Display',serif;color:var(--primary);margin-bottom:16px;">Business Hours</h4>
-          <p style="font-size:14px;margin-bottom:8px;">📅 <strong>Mon – Sat:</strong> 9:00 AM – 8:00 PM</p>
-          <p style="font-size:14px;margin-bottom:8px;">📅 <strong>Sunday:</strong> 10:00 AM – 5:00 PM</p>
-          <p style="font-size:14px;color:var(--accent);font-weight:600;">💬 WhatsApp: Available 24/7</p>
-        </div>
+    <div class="info-card">
+      <span class="info-icon">🕐</span>
+      <div class="info-card-text">
+        <h4>Working Hours</h4>
+        <p>Mon–Sat: 9AM–8PM</p>
+        <p>Sun: 10AM–5PM</p>
+        <p style="color:#25D366;font-weight:600;font-size:.82rem;margin-top:6px;">💬 WhatsApp: 24/7</p>
       </div>
     </div>
-  </section>
-
-  <!-- CTA -->
-  <section class="cta-section">
-    <h2>Your Dream Vacation Awaits!</h2>
-    <p>Don't wait — let's start planning your perfect trip today.</p>
-    <div class="cta-btns">
-      <a href="https://api.whatsapp.com/send?phone=919998952926" class="btn-cta-white" target="_blank">💬 WhatsApp Now</a>
-      <a href="destinations.html" class="btn-cta-outline">🗺️ Browse Destinations</a>
-    </div>
-  </section>
-
-  <!-- FOOTER -->
-  <footer>
-    <div class="footer-grid">
-      <div class="footer-brand">
-        <div class="logo" style="color:#fff;">Vacation<span style="color:var(--accent)">Pe</span><small>Dream.. Click.. Travel..</small></div>
-        <p>VacationPe is a Jaipur-based travel company backed by 13+ years of industry expertise.</p>
-        <p style="margin-top:10px;">📍 Jaipur, Rajasthan, India</p>
-        <div class="social-links">
-          <a class="social-link" href="https://api.whatsapp.com/send?phone=919998952926" target="_blank">💬</a>
-          <a class="social-link" href="https://www.instagram.com/vacationpe/" target="_blank">📸</a>
-          <a class="social-link" href="https://www.facebook.com/VacationPe/" target="_blank">📘</a>
-        </div>
-      </div>
-      <div class="footer-col">
-        <h5>Quick Links</h5>
-        <ul>
-          <li><a href="index.html">Home</a></li>
-          <li><a href="destinations.html">Destinations</a></li>
-          <li><a href="about.html">About Us</a></li>
-          <li><a href="contact.html">Contact</a></li>
-          <li><a href="payment.html">Payment</a></li>
-        </ul>
-      </div>
-      <div class="footer-col">
-        <h5>Our Services</h5>
-        <ul>
-          <li><a href="#">Holiday Packages</a></li>
-          <li><a href="#">Flight Booking</a></li>
-          <li><a href="#">Hotel Reservation</a></li>
-          <li><a href="#">Travel Insurance</a></li>
-          <li><a href="#">Forex Services</a></li>
-          <li><a href="#">Visa Assistance</a></li>
-        </ul>
-      </div>
-      <div class="footer-col">
-        <h5>Contact Us</h5>
-        <ul>
-          <li><a href="tel:+919998952926">📞 +91 9998952926</a></li>
-          <li><a href="mailto:info@vacationpe.com">✉️ info@vacationpe.com</a></li>
-          <li><a href="https://api.whatsapp.com/send?phone=919998952926" target="_blank">💬 WhatsApp</a></li>
-        </ul>
+    <div class="info-card">
+      <span class="info-icon">👤</span>
+      <div class="info-card-text">
+        <h4>Contact Person</h4>
+        <p>Bajrang Singh Shekhawat</p>
+        <a href="https://api.whatsapp.com/send?phone=919998952926" target="_blank" style="color:var(--blue);font-size:.82rem;font-weight:600;">Chat on WhatsApp →</a>
       </div>
     </div>
-    <div class="footer-bottom">
-      <span>© 2026 VacationPe. All Rights Reserved. | Founded by Bajrang Singh Shekhawat | Est. 2019</span>
+  </div><!-- /info-sidebar -->
+
+</div><!-- /contact-main -->
+
+<!-- BOTTOM ROW: MAP+HOURS left, QUICK BUTTONS right -->
+<div class="contact-bottom">
+
+  <!-- LEFT: MAP + HOURS -->
+  <div class="right-panel">
+    <div class="map-card">
+      <iframe
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d227748.38256593!2d75.65046!3d26.88514!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x396c4adf4c57e281%3A0xce1c63a0cf22e09!2sJaipur%2C%20Rajasthan!5e0!3m2!1sen!2sin!4v1685000000000"
+        allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+      </iframe>
     </div>
-  </footer>
+    <div class="hours-card">
+      <h3>🕐 Business Hours</h3>
+      <div class="hours-row">
+        <span class="hours-day">📅 Monday – Saturday</span>
+        <span class="hours-time">9:00 AM – 8:00 PM</span>
+      </div>
+      <div class="hours-row">
+        <span class="hours-day">📅 Sunday</span>
+        <span class="hours-time">10:00 AM – 5:00 PM</span>
+      </div>
+      <div class="hours-badge">💬 WhatsApp: Available 24/7</div>
+    </div>
+  </div>
 
-  <a class="wa-float" href="https://api.whatsapp.com/send?phone=919998952926" target="_blank" title="Chat on WhatsApp">💬</a>
+  <!-- RIGHT: QUICK CONTACT BUTTONS -->
+  <div>
+    <div class="quick-card">
+      <a href="https://api.whatsapp.com/send?phone=919998952926" class="qc-btn qc-wa" target="_blank">
+        <span class="icon">💬</span>WhatsApp Now
+      </a>
+      <a href="tel:+919998952926" class="qc-btn qc-call">
+        <span class="icon">📞</span>Call Us
+      </a>
+      <a href="https://www.instagram.com/vacationpe/" class="qc-btn qc-ig" target="_blank">
+        <span class="icon">📸</span>Instagram
+      </a>
+      <a href="https://www.facebook.com/VacationPe/" class="qc-btn qc-fb" target="_blank">
+        <span class="icon">📘</span>Facebook
+      </a>
+    </div>
+  </div>
 
-  <script src="main.js"></script>
-  <script>
-    function sendMessage() {
-      const name = document.getElementById('c-name').value.trim();
-      const email = document.getElementById('c-email').value.trim();
-      const mobile = document.getElementById('c-mobile').value.trim();
-      const dest = document.getElementById('c-dest').value.trim();
-      const msg = document.getElementById('c-msg').value.trim();
-      if (!name || !email || !mobile || !msg) {
-        alert('Please fill all required fields.');
-        return;
-      }
-      const text = encodeURIComponent(`Hi Bajrang bhai,\nName: ${name}\nEmail: ${email}\nMobile: ${mobile}\nDestination: ${dest || 'Not specified'}\nMessage: ${msg}`);
-      window.open(`https://api.whatsapp.com/send?phone=919998952926&text=${text}`, '_blank');
-    }
-  </script>
+</div>
+
+<!-- CTA STRIP -->
+<div class="cta-strip">
+  <h2>Your Dream Vacation Awaits!</h2>
+  <p>Don't wait — let's start planning your perfect trip today.</p>
+  <div class="cta-btns">
+    <a href="https://api.whatsapp.com/send?phone=919998952926" class="cta-btn wa" target="_blank">💬 WhatsApp Now</a>
+    <a href="destinations.html" class="cta-btn dest">🗺️ Browse Destinations</a>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-grid">
+    <div class="footer-col">
+      <span class="footer-logo">Vacation<span>Pe</span></span>
+      <p style="font-style:italic;color:#4a8aaa;margin-bottom:12px">"Dream.. Click.. Travel.."</p>
+      <p>📍 Jaipur, Rajasthan, India</p>
+      <p><a href="tel:+919998952926">📞 +91 9998952926</a></p>
+      <p><a href="mailto:info@vacationpe.com">✉️ info@vacationpe.com</a></p>
+      <div class="footer-social">
+        <a href="https://api.whatsapp.com/send?phone=919998952926" target="_blank">💬</a>
+        <a href="https://www.instagram.com/vacationpe/" target="_blank">📸</a>
+        <a href="https://www.facebook.com/VacationPe/" target="_blank">📘</a>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h4>Quick Links</h4>
+      <a href="index.html">Home</a>
+      <a href="destinations.html">Destinations</a>
+      <a href="about.html">About Us</a>
+      <a href="contact.html">Contact</a>
+      <a href="payment.html">Payment</a>
+    </div>
+    <div class="footer-col">
+      <h4>Our Services</h4>
+      <a href="#">Holiday Packages</a>
+      <a href="#">Flight Booking</a>
+      <a href="#">Hotel Reservation</a>
+      <a href="#">Travel Insurance</a>
+      <a href="#">Forex Services</a>
+      <a href="#">Visa Assistance</a>
+    </div>
+    <div class="footer-col">
+      <h4>Contact Info</h4>
+      <a href="tel:+919998952926">📞 +91 9998952926</a>
+      <a href="mailto:info@vacationpe.com">✉️ info@vacationpe.com</a>
+      <a href="https://api.whatsapp.com/send?phone=919998952926" target="_blank">💬 WhatsApp Us</a>
+    </div>
+  </div>
+  <div class="footer-bottom">© 2026 VacationPe. All Rights Reserved. | Founded by Bajrang Singh Shekhawat | Est. 2019</div>
+</footer>
+
+<a href="https://api.whatsapp.com/send?phone=919998952926" class="wa-fab" target="_blank" title="Chat on WhatsApp">💬</a>
+
+<script>
+async function sendWhatsApp(e) {
+  e.preventDefault();
+
+  const name     = document.getElementById('fname').value.trim();
+  const phone    = document.getElementById('fphone').value.trim();
+  const email    = document.getElementById('femail').value.trim();
+  const adults   = document.getElementById('fadults').value;
+  const children = document.getElementById('fchildren').value;
+  const tdate    = document.getElementById('ftraveldate').value;
+  const deptcity = document.getElementById('fdeptcity').value.trim();
+  const dest     = document.getElementById('fdest').value;
+  const msg      = document.getElementById('fmsg').value.trim();
+
+  if (!name || !phone) {
+    alert('Please enter your full name and contact number.');
+    return;
+  }
+
+  // Format date nicely
+  let dateStr = tdate;
+  if (tdate) {
+    const d = new Date(tdate);
+    dateStr = d.toLocaleDateString('en-IN', {day:'numeric', month:'long', year:'numeric'});
+  }
+
+  // ── 1. SEND EMAIL via Formspree ──
+  const btn = document.getElementById('send-btn');
+  btn.textContent = '⏳ Sending...';
+  btn.style.pointerEvents = 'none';
+
+  try {
+    await fetch('https://formspree.io/f/xredjder', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+      body: JSON.stringify({
+        _subject: `New Trip Enquiry from ${name} – VacationPe`,
+        Name:            name,
+        'Contact Number': phone,
+        Email:           email || '—',
+        Adults:          adults || '—',
+        'Children (Age 2-12)': children || '—',
+        'Travel Date':   dateStr || '—',
+        'Departing From': deptcity || '—',
+        Destination:     dest || '—',
+        Message:         msg || '—'
+      })
+    });
+  } catch(err) {
+    console.warn('Formspree error:', err);
+  }
+
+  btn.innerHTML = '💬 Send Message via WhatsApp';
+  btn.style.pointerEvents = 'auto';
+
+  // ── 2. OPEN WHATSAPP ──
+  let text = `Hello VacationPe! 👋\n\nI'd like to enquire about a trip. Here are my details:\n\n`;
+  text += `👤 *Name:* ${name}\n`;
+  text += `📞 *Contact:* ${phone}\n`;
+  if (email)     text += `✉️ *Email:* ${email}\n`;
+  text += `\n👥 *Traveller Details:*\n`;
+  if (adults)    text += `   • Adults: ${adults}\n`;
+  if (children)  text += `   • Children (Age 2–12): ${children}\n`;
+  text += `\n✈️ *Trip Details:*\n`;
+  if (dateStr)   text += `   • Tentative Travel Date: ${dateStr}\n`;
+  if (deptcity)  text += `   • Departing From: ${deptcity}\n`;
+  if (dest)      text += `   • Destination: ${dest}\n`;
+  if (msg)       text += `\n💬 *Message:* ${msg}\n`;
+  text += `\nPlease get in touch with me. Thank you! 🙏`;
+
+  window.open(`https://api.whatsapp.com/send?phone=919998952926&text=${encodeURIComponent(text)}`, '_blank');
+
+  // ── 3. SHOW SUCCESS ──
+  document.getElementById('success-msg').innerHTML =
+    '✅ Your enquiry has been sent to our email & WhatsApp. We\'ll respond shortly!';
+  document.getElementById('success-msg').classList.add('show');
+}
+</script>
 </body>
 </html>
