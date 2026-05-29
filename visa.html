@@ -1,676 +1,581 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-  <title>Visa Services | VacationPe</title>
-
-  <meta name="description"
-    content="Get international visa assistance with VacationPe. Dubai, Thailand, Singapore, Schengen and more." />
-
-  <link rel="stylesheet" href="style.css" />
-
+  <title>Apply for a Visa Online from India | VacationPe</title>
+  <meta name="description" content="Browse 70+ visa destinations. Compare prices, processing times, and requirements. Apply online with VacationPe." />
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
   <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-    .visa-trust-strip{
-      max-width:1200px;
-      margin:80px auto 40px;
-      padding:0 20px;
-      display:grid;
-      grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
-      gap:28px;
+    :root {
+      --blue: #0077cc;
+      --blue-dark: #005fa3;
+      --blue-light: #e8f4fd;
+      --orange: #ff6b35;
+      --green: #22c55e;
+      --text: #1a1a2e;
+      --text-muted: #6b7280;
+      --border: #e5e7eb;
+      --bg: #f9fafb;
+      --white: #ffffff;
+      --shadow: 0 2px 12px rgba(0,0,0,0.08);
+      --shadow-lg: 0 8px 32px rgba(0,0,0,0.12);
     }
 
-    .trust-box{
-      background:#fff;
-      border-radius:24px;
-      padding:40px 30px;
-      text-align:center;
-      box-shadow:0 10px 35px rgba(0,0,0,0.08);
+    body { font-family: 'Inter', sans-serif; color: var(--text); background: var(--white); }
+
+    /* ── NAV ── */
+    nav {
+      position: sticky; top: 0; z-index: 100;
+      background: var(--white);
+      border-bottom: 1px solid var(--border);
+      padding: 0 24px;
+      display: flex; align-items: center; justify-content: space-between;
+      height: 64px;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.06);
     }
-
-    .trust-box h3{
-      font-size:46px;
-      color:#e8873a;
-      margin-bottom:12px;
+    .nav-logo { font-family: 'Nunito', sans-serif; font-size: 1.5rem; font-weight: 900; color: var(--blue); text-decoration: none; }
+    .nav-logo span { color: var(--orange); }
+    .nav-links { display: flex; gap: 6px; align-items: center; }
+    .nav-links a {
+      text-decoration: none; color: var(--text-muted); font-size: 0.9rem; font-weight: 500;
+      padding: 8px 14px; border-radius: 8px; transition: all 0.2s;
     }
-
-    .quick-facts{
-      max-width:1200px;
-      margin:20px auto 90px;
-      padding:0 20px;
-      display:grid;
-      grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
-      gap:28px;
+    .nav-links a:hover, .nav-links a.active { background: var(--blue-light); color: var(--blue); }
+    .nav-cta {
+      background: var(--blue); color: #fff !important; border-radius: 8px !important;
+      padding: 8px 18px !important;
     }
+    .nav-cta:hover { background: var(--blue-dark) !important; color: #fff !important; }
 
-    .fact-card{
-      background:#fff;
-      border-radius:24px;
-      padding:35px;
-      text-align:center;
-      box-shadow:0 10px 30px rgba(0,0,0,0.08);
+    /* ── HERO ── */
+    .hero {
+      background: linear-gradient(135deg, #0f4c81 0%, #1565c0 40%, #0288d1 100%);
+      padding: 72px 24px 80px;
+      text-align: center;
+      position: relative; overflow: hidden;
     }
-
-    .why-us{
-      background:#f7f8fb;
-      padding:100px 20px;
+    .hero::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.04'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
     }
-
-    .why-grid{
-      max-width:1200px;
-      margin:auto;
-      display:grid;
-      grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
-      gap:30px;
+    .hero-badge {
+      display: inline-flex; align-items: center; gap: 6px;
+      background: rgba(255,255,255,0.15); backdrop-filter: blur(8px);
+      color: #fff; font-size: 0.8rem; font-weight: 600;
+      padding: 6px 14px; border-radius: 20px; margin-bottom: 20px;
+      border: 1px solid rgba(255,255,255,0.25);
     }
-
-    .why-card{
-      background:white;
-      border-radius:24px;
-      padding:40px 35px;
-      box-shadow:0 10px 35px rgba(0,0,0,0.08);
-      border-top:5px solid #e8873a;
+    .hero h1 {
+      font-family: 'Nunito', sans-serif; font-size: clamp(2rem, 5vw, 3.2rem);
+      font-weight: 900; color: #fff; line-height: 1.15; margin-bottom: 12px;
     }
+    .hero p { color: rgba(255,255,255,0.85); font-size: 1.05rem; margin-bottom: 32px; }
 
-    .why-card h3{
-      font-size:26px;
-      margin-bottom:18px;
-      color:#14263c;
+    .hero-search {
+      display: flex; max-width: 520px; margin: 0 auto 28px;
+      background: #fff; border-radius: 14px; overflow: hidden;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.25);
     }
-
-    .why-card p{
-      color:#666;
-      line-height:1.8;
+    .hero-search input {
+      flex: 1; border: none; outline: none; padding: 18px 20px;
+      font-size: 1rem; color: var(--text); font-family: 'Inter', sans-serif;
     }
-
-    .visa-hero{
-      position:relative;
-      height:70vh;
-      background:
-      linear-gradient(rgba(0,0,0,0.55),rgba(0,0,0,0.55)),
-      url('https://images.unsplash.com/photo-1436491865332-7a61a109cc05?q=80&w=1600&auto=format&fit=crop');
-      background-size:cover;
-      background-position:center;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      text-align:center;
-      padding:20px;
-      color:white;
+    .hero-search button {
+      background: var(--orange); color: #fff; border: none; cursor: pointer;
+      padding: 18px 28px; font-size: 0.95rem; font-weight: 700;
+      font-family: 'Inter', sans-serif; transition: background 0.2s;
     }
+    .hero-search button:hover { background: #e85a24; }
 
-    .visa-hero-content{
-      max-width:900px;
+    .refund-badge {
+      display: inline-flex; align-items: center; gap: 8px;
+      color: rgba(255,255,255,0.9); font-size: 0.85rem; text-decoration: none;
     }
+    .refund-badge::before { content: '✓'; background: var(--green); color: #fff; border-radius: 50%; width: 18px; height: 18px; display: inline-flex; align-items: center; justify-content: center; font-size: 0.65rem; font-weight: 700; }
 
-    .visa-hero h1{
-      font-size:60px;
-      margin-bottom:20px;
+    /* ── SECTION WRAPPER ── */
+    .section { padding: 56px 24px; max-width: 1200px; margin: 0 auto; }
+    .section-header {
+      display: flex; align-items: center; justify-content: space-between; margin-bottom: 28px;
     }
-
-    .visa-hero p{
-      font-size:20px;
-      line-height:1.7;
-      margin-bottom:30px;
+    .section-title { font-family: 'Nunito', sans-serif; font-size: 1.6rem; font-weight: 800; color: var(--text); }
+    .view-all {
+      color: var(--blue); text-decoration: none; font-weight: 600; font-size: 0.9rem;
+      display: flex; align-items: center; gap: 4px; transition: gap 0.2s;
     }
+    .view-all:hover { gap: 8px; }
 
-    .visa-btn{
-      display:inline-block;
-      background:#e8873a;
-      color:white;
-      padding:16px 30px;
-      border-radius:12px;
-      text-decoration:none;
-      font-weight:bold;
-      transition:0.3s;
+    /* ── FILTER TABS ── */
+    .filter-tabs { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 28px; }
+    .tab {
+      padding: 8px 18px; border-radius: 20px; border: 1.5px solid var(--border);
+      background: #fff; color: var(--text-muted); font-size: 0.85rem; font-weight: 600;
+      cursor: pointer; transition: all 0.2s;
     }
+    .tab:hover, .tab.active { border-color: var(--blue); background: var(--blue-light); color: var(--blue); }
 
-    .visa-btn:hover{
-      background:#cf6f22;
-      transform:translateY(-2px);
+    /* ── DESTINATION CARDS ── */
+    .destinations-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(175px, 1fr));
+      gap: 16px;
     }
-
-    .visa-section{
-      padding:80px 20px;
-      background:#fff;
+    .dest-card {
+      background: #fff; border: 1.5px solid var(--border); border-radius: 14px;
+      padding: 16px; text-decoration: none; color: inherit;
+      transition: all 0.22s; display: flex; flex-direction: column; gap: 10px;
+      position: relative; overflow: hidden;
     }
-
-    .visa-container{
-      max-width:1200px;
-      margin:auto;
+    .dest-card:hover { border-color: var(--blue); box-shadow: var(--shadow-lg); transform: translateY(-2px); }
+    .dest-card .flag {
+      width: 44px; height: 44px; border-radius: 10px; display: flex; align-items: center; justify-content: center;
+      font-size: 1.6rem; background: var(--bg);
     }
-
-    .section-title{
-      text-align:center;
-      margin-bottom:50px;
+    .dest-card .refund-tag {
+      position: absolute; top: 10px; right: 10px;
+      background: #fff3cd; color: #92660a; font-size: 0.65rem; font-weight: 700;
+      padding: 2px 7px; border-radius: 20px; border: 1px solid #fcd34d;
     }
+    .dest-card .country { font-weight: 700; font-size: 0.95rem; }
+    .dest-card .visa-type { color: var(--text-muted); font-size: 0.78rem; }
+    .dest-card .price { font-weight: 800; font-size: 1rem; color: var(--blue); margin-top: auto; }
 
-    .section-title h2{
-      font-size:42px;
-      margin-bottom:15px;
-      color:#111;
+    /* ── BLOG SECTION ── */
+    .blog-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 20px; }
+    .blog-card {
+      border-radius: 14px; overflow: hidden; border: 1.5px solid var(--border);
+      text-decoration: none; color: inherit; transition: all 0.22s;
+      background: #fff;
     }
-
-    .section-title p{
-      color:#666;
-      font-size:18px;
+    .blog-card:hover { box-shadow: var(--shadow-lg); transform: translateY(-2px); }
+    .blog-card .blog-img {
+      width: 100%; height: 160px; background: linear-gradient(135deg, #e8f4fd, #bfdbfe);
+      display: flex; align-items: center; justify-content: center; font-size: 2.5rem;
     }
+    .blog-card .blog-body { padding: 16px; }
+    .blog-card .blog-tag { font-size: 0.75rem; font-weight: 700; color: var(--blue); text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 8px; }
+    .blog-card .blog-title { font-weight: 700; font-size: 0.95rem; line-height: 1.4; margin-bottom: 8px; }
+    .blog-card .blog-date { color: var(--text-muted); font-size: 0.78rem; }
 
-    .visa-grid{
-      display:grid;
-      grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
-      gap:28px;
+    /* ── REVIEWS ── */
+    .reviews-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 16px; }
+    .review-card {
+      background: #fff; border: 1.5px solid var(--border); border-radius: 14px;
+      padding: 20px; display: flex; flex-direction: column; gap: 12px;
     }
-
-    .visa-card{
-      background:#fff;
-      border-radius:22px;
-      overflow:hidden;
-      box-shadow:0 10px 30px rgba(0,0,0,0.08);
-      transition:0.3s;
+    .review-stars { color: #f59e0b; font-size: 0.85rem; }
+    .review-text { font-size: 0.9rem; line-height: 1.6; color: var(--text-muted); font-style: italic; }
+    .review-text::before { content: '"'; font-size: 1.4rem; color: var(--blue); line-height: 0; vertical-align: -6px; }
+    .review-text::after { content: '"'; font-size: 1.4rem; color: var(--blue); line-height: 0; vertical-align: -6px; }
+    .reviewer { display: flex; align-items: center; gap: 10px; }
+    .reviewer-avatar {
+      width: 36px; height: 36px; border-radius: 50%; background: var(--blue);
+      display: flex; align-items: center; justify-content: center;
+      color: #fff; font-weight: 700; font-size: 0.8rem;
     }
+    .reviewer-name { font-weight: 700; font-size: 0.88rem; }
+    .reviewer-visa { font-size: 0.75rem; color: var(--text-muted); }
 
-    .visa-card:hover{
-      transform:translateY(-6px);
+    /* ── VISA UPDATE ── */
+    .visa-update-list { display: flex; flex-direction: column; gap: 0; }
+    .update-item {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 16px 0; border-bottom: 1px solid var(--border);
+      text-decoration: none; color: inherit; gap: 16px; transition: all 0.15s;
     }
-
-    .visa-card img{
-      width:100%;
-      height:220px;
-      object-fit:cover;
+    .update-item:hover { color: var(--blue); }
+    .update-item:last-child { border-bottom: none; }
+    .update-info { display: flex; flex-direction: column; gap: 4px; flex: 1; }
+    .update-country {
+      font-size: 0.75rem; font-weight: 700; color: var(--blue);
+      display: flex; align-items: center; gap: 6px; text-transform: uppercase; letter-spacing: 0.4px;
     }
+    .update-title { font-weight: 600; font-size: 0.92rem; line-height: 1.4; }
+    .update-date { font-size: 0.75rem; color: var(--text-muted); }
+    .update-arrow { color: var(--text-muted); font-size: 1rem; flex-shrink: 0; }
 
-    .visa-card-body{
-      padding:24px;
+    /* ── FOOTER ── */
+    footer {
+      background: #0f1923; color: rgba(255,255,255,0.7); padding: 56px 24px 32px;
     }
+    .footer-inner { max-width: 1200px; margin: 0 auto; }
+    .footer-grid { display: grid; grid-template-columns: 2fr repeat(4, 1fr); gap: 40px; margin-bottom: 40px; }
+    .footer-brand { display: flex; flex-direction: column; gap: 12px; }
+    .footer-logo { font-family: 'Nunito', sans-serif; font-size: 1.4rem; font-weight: 900; color: #fff; }
+    .footer-logo span { color: var(--orange); }
+    .footer-desc { font-size: 0.85rem; line-height: 1.6; }
+    .footer-col h4 { color: #fff; font-weight: 700; font-size: 0.9rem; margin-bottom: 14px; }
+    .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+    .footer-col ul li a { color: rgba(255,255,255,0.6); text-decoration: none; font-size: 0.85rem; transition: color 0.2s; }
+    .footer-col ul li a:hover { color: #fff; }
+    .footer-bottom { border-top: 1px solid rgba(255,255,255,0.1); padding-top: 24px; font-size: 0.82rem; display: flex; justify-content: space-between; align-items: center; }
 
-    .visa-card-body h3{
-      font-size:28px;
-      margin-bottom:12px;
+    @media (max-width: 768px) {
+      .footer-grid { grid-template-columns: 1fr 1fr; }
+      .footer-brand { grid-column: 1 / -1; }
+      nav .nav-links { display: none; }
     }
-
-    .visa-card-body p{
-      color:#666;
-      margin-bottom:18px;
-    }
-
-    .visa-price{
-      color:#e8873a;
-      font-size:20px;
-      font-weight:bold;
-      margin-bottom:20px;
-      display:block;
-    }
-
-    .process-grid{
-      display:grid;
-      grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
-      gap:25px;
-      margin-top:50px;
-    }
-
-    .process-card{
-      background:#fff;
-      border-radius:20px;
-      padding:35px 25px;
-      text-align:center;
-      box-shadow:0 10px 30px rgba(0,0,0,0.08);
-    }
-
-    .process-number{
-      width:65px;
-      height:65px;
-      background:#e8873a;
-      color:white;
-      border-radius:50%;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      margin:auto;
-      font-size:24px;
-      font-weight:bold;
-      margin-bottom:20px;
-    }
-
-    .docs-grid{
-      display:grid;
-      grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-      gap:22px;
-      margin-top:45px;
-    }
-
-    .doc-card{
-      background:#fff;
-      border-radius:18px;
-      padding:28px;
-      text-align:center;
-      box-shadow:0 10px 25px rgba(0,0,0,0.07);
-      font-size:18px;
-      font-weight:600;
-    }
-
-    .visa-form-wrap{
-      background:#0f1f30;
-      color:white;
-      border-radius:28px;
-      padding:50px;
-      margin-top:60px;
-    }
-
-    .visa-form-grid{
-      display:grid;
-      grid-template-columns:1fr 1fr;
-      gap:22px;
-    }
-
-    .visa-form-grid input,
-    .visa-form-grid select,
-    .visa-form-wrap textarea{
-      width:100%;
-      padding:16px;
-      border:none;
-      border-radius:12px;
-      font-size:15px;
-    }
-
-    .visa-form-wrap textarea{
-      margin-top:20px;
-      min-height:130px;
-    }
-
-    .submit-btn{
-      margin-top:22px;
-      width:100%;
-      padding:18px;
-      border:none;
-      background:#e8873a;
-      color:white;
-      font-size:18px;
-      font-weight:bold;
-      border-radius:12px;
-      cursor:pointer;
-    }
-
-    .submit-btn:hover{
-      background:#cf6f22;
-    }
-
-    .faq-section{
-      margin-top:60px;
-    }
-
-    details{
-      background:#fff;
-      padding:20px;
-      border-radius:14px;
-      margin-bottom:15px;
-      box-shadow:0 5px 20px rgba(0,0,0,0.06);
-    }
-
-    summary{
-      cursor:pointer;
-      font-size:18px;
-      font-weight:600;
-    }
-
-    details p{
-      margin-top:15px;
-      color:#666;
-      line-height:1.7;
-    }
-
-    @media(max-width:768px){
-
-      .visa-trust-strip,
-      .quick-facts,
-      .why-grid{
-        grid-template-columns:1fr;
-      }
-
-      .visa-hero{
-        height:auto;
-        padding:100px 20px;
-      }
-
-      .visa-hero h1{
-        font-size:42px;
-      }
-
-      .visa-hero p{
-        font-size:17px;
-      }
-
-      .section-title h2{
-        font-size:32px;
-      }
-
-      .visa-form-grid{
-        grid-template-columns:1fr;
-      }
-
-      .visa-form-wrap{
-        padding:30px 20px;
-      }
-
-    }
-
   </style>
-
 </head>
-
 <body>
 
-  <!-- NAVBAR -->
+<!-- NAV -->
+<nav>
+  <a href="index.html" class="nav-logo">Vacation<span>Pe</span></a>
+  <div class="nav-links">
+    <a href="hotels.html">Hotels</a>
+    <a href="visa.html" class="active">Visa</a>
+    <a href="holidays.html">Holidays</a>
+    <a href="blog.html">Blog</a>
+    <a href="business.html">Business</a>
+    <a href="visa-update.html">Visa Update</a>
+    <a href="apply.html" class="nav-cta">Apply Now</a>
+  </div>
+</nav>
 
-  <nav>
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-badge">🌍 70+ Destinations Available</div>
+  <h1>Global Visa Made Easy.</h1>
+  <p>Fast, reliable visa services trusted by thousands of Indian travellers</p>
+  <div class="hero-search">
+    <input type="text" id="heroSearch" placeholder="Search destination e.g. Dubai, UK, USA…" />
+    <button onclick="doSearch()">Search</button>
+  </div>
+  <a href="terms.html" class="refund-badge">Get 100% Refund In Case Of Visa Rejection*</a>
+</section>
 
-    <a href="index.html" class="logo">
-      Vacation<span>Pe</span>
-      <small>Dream.. Click.. Travel..</small>
+<!-- POPULAR DESTINATIONS -->
+<div style="background: var(--bg);">
+<div class="section">
+  <div class="section-header">
+    <h2 class="section-title">Popular Destinations</h2>
+  </div>
+  <div class="filter-tabs" id="filterTabs">
+    <button class="tab active" data-filter="all">All</button>
+    <button class="tab" data-filter="evisa">E-Visa</button>
+    <button class="tab" data-filter="sticker">Sticker Visa</button>
+    <button class="tab" data-filter="schengen">Schengen Visa</button>
+    <button class="tab" data-filter="arrival">Visa on Arrival</button>
+    <button class="tab" data-filter="free">Visa Free</button>
+    <button class="tab" data-filter="instant">Instant Visa</button>
+  </div>
+  <div class="destinations-grid" id="destGrid">
+    <!-- cards injected by JS -->
+  </div>
+</div>
+</div>
+
+<!-- BLOG -->
+<div class="section">
+  <div class="section-header">
+    <h2 class="section-title">Latest from Our Blog</h2>
+    <a href="blog.html" class="view-all">View All →</a>
+  </div>
+  <div class="blog-grid">
+    <a href="blog/schengen-tips.html" class="blog-card">
+      <div class="blog-img">🇪🇺</div>
+      <div class="blog-body">
+        <div class="blog-tag">Schengen</div>
+        <div class="blog-title">Complete Guide to Schengen Visa Application from India 2026</div>
+        <div class="blog-date">May 20, 2026</div>
+      </div>
     </a>
-
-    <div class="hamburger">
-      <span></span>
-      <span></span>
-      <span></span>
-    </div>
-
-    <ul class="nav-links">
-      <li><a href="index.html">Home</a></li>
-      <li><a href="destinations.html">Destinations</a></li>
-      <li><a href="visa.html">Visa</a></li>
-      <li><a href="about.html">About Us</a></li>
-      <li><a href="contact.html">Contact</a></li>
-      <li><a href="payment.html">Payment</a></li>
-    </ul>
-
-  </nav>
-
-  <!-- HERO -->
-
-  <section class="visa-hero">
-
-    <div class="visa-hero-content">
-
-      <h1>International Visa Assistance</h1>
-
-      <p>
-        Fast & reliable visa support for Dubai, Thailand,
-        Singapore, Schengen, Bali, Vietnam and more.
-      </p>
-
-      <a href="#apply" class="visa-btn">
-        Apply Now
-      </a>
-
-    </div>
-
-  </section>
-
-  <!-- TRUST STRIP -->
-
-  <section class="visa-trust-strip">
-
-    <div class="trust-box">
-      <h3>15+</h3>
-      <p>Years Experience</p>
-    </div>
-
-    <div class="trust-box">
-      <h3>5000+</h3>
-      <p>Visas Processed</p>
-    </div>
-
-    <div class="trust-box">
-      <h3>98%</h3>
-      <p>Approval Guidance</p>
-    </div>
-
-    <div class="trust-box">
-      <h3>24/7</h3>
-      <p>Support</p>
-    </div>
-
-  </section>
-
-  <!-- QUICK FACTS -->
-
-  <section class="quick-facts">
-
-    <div class="fact-card">
-      <h4>Visa Type</h4>
-      <p>Tourist / Business</p>
-    </div>
-
-    <div class="fact-card">
-      <h4>Processing Time</h4>
-      <p>4–15 Working Days</p>
-    </div>
-
-    <div class="fact-card">
-      <h4>Validity</h4>
-      <p>Depends on Country</p>
-    </div>
-
-    <div class="fact-card">
-      <h4>Entry Type</h4>
-      <p>Single / Multiple</p>
-    </div>
-
-  </section>
-
-  <!-- POPULAR VISAS -->
-
-  <section class="visa-section">
-
-    <div class="visa-container">
-
-      <div class="section-title">
-        <h2>Popular Visa Destinations</h2>
-        <p>Hassle-free visa support for your dream holidays</p>
+    <a href="blog/dubai-guide.html" class="blog-card">
+      <div class="blog-img">🇦🇪</div>
+      <div class="blog-body">
+        <div class="blog-tag">Dubai</div>
+        <div class="blog-title">Dubai Visa on Arrival for Indians: Everything You Need to Know</div>
+        <div class="blog-date">May 14, 2026</div>
       </div>
+    </a>
+    <a href="blog/japan-visa.html" class="blog-card">
+      <div class="blog-img">🇯🇵</div>
+      <div class="blog-body">
+        <div class="blog-tag">Japan</div>
+        <div class="blog-title">Japan Visa 2026: New Fee Changes & How to Apply</div>
+        <div class="blog-date">May 8, 2026</div>
+      </div>
+    </a>
+  </div>
+</div>
 
-      <div class="visa-grid">
-
-        <div class="visa-card">
-          <img src="https://images.unsplash.com/photo-1512453979798-5ea266f8880c?q=80&w=1200&auto=format&fit=crop">
-          <div class="visa-card-body">
-            <h3>Dubai Visa</h3>
-            <span class="visa-price">Starting ₹6,999</span>
-            <p>Fast UAE tourist visa processing support.</p>
-            <a href="#apply" class="visa-btn">Apply Now</a>
-          </div>
+<!-- REVIEWS -->
+<div style="background: var(--bg);">
+<div class="section">
+  <div class="section-header">
+    <h2 class="section-title">What Customers Say</h2>
+    <a href="reviews.html" class="view-all">View All →</a>
+  </div>
+  <div class="reviews-grid">
+    <div class="review-card">
+      <div class="review-stars">★★★★★</div>
+      <p class="review-text">Dubai eVisa service is awesome. I applied at 1pm and received my visa in less than 24 hrs. That's amazing speed. Thanks VacationPe!</p>
+      <div class="reviewer">
+        <div class="reviewer-avatar">AS</div>
+        <div>
+          <div class="reviewer-name">Amandeep Singh</div>
+          <div class="reviewer-visa">Dubai Visa</div>
         </div>
-
-        <div class="visa-card">
-          <img src="https://images.unsplash.com/photo-1508009603885-50cf7c579365?q=80&w=1200&auto=format&fit=crop">
-          <div class="visa-card-body">
-            <h3>Thailand Visa</h3>
-            <span class="visa-price">Starting ₹4,999</span>
-            <p>Complete visa documentation assistance.</p>
-            <a href="#apply" class="visa-btn">Apply Now</a>
-          </div>
-        </div>
-
-        <div class="visa-card">
-          <img src="https://images.unsplash.com/photo-1525625293386-3f8f99389edd?q=80&w=1200&auto=format&fit=crop">
-          <div class="visa-card-body">
-            <h3>Singapore Visa</h3>
-            <span class="visa-price">Starting ₹5,499</span>
-            <p>Trusted support for Singapore travel visas.</p>
-            <a href="#apply" class="visa-btn">Apply Now</a>
-          </div>
-        </div>
-
-        <div class="visa-card">
-          <img src="https://images.unsplash.com/photo-1499856871958-5b9627545d1a?q=80&w=1200&auto=format&fit=crop">
-          <div class="visa-card-body">
-            <h3>Schengen Visa</h3>
-            <span class="visa-price">Starting ₹11,999</span>
-            <p>Europe visa assistance made simple.</p>
-            <a href="#apply" class="visa-btn">Apply Now</a>
-          </div>
-        </div>
-
       </div>
-
-      <!-- PROCESS -->
-
-      <div class="section-title" style="margin-top:90px;">
-        <h2>Visa Process</h2>
-        <p>Easy 4-step visa application process</p>
-      </div>
-
-      <div class="process-grid">
-
-        <div class="process-card">
-          <div class="process-number">1</div>
-          <h3>Submit Enquiry</h3>
-          <p>Share your destination and travel plan.</p>
-        </div>
-
-        <div class="process-card">
-          <div class="process-number">2</div>
-          <h3>Documentation</h3>
-          <p>Submit passport and required documents.</p>
-        </div>
-
-        <div class="process-card">
-          <div class="process-number">3</div>
-          <h3>Processing</h3>
-          <p>Our experts handle the complete process.</p>
-        </div>
-
-        <div class="process-card">
-          <div class="process-number">4</div>
-          <h3>Get Visa</h3>
-          <p>Receive approved visa with full support.</p>
-        </div>
-
-      </div>
-
-      <!-- DOCUMENTS -->
-
-      <div class="section-title" style="margin-top:90px;">
-        <h2>Documents Required</h2>
-      </div>
-
-      <div class="docs-grid">
-        <div class="doc-card">Passport</div>
-        <div class="doc-card">Photographs</div>
-        <div class="doc-card">Bank Statement</div>
-        <div class="doc-card">Flight Tickets</div>
-        <div class="doc-card">Hotel Booking</div>
-        <div class="doc-card">Income Proof / ITR</div>
-      </div>
-
-      <!-- FORM -->
-
-      <div id="apply" class="visa-form-wrap">
-
-        <div class="section-title">
-          <h2 style="color:white;">Get Visa Assistance</h2>
-          <p style="color:#ddd;">Fill the form and our travel expert will contact you shortly.</p>
-        </div>
-
-        <form>
-
-          <div class="visa-form-grid">
-            <input type="text" placeholder="Your Name" required>
-            <input type="tel" placeholder="Phone Number" required>
-            <select>
-              <option>Select Destination</option>
-              <option>Dubai</option>
-              <option>Thailand</option>
-              <option>Singapore</option>
-              <option>Schengen</option>
-            </select>
-            <input type="date">
-          </div>
-
-          <textarea placeholder="Additional Details"></textarea>
-
-          <button type="submit" class="submit-btn">Submit Enquiry</button>
-
-        </form>
-
-      </div>
-
-      <!-- FAQ -->
-
-      <div class="faq-section">
-
-        <div class="section-title">
-          <h2>Frequently Asked Questions</h2>
-        </div>
-
-        <details>
-          <summary>How long does visa processing take?</summary>
-          <p>Processing depends on destination country and visa type.</p>
-        </details>
-
-        <details>
-          <summary>Do you help with documentation?</summary>
-          <p>Yes, our team helps with complete documentation assistance.</p>
-        </details>
-
-        <details>
-          <summary>Can I apply through WhatsApp?</summary>
-          <p>Yes, you can contact us directly on WhatsApp.</p>
-        </details>
-
-      </div>
-
     </div>
-
-  </section>
-
-  <!-- WHY CHOOSE US -->
-
-  <section class="why-us">
-
-    <div class="section-title">
-      <h2>Why Choose VacationPe</h2>
-      <p>Personalized visa guidance with trusted travel expertise</p>
+    <div class="review-card">
+      <div class="review-stars">★★★★★</div>
+      <p class="review-text">Excellent service for UAE tourist visa. The team is prompt, courteous and very professional. Truly personalized service!</p>
+      <div class="reviewer">
+        <div class="reviewer-avatar">C</div>
+        <div>
+          <div class="reviewer-name">Chandrasekhar</div>
+          <div class="reviewer-visa">UAE Visa</div>
+        </div>
+      </div>
     </div>
-
-    <div class="why-grid">
-
-      <div class="why-card">
-        <h3>Expert Visa Guidance</h3>
-        <p>Professional support throughout the visa process.</p>
+    <div class="review-card">
+      <div class="review-stars">★★★★★</div>
+      <p class="review-text">Got Australia visa in 1 week because of proper guidance given on time. Very helpful and professional team throughout the process.</p>
+      <div class="reviewer">
+        <div class="reviewer-avatar">MB</div>
+        <div>
+          <div class="reviewer-name">Mala Bhatt</div>
+          <div class="reviewer-visa">Australia Visa</div>
+        </div>
       </div>
-
-      <div class="why-card">
-        <h3>Documentation Assistance</h3>
-        <p>Complete checklist and verification support.</p>
-      </div>
-
-      <div class="why-card">
-        <h3>Fast Processing</h3>
-        <p>Quick updates and transparent assistance.</p>
-      </div>
-
-      <div class="why-card">
-        <h3>Trusted Travel Brand</h3>
-        <p>Personalized support for every traveller.</p>
-      </div>
-
     </div>
+    <div class="review-card">
+      <div class="review-stars">★★★★★</div>
+      <p class="review-text">Prompt service and no fuss. Got Dubai visa for self and family without any hassle. Highly recommend VacationPe for all visa needs.</p>
+      <div class="reviewer">
+        <div class="reviewer-avatar">RM</div>
+        <div>
+          <div class="reviewer-name">Rajnikant Mehta</div>
+          <div class="reviewer-visa">Dubai Visa</div>
+        </div>
+      </div>
+    </div>
+    <div class="review-card">
+      <div class="review-stars">★★★★★</div>
+      <p class="review-text">Singapore visa done smoothly. Documents checklist was very clear. The whole process took just 3 days. Will use again!</p>
+      <div class="reviewer">
+        <div class="reviewer-avatar">PK</div>
+        <div>
+          <div class="reviewer-name">Priya Kapoor</div>
+          <div class="reviewer-visa">Singapore Visa</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
 
-  </section>
+<!-- VISA UPDATE -->
+<div class="section">
+  <div class="section-header">
+    <h2 class="section-title">Visa Update</h2>
+    <a href="visa-update.html" class="view-all">View All →</a>
+  </div>
+  <div class="visa-update-list">
+    <a href="visa-update.html#saudi-umrah-2026" class="update-item">
+      <div class="update-info">
+        <div class="update-country">🇸🇦 Saudi Arabia · Mar 18, 2026</div>
+        <div class="update-title">Saudi Arabia Umrah Visa Deadlines March 2026: Entry &amp; Exit Dates</div>
+      </div>
+      <span class="update-arrow">›</span>
+    </a>
+    <a href="visa-update.html#us-visa-suspended" class="update-item">
+      <div class="update-info">
+        <div class="update-country">🇺🇸 USA · Mar 18, 2026</div>
+        <div class="update-title">US Visa Processing Suspended in 6 Countries Due to Middle East Conflict</div>
+      </div>
+      <span class="update-arrow">›</span>
+    </a>
+    <a href="visa-update.html#australia-study-fees" class="update-item">
+      <div class="update-info">
+        <div class="update-country">🇦🇺 Australia · Mar 12, 2026</div>
+        <div class="update-title">Australia Doubles Post-Study Work Visa Fees for Indians</div>
+      </div>
+      <span class="update-arrow">›</span>
+    </a>
+    <a href="visa-update.html#japan-fees" class="update-item">
+      <div class="update-info">
+        <div class="update-country">🇯🇵 Japan · Mar 12, 2026</div>
+        <div class="update-title">Japan Visa Fees May Rise 10x to ₹60,000 for Permanent Residency</div>
+      </div>
+      <span class="update-arrow">›</span>
+    </a>
+    <a href="visa-update.html#uk-fraud" class="update-item">
+      <div class="update-info">
+        <div class="update-country">🇬🇧 UK · Mar 2, 2026</div>
+        <div class="update-title">UK Launches Anti-Fraud Campaign in Haryana</div>
+      </div>
+      <span class="update-arrow">›</span>
+    </a>
+    <a href="visa-update.html#jeju-denied" class="update-item">
+      <div class="update-info">
+        <div class="update-country">🇰🇷 Jeju Island · Mar 2, 2026</div>
+        <div class="update-title">Jeju Visa-Free Entry Denied to Indians</div>
+      </div>
+      <span class="update-arrow">›</span>
+    </a>
+    <a href="visa-update.html#uk-evisa-boarding" class="update-item">
+      <div class="update-info">
+        <div class="update-country">🇬🇧 UK · Mar 2, 2026</div>
+        <div class="update-title">UK eVisa for Indians: Airlines Can Now Refuse Boarding</div>
+      </div>
+      <span class="update-arrow">›</span>
+    </a>
+    <a href="visa-update.html#egypt-fee" class="update-item">
+      <div class="update-info">
+        <div class="update-country">🇪🇬 Egypt · Mar 2, 2026</div>
+        <div class="update-title">Egypt Visa Fee May Rise to $30 from March 2026</div>
+      </div>
+      <span class="update-arrow">›</span>
+    </a>
+    <a href="visa-update.html#japan-walkin" class="update-item">
+      <div class="update-info">
+        <div class="update-country">🇯🇵 Japan · Mar 2, 2026</div>
+        <div class="update-title">Japan Ends Walk-In Visa Applications in Chennai &amp; Hyderabad From March 2</div>
+      </div>
+      <span class="update-arrow">›</span>
+    </a>
+  </div>
+</div>
 
-  <!-- FOOTER -->
-
-  <footer>
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="footer-logo">Vacation<span>Pe</span></div>
+        <p class="footer-desc">Your trusted partner for global visa services, holiday packages, and travel solutions for Indian travellers.</p>
+        <div style="display:flex;gap:12px;margin-top:4px;">
+          <a href="#" style="color:rgba(255,255,255,0.6);font-size:0.8rem;">Facebook</a>
+          <a href="#" style="color:rgba(255,255,255,0.6);font-size:0.8rem;">Instagram</a>
+          <a href="#" style="color:rgba(255,255,255,0.6);font-size:0.8rem;">Twitter</a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Tourist Visas</h4>
+        <ul>
+          <li><a href="visa/dubai.html">Dubai Visa</a></li>
+          <li><a href="visa/singapore.html">Singapore Visa</a></li>
+          <li><a href="visa/australia.html">Australia Visa</a></li>
+          <li><a href="visa/new-zealand.html">New Zealand Visa</a></li>
+          <li><a href="visa/sri-lanka.html">Sri Lanka Visa</a></li>
+          <li><a href="visa/usa.html">US Visa</a></li>
+          <li><a href="visa/uk.html">UK Visa</a></li>
+          <li><a href="visa/japan.html">Japan Visa</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Top Holidays</h4>
+        <ul>
+          <li><a href="#">Dubai Packages</a></li>
+          <li><a href="#">Singapore Packages</a></li>
+          <li><a href="#">Thailand Packages</a></li>
+          <li><a href="#">Bali Packages</a></li>
+          <li><a href="#">Japan Packages</a></li>
+          <li><a href="#">Vietnam Packages</a></li>
+          <li><a href="#">India Packages</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="blog.html">Blog</a></li>
+          <li><a href="visa-update.html">Visa Updates</a></li>
+          <li><a href="faq.html">FAQ</a></li>
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          <li><a href="terms.html">Terms</a></li>
+          <li><a href="privacy.html">Privacy Policy</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Support</h4>
+        <ul>
+          <li><a href="#">WhatsApp Support</a></li>
+          <li><a href="#">Track Application</a></li>
+          <li><a href="#">Document Checklist</a></li>
+          <li><a href="#">Refund Policy</a></li>
+          <li><a href="#">Careers</a></li>
+        </ul>
+      </div>
+    </div>
     <div class="footer-bottom">
-      © 2026 VacationPe. All Rights Reserved.
+      <span>© 2026 VacationPe. All rights reserved.</span>
+      <span>Made with ❤️ for Indian Travellers</span>
     </div>
-  </footer>
+  </div>
+</footer>
 
+<script>
+  const destinations = [
+    { name: "Dubai", type: "evisa", flag: "🇦🇪", validity: "30 Days", price: "₹3,299", label: "E-Visa", refund: true, href: "visa/dubai.html" },
+    { name: "Singapore", type: "evisa", flag: "🇸🇬", validity: "2 Year", price: "₹3,799", label: "E-Visa", refund: false, href: "visa/singapore.html" },
+    { name: "Australia", type: "evisa", flag: "🇦🇺", validity: "1 Year", price: "₹15,699", label: "E-Visa", refund: false, href: "visa/australia.html" },
+    { name: "New Zealand", type: "evisa", flag: "🇳🇿", validity: "1 Year", price: "₹27,099", label: "E-Visa", refund: false, href: "visa/new-zealand.html" },
+    { name: "USA", type: "sticker", flag: "🇺🇸", validity: "10 Year", price: "₹19,999", label: "Sticker Visa", refund: false, href: "visa/usa.html" },
+    { name: "UK", type: "evisa", flag: "🇬🇧", validity: "6 Month", price: "₹21,399", label: "E-Visa", refund: false, href: "visa/uk.html" },
+    { name: "Vietnam", type: "evisa", flag: "🇻🇳", validity: "30 Days", price: "₹2,999", label: "E-Visa", refund: true, href: "visa/vietnam.html" },
+    { name: "Indonesia", type: "evisa", flag: "🇮🇩", validity: "90 Days", price: "₹3,999", label: "E-Visa", refund: true, href: "visa/indonesia.html" },
+    { name: "Sri Lanka", type: "instant", flag: "🇱🇰", validity: "180 Days", price: "₹499", label: "ETA", refund: false, href: "visa/sri-lanka.html" },
+    { name: "Egypt", type: "evisa", flag: "🇪🇬", validity: "90 Days", price: "₹6,799", label: "E-Visa", refund: false, href: "visa/egypt.html" },
+    { name: "Oman", type: "evisa", flag: "🇴🇲", validity: "10 Days", price: "₹2,999", label: "E-Visa", refund: true, href: "visa/oman.html" },
+    { name: "Thailand", type: "free", flag: "🇹🇭", validity: "90 Days", price: "₹250", label: "TDAC", refund: false, href: "visa/thailand.html" },
+    { name: "France", type: "schengen", flag: "🇫🇷", validity: "90 Days", price: "₹8,499", label: "Schengen", refund: false, href: "visa/france.html" },
+    { name: "Germany", type: "schengen", flag: "🇩🇪", validity: "90 Days", price: "₹8,499", label: "Schengen", refund: false, href: "visa/germany.html" },
+    { name: "Japan", type: "sticker", flag: "🇯🇵", validity: "15 Days", price: "₹4,999", label: "Sticker Visa", refund: false, href: "visa/japan.html" },
+    { name: "Malaysia", type: "free", flag: "🇲🇾", validity: "30 Days", price: "Free", label: "Visa Free", refund: false, href: "visa/malaysia.html" },
+  ];
+
+  let activeFilter = "all";
+
+  function renderCards(filter) {
+    const grid = document.getElementById("destGrid");
+    const filtered = filter === "all" ? destinations : destinations.filter(d => d.type === filter);
+    grid.innerHTML = filtered.map(d => `
+      <a href="${d.href}" class="dest-card">
+        ${d.refund ? '<span class="refund-tag">100% Refund</span>' : ''}
+        <div class="flag">${d.flag}</div>
+        <div>
+          <div class="country">${d.name} Visa</div>
+          <div class="visa-type">${d.label} · Valid: ${d.validity}</div>
+        </div>
+        <div class="price">${d.price}</div>
+      </a>
+    `).join("");
+  }
+
+  document.getElementById("filterTabs").addEventListener("click", e => {
+    if (e.target.classList.contains("tab")) {
+      document.querySelectorAll(".tab").forEach(t => t.classList.remove("active"));
+      e.target.classList.add("active");
+      renderCards(e.target.dataset.filter);
+    }
+  });
+
+  function doSearch() {
+    const q = document.getElementById("heroSearch").value.trim().toLowerCase();
+    if (!q) return;
+    document.querySelectorAll(".tab").forEach(t => t.classList.remove("active"));
+    document.querySelector(".tab[data-filter='all']").classList.add("active");
+    const grid = document.getElementById("destGrid");
+    const filtered = destinations.filter(d => d.name.toLowerCase().includes(q));
+    if (filtered.length === 0) {
+      grid.innerHTML = `<p style="grid-column:1/-1;color:var(--text-muted);padding:24px 0;">No destinations found for "<strong>${q}</strong>". Try a different search.</p>`;
+    } else {
+      renderCards("all");
+    }
+    document.querySelector(".destinations-grid").scrollIntoView({ behavior: "smooth", block: "start" });
+  }
+
+  document.getElementById("heroSearch").addEventListener("keydown", e => { if (e.key === "Enter") doSearch(); });
+
+  renderCards("all");
+</script>
 </body>
-
 </html>
