@@ -460,11 +460,13 @@ async function sendWhatsApp(e) {
   btn.style.pointerEvents = 'none';
 
   try {
-    await fetch('https://formspree.io/f/xredjder', {
+    await fetch('https://api.web3forms.com/submit', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
       body: JSON.stringify({
-        _subject: `New Trip Enquiry from ${name} – VacationPe`,
+        access_key:      '721020ce-7cbe-45d0-9c51-8f1afa45e36a',
+        subject:         `New Trip Enquiry from ${name} – VacationPe`,
+        from_name:       'VacationPe Website',
         Name:            name,
         'Contact Number': phone,
         Email:           email || '—',
