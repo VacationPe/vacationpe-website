@@ -159,8 +159,9 @@
     }
 
     /* ── SUCCESS STATE ── */
-    .success-msg{display:none;background:#e8fdf1;border:1.5px solid #b3eecb;color:#1a7a3a;border-radius:12px;padding:16px 20px;font-size:.93rem;font-weight:500;margin-top:16px;text-align:center;}
-    .success-msg.show{display:block;}
+    .success-msg{display:none;background:#e8fdf1;border:2px solid #b3eecb;border-radius:16px;padding:28px 24px;margin-top:18px;text-align:center;}
+    .success-msg.show{display:block;animation:fadeIn .4s ease;}
+    @keyframes fadeIn{from{opacity:0;transform:translateY(8px);}to{opacity:1;transform:translateY(0);}}
   </style>
 </head>
 <body>
@@ -298,9 +299,9 @@
     </div>
 
     <a href="#" class="btn-send" id="send-btn" onclick="sendWhatsApp(event)">
-      💬 Send Message via WhatsApp
+      📩 Submit Enquiry — Email &amp; WhatsApp
     </a>
-    <div class="success-msg" id="success-msg">✅ Opening WhatsApp with your details. We'll respond shortly!</div>
+    <div class="success-msg" id="success-msg"></div>
   </div><!-- /form-card -->
 
   <!-- VERTICAL INFO SIDEBAR -->
@@ -518,10 +519,26 @@ async function sendWhatsApp(e) {
 
   window.open(`https://api.whatsapp.com/send?phone=919998952926&text=${encodeURIComponent(text)}`, '_blank');
 
-  // ── 3. SHOW SUCCESS ──
-  document.getElementById('success-msg').innerHTML =
-    '✅ Your enquiry has been sent to our email & WhatsApp. We\'ll respond shortly!';
-  document.getElementById('success-msg').classList.add('show');
+  // ── 3. SHOW THANK YOU & HIDE FORM FIELDS ──
+  document.querySelector('.form-card').innerHTML = `
+    <div style="text-align:center;padding:20px 0;">
+      <div style="font-size:3.5rem;margin-bottom:16px;">🙏</div>
+      <h2 style="font-family:'Playfair Display',serif;color:#0a5f2a;font-size:1.8rem;margin-bottom:10px;">Thank You!</h2>
+      <p style="font-size:1rem;color:#1a7a3a;font-weight:600;margin-bottom:16px;">Your enquiry has been successfully submitted.</p>
+      <div style="background:#fff;border:1.5px solid #b3eecb;border-radius:14px;padding:20px 24px;margin-bottom:20px;text-align:left;">
+        <p style="font-size:.93rem;color:#2b3a47;line-height:1.8;margin-bottom:8px;">
+          ✅ &nbsp;Your details have been sent to <strong>info@vacationpe.com</strong><br/>
+          💬 &nbsp;WhatsApp has been opened for a quick chat<br/>
+          ⏱️ &nbsp;Our team will get back to you within <strong>24 hours</strong> or at the earliest possible time
+        </p>
+      </div>
+      <p style="font-size:.88rem;color:#5f7485;margin-bottom:20px;">For urgent queries, reach us directly:</p>
+      <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap;">
+        <a href="tel:+919998952926" style="display:inline-flex;align-items:center;gap:8px;background:#1a8fd1;color:#fff;padding:12px 24px;border-radius:30px;text-decoration:none;font-weight:600;font-size:.93rem;">📞 Call Now</a>
+        <a href="https://api.whatsapp.com/send?phone=919998952926" target="_blank" style="display:inline-flex;align-items:center;gap:8px;background:#25D366;color:#fff;padding:12px 24px;border-radius:30px;text-decoration:none;font-weight:600;font-size:.93rem;">💬 WhatsApp</a>
+      </div>
+    </div>
+  `;
 }
 </script>
 </body>
