@@ -1,1 +1,503 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Visa News & Updates - Latest Policy Changes | VacationPe</title>
+  <meta name="description" content="Stay updated with the latest visa policy changes, fee updates, and travel advisories for Indian passport holders." />
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --blue: #0077cc; --blue-dark: #005fa3; --blue-light: #e8f4fd;
+      --orange: #ff6b35; --green: #22c55e;
+      --text: #1a1a2e; --text-muted: #6b7280; --border: #e5e7eb;
+      --bg: #f9fafb; --white: #ffffff;
+      --shadow: 0 2px 12px rgba(0,0,0,0.08); --shadow-lg: 0 8px 32px rgba(0,0,0,0.12);
+    }
+    body { font-family: 'Inter', sans-serif; color: var(--text); background: var(--white); }
 
+    nav {
+      position: sticky; top: 0; z-index: 100;
+      background: var(--white); border-bottom: 1px solid var(--border);
+      padding: 0 24px; display: flex; align-items: center; justify-content: space-between; height: 64px;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+    }
+    .nav-logo { font-family: 'Nunito', sans-serif; font-size: 1.5rem; font-weight: 900; color: var(--blue); text-decoration: none; }
+    .nav-logo span { color: var(--orange); }
+    .nav-links { display: flex; gap: 6px; align-items: center; }
+    .nav-links a { text-decoration: none; color: var(--text-muted); font-size: 0.9rem; font-weight: 500; padding: 8px 14px; border-radius: 8px; transition: all 0.2s; }
+    .nav-links a:hover, .nav-links a.active { background: var(--blue-light); color: var(--blue); }
+
+    /* HERO BANNER */
+    .page-hero {
+      background: linear-gradient(135deg, #0f4c81 0%, #1565c0 50%, #0288d1 100%);
+      padding: 48px 24px 56px; text-align: center;
+    }
+    .page-hero h1 { font-family: 'Nunito', sans-serif; font-size: clamp(1.6rem,4vw,2.4rem); font-weight: 900; color: #fff; margin-bottom: 10px; }
+    .page-hero p { color: rgba(255,255,255,0.8); font-size: 1rem; max-width: 560px; margin: 0 auto; }
+
+    /* MAIN LAYOUT */
+    .main-wrap { max-width: 1200px; margin: 0 auto; padding: 48px 24px; display: grid; grid-template-columns: 1fr 320px; gap: 40px; }
+    @media (max-width: 900px) { .main-wrap { grid-template-columns: 1fr; } .sidebar { display: none; } }
+
+    /* FILTER + SEARCH BAR */
+    .top-bar { display: flex; align-items: center; gap: 12px; margin-bottom: 32px; flex-wrap: wrap; }
+    .filter-select {
+      padding: 10px 16px; border: 1.5px solid var(--border); border-radius: 10px;
+      font-size: 0.88rem; font-family: 'Inter', sans-serif; background: #fff; cursor: pointer; color: var(--text);
+    }
+    .search-bar {
+      flex: 1; min-width: 200px; display: flex; border: 1.5px solid var(--border); border-radius: 10px; overflow: hidden; background: #fff;
+    }
+    .search-bar input { flex: 1; border: none; outline: none; padding: 10px 16px; font-family: 'Inter', sans-serif; font-size: 0.88rem; }
+    .search-bar button { background: var(--blue); color: #fff; border: none; cursor: pointer; padding: 10px 18px; font-size: 0.85rem; font-weight: 600; }
+
+    /* AI SEARCH RESULTS */
+    #aiResults {
+      background: linear-gradient(135deg, #eff6ff, #e8f4fd);
+      border: 1.5px solid #bfdbfe; border-radius: 16px; padding: 24px; margin-bottom: 32px; display: none;
+    }
+    #aiResults .ai-badge {
+      display: inline-flex; align-items: center; gap: 6px; background: var(--blue); color: #fff;
+      font-size: 0.72rem; font-weight: 700; padding: 4px 10px; border-radius: 20px; margin-bottom: 14px; letter-spacing: 0.5px;
+    }
+    #aiResults h3 { font-family: 'Nunito', sans-serif; font-size: 1.1rem; font-weight: 800; margin-bottom: 10px; }
+    #aiResults .ai-content { font-size: 0.92rem; line-height: 1.75; color: var(--text); }
+    #aiResults .ai-loading { display: flex; align-items: center; gap: 10px; color: var(--text-muted); font-size: 0.9rem; }
+    .spinner { width: 18px; height: 18px; border: 2px solid var(--border); border-top-color: var(--blue); border-radius: 50%; animation: spin 0.7s linear infinite; }
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    /* ARTICLE LIST */
+    .articles-list { display: flex; flex-direction: column; gap: 0; }
+    .article-card {
+      display: flex; gap: 20px; padding: 24px 0; border-bottom: 1px solid var(--border);
+      text-decoration: none; color: inherit; transition: all 0.2s; align-items: flex-start;
+    }
+    .article-card:hover { color: var(--blue); }
+    .article-card:last-child { border-bottom: none; }
+    .article-flag { font-size: 2rem; flex-shrink: 0; margin-top: 2px; }
+    .article-body { flex: 1; }
+    .article-meta { display: flex; align-items: center; gap: 10px; margin-bottom: 8px; flex-wrap: wrap; }
+    .article-country { font-size: 0.75rem; font-weight: 700; color: var(--blue); text-transform: uppercase; letter-spacing: 0.4px; }
+    .article-date { font-size: 0.75rem; color: var(--text-muted); }
+    .article-source { font-size: 0.72rem; background: var(--bg); color: var(--text-muted); padding: 2px 8px; border-radius: 20px; border: 1px solid var(--border); }
+    .article-title { font-weight: 700; font-size: 1rem; line-height: 1.45; margin-bottom: 8px; }
+    .article-excerpt { font-size: 0.87rem; color: var(--text-muted); line-height: 1.65; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+    .article-tag { display: inline-block; margin-top: 10px; font-size: 0.72rem; font-weight: 700; padding: 3px 10px; border-radius: 20px; }
+    .tag-policy { background: #fef3c7; color: #92660a; }
+    .tag-fee { background: #fee2e2; color: #991b1b; }
+    .tag-advisory { background: #dcfce7; color: #166534; }
+    .tag-announcement { background: #ede9fe; color: #6d28d9; }
+    .tag-restriction { background: #ffedd5; color: #9a3412; }
+
+    /* SIDEBAR */
+    .sidebar { display: flex; flex-direction: column; gap: 24px; }
+    .sidebar-card { background: #fff; border: 1.5px solid var(--border); border-radius: 14px; padding: 20px; }
+    .sidebar-card h3 { font-family: 'Nunito', sans-serif; font-weight: 800; font-size: 1rem; margin-bottom: 14px; }
+    .country-list { display: flex; flex-direction: column; gap: 8px; }
+    .country-item { display: flex; align-items: center; gap: 10px; padding: 8px 12px; border-radius: 8px; cursor: pointer; transition: background 0.15s; font-size: 0.88rem; border: none; background: none; width: 100%; text-align: left; }
+    .country-item:hover, .country-item.active { background: var(--blue-light); color: var(--blue); }
+    .country-item .count { margin-left: auto; background: var(--bg); font-size: 0.75rem; font-weight: 700; padding: 2px 8px; border-radius: 20px; }
+    .ai-ask-card { background: linear-gradient(135deg, #0f4c81, #1565c0); border-radius: 14px; padding: 20px; color: #fff; }
+    .ai-ask-card h3 { font-family: 'Nunito', sans-serif; font-weight: 800; font-size: 1rem; margin-bottom: 8px; }
+    .ai-ask-card p { font-size: 0.83rem; color: rgba(255,255,255,0.8); margin-bottom: 14px; line-height: 1.5; }
+    .ai-ask-input { width: 100%; border: none; outline: none; border-radius: 8px; padding: 10px 12px; font-family: 'Inter', sans-serif; font-size: 0.85rem; margin-bottom: 10px; }
+    .ai-ask-btn { width: 100%; background: var(--orange); color: #fff; border: none; border-radius: 8px; padding: 10px; font-weight: 700; cursor: pointer; font-family: 'Inter', sans-serif; font-size: 0.88rem; }
+
+    /* PAGINATION */
+    .pagination { display: flex; align-items: center; gap: 8px; margin-top: 32px; }
+    .page-btn { width: 36px; height: 36px; border-radius: 8px; border: 1.5px solid var(--border); background: #fff; cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 0.85rem; font-weight: 600; transition: all 0.15s; }
+    .page-btn.active { background: var(--blue); color: #fff; border-color: var(--blue); }
+    .page-btn:hover:not(.active) { background: var(--blue-light); border-color: var(--blue); }
+
+    footer { background: #0f1923; color: rgba(255,255,255,0.7); padding: 40px 24px; text-align: center; font-size: 0.85rem; }
+    .footer-logo { font-family: 'Nunito', sans-serif; font-size: 1.3rem; font-weight: 900; color: #fff; margin-bottom: 8px; }
+    .footer-logo span { color: var(--orange); }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-logo">Vacation<span>Pe</span></a>
+  <div class="nav-links">
+    <a href="hotels.html">Hotels</a>
+    <a href="visa.html">Visa</a>
+    <a href="holidays.html">Holidays</a>
+    <a href="blog.html">Blog</a>
+    <a href="business.html">Business</a>
+    <a href="visa-update.html" class="active">Visa Update</a>
+  </div>
+</nav>
+
+<div class="page-hero">
+  <h1>🗞️ Visa News &amp; Updates</h1>
+  <p>Latest visa policy changes, fee updates, and travel advisories for Indian passport holders</p>
+</div>
+
+<div class="main-wrap">
+  <!-- LEFT COLUMN -->
+  <div>
+    <!-- TOP BAR -->
+    <div class="top-bar">
+      <select class="filter-select" id="countryFilter" onchange="filterArticles()">
+        <option value="all">All Countries</option>
+        <option value="UAE">🇦🇪 UAE / Dubai</option>
+        <option value="USA">🇺🇸 USA</option>
+        <option value="UK">🇬🇧 UK</option>
+        <option value="Australia">🇦🇺 Australia</option>
+        <option value="Japan">🇯🇵 Japan</option>
+        <option value="Saudi Arabia">🇸🇦 Saudi Arabia</option>
+        <option value="Schengen">🇪🇺 Schengen</option>
+        <option value="Singapore">🇸🇬 Singapore</option>
+        <option value="Canada">🇨🇦 Canada</option>
+        <option value="Other">🌍 Other</option>
+      </select>
+      <select class="filter-select" id="typeFilter" onchange="filterArticles()">
+        <option value="all">All Updates</option>
+        <option value="policy">Policy Change</option>
+        <option value="fee">Fee Update</option>
+        <option value="advisory">Travel Advisory</option>
+        <option value="restriction">Restriction</option>
+        <option value="announcement">Announcement</option>
+      </select>
+      <div class="search-bar">
+        <input type="text" id="searchInput" placeholder="Ask AI about any visa update…" onkeydown="if(event.key==='Enter') askAI()" />
+        <button onclick="askAI()">Ask AI</button>
+      </div>
+    </div>
+
+    <!-- AI ANSWER BOX -->
+    <div id="aiResults">
+      <div class="ai-badge">✦ AI ANSWER</div>
+      <h3 id="aiQuestion"></h3>
+      <div class="ai-content" id="aiContent">
+        <div class="ai-loading"><div class="spinner"></div> Searching latest visa information…</div>
+      </div>
+    </div>
+
+    <!-- ARTICLES LIST -->
+    <div class="articles-list" id="articlesList"></div>
+    <div class="pagination" id="pagination"></div>
+  </div>
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+    <!-- AI Ask Card -->
+    <div class="ai-ask-card">
+      <h3>✦ Ask AI About Visas</h3>
+      <p>Get instant answers about visa requirements, fees, and updates for Indian passport holders.</p>
+      <input type="text" class="ai-ask-input" id="sidebarAsk" placeholder="e.g. Can Indians visit Japan without a visa?" onkeydown="if(event.key==='Enter') sidebarAskAI()" />
+      <button class="ai-ask-btn" onclick="sidebarAskAI()">Get Answer →</button>
+    </div>
+
+    <!-- Filter by country -->
+    <div class="sidebar-card">
+      <h3>Filter by Country</h3>
+      <div class="country-list">
+        <button class="country-item active" onclick="sideFilter('all',this)"><span>🌍</span> All Countries <span class="count" id="cnt-all">0</span></button>
+        <button class="country-item" onclick="sideFilter('UAE',this)"><span>🇦🇪</span> UAE / Dubai <span class="count" id="cnt-UAE">0</span></button>
+        <button class="country-item" onclick="sideFilter('USA',this)"><span>🇺🇸</span> USA <span class="count" id="cnt-USA">0</span></button>
+        <button class="country-item" onclick="sideFilter('UK',this)"><span>🇬🇧</span> UK <span class="count" id="cnt-UK">0</span></button>
+        <button class="country-item" onclick="sideFilter('Australia',this)"><span>🇦🇺</span> Australia <span class="count" id="cnt-Australia">0</span></button>
+        <button class="country-item" onclick="sideFilter('Japan',this)"><span>🇯🇵</span> Japan <span class="count" id="cnt-Japan">0</span></button>
+        <button class="country-item" onclick="sideFilter('Saudi Arabia',this)"><span>🇸🇦</span> Saudi Arabia <span class="count" id="cnt-Saudi Arabia">0</span></button>
+        <button class="country-item" onclick="sideFilter('Schengen',this)"><span>🇪🇺</span> Schengen <span class="count" id="cnt-Schengen">0</span></button>
+        <button class="country-item" onclick="sideFilter('Canada',this)"><span>🇨🇦</span> Canada <span class="count" id="cnt-Canada">0</span></button>
+      </div>
+    </div>
+
+    <!-- Popular topics -->
+    <div class="sidebar-card">
+      <h3>Popular Topics</h3>
+      <div style="display:flex;flex-wrap:wrap;gap:8px;">
+        <span style="background:var(--blue-light);color:var(--blue);font-size:0.78rem;font-weight:700;padding:5px 12px;border-radius:20px;cursor:pointer" onclick="quickSearch('visa fee increase')">Visa Fee Changes</span>
+        <span style="background:#fef3c7;color:#92660a;font-size:0.78rem;font-weight:700;padding:5px 12px;border-radius:20px;cursor:pointer" onclick="quickSearch('evisa')">eVisa Launch</span>
+        <span style="background:#dcfce7;color:#166534;font-size:0.78rem;font-weight:700;padding:5px 12px;border-radius:20px;cursor:pointer" onclick="quickSearch('visa free')">Visa Free Travel</span>
+        <span style="background:#fee2e2;color:#991b1b;font-size:0.78rem;font-weight:700;padding:5px 12px;border-radius:20px;cursor:pointer" onclick="quickSearch('ban restriction')">Travel Bans</span>
+        <span style="background:#ede9fe;color:#6d28d9;font-size:0.78rem;font-weight:700;padding:5px 12px;border-radius:20px;cursor:pointer" onclick="quickSearch('schengen')">Schengen</span>
+        <span style="background:#ffedd5;color:#9a3412;font-size:0.78rem;font-weight:700;padding:5px 12px;border-radius:20px;cursor:pointer" onclick="quickSearch('processing time')">Processing Time</span>
+      </div>
+    </div>
+  </aside>
+</div>
+
+<footer>
+  <div class="footer-logo">Vacation<span>Pe</span></div>
+  <p>© 2026 VacationPe · Visa news curated for Indian passport holders</p>
+</footer>
+
+<script>
+const articles = [
+  {
+    id: "saudi-umrah-2026",
+    country: "Saudi Arabia", flag: "🇸🇦", date: "Mar 18, 2026",
+    source: "Saudi Ministry of Hajj",
+    type: "policy",
+    title: "Saudi Arabia Umrah Visa Deadlines March 2026: Entry & Exit Dates",
+    excerpt: "The Saudi Ministry of Hajj has announced strict entry and exit deadlines for Umrah visas ahead of Ramadan. Indian pilgrims must ensure their visas comply with the new schedule or face denial of entry at the border."
+  },
+  {
+    id: "us-visa-suspended",
+    country: "USA", flag: "🇺🇸", date: "Mar 18, 2026",
+    source: "US Department of State",
+    type: "restriction",
+    title: "US Visa Processing Suspended in 6 Countries Due to Middle East Conflict",
+    excerpt: "The US State Department has temporarily suspended visa processing in six countries amid escalating regional tensions. Indian travellers transiting through these countries may face delays or alternative routing requirements."
+  },
+  {
+    id: "australia-study-fees",
+    country: "Australia", flag: "🇦🇺", date: "Mar 12, 2026",
+    source: "Australian Home Affairs",
+    type: "fee",
+    title: "Australia Doubles Post-Study Work Visa Fees for Indians",
+    excerpt: "Australia has doubled the Post-Study Work Visa application fee effective March 2026, significantly impacting Indian students. The change follows a broader government push to manage immigration levels, raising costs from AUD 710 to AUD 1,420."
+  },
+  {
+    id: "japan-fees",
+    country: "Japan", flag: "🇯🇵", date: "Mar 12, 2026",
+    source: "Japan Immigration Bureau",
+    type: "fee",
+    title: "Japan Visa Fees May Rise 10x to ₹60,000 for Permanent Residency",
+    excerpt: "Japan is considering raising permanent residency application fees from ¥8,000 to ¥80,000, a tenfold increase. For Indian applicants, this translates to approximately ₹60,000. The changes are part of Japan's visa system reform."
+  },
+  {
+    id: "uk-fraud",
+    country: "UK", flag: "🇬🇧", date: "Mar 2, 2026",
+    source: "UK Home Office",
+    type: "advisory",
+    title: "UK Launches Anti-Fraud Campaign in Haryana",
+    excerpt: "The UK Home Office has launched a targeted campaign in Haryana, Punjab, and neighbouring districts to combat illegal visa facilitation networks. Indian applicants are advised to use only UKVI-authorised agents."
+  },
+  {
+    id: "jeju-denied",
+    country: "Other", flag: "🇰🇷", date: "Mar 2, 2026",
+    source: "Jeju Province Authority",
+    type: "restriction",
+    title: "Jeju Visa-Free Entry Denied to Indians",
+    excerpt: "South Korea's Jeju Island has suspended its visa-free entry policy for Indian passport holders following a rise in illegal stay incidents. Indians now require a standard South Korean tourist visa even for Jeju-only travel."
+  },
+  {
+    id: "uk-evisa-boarding",
+    country: "UK", flag: "🇬🇧", date: "Mar 2, 2026",
+    source: "UK Civil Aviation Authority",
+    type: "policy",
+    title: "UK eVisa for Indians: Airlines Can Now Refuse Boarding",
+    excerpt: "Airlines flying to the UK have been authorised to deny boarding to passengers who do not have a valid UK eVisa linked to their passport. Indians travelling to the UK must ensure their Biometric Residence Permit is updated to the digital system."
+  },
+  {
+    id: "egypt-fee",
+    country: "Other", flag: "🇪🇬", date: "Mar 2, 2026",
+    source: "Egypt Ministry of Interior",
+    type: "fee",
+    title: "Egypt Visa Fee May Rise to $30 from March 2026",
+    excerpt: "Egypt is planning to raise the visa-on-arrival fee from $25 to $30 starting March 2026. Indian travellers who previously got a visa on arrival will now need to budget for the higher fee or opt for the e-visa as an alternative."
+  },
+  {
+    id: "japan-walkin",
+    country: "Japan", flag: "🇯🇵", date: "Mar 2, 2026",
+    source: "Japan Consulate India",
+    type: "announcement",
+    title: "Japan Ends Walk-In Visa Applications in Chennai & Hyderabad From March 2",
+    excerpt: "Japan's consulates in Chennai and Hyderabad have made prior appointments mandatory for all visa submissions. This follows the Tokyo and Mumbai consulates. Applicants must book slots through the official VFS appointment system."
+  },
+  {
+    id: "schengen-fee-2026",
+    country: "Schengen", flag: "🇪🇺", date: "Feb 21, 2026",
+    source: "European Commission",
+    type: "fee",
+    title: "Schengen Visa Fee Rises to €90 for Indian Adults from Feb 2026",
+    excerpt: "The European Union has increased the Schengen short-stay visa fee from €80 to €90 for adults. This affects Indian nationals applying to visit any of the 27 Schengen zone countries, adding approximately ₹850 to the application cost."
+  },
+  {
+    id: "canada-evisa-update",
+    country: "Canada", flag: "🇨🇦", date: "Feb 15, 2026",
+    source: "IRCC Canada",
+    type: "policy",
+    title: "Canada Extends eTA Validity to 10 Years for Indian Frequent Travellers",
+    excerpt: "Canada has extended the Electronic Travel Authorization (eTA) from 5 to 10 years for approved applicants, including Indians. The move is aimed at facilitating business travel and reducing administrative burden for frequent visitors."
+  },
+  {
+    id: "uae-evisa-expansion",
+    country: "UAE", flag: "🇦🇪", date: "Feb 10, 2026",
+    source: "UAE Federal Authority for Identity",
+    type: "announcement",
+    title: "UAE Expands 5-Year Multi-Entry Tourist Visa to All Indian Nationals",
+    excerpt: "The UAE has opened its 5-year multi-entry tourist visa to all Indian nationals, not just high-net-worth individuals. This landmark change allows Indians to enter the UAE multiple times over five years on a single visa stamp."
+  },
+  {
+    id: "singapore-ivac",
+    country: "Singapore", flag: "🇸🇬", date: "Feb 5, 2026",
+    source: "ICA Singapore",
+    type: "policy",
+    title: "Singapore Shifts to Fully Digital Visa Application System for Indians",
+    excerpt: "Singapore's Immigration & Checkpoints Authority has transitioned to a fully digital visa application system for Indian citizens. The new portal eliminates the need for physical submission at VFS centres for most tourist visa categories."
+  },
+  {
+    id: "usa-b1-b2",
+    country: "USA", flag: "🇺🇸", date: "Jan 28, 2026",
+    source: "US Embassy New Delhi",
+    type: "advisory",
+    title: "US Embassy India Increases Interview Appointment Slots for B1/B2 Visas",
+    excerpt: "In response to a significant backlog, the US Embassy in New Delhi and Consulates in Mumbai, Chennai, and Hyderabad have added thousands of new interview slots for B1/B2 tourist and business visa applicants."
+  },
+  {
+    id: "uk-student-visa",
+    country: "UK", flag: "🇬🇧", date: "Jan 20, 2026",
+    source: "UKCISA",
+    type: "policy",
+    title: "UK Restricts Indian Students from Bringing Family Dependants",
+    excerpt: "The UK government has extended the ban on student dependants to most postgraduate programmes, heavily affecting Indian students who form the largest group of international students in UK universities. The rule was extended through 2026."
+  },
+  {
+    id: "thailand-visa-free",
+    country: "Other", flag: "🇹🇭", date: "Jan 10, 2026",
+    source: "Thai Ministry of Foreign Affairs",
+    type: "announcement",
+    title: "Thailand Makes Visa-Free Entry for Indians Permanent",
+    excerpt: "Thailand has officially made visa-free entry for Indian passport holders a permanent policy, following a successful trial period that saw Indian tourist arrivals surge by 40%. Indians can now stay for up to 60 days without a visa."
+  },
+  {
+    id: "malaysia-evisa",
+    country: "Other", flag: "🇲🇾", date: "Dec 28, 2025",
+    source: "Malaysia Immigration",
+    type: "announcement",
+    title: "Malaysia Launches eVisa for Indians, Replacing eNTRI System",
+    excerpt: "Malaysia has replaced its eNTRI note scheme with a full eVisa system for Indian travellers. The new eVisa allows a 30-day stay and is processed digitally within 24 hours, simplifying travel for Indian tourists and business visitors."
+  },
+  {
+    id: "australia-tourist-backlog",
+    country: "Australia", flag: "🇦🇺", date: "Dec 20, 2025",
+    source: "Australian High Commission",
+    type: "advisory",
+    title: "Australia Tourist Visa Processing Delays: Indians Wait Up to 6 Months",
+    excerpt: "Indian applicants for Australian tourist visas are currently facing processing times of four to six months, a significant increase from the previous standard of four to six weeks. Authorities recommend applying well in advance of travel dates."
+  },
+];
+
+let currentFilter = { country: "all", type: "all" };
+let currentPage = 1;
+const PER_PAGE = 8;
+
+const tagLabels = { policy: "Policy Change", fee: "Fee Update", advisory: "Advisory", restriction: "Restriction", announcement: "Announcement" };
+const tagClasses = { policy: "tag-policy", fee: "tag-fee", advisory: "tag-advisory", restriction: "tag-restriction", announcement: "tag-announcement" };
+
+function getFiltered() {
+  return articles.filter(a => {
+    const cMatch = currentFilter.country === "all" || a.country === currentFilter.country;
+    const tMatch = currentFilter.type === "all" || a.type === currentFilter.type;
+    return cMatch && tMatch;
+  });
+}
+
+function renderArticles() {
+  const filtered = getFiltered();
+  const start = (currentPage - 1) * PER_PAGE;
+  const page = filtered.slice(start, start + PER_PAGE);
+  const list = document.getElementById("articlesList");
+
+  list.innerHTML = page.map(a => `
+    <a class="article-card" href="#${a.id}" id="${a.id}">
+      <div class="article-flag">${a.flag}</div>
+      <div class="article-body">
+        <div class="article-meta">
+          <span class="article-country">${a.country}</span>
+          <span class="article-date">${a.date}</span>
+          <span class="article-source">${a.source}</span>
+        </div>
+        <div class="article-title">${a.title}</div>
+        <div class="article-excerpt">${a.excerpt}</div>
+        <span class="article-tag ${tagClasses[a.type]}">${tagLabels[a.type]}</span>
+      </div>
+    </a>
+  `).join("");
+
+  // Pagination
+  const total = Math.ceil(filtered.length / PER_PAGE);
+  const pg = document.getElementById("pagination");
+  pg.innerHTML = "";
+  for (let i = 1; i <= total; i++) {
+    const btn = document.createElement("button");
+    btn.className = "page-btn" + (i === currentPage ? " active" : "");
+    btn.textContent = i;
+    btn.onclick = () => { currentPage = i; renderArticles(); window.scrollTo({top: 300, behavior: "smooth"}); };
+    pg.appendChild(btn);
+  }
+}
+
+function updateCounts() {
+  const keys = ["all", "UAE", "USA", "UK", "Australia", "Japan", "Saudi Arabia", "Schengen", "Canada"];
+  keys.forEach(k => {
+    const el = document.getElementById("cnt-" + k);
+    if (el) el.textContent = k === "all" ? articles.length : articles.filter(a => a.country === k).length;
+  });
+}
+
+function filterArticles() {
+  currentFilter.country = document.getElementById("countryFilter").value;
+  currentFilter.type = document.getElementById("typeFilter").value;
+  currentPage = 1;
+  renderArticles();
+}
+
+function sideFilter(country, el) {
+  document.querySelectorAll(".country-item").forEach(b => b.classList.remove("active"));
+  el.classList.add("active");
+  currentFilter.country = country;
+  document.getElementById("countryFilter").value = country;
+  currentPage = 1;
+  renderArticles();
+}
+
+function quickSearch(q) {
+  document.getElementById("searchInput").value = q;
+  askAI();
+}
+
+async function askAI() {
+  const q = document.getElementById("searchInput").value.trim();
+  if (!q) return;
+
+  const box = document.getElementById("aiResults");
+  const qEl = document.getElementById("aiQuestion");
+  const content = document.getElementById("aiContent");
+
+  box.style.display = "block";
+  qEl.textContent = q;
+  content.innerHTML = '<div class="ai-loading"><div class="spinner"></div> Searching latest visa information…</div>';
+  box.scrollIntoView({ behavior: "smooth", block: "start" });
+
+  try {
+    const response = await fetch("https://api.anthropic.com/v1/messages", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        model: "claude-sonnet-4-20250514",
+        max_tokens: 1000,
+        system: `You are a visa expert specialising in travel from India. Answer the user's question about visas, travel policies, and entry requirements clearly and concisely. Focus specifically on Indian passport holders. Use bullet points where helpful. Be factual and note if information may change. Keep your answer under 250 words. Do not use markdown headers, just plain text with bullet points using • character.`,
+        messages: [{ role: "user", content: q }]
+      })
+    });
+    const data = await response.json();
+    const text = data.content?.map(b => b.text || "").join("") || "Sorry, I could not retrieve information right now.";
+    // Convert • bullets to styled list
+    const formatted = text.replace(/•\s(.+)/g, '<li style="margin-bottom:6px;">$1</li>').replace(/(<li.*<\/li>)+/gs, m => `<ul style="padding-left:18px;margin:10px 0;">${m}</ul>`);
+    content.innerHTML = formatted;
+  } catch (e) {
+    content.innerHTML = "Unable to fetch AI response. Please try again.";
+  }
+}
+
+function sidebarAskAI() {
+  const q = document.getElementById("sidebarAsk").value.trim();
+  if (!q) return;
+  document.getElementById("searchInput").value = q;
+  askAI();
+  document.getElementById("sidebarAsk").value = "";
+}
+
+updateCounts();
+renderArticles();
+</script>
+</body>
+</html>
