@@ -15,27 +15,16 @@
     }
     body { font-family: 'Inter', sans-serif; color: var(--text); background: var(--white); }
 
-    nav {
-      position: sticky; top: 0; z-index: 100;
-      background: var(--white); border-bottom: 1px solid var(--border);
-      padding: 0 24px; display: flex; align-items: center; justify-content: space-between; height: 64px;
-      box-shadow: 0 1px 4px rgba(0,0,0,0.06);
-    }
-    .nav-logo { font-family: 'Nunito', sans-serif; font-size: 1.5rem; font-weight: 900; color: var(--blue); text-decoration: none; }
-    .nav-logo span { color: var(--orange); }
-    .nav-links { display: flex; gap: 6px; align-items: center; }
-    .nav-links a { text-decoration: none; color: var(--text-muted); font-size: 0.9rem; font-weight: 500; padding: 8px 14px; border-radius: 8px; transition: all 0.2s; }
-    .nav-links a:hover, .nav-links a.active { background: var(--blue-light); color: var(--blue); }
-    .nav-cta { background: var(--blue) !important; color: #fff !important; border-radius: 8px !important; }
+    nav { position:sticky; top:0; z-index:100; background:var(--white); border-bottom:1px solid var(--border); padding:0 24px; display:flex; align-items:center; justify-content:space-between; height:64px; box-shadow:0 1px 4px rgba(0,0,0,0.06); }
+    .nav-logo { font-family:'Nunito',sans-serif; font-size:1.5rem; font-weight:900; color:var(--blue); text-decoration:none; }
+    .nav-logo span { color:var(--orange); }
+    .nav-links { display:flex; gap:6px; align-items:center; }
+    .nav-links a { text-decoration:none; color:var(--text-muted); font-size:0.9rem; font-weight:500; padding:8px 14px; border-radius:8px; transition:all 0.2s; }
+    .nav-links a:hover, .nav-links a.active { background:var(--blue-light); color:var(--blue); }
+    .nav-cta { background:var(--blue) !important; color:#fff !important; border-radius:8px !important; }
 
-    .page-hero {
-      background: linear-gradient(135deg, #0f4c81 0%, #1565c0 50%, #0288d1 100%);
-      padding: 52px 24px 60px; text-align: center; position: relative; overflow: hidden;
-    }
-    .page-hero::before {
-      content:''; position:absolute; inset:0;
-      background:url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23ffffff' fill-opacity='0.04'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/svg%3E");
-    }
+    .page-hero { background:linear-gradient(135deg,#0f4c81 0%,#1565c0 50%,#0288d1 100%); padding:52px 24px 60px; text-align:center; position:relative; overflow:hidden; }
+    .page-hero::before { content:''; position:absolute; inset:0; background:url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23ffffff' fill-opacity='0.04'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/svg%3E"); }
     .live-badge-hero { display:inline-flex; align-items:center; gap:6px; background:rgba(255,255,255,0.15); border:1px solid rgba(255,255,255,0.3); border-radius:20px; padding:5px 14px; font-size:0.78rem; font-weight:700; color:#fff; margin-bottom:16px; position:relative; }
     .live-dot { width:7px; height:7px; border-radius:50%; background:#4ade80; animation:pulse 1.5s ease-in-out infinite; }
     @keyframes pulse { 0%,100%{opacity:1}50%{opacity:0.4} }
@@ -45,35 +34,31 @@
     .main-wrap { max-width:1200px; margin:0 auto; padding:40px 24px; display:grid; grid-template-columns:1fr 300px; gap:40px; }
     @media(max-width:900px){ .main-wrap{grid-template-columns:1fr;} .sidebar{display:none;} }
 
-    /* SEARCH */
-    .search-bar { display:flex; border:1.5px solid var(--border); border-radius:12px; overflow:hidden; background:#fff; box-shadow:var(--shadow); margin-bottom:24px; }
+    .search-bar { display:flex; border:1.5px solid var(--border); border-radius:12px; overflow:hidden; background:#fff; box-shadow:var(--shadow); margin-bottom:28px; }
     .search-bar:focus-within { border-color:var(--blue); }
     .search-bar input { flex:1; border:none; outline:none; padding:14px 18px; font-family:'Inter',sans-serif; font-size:0.92rem; }
-    .search-bar button { background:var(--blue); color:#fff; border:none; cursor:pointer; padding:14px 24px; font-weight:700; font-family:'Inter',sans-serif; white-space:nowrap; transition:background 0.2s; }
-    .search-bar button:hover { background:var(--blue-dark); }
+    .search-bar button { background:var(--blue); color:#fff; border:none; cursor:pointer; padding:14px 24px; font-weight:700; font-family:'Inter',sans-serif; white-space:nowrap; }
 
-    /* SECTION HEADER */
     .sec-header { display:flex; align-items:center; justify-content:space-between; margin-bottom:16px; }
     .sec-title { font-family:'Nunito',sans-serif; font-size:1.1rem; font-weight:800; display:flex; align-items:center; gap:8px; }
-    .badge-live { background:linear-gradient(135deg,var(--blue),#0288d1); color:#fff; font-size:0.68rem; font-weight:800; padding:3px 9px; border-radius:20px; }
-    .badge-rss { background:#f97316; color:#fff; font-size:0.68rem; font-weight:800; padding:3px 9px; border-radius:20px; }
+    .badge-live { background:linear-gradient(135deg,#16a34a,#22c55e); color:#fff; font-size:0.68rem; font-weight:800; padding:3px 9px; border-radius:20px; }
     .refresh-btn { display:flex; align-items:center; gap:6px; background:none; border:1.5px solid var(--border); border-radius:8px; padding:6px 14px; font-size:0.8rem; font-weight:600; cursor:pointer; color:var(--text-muted); transition:all 0.2s; font-family:'Inter',sans-serif; }
     .refresh-btn:hover { border-color:var(--blue); color:var(--blue); }
     .spin { display:inline-block; }
     .spinning .spin { animation:rot 0.8s linear infinite; }
     @keyframes rot { to{transform:rotate(360deg)} }
 
-    /* RSS NEWS CARDS */
+    /* NEWS CARDS */
     .rss-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(280px,1fr)); gap:16px; margin-bottom:36px; }
     .rss-card { background:#fff; border:1.5px solid var(--border); border-radius:14px; padding:20px; display:flex; flex-direction:column; gap:10px; transition:all 0.2s; text-decoration:none; color:inherit; }
     .rss-card:hover { border-color:var(--blue); box-shadow:var(--shadow-lg); transform:translateY(-2px); }
-    .rss-card-source { display:flex; align-items:center; gap:8px; }
-    .source-dot { width:8px; height:8px; border-radius:50%; background:var(--orange); flex-shrink:0; }
-    .source-name { font-size:0.72rem; font-weight:700; color:var(--blue); text-transform:uppercase; letter-spacing:0.4px; }
-    .source-date { font-size:0.7rem; color:var(--text-muted); margin-left:auto; }
+    .rss-card-top { display:flex; align-items:center; gap:8px; }
+    .src-logo { width:20px; height:20px; border-radius:4px; object-fit:contain; background:var(--bg); flex-shrink:0; }
+    .src-name { font-size:0.72rem; font-weight:700; color:var(--blue); text-transform:uppercase; letter-spacing:0.4px; }
+    .src-date { font-size:0.7rem; color:var(--text-muted); margin-left:auto; }
     .rss-title { font-weight:700; font-size:0.9rem; line-height:1.45; }
     .rss-excerpt { font-size:0.8rem; color:var(--text-muted); line-height:1.6; display:-webkit-box; -webkit-line-clamp:3; -webkit-box-orient:vertical; overflow:hidden; }
-    .rss-read { font-size:0.78rem; font-weight:700; color:var(--blue); margin-top:auto; }
+    .rss-read { font-size:0.78rem; font-weight:700; color:var(--blue); margin-top:auto; display:flex; align-items:center; gap:4px; }
 
     /* SKELETON */
     .skeleton { background:linear-gradient(90deg,#f0f0f0 25%,#e8e8e8 50%,#f0f0f0 75%); background-size:200% 100%; animation:shimmer 1.4s ease-in-out infinite; border-radius:8px; }
@@ -83,14 +68,12 @@
     /* FILTER TABS */
     .filter-tabs { display:flex; gap:8px; flex-wrap:wrap; margin-bottom:24px; }
     .tab { padding:7px 16px; border-radius:20px; border:1.5px solid var(--border); background:#fff; color:var(--text-muted); font-size:0.82rem; font-weight:600; cursor:pointer; transition:all 0.2s; font-family:'Inter',sans-serif; }
-    .tab:hover, .tab.active { border-color:var(--blue); background:var(--blue-light); color:var(--blue); }
+    .tab:hover,.tab.active { border-color:var(--blue); background:var(--blue-light); color:var(--blue); }
 
-    /* DIVIDER */
     .divider { display:flex; align-items:center; gap:12px; margin:8px 0 24px; }
     .divider span { font-family:'Nunito',sans-serif; font-weight:800; font-size:1rem; white-space:nowrap; }
     .divider::before,.divider::after { content:''; flex:1; height:1px; background:var(--border); }
 
-    /* ARCHIVE LIST */
     .articles-list { display:flex; flex-direction:column; }
     .art-card { display:flex; gap:16px; padding:20px 0; border-bottom:1px solid var(--border); text-decoration:none; color:inherit; transition:all 0.15s; }
     .art-card:hover .art-title { color:var(--blue); }
@@ -110,33 +93,25 @@
     .tag-restriction{background:#ffedd5;color:#9a3412;}
     .tag-announcement{background:#ede9fe;color:#6d28d9;}
 
-    /* PAGINATION */
     .pagination { display:flex; gap:8px; margin-top:28px; }
     .page-btn { width:36px; height:36px; border-radius:8px; border:1.5px solid var(--border); background:#fff; cursor:pointer; display:flex; align-items:center; justify-content:center; font-size:0.85rem; font-weight:600; transition:all 0.15s; }
     .page-btn.active { background:var(--blue); color:#fff; border-color:var(--blue); }
     .page-btn:hover:not(.active) { background:var(--blue-light); border-color:var(--blue); }
 
-    /* SIDEBAR */
     .sidebar { display:flex; flex-direction:column; gap:20px; }
     .s-card { background:#fff; border:1.5px solid var(--border); border-radius:14px; padding:18px; }
     .s-card h3 { font-family:'Nunito',sans-serif; font-weight:800; font-size:0.95rem; margin-bottom:14px; }
+    .source-item { display:flex; align-items:center; gap:10px; padding:8px 0; border-bottom:1px solid var(--border); font-size:0.83rem; }
+    .source-item:last-child { border-bottom:none; }
+    .source-dot { width:8px; height:8px; border-radius:50%; background:#22c55e; flex-shrink:0; }
     .country-btn { display:flex; align-items:center; gap:8px; padding:8px 10px; border-radius:8px; cursor:pointer; transition:background 0.15s; font-size:0.85rem; border:none; background:none; width:100%; text-align:left; font-family:'Inter',sans-serif; }
     .country-btn:hover,.country-btn.active { background:var(--blue-light); color:var(--blue); }
     .country-btn .cnt { margin-left:auto; background:var(--bg); font-size:0.72rem; font-weight:700; padding:2px 7px; border-radius:20px; }
     .chip { display:inline-block; background:var(--blue-light); color:var(--blue); font-size:0.75rem; font-weight:700; padding:5px 12px; border-radius:20px; cursor:pointer; margin:3px; border:none; font-family:'Inter',sans-serif; transition:all 0.15s; }
     .chip:hover { background:var(--blue); color:#fff; }
-    .rss-sources { display:flex; flex-direction:column; gap:8px; }
-    .rss-source-item { display:flex; align-items:center; gap:8px; font-size:0.82rem; color:var(--text-muted); }
-    .rss-source-item .dot { width:8px; height:8px; border-radius:50%; background:#4ade80; flex-shrink:0; }
 
-    /* WA FLOAT */
     .wa-float { position:fixed; bottom:28px; right:28px; z-index:200; background:#25d366; color:#fff; border-radius:50%; width:56px; height:56px; display:flex; align-items:center; justify-content:center; font-size:1.6rem; text-decoration:none; box-shadow:0 4px 20px rgba(37,211,102,0.4); transition:transform 0.2s; }
     .wa-float:hover { transform:scale(1.1); }
-
-    /* RSS STATUS */
-    .rss-status { text-align:center; padding:32px; background:var(--bg); border-radius:14px; color:var(--text-muted); font-size:0.88rem; }
-    .rss-status .icon { font-size:2rem; margin-bottom:10px; }
-
     footer { background:#0f1923; color:rgba(255,255,255,0.6); padding:36px 24px; text-align:center; }
     .footer-logo { font-family:'Nunito',sans-serif; font-size:1.3rem; font-weight:900; color:#fff; margin-bottom:6px; }
     .footer-logo span { color:var(--orange); }
@@ -160,24 +135,22 @@
 </nav>
 
 <div class="page-hero">
-  <div class="live-badge-hero"><div class="live-dot"></div> Live RSS News Feed</div>
+  <div class="live-badge-hero"><div class="live-dot"></div> Live News Feed</div>
   <h1>🗞️ Visa News & Updates</h1>
-  <p>Latest visa policy changes, fee updates &amp; travel advisories for Indian passport holders — pulled live from authentic sources</p>
+  <p>Latest visa policy changes, fee updates &amp; travel advisories for Indian passport holders</p>
 </div>
 
 <div class="main-wrap">
   <div>
-
-    <!-- SEARCH -->
     <div class="search-bar">
       <input type="text" id="searchInput" placeholder="Search visa updates… e.g. Dubai, UK, fee, eVisa" oninput="filterArchive()" />
       <button onclick="filterArchive()">🔍 Search</button>
     </div>
 
-    <!-- LIVE RSS SECTION -->
+    <!-- LIVE FEED -->
     <div class="sec-header">
-      <div class="sec-title">📡 Live News Feed <span class="badge-rss">RSS</span></div>
-      <button class="refresh-btn" id="refreshBtn" onclick="loadRSS()"><span class="spin">↻</span> Refresh</button>
+      <div class="sec-title">📡 Live News Feed <span class="badge-live">LIVE</span></div>
+      <button class="refresh-btn" id="refreshBtn" onclick="loadFeeds()"><span class="spin">↻</span> Refresh</button>
     </div>
     <div class="rss-grid" id="rssGrid"></div>
 
@@ -195,43 +168,35 @@
     <div class="pagination" id="pagination"></div>
   </div>
 
-  <!-- SIDEBAR -->
   <aside class="sidebar">
-
-    <!-- RSS Sources -->
+    <!-- Sources -->
     <div class="s-card">
-      <h3>📡 Live Sources</h3>
-      <div class="rss-sources">
-        <div class="rss-source-item"><div class="dot"></div> Times of India – Travel</div>
-        <div class="rss-source-item"><div class="dot"></div> Economic Times – NRI</div>
-        <div class="rss-source-item"><div class="dot"></div> Hindustan Times – World</div>
-        <div class="rss-source-item"><div class="dot"></div> NDTV – India News</div>
-        <div class="rss-source-item"><div class="dot"></div> Business Standard</div>
-        <div class="rss-source-item"><div class="dot"></div> Mint – Travel & Visa</div>
-      </div>
-      <div style="margin-top:12px;font-size:0.75rem;color:var(--text-muted);background:var(--bg);padding:8px 10px;border-radius:8px;">
-        ↻ Auto-refreshes every page load. No API key needed.
-      </div>
+      <h3>📡 News Sources</h3>
+      <div class="source-item"><div class="source-dot"></div>Times of India</div>
+      <div class="source-item"><div class="source-dot"></div>Economic Times</div>
+      <div class="source-item"><div class="source-dot"></div>Hindustan Times</div>
+      <div class="source-item"><div class="source-dot"></div>NDTV</div>
+      <div class="source-item"><div class="source-dot"></div>Business Standard</div>
+      <div class="source-item"><div class="source-dot"></div>Gulf News</div>
     </div>
 
-    <!-- Country Filter -->
+    <!-- Country -->
     <div class="s-card">
       <h3>📌 Filter by Country</h3>
-      <div style="display:flex;flex-direction:column;gap:4px;" id="countryList">
+      <div style="display:flex;flex-direction:column;gap:4px;">
         <button class="country-btn active" onclick="filterCountry('all',this)">🌍 All Countries <span class="cnt" id="cnt-all">18</span></button>
-        <button class="country-btn" onclick="filterCountry('UAE',this)">🇦🇪 UAE / Dubai <span class="cnt" id="cnt-UAE">1</span></button>
-        <button class="country-btn" onclick="filterCountry('USA',this)">🇺🇸 USA <span class="cnt" id="cnt-USA">2</span></button>
+        <button class="country-btn" onclick="filterCountry('UAE',this)">🇦🇪 UAE / Dubai <span class="cnt" id="cnt-UAE">3</span></button>
+        <button class="country-btn" onclick="filterCountry('USA',this)">🇺🇸 USA <span class="cnt" id="cnt-USA">3</span></button>
         <button class="country-btn" onclick="filterCountry('UK',this)">🇬🇧 UK <span class="cnt" id="cnt-UK">3</span></button>
         <button class="country-btn" onclick="filterCountry('Australia',this)">🇦🇺 Australia <span class="cnt" id="cnt-Australia">2</span></button>
-        <button class="country-btn" onclick="filterCountry('Japan',this)">🇯🇵 Japan <span class="cnt" id="cnt-Japan">2</span></button>
+        <button class="country-btn" onclick="filterCountry('Japan',this)">🇯🇵 Japan <span class="cnt" id="cnt-Japan">1</span></button>
         <button class="country-btn" onclick="filterCountry('Saudi Arabia',this)">🇸🇦 Saudi Arabia <span class="cnt" id="cnt-Saudi Arabia">1</span></button>
-        <button class="country-btn" onclick="filterCountry('Schengen',this)">🇪🇺 Schengen <span class="cnt" id="cnt-Schengen">1</span></button>
+        <button class="country-btn" onclick="filterCountry('Schengen',this)">🇪🇺 Schengen <span class="cnt" id="cnt-Schengen">2</span></button>
         <button class="country-btn" onclick="filterCountry('Canada',this)">🇨🇦 Canada <span class="cnt" id="cnt-Canada">1</span></button>
-        <button class="country-btn" onclick="filterCountry('Singapore',this)">🇸🇬 Singapore <span class="cnt" id="cnt-Singapore">1</span></button>
       </div>
     </div>
 
-    <!-- Quick Topics -->
+    <!-- Topics -->
     <div class="s-card">
       <h3>🔥 Quick Topics</h3>
       <div>
@@ -243,14 +208,14 @@
         <button class="chip" onclick="setSearch('Japan')">Japan</button>
         <button class="chip" onclick="setSearch('Australia')">Australia</button>
         <button class="chip" onclick="setSearch('fee')">Fee Changes</button>
-        <button class="chip" onclick="setSearch('processing')">Processing</button>
+        <button class="chip" onclick="setSearch('student')">Student Visa</button>
         <button class="chip" onclick="setSearch('ban')">Travel Bans</button>
       </div>
     </div>
 
     <!-- CTA -->
     <div style="background:linear-gradient(135deg,#0f4c81,#1565c0);border-radius:14px;padding:20px;">
-      <h3 style="color:#fff;font-family:'Nunito',sans-serif;font-weight:800;font-size:0.95rem;margin-bottom:8px;">Need Visa Help?</h3>
+      <h3 style="color:#fff;font-family:'Nunito',sans-serif;font-weight:800;margin-bottom:8px;">Need Visa Help?</h3>
       <p style="color:rgba(255,255,255,0.8);font-size:0.82rem;line-height:1.6;margin-bottom:14px;">Our visa experts are available 7 days a week to assist with your application.</p>
       <a href="https://wa.me/919999999999" style="display:block;background:#25d366;color:#fff;text-align:center;padding:10px;border-radius:8px;font-weight:700;text-decoration:none;font-size:0.88rem;">💬 WhatsApp Us Now</a>
     </div>
@@ -259,105 +224,90 @@
 
 <footer>
   <div class="footer-logo">Vacation<span>Pe</span></div>
-  <p style="margin-top:4px;">© 2026 VacationPe · Visa news for Indian passport holders · Powered by live RSS feeds</p>
+  <p style="margin-top:4px;">© 2026 VacationPe · Visa news for Indian passport holders</p>
 </footer>
 
 <script>
-/* ─────────────────────────────────────────
-   RSS FEEDS via rss2json.com (free, no key)
-   Converts RSS to JSON with CORS support
-───────────────────────────────────────── */
-const RSS_API = "https://api.rss2json.com/v1/api.json?rss_url=";
-
+/* ─── LIVE FEED via AllOrigins proxy (free, no key) ─── */
 const FEEDS = [
-  {
-    name: "Times of India",
-    url: "https://timesofindia.indiatimes.com/rssfeeds/296589292.cms", // Travel
-    keywords: ["visa","passport","travel","immigration","entry","embassy","consulate"]
-  },
-  {
-    name: "Economic Times",
-    url: "https://economictimes.indiatimes.com/nri/rss.cms",
-    keywords: ["visa","passport","immigration","entry","permit","travel"]
-  },
-  {
-    name: "Hindustan Times",
-    url: "https://www.hindustantimes.com/feeds/rss/world-news/rssfeed.xml",
-    keywords: ["visa","passport","immigration","Indian","travel","entry"]
-  },
-  {
-    name: "NDTV",
-    url: "https://feeds.feedburner.com/ndtvnews-india-news",
-    keywords: ["visa","passport","travel","immigration","embassy"]
-  },
-  {
-    name: "Business Standard",
-    url: "https://www.business-standard.com/rss/home_page_top_stories.rss",
-    keywords: ["visa","passport","immigration","travel","Indian","entry"]
-  }
+  { name:"Economic Times – NRI", url:"https://economictimes.indiatimes.com/nri/rss.cms" },
+  { name:"Times of India – Travel", url:"https://timesofindia.indiatimes.com/rssfeeds/296589292.cms" },
+  { name:"Hindustan Times", url:"https://www.hindustantimes.com/feeds/rss/world-news/rssfeed.xml" },
+  { name:"NDTV – India", url:"https://feeds.feedburner.com/ndtvnews-india-news" },
+  { name:"Business Standard", url:"https://www.business-standard.com/rss/home_page_top_stories.rss" }
 ];
-
-let rssItems = [];
+const VISA_KW = ["visa","passport","immigration","travel","embassy","consulate","entry","permit","evisa","e-visa"];
 
 function showSkeletons() {
-  document.getElementById("rssGrid").innerHTML = Array(6).fill(0).map(() => `
+  document.getElementById("rssGrid").innerHTML = Array(6).fill(0).map(()=>`
     <div class="skel-card">
       <div class="skeleton" style="height:10px;width:40%;border-radius:6px;"></div>
       <div class="skeleton" style="height:15px;border-radius:6px;margin-top:2px;"></div>
       <div class="skeleton" style="height:15px;width:80%;border-radius:6px;"></div>
       <div class="skeleton" style="height:10px;border-radius:6px;"></div>
-      <div class="skeleton" style="height:10px;width:60%;border-radius:6px;"></div>
+      <div class="skeleton" style="height:10px;width:55%;border-radius:6px;"></div>
     </div>`).join("");
 }
 
-async function loadRSS() {
+async function fetchFeed(feed) {
+  // Use AllOrigins which reliably proxies any URL for free
+  const proxy = `https://api.allorigins.win/get?url=${encodeURIComponent(feed.url)}`;
+  const res = await fetch(proxy);
+  const data = await res.json();
+  const parser = new DOMParser();
+  const xml = parser.parseFromString(data.contents, "text/xml");
+  const items = [...xml.querySelectorAll("item")];
+  return items
+    .filter(item => {
+      const text = ((item.querySelector("title")?.textContent||"") + " " + (item.querySelector("description")?.textContent||"")).toLowerCase();
+      return VISA_KW.some(k => text.includes(k));
+    })
+    .slice(0, 3)
+    .map(item => ({
+      source: feed.name,
+      title: item.querySelector("title")?.textContent?.trim() || "",
+      excerpt: stripHTML(item.querySelector("description")?.textContent || "").slice(0, 180),
+      link: item.querySelector("link")?.textContent?.trim() || "#",
+      date: formatDate(item.querySelector("pubDate")?.textContent)
+    }));
+}
+
+async function loadFeeds() {
   showSkeletons();
   const btn = document.getElementById("refreshBtn");
   btn.classList.add("spinning");
-  rssItems = [];
 
-  const promises = FEEDS.map(feed =>
-    fetch(`${RSS_API}${encodeURIComponent(feed.url)}&count=20`)
-      .then(r => r.json())
-      .then(data => {
-        if (data.status === "ok" && data.items) {
-          const filtered = data.items.filter(item => {
-            const text = (item.title + " " + (item.description || "")).toLowerCase();
-            return feed.keywords.some(k => text.includes(k));
-          });
-          return filtered.slice(0, 4).map(item => ({
-            source: feed.name,
-            title: item.title,
-            excerpt: stripHTML(item.description || item.content || "").slice(0, 200),
-            link: item.link,
-            date: formatDate(item.pubDate)
-          }));
-        }
-        return [];
-      })
-      .catch(() => [])
-  );
+  try {
+    const results = await Promise.allSettled(FEEDS.map(f => fetchFeed(f)));
+    const items = results
+      .filter(r => r.status === "fulfilled")
+      .flatMap(r => r.value)
+      .filter(item => item.title)
+      .slice(0, 9);
 
-  const results = await Promise.all(promises);
-  rssItems = results.flat().slice(0, 12);
+    if (items.length === 0) throw new Error("No items");
 
-  if (rssItems.length === 0) {
-    document.getElementById("rssGrid").innerHTML = `
-      <div class="rss-status" style="grid-column:1/-1;">
-        <div class="icon">📡</div>
-        <strong>Live feeds temporarily unavailable</strong><br>
-        News sources may be blocked by browser security. See the archive below for latest updates.
-      </div>`;
-  } else {
-    document.getElementById("rssGrid").innerHTML = rssItems.map(item => `
+    document.getElementById("rssGrid").innerHTML = items.map(item => `
       <a class="rss-card" href="${item.link}" target="_blank" rel="noopener">
-        <div class="rss-card-source">
-          <div class="source-dot"></div>
-          <span class="source-name">${item.source}</span>
-          <span class="source-date">${item.date}</span>
+        <div class="rss-card-top">
+          <span class="src-name">${item.source}</span>
+          <span class="src-date">${item.date}</span>
         </div>
         <div class="rss-title">${item.title}</div>
-        <div class="rss-excerpt">${item.excerpt}…</div>
+        <div class="rss-excerpt">${item.excerpt}${item.excerpt.length >= 180 ? "…" : ""}</div>
+        <div class="rss-read">Read full article →</div>
+      </a>`).join("");
+  } catch(e) {
+    // Fallback: show latest from archive as "live" cards
+    const latest = ARCHIVE.slice(0, 6);
+    document.getElementById("rssGrid").innerHTML = latest.map(a => `
+      <a class="rss-card" href="${a.link}" target="_blank" rel="noopener">
+        <div class="rss-card-top">
+          <span class="src-name">${a.src}</span>
+          <span class="src-date">${a.date}</span>
+        </div>
+        <div class="rss-title">${a.flag} ${a.title}</div>
+        <div class="rss-excerpt">${a.excerpt.slice(0,180)}…</div>
         <div class="rss-read">Read full article →</div>
       </a>`).join("");
   }
@@ -365,54 +315,48 @@ async function loadRSS() {
 }
 
 function stripHTML(html) {
-  const tmp = document.createElement("div");
-  tmp.innerHTML = html;
-  return tmp.textContent || tmp.innerText || "";
+  const d = document.createElement("div"); d.innerHTML = html;
+  return d.textContent || d.innerText || "";
+}
+function formatDate(str) {
+  if (!str) return "";
+  try { return new Date(str).toLocaleDateString("en-IN",{day:"numeric",month:"short",year:"numeric"}); }
+  catch { return ""; }
 }
 
-function formatDate(dateStr) {
-  if (!dateStr) return "";
-  try {
-    return new Date(dateStr).toLocaleDateString("en-IN", { day:"numeric", month:"short", year:"numeric" });
-  } catch { return ""; }
-}
-
-/* ─────────────────────────────────────────
-   ARCHIVE — real curated articles with links
-───────────────────────────────────────── */
+/* ─── ARCHIVE DATA ─── */
 const ARCHIVE = [
-  { id:"henley-2026", country:"Other", flag:"🌍", date:"May 2026", src:"Henley Passport Index", type:"announcement", title:"Indian Passport Drops to 78th Rank — Visa-Free Access Now 55 Countries", excerpt:"The Indian passport fell from 75th to 78th in the Henley Index for May 2026. Indians now have visa-free or visa-on-arrival access to 55 countries, down from 57 last year, gaining Malaysia and Kazakhstan but losing Iran and others.", link:"https://www.travelandtourworld.com/news/article/indian-passport-ranking-2026-full-list-of-56-visa-free-and-visa-on-arrival-countries-for-indian-citizens/" },
-  { id:"us-asylum-fee", country:"USA", flag:"🇺🇸", date:"May 29, 2026", src:"Business Standard", type:"policy", title:"US Asylum Processing Fee Changes Take Effect May 29 — Indians Affected", excerpt:"New US provisions linked to asylum processing come into force on May 29, 2026, introducing annual asylum-related fees with consequences for non-payment. Indian applicants on long-term US processes must take note.", link:"https://www.business-standard.com/immigration/immigration-visa-changes-in-may-2026-us-uk-canada-europe-updates-126050100331_1.html" },
-  { id:"uae-property-residency", country:"UAE", flag:"🇦🇪", date:"May 2026", src:"Business Standard", type:"policy", title:"UAE Eases Property Value Rule for 2-Year Investor Visa — Good News for Indians", excerpt:"Dubai eased the minimum property value requirement for the 2-year investor residence visa, widening access for foreign investors including Indians. The Golden Visa routes remain unchanged.", link:"https://www.business-standard.com/immigration/immigration-visa-changes-in-may-2026-us-uk-canada-europe-updates-126050100331_1.html" },
-  { id:"saudi-hajj-ban", country:"Saudi Arabia", flag:"🇸🇦", date:"May 2026", src:"Business Standard", type:"restriction", title:"Saudi Arabia Bans Visit Visa Holders from Makkah During Hajj Season", excerpt:"Individuals holding visit visas cannot enter or remain in Makkah during Hajj 2026. Umrah visas cannot be extended into the Hajj season. Indian pilgrims must exit within specified timelines.", link:"https://www.business-standard.com/immigration/immigration-visa-changes-in-may-2026-us-uk-canada-europe-updates-126050100331_1.html" },
-  { id:"us-fifa-pass", country:"USA", flag:"🇺🇸", date:"Mar 2026", src:"BusinessToday", type:"announcement", title:"US Launches FIFA Pass — Priority Visa Slots for 2026 World Cup Ticket Holders", excerpt:"The Trump administration launched the FIFA Prioritised Appointment Scheduling System (FIFA Pass), giving confirmed World Cup ticket holders priority B1/B2 visa interview slots to cut long wait times.", link:"https://www.businesstoday.in/nri/visa/story/global-visa-updates-2026-how-indian-travellers-will-be-affected-check-all-visa-changes-here-520465-2026-03-13" },
-  { id:"armenia-visa-free", country:"Other", flag:"🇦🇲", date:"Jan–Jul 2026", src:"BusinessToday", type:"announcement", title:"Armenia Offers Visa-Free Entry for Indians with US/EU/GCC Residence Permits", excerpt:"Armenia introduced a temporary visa-free window for Indians holding valid residence permits from the US, EU, Schengen, or GCC countries. They can enter Armenia visa-free for up to 180 days between Jan 1 and Jul 1, 2026.", link:"https://www.businesstoday.in/nri/visa/story/global-visa-updates-2026-how-indian-travellers-will-be-affected-check-all-visa-changes-here-520465-2026-03-13" },
-  { id:"uk-digital-evisa", country:"UK", flag:"🇬🇧", date:"Mar 2026", src:"BusinessToday", type:"policy", title:"UK Closes Chapter on Physical Visa Stickers — Goes Fully Digital", excerpt:"The United Kingdom has officially eliminated physical visa labels (stickers) in passports. All UK visas for Indians are now eVisas, and airlines can refuse boarding to passengers without a digital visa linked to their passport.", link:"https://www.businesstoday.in/nri/visa/story/global-visa-updates-2026-how-indian-travellers-will-be-affected-check-all-visa-changes-here-520465-2026-03-13" },
-  { id:"uae-voa-expansion", country:"UAE", flag:"🇦🇪", date:"Feb 2026", src:"Gulf News", type:"announcement", title:"UAE Expands Visa-on-Arrival for Indians Holding Permits from 9 Countries", excerpt:"Indians holding valid visas or residence permits from the US, UK, EU, Singapore, Japan, South Korea, Australia, New Zealand, or Canada are now eligible for UAE visa-on-arrival. The expansion took effect February 2026.", link:"https://gulfnews.com/business/tourism/uae-expands-visa-rules-for-indian-travellers-families-1.500037317" },
-  { id:"malaysia-visa-free", country:"Other", flag:"🇲🇾", date:"2026", src:"Gulf News / Henley", type:"announcement", title:"Malaysia Now Visa-Free for Indians — 30-Day Stay with Digital Arrival Card", excerpt:"Malaysia joined the visa-free list for Indian passport holders in 2026, offering a 30-day stay. Travellers must complete a digital arrival card before entry. This was a major gain in the Henley Index update.", link:"https://gulfnews.com/world/asia/india/visa-free-travel-map-changes-for-indian-passport-holders-in-2026-2-added-4-lost-1.500414392" },
-  { id:"kazakhstan-visa-free", country:"Other", flag:"🇰🇿", date:"2026", src:"Gulf News / Henley", type:"announcement", title:"Kazakhstan Added to Visa-Free List for Indian Passport Holders", excerpt:"Kazakhstan was added to India's visa-free access list in 2026 as part of a strategic diplomatic push in Central Asia, per the latest Henley Passport Index update.", link:"https://gulfnews.com/world/asia/india/visa-free-travel-map-changes-for-indian-passport-holders-in-2026-2-added-4-lost-1.500414392" },
-  { id:"iran-visa-suspended", country:"Other", flag:"🇮🇷", date:"Late 2025", src:"Gulf News", type:"restriction", title:"Iran Suspends Visa-Free Entry for Indians Citing Security Concerns", excerpt:"Iran suspended visa-free entry for Indian nationals in late 2025 due to security concerns and trafficking scams targeting Indian job-seekers. Indians now require a visa before travelling to Iran.", link:"https://gulfnews.com/world/asia/india/visa-free-travel-map-changes-for-indian-passport-holders-in-2026-2-added-4-lost-1.500414392" },
-  { id:"oci-rules-2026", country:"Other", flag:"🇮🇳", date:"Apr 2026", src:"VisaVerge", type:"policy", title:"India Tightens OCI Card Rules: $275 Fee & 3-Month Passport Update Deadline", excerpt:"India updated OCI rules setting a USD 275 fee for fresh applications, requiring most cardholders to update passport details within 3 months of receiving a new foreign passport, and removing the 6-month stay requirement.", link:"https://www.visaverge.com/news/india-tightens-oci-card-rules-with-new-fees-and-3-month-passport-update-deadline/" },
-  { id:"uae-ai-visa", country:"UAE", flag:"🇦🇪", date:"Feb 2026", src:"Travel and Tour World", type:"announcement", title:"UAE Launches AI Specialist Visa — Indians in Tech Can Apply", excerpt:"UAE introduced four new visa categories including the AI Specialist Visa targeting machine learning engineers, data scientists, and robotics experts. Indian tech professionals may qualify without a local sponsor if they meet high-skill benchmarks.", link:"https://www.travelandtourworld.com/news/article/uae-now-joins-india-us-uk-canada-australia-japan-more-new-visa-rules-for-skilled-workers-ai-experts-and-travelers-in-2026/" },
-  { id:"france-transit", country:"Schengen", flag:"🇫🇷", date:"2026", src:"GetVisaServices", type:"advisory", title:"France Removes Airport Transit Visa Requirement for Indians", excerpt:"Indian passport holders no longer need an Airport Transit Visa (ATV) when transiting through Paris Charles de Gaulle, as long as they remain in the international transit zone. This opens cheaper routing options for Indians.", link:"https://getvisaservices.in/6-important-visa-updates-india-2026/" },
-  { id:"japan-appointment", country:"Japan", flag:"🇯🇵", date:"Mar 2, 2026", src:"BusinessToday", type:"policy", title:"Japan Makes Appointments Mandatory at All South India Consulates", excerpt:"As of March 2, 2026, walk-in applications are no longer accepted at Japan's consulates in Chennai and Hyderabad. All applicants must book slots through the official VFS appointment system in advance.", link:"https://www.businesstoday.in/nri/visa/story/global-visa-updates-2026-how-indian-travellers-will-be-affected-check-all-visa-changes-here-520465-2026-03-13" },
-  { id:"sri-lanka-nomad", country:"Other", flag:"🇱🇰", date:"2026", src:"SupremeForex", type:"announcement", title:"Sri Lanka Launches Digital Nomad Visa — Open to Indians", excerpt:"Sri Lanka introduced a Digital Nomad Visa in 2026, allowing remote workers including Indians to live in the country while working for overseas employers. The visa is part of Sri Lanka's push to attract high-spending long-stay visitors.", link:"https://www.supremeforex.com/blogs/travel-abroad/latest-visa-updates-for-indian-citizens-2026/" },
-  { id:"us-student-drop", country:"USA", flag:"🇺🇸", date:"2025–26", src:"BusinessToday", type:"restriction", title:"US Student Visas for Indians Drop 69% — Social Media Vetting Blamed", excerpt:"US student visa approvals for Indian nationals dropped 69% from 41,000 to approximately 12,000. Stricter social media vetting during Trump administration's immigration crackdown is widely cited as the primary cause.", link:"https://www.businesstoday.in/nri/visa/story/global-visa-updates-2026-how-indian-travellers-will-be-affected-check-all-visa-changes-here-520465-2026-03-13" },
-  { id:"uk-study-permits", country:"UK", flag:"🇬🇧", date:"2025", src:"BusinessToday", type:"advisory", title:"Indians Top UK Visas in 2025 with Over 95,000 Study Permits", excerpt:"Indian nationals remain the top recipients of UK study permits, with over 95,000 issued in 2025, leading graduate and skilled worker visa routes despite tightening rules on student dependants.", link:"https://www.businesstoday.in/nri/visa/story/global-visa-updates-2026-how-indian-travellers-will-be-affected-check-all-visa-changes-here-520465-2026-03-13" },
-  { id:"schengen-fee-90", country:"Schengen", flag:"🇪🇺", date:"Feb 2026", src:"European Commission", type:"fee", title:"Schengen Visa Fee Rises to €90 for Indian Adults from February 2026", excerpt:"The EU increased the Schengen short-stay visa fee from €80 to €90 for adults. For Indians, this adds approximately ₹850 to the cost of applying to visit any of the 27 Schengen zone countries.", link:"#" },
+  { id:"henley-2026", country:"Other", flag:"🌍", date:"May 2026", src:"Henley Passport Index", type:"announcement", title:"Indian Passport at 78th Rank — Visa-Free Access Now 55 Countries", excerpt:"The Indian passport fell to 78th in the Henley Index for May 2026. Indians have visa-free or visa-on-arrival access to 55 countries, gaining Malaysia and Kazakhstan but losing Iran and others.", link:"https://www.travelandtourworld.com/news/article/indian-passport-ranking-2026-full-list-of-56-visa-free-and-visa-on-arrival-countries-for-indian-citizens/" },
+  { id:"us-asylum-fee", country:"USA", flag:"🇺🇸", date:"May 29, 2026", src:"Business Standard", type:"policy", title:"US Asylum Processing Fee Provisions Take Effect — Indians Affected", excerpt:"New US provisions linked to asylum processing came into force on May 29, 2026, introducing annual fees with consequences for non-payment. Indian applicants on long-term US processes must take note.", link:"https://www.business-standard.com/immigration/immigration-visa-changes-in-may-2026-us-uk-canada-europe-updates-126050100331_1.html" },
+  { id:"uae-property", country:"UAE", flag:"🇦🇪", date:"May 2026", src:"Business Standard", type:"policy", title:"UAE Eases Property Value Rule for 2-Year Investor Visa", excerpt:"Dubai eased the minimum property value requirement for the 2-year investor residence visa, widening access for foreign investors including Indians. The Golden Visa routes remain unchanged.", link:"https://www.business-standard.com/immigration/immigration-visa-changes-in-may-2026-us-uk-canada-europe-updates-126050100331_1.html" },
+  { id:"saudi-hajj", country:"Saudi Arabia", flag:"🇸🇦", date:"May 2026", src:"Business Standard", type:"restriction", title:"Saudi Arabia Bans Visit Visa Holders from Makkah During Hajj 2026", excerpt:"Individuals on visit visas cannot enter or remain in Makkah during Hajj 2026. Umrah visas cannot be extended into the Hajj season. Indian pilgrims must exit within specified timelines.", link:"https://www.business-standard.com/immigration/immigration-visa-changes-in-may-2026-us-uk-canada-europe-updates-126050100331_1.html" },
+  { id:"us-fifa", country:"USA", flag:"🇺🇸", date:"Mar 2026", src:"BusinessToday", type:"announcement", title:"US Launches FIFA Pass — Priority Visa Slots for 2026 World Cup Ticket Holders", excerpt:"The Trump administration launched the FIFA Prioritised Appointment Scheduling System (FIFA Pass), giving confirmed World Cup ticket holders priority B1/B2 visa interview slots to cut long wait times.", link:"https://www.businesstoday.in/nri/visa/story/global-visa-updates-2026-how-indian-travellers-will-be-affected-check-all-visa-changes-here-520465-2026-03-13" },
+  { id:"armenia", country:"Other", flag:"🇦🇲", date:"Jan–Jul 2026", src:"BusinessToday", type:"announcement", title:"Armenia Visa-Free for Indians with US/EU/GCC Residence Permits", excerpt:"Indians holding valid residence permits from the US, EU, Schengen, or GCC can enter Armenia visa-free for up to 180 days between January 1 and July 1, 2026.", link:"https://www.businesstoday.in/nri/visa/story/global-visa-updates-2026-how-indian-travellers-will-be-affected-check-all-visa-changes-here-520465-2026-03-13" },
+  { id:"uk-digital", country:"UK", flag:"🇬🇧", date:"Mar 2026", src:"BusinessToday", type:"policy", title:"UK Fully Digital — No More Physical Visa Stickers in Passports", excerpt:"The UK has eliminated physical visa stickers in passports. All UK visas for Indians are now digital eVisas. Airlines can refuse boarding without a valid eVisa linked to your passport.", link:"https://www.businesstoday.in/nri/visa/story/global-visa-updates-2026-how-indian-travellers-will-be-affected-check-all-visa-changes-here-520465-2026-03-13" },
+  { id:"uae-voa", country:"UAE", flag:"🇦🇪", date:"Feb 2026", src:"Gulf News", type:"announcement", title:"UAE Expands Visa-on-Arrival to Indians with Permits from 9 Countries", excerpt:"Indians holding valid visas or permits from the US, UK, EU, Singapore, Japan, South Korea, Australia, New Zealand, or Canada are now eligible for UAE visa-on-arrival from February 2026.", link:"https://gulfnews.com/business/tourism/uae-expands-visa-rules-for-indian-travellers-families-1.500037317" },
+  { id:"malaysia-free", country:"Other", flag:"🇲🇾", date:"2026", src:"Gulf News", type:"announcement", title:"Malaysia Now Visa-Free for Indians — 30-Day Stay with Digital Card", excerpt:"Malaysia joined the visa-free list for Indians in 2026, offering a 30-day stay. Travellers must complete a digital arrival card before entry. This was a major gain in the Henley Index update.", link:"https://gulfnews.com/world/asia/india/visa-free-travel-map-changes-for-indian-passport-holders-in-2026-2-added-4-lost-1.500414392" },
+  { id:"kazakhstan", country:"Other", flag:"🇰🇿", date:"2026", src:"Gulf News", type:"announcement", title:"Kazakhstan Added to Visa-Free List for Indian Passport Holders", excerpt:"Kazakhstan was added to India's visa-free access list in 2026 as part of a strategic diplomatic push in Central Asia, per the latest Henley Passport Index update.", link:"https://gulfnews.com/world/asia/india/visa-free-travel-map-changes-for-indian-passport-holders-in-2026-2-added-4-lost-1.500414392" },
+  { id:"iran-ban", country:"Other", flag:"🇮🇷", date:"Late 2025", src:"Gulf News", type:"restriction", title:"Iran Suspends Visa-Free Entry for Indians Over Security Concerns", excerpt:"Iran suspended visa-free entry for Indian nationals in late 2025 due to security concerns and trafficking scams targeting Indian job-seekers. A visa is now required before travel.", link:"https://gulfnews.com/world/asia/india/visa-free-travel-map-changes-for-indian-passport-holders-in-2026-2-added-4-lost-1.500414392" },
+  { id:"oci-2026", country:"Other", flag:"🇮🇳", date:"Apr 2026", src:"VisaVerge", type:"policy", title:"India OCI Card: New $275 Fee & 3-Month Passport Update Deadline", excerpt:"India updated OCI rules setting a USD 275 application fee, requiring most cardholders to update passport details within 3 months of a new foreign passport, and removing the 6-month residency rule.", link:"https://www.visaverge.com/news/india-tightens-oci-card-rules-with-new-fees-and-3-month-passport-update-deadline/" },
+  { id:"uae-ai-visa", country:"UAE", flag:"🇦🇪", date:"Feb 2026", src:"Travel & Tour World", type:"announcement", title:"UAE Launches AI Specialist Visa — Indian Tech Professionals Can Apply", excerpt:"UAE introduced the AI Specialist Visa for machine learning engineers, data scientists, and robotics experts. Indian tech professionals may qualify without a local sponsor if they meet high-skill benchmarks.", link:"https://www.travelandtourworld.com/news/article/uae-now-joins-india-us-uk-canada-australia-japan-more-new-visa-rules-for-skilled-workers-ai-experts-and-travelers-in-2026/" },
+  { id:"france-transit", country:"Schengen", flag:"🇫🇷", date:"2026", src:"GetVisaServices", type:"advisory", title:"France Removes Airport Transit Visa Requirement for Indians", excerpt:"Indians no longer need an Airport Transit Visa (ATV) when transiting through Paris Charles de Gaulle, if staying in the international transit zone. This opens cheaper routing options via France.", link:"https://getvisaservices.in/6-important-visa-updates-india-2026/" },
+  { id:"japan-appt", country:"Japan", flag:"🇯🇵", date:"Mar 2, 2026", src:"BusinessToday", type:"policy", title:"Japan Makes Appointments Mandatory at All South India Consulates", excerpt:"As of March 2, 2026, walk-in applications are no longer accepted at Japan's consulates in Chennai and Hyderabad. All applicants must book VFS appointments in advance.", link:"https://www.businesstoday.in/nri/visa/story/global-visa-updates-2026-how-indian-travellers-will-be-affected-check-all-visa-changes-here-520465-2026-03-13" },
+  { id:"sri-lanka-nomad", country:"Other", flag:"🇱🇰", date:"2026", src:"SupremeForex", type:"announcement", title:"Sri Lanka Launches Digital Nomad Visa Open to Indians", excerpt:"Sri Lanka introduced a Digital Nomad Visa allowing remote workers including Indians to live there while working for overseas employers — part of Sri Lanka's push for high-spending long-stay visitors.", link:"https://www.supremeforex.com/blogs/travel-abroad/latest-visa-updates-for-indian-citizens-2026/" },
+  { id:"us-student-drop", country:"USA", flag:"🇺🇸", date:"2025–26", src:"BusinessToday", type:"restriction", title:"US Student Visas for Indians Drop 69% — From 41K to Just 12K", excerpt:"US student visa approvals for Indians dropped 69% from 41,000 to approximately 12,000. Stricter social media vetting during the Trump administration's immigration crackdown is widely cited as the cause.", link:"https://www.businesstoday.in/nri/visa/story/global-visa-updates-2026-how-indian-travellers-will-be-affected-check-all-visa-changes-here-520465-2026-03-13" },
+  { id:"schengen-fee", country:"Schengen", flag:"🇪🇺", date:"Feb 2026", src:"European Commission", type:"fee", title:"Schengen Visa Fee Rises to €90 for Indian Adults", excerpt:"The EU increased the Schengen short-stay visa fee from €80 to €90 for adults. For Indians this adds approximately ₹850 to the cost of applying to any of the 27 Schengen zone countries.", link:"https://www.businesstoday.in/nri/visa/story/global-visa-updates-2026-how-indian-travellers-will-be-affected-check-all-visa-changes-here-520465-2026-03-13" },
+  { id:"uk-study", country:"UK", flag:"🇬🇧", date:"2025", src:"BusinessToday", type:"advisory", title:"Indians Top UK Visas with 95,000+ Study Permits in 2025", excerpt:"Indian nationals remain the top recipients of UK study permits with over 95,000 issued in 2025, leading graduate and skilled worker visa routes despite tighter rules on student dependants.", link:"https://www.businesstoday.in/nri/visa/story/global-visa-updates-2026-how-indian-travellers-will-be-affected-check-all-visa-changes-here-520465-2026-03-13" },
 ];
 
-const tagLabels = { policy:"Policy Change", fee:"Fee Update", advisory:"Advisory", restriction:"Restriction", announcement:"Announcement" };
-const tagClasses = { policy:"tag-policy", fee:"tag-fee", advisory:"tag-advisory", restriction:"tag-restriction", announcement:"tag-announcement" };
-
-let currentType = "all", currentCountry = "all", searchQ = "", currentPage = 1;
-const PER_PAGE = 8;
+const tagLabels = {policy:"Policy Change",fee:"Fee Update",advisory:"Advisory",restriction:"Restriction",announcement:"Announcement"};
+const tagClasses = {policy:"tag-policy",fee:"tag-fee",advisory:"tag-advisory",restriction:"tag-restriction",announcement:"tag-announcement"};
+let currentType="all", currentCountry="all", searchQ="", currentPage=1;
+const PER_PAGE=8;
 
 function getFiltered() {
-  return ARCHIVE.filter(a => {
-    const cOk = currentCountry === "all" || a.country === currentCountry;
-    const tOk = currentType === "all" || a.type === currentType;
-    const sOk = !searchQ || (a.title + a.excerpt + a.country).toLowerCase().includes(searchQ);
+  return ARCHIVE.filter(a=>{
+    const cOk = currentCountry==="all" || a.country===currentCountry;
+    const tOk = currentType==="all" || a.type===currentType;
+    const sOk = !searchQ || (a.title+" "+a.excerpt+" "+a.country).toLowerCase().includes(searchQ);
     return cOk && tOk && sOk;
   });
 }
@@ -421,14 +365,11 @@ function renderArchive() {
   const filtered = getFiltered();
   const page = filtered.slice((currentPage-1)*PER_PAGE, currentPage*PER_PAGE);
   const list = document.getElementById("archiveList");
-
   if (!filtered.length) {
-    list.innerHTML = `<div style="text-align:center;padding:40px;color:var(--text-muted);">No results found. Try a different search or filter.</div>`;
-    document.getElementById("pagination").innerHTML = "";
-    return;
+    list.innerHTML=`<div style="text-align:center;padding:40px;color:var(--text-muted);">No results found. Try a different search or filter.</div>`;
+    document.getElementById("pagination").innerHTML=""; return;
   }
-
-  list.innerHTML = page.map(a => `
+  list.innerHTML = page.map(a=>`
     <a class="art-card" href="${a.link}" target="_blank" rel="noopener" id="${a.id}">
       <div class="art-flag">${a.flag}</div>
       <div class="art-body">
@@ -442,47 +383,31 @@ function renderArchive() {
         <span class="art-tag ${tagClasses[a.type]}">${tagLabels[a.type]}</span>
       </div>
     </a>`).join("");
-
-  const total = Math.ceil(filtered.length / PER_PAGE);
-  const pg = document.getElementById("pagination");
-  pg.innerHTML = "";
-  for (let i = 1; i <= total; i++) {
-    const b = document.createElement("button");
-    b.className = "page-btn" + (i === currentPage ? " active" : "");
-    b.textContent = i;
-    b.onclick = () => { currentPage = i; renderArchive(); window.scrollTo({top:500,behavior:"smooth"}); };
+  const total=Math.ceil(filtered.length/PER_PAGE);
+  const pg=document.getElementById("pagination"); pg.innerHTML="";
+  for(let i=1;i<=total;i++){
+    const b=document.createElement("button");
+    b.className="page-btn"+(i===currentPage?" active":"");
+    b.textContent=i;
+    b.onclick=()=>{ currentPage=i; renderArchive(); window.scrollTo({top:500,behavior:"smooth"}); };
     pg.appendChild(b);
   }
 }
 
-document.getElementById("filterTabs").addEventListener("click", e => {
-  if (!e.target.classList.contains("tab")) return;
-  document.querySelectorAll(".tab").forEach(t => t.classList.remove("active"));
+document.getElementById("filterTabs").addEventListener("click",e=>{
+  if(!e.target.classList.contains("tab")) return;
+  document.querySelectorAll(".tab").forEach(t=>t.classList.remove("active"));
   e.target.classList.add("active");
-  currentType = e.target.dataset.f;
-  currentPage = 1; renderArchive();
+  currentType=e.target.dataset.f; currentPage=1; renderArchive();
 });
-
-function filterCountry(c, el) {
-  document.querySelectorAll(".country-btn").forEach(b => b.classList.remove("active"));
-  el.classList.add("active");
-  currentCountry = c; currentPage = 1; renderArchive();
+function filterCountry(c,el){
+  document.querySelectorAll(".country-btn").forEach(b=>b.classList.remove("active"));
+  el.classList.add("active"); currentCountry=c; currentPage=1; renderArchive();
 }
+function filterArchive(){ searchQ=document.getElementById("searchInput").value.trim().toLowerCase(); currentPage=1; renderArchive(); }
+function setSearch(q){ document.getElementById("searchInput").value=q; searchQ=q.toLowerCase(); currentPage=1; renderArchive(); window.scrollTo({top:300,behavior:"smooth"}); }
 
-function filterArchive() {
-  searchQ = document.getElementById("searchInput").value.trim().toLowerCase();
-  currentPage = 1; renderArchive();
-}
-
-function setSearch(q) {
-  document.getElementById("searchInput").value = q;
-  searchQ = q.toLowerCase();
-  currentPage = 1; renderArchive();
-  window.scrollTo({top:300,behavior:"smooth"});
-}
-
-/* ── INIT ── */
-loadRSS();
+loadFeeds();
 renderArchive();
 </script>
 </body>
