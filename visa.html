@@ -31,9 +31,18 @@
     .hero-badge { display: inline-flex; align-items: center; gap: 6px; background: rgba(255,255,255,0.15); backdrop-filter: blur(8px); color: #fff; font-size: 0.8rem; font-weight: 600; padding: 6px 14px; border-radius: 20px; margin-bottom: 20px; border: 1px solid rgba(255,255,255,0.25); }
     .hero h1 { font-family: 'Nunito', sans-serif; font-size: clamp(2rem, 5vw, 3.2rem); font-weight: 900; color: #fff; line-height: 1.15; margin-bottom: 12px; }
     .hero p { color: rgba(255,255,255,0.85); font-size: 1.05rem; margin-bottom: 32px; }
-    .hero-search { display: flex; max-width: 520px; margin: 0 auto 28px; background: #fff; border-radius: 14px; overflow: hidden; box-shadow: 0 8px 32px rgba(0,0,0,0.25); position: relative; z-index: 10; }
+    .hero-search { display: flex; max-width: 520px; margin: 0 auto 28px; background: #fff; border-radius: 14px; overflow: visible; box-shadow: 0 8px 32px rgba(0,0,0,0.25); position: relative; z-index: 100; }
     .hero-search input { flex: 1; border: none; outline: none; padding: 18px 20px; font-size: 1rem; color: var(--text); font-family: 'Inter', sans-serif; }
-    .hero-search button { background: var(--orange); color: #fff; border: none; cursor: pointer; padding: 18px 28px; font-size: 0.95rem; font-weight: 700; font-family: 'Inter', sans-serif; transition: background 0.2s; }
+    #suggestBox { position:absolute; top:calc(100% + 4px); left:0; right:0; background:#fff; border-radius:12px; box-shadow:0 12px 40px rgba(0,0,0,0.18); z-index:200; max-height:340px; overflow-y:auto; display:none; }
+    .suggest-item { display:flex; align-items:center; gap:12px; padding:12px 18px; cursor:pointer; border-bottom:1px solid var(--border); transition:background 0.15s; }
+    .suggest-item:last-child { border-bottom:none; border-radius:0 0 12px 12px; }
+    .suggest-item:first-child { border-radius:12px 12px 0 0; }
+    .suggest-item:hover, .suggest-item.si-active { background:var(--blue-light); }
+    .suggest-flag { width:36px; height:26px; border-radius:4px; object-fit:cover; flex-shrink:0; box-shadow:0 1px 3px rgba(0,0,0,0.15); }
+    .suggest-name { font-weight:700; font-size:0.92rem; color:var(--text); flex:1; }
+    .suggest-label { font-size:0.74rem; color:var(--text-muted); background:var(--bg); padding:2px 8px; border-radius:20px; }
+    .suggest-price { font-weight:800; font-size:0.88rem; color:var(--blue); }
+    .hero-search button { background: var(--orange); color: #fff; border: none; cursor: pointer; padding: 18px 28px; font-size: 0.95rem; font-weight: 700; font-family: 'Inter', sans-serif; transition: background 0.2s; border-radius: 0 14px 14px 0; }
     .hero-search button:hover { background: #e85a24; }
     .section { padding: 56px 24px; max-width: 1200px; margin: 0 auto; }
     .section-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 28px; }
@@ -117,8 +126,9 @@
     <h1>Global Visa Made Easy.</h1>
     <p>Fast, reliable visa services trusted by thousands of Indian travellers</p>
     <div class="hero-search">
-      <input type="text" id="heroSearch" placeholder="Search destination e.g. Dubai, UK, USA…" autocomplete="off" />
+      <input type="text" id="heroSearch" placeholder="Search destination e.g. Dubai, UK, USA…" autocomplete="off" oninput="liveSearch(this.value)" onkeydown="searchKeyNav(event)" />
       <button onclick="doSearch()">Search</button>
+      <div id="suggestBox"></div>
     </div>
   </div>
 </section>
@@ -355,22 +365,72 @@
     }
   });
 
-  function doSearch() {
-    const q = document.getElementById("heroSearch").value.trim().toLowerCase();
-    if (!q) { renderCards("all"); return; }
+  let _sidx = -1;
+
+  function liveSearch(raw) {
+    const q = (raw || "").trim().toLowerCase();
+    const box = document.getElementById("suggestBox");
+    _sidx = -1;
+
+    // Always filter the grid instantly
+    const filtered = q ? destinations.filter(d => d.name.toLowerCase().includes(q)) : destinations;
     document.querySelectorAll(".tab").forEach(t => t.classList.remove("active"));
     document.querySelector(".tab[data-filter='all']").classList.add("active");
-    const filtered = destinations.filter(d => d.name.toLowerCase().includes(q));
     const grid = document.getElementById("destGrid");
     if (!filtered.length) {
-      grid.innerHTML = `<p style="grid-column:1/-1;color:var(--text-muted);padding:24px 0;">No destinations found for "<strong>${q}</strong>". Try a different search.</p>`;
-    } else {
-      grid.innerHTML = filtered.map(cardHTML).join("");
+      grid.innerHTML = '<p style="grid-column:1/-1;color:var(--text-muted);padding:24px 0;">No destinations found. Try a different search.</p>';
+      box.style.display = "none";
+      return;
     }
-    document.querySelector(".destinations-grid").scrollIntoView({ behavior:"smooth", block:"start" });
+    grid.innerHTML = filtered.map(cardHTML).join("");
+
+    // Dropdown — top 6 matches
+    if (!q) { box.style.display = "none"; return; }
+    const top = filtered.slice(0, 6);
+    box.innerHTML = top.map(d =>
+      `<div class="suggest-item" onclick="window.location.href='${d.href}'">` +
+      `<img class="suggest-flag" src="https://flagcdn.com/80x60/${d.code}.png" onerror="this.style.display='none'" />` +
+      `<span class="suggest-name">${d.name} Visa</span>` +
+      `<span class="suggest-label">${d.label}</span>` +
+      `<span class="suggest-price">${d.price === "Free" ? "Free" : d.price}</span>` +
+      `</div>`
+    ).join("");
+    box.style.display = "block";
   }
 
-  document.getElementById("heroSearch").addEventListener("keydown", e => { if (e.key === "Enter") doSearch(); });
+  function searchKeyNav(e) {
+    const items = document.querySelectorAll(".suggest-item");
+    if (!items.length) return;
+    if (e.key === "ArrowDown") {
+      e.preventDefault();
+      _sidx = Math.min(_sidx + 1, items.length - 1);
+      items.forEach((el,i) => el.classList.toggle("si-active", i === _sidx));
+    } else if (e.key === "ArrowUp") {
+      e.preventDefault();
+      _sidx = Math.max(_sidx - 1, 0);
+      items.forEach((el,i) => el.classList.toggle("si-active", i === _sidx));
+    } else if (e.key === "Enter") {
+      e.preventDefault();
+      if (_sidx >= 0 && items[_sidx]) items[_sidx].click();
+      else doSearch();
+    } else if (e.key === "Escape") {
+      document.getElementById("suggestBox").style.display = "none";
+    }
+  }
+
+  document.addEventListener("click", e => {
+    if (!document.querySelector(".hero-search").contains(e.target)) {
+      document.getElementById("suggestBox").style.display = "none";
+    }
+  });
+
+  function doSearch() {
+    liveSearch(document.getElementById("heroSearch").value);
+    document.getElementById("suggestBox").style.display = "none";
+    const grid = document.querySelector(".destinations-grid");
+    if (grid) grid.scrollIntoView({ behavior:"smooth", block:"start" });
+  }
+
   renderCards("all");
 </script>
 </body>
