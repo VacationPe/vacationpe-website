@@ -97,6 +97,78 @@
     .footer-logo { font-family:'Nunito',sans-serif; font-size:1.3rem; font-weight:900; color:#fff; margin-bottom:6px; }
     .footer-logo span { color:var(--orange); }
     .news-placeholder { display:flex; align-items:center; justify-content:center; flex-direction:column; gap:8px; background:var(--bg); border:1.5px dashed var(--border); border-radius:14px; padding:40px; grid-column:1/-1; color:var(--text-muted); text-align:center; }
+
+    /* ===== MODAL OVERLAY ===== */
+    .modal-overlay {
+      position:fixed; inset:0; background:rgba(15,25,35,0.7); z-index:1000;
+      display:none; align-items:center; justify-content:center;
+      padding:16px; backdrop-filter:blur(4px);
+    }
+    .modal-overlay.open { display:flex; }
+    .modal {
+      background:#fff; border-radius:20px; width:100%; max-width:680px;
+      max-height:92vh; overflow-y:auto; box-shadow:0 24px 64px rgba(0,0,0,0.25);
+      animation:slideUp 0.3s ease;
+    }
+    @keyframes slideUp { from{opacity:0;transform:translateY(30px)} to{opacity:1;transform:translateY(0)} }
+    .modal-header {
+      background:linear-gradient(135deg,#0f4c81,#1565c0);
+      padding:24px 28px 20px;
+      border-radius:20px 20px 0 0;
+      display:flex; justify-content:space-between; align-items:flex-start;
+    }
+    .modal-header h2 { font-family:'Nunito',sans-serif; font-size:1.25rem; font-weight:900; color:#fff; margin-bottom:4px; }
+    .modal-header p { color:rgba(255,255,255,0.75); font-size:0.83rem; }
+    .modal-close { background:rgba(255,255,255,0.15); border:none; color:#fff; width:32px; height:32px; border-radius:50%; cursor:pointer; font-size:1.1rem; display:flex; align-items:center; justify-content:center; flex-shrink:0; transition:background 0.2s; }
+    .modal-close:hover { background:rgba(255,255,255,0.3); }
+    .modal-body { padding:24px 28px; }
+    .form-section { margin-bottom:24px; }
+    .form-section-title {
+      font-family:'Nunito',sans-serif; font-weight:800; font-size:0.88rem;
+      text-transform:uppercase; letter-spacing:0.5px; color:var(--blue);
+      margin-bottom:14px; padding-bottom:8px;
+      border-bottom:2px solid var(--blue-light);
+      display:flex; align-items:center; gap:6px;
+    }
+    .form-row { display:grid; grid-template-columns:1fr 1fr; gap:14px; }
+    .form-row.single { grid-template-columns:1fr; }
+    .form-row.triple { grid-template-columns:1fr 1fr 1fr; }
+    @media(max-width:520px) { .form-row, .form-row.triple { grid-template-columns:1fr; } }
+    .form-group { display:flex; flex-direction:column; gap:5px; }
+    .form-group label { font-size:0.8rem; font-weight:600; color:var(--text); }
+    .form-group label .req { color:#ef4444; margin-left:2px; }
+    .form-group input, .form-group select, .form-group textarea {
+      border:1.5px solid var(--border); border-radius:9px;
+      padding:10px 13px; font-size:0.88rem; font-family:'Inter',sans-serif;
+      color:var(--text); background:#fff; transition:border-color 0.2s;
+      width:100%;
+    }
+    .form-group input:focus, .form-group select:focus, .form-group textarea:focus {
+      outline:none; border-color:var(--blue); box-shadow:0 0 0 3px rgba(0,119,204,0.1);
+    }
+    .form-group textarea { resize:vertical; min-height:80px; }
+    .radio-group { display:flex; gap:16px; margin-top:4px; }
+    .radio-option { display:flex; align-items:center; gap:6px; cursor:pointer; font-size:0.88rem; font-weight:500; }
+    .radio-option input[type="radio"] { accent-color:var(--blue); width:15px; height:15px; cursor:pointer; }
+    .conditional-block { background:var(--bg); border:1.5px solid var(--border); border-radius:10px; padding:14px; margin-top:10px; display:none; }
+    .conditional-block.show { display:block; }
+    .submit-btn {
+      width:100%; background:linear-gradient(135deg,var(--blue),var(--blue-dark));
+      color:#fff; border:none; border-radius:12px; padding:14px;
+      font-size:1rem; font-weight:800; font-family:'Nunito',sans-serif;
+      cursor:pointer; transition:all 0.2s; margin-top:4px;
+      display:flex; align-items:center; justify-content:center; gap:8px;
+    }
+    .submit-btn:hover { transform:translateY(-2px); box-shadow:0 8px 24px rgba(0,119,204,0.35); }
+    .submit-note { text-align:center; font-size:0.75rem; color:var(--text-muted); margin-top:8px; }
+    .success-msg {
+      display:none; background:linear-gradient(135deg,#dcfce7,#bbf7d0);
+      border:1.5px solid #86efac; border-radius:14px; padding:24px;
+      text-align:center; margin-top:8px;
+    }
+    .success-msg.show { display:block; }
+    .success-msg h3 { font-family:'Nunito',sans-serif; font-weight:900; color:#166534; font-size:1.1rem; margin-bottom:6px; }
+    .success-msg p { color:#166534; font-size:0.85rem; }
   </style>
 </head>
 <body>
@@ -112,7 +184,7 @@
     <a href="blog.html">Blog</a>
     <a href="business.html">Business</a>
     <a href="visa-update.html" class="active">Visa Update</a>
-    <a href="apply.html" class="nav-cta">Apply Now</a>
+    <a href="#" onclick="openForm('','🛂');return false;" class="nav-cta">Apply Now</a>
   </div>
 </nav>
 
@@ -193,7 +265,7 @@
     <div style="background:linear-gradient(135deg,#0f4c81,#1565c0);border-radius:14px;padding:20px;">
       <h3 style="color:#fff;font-family:'Nunito',sans-serif;font-weight:800;margin-bottom:8px;">Need Visa Help?</h3>
       <p style="color:rgba(255,255,255,0.8);font-size:0.82rem;line-height:1.6;margin-bottom:14px;">Our visa experts are available 7 days a week to assist with your application.</p>
-      <a href="https://wa.me/919999999999" style="display:block;background:#25d366;color:#fff;text-align:center;padding:10px;border-radius:8px;font-weight:700;text-decoration:none;font-size:0.88rem;">💬 WhatsApp Us Now</a>
+      <button onclick="openForm('','🛂')" style="display:block;width:100%;background:#25d366;color:#fff;text-align:center;padding:10px;border-radius:8px;font-weight:700;text-decoration:none;font-size:0.88rem;border:none;cursor:pointer;font-family:'Inter',sans-serif;">🛂 Enquire Now</button>
     </div>
   </aside>
 </div>
@@ -203,24 +275,176 @@
   <p style="margin-top:4px;">© 2026 VacationPe · Visa news for Indian passport holders</p>
 </footer>
 
-<script>
-/* ── GOOGLE NEWS RSS via rss2json (free tier, 1000 req/day) ── */
-const RSS2JSON = "https://api.rss2json.com/v1/api.json?rss_url=";
+<!-- ===== VISA ENQUIRY MODAL ===== -->
+<div class="modal-overlay" id="modalOverlay" onclick="handleOverlayClick(event)">
+  <div class="modal" id="modalBox">
+    <div class="modal-header">
+      <div>
+        <h2 id="modalTitle">🛂 Visa Enquiry Form</h2>
+        <p id="modalSubtitle">Fill in your details — our expert will call you within 2 hours</p>
+      </div>
+      <button class="modal-close" onclick="closeForm()">✕</button>
+    </div>
+    <div class="modal-body">
+      <form id="visaForm" onsubmit="submitForm(event)">
 
-// Google News RSS — searches that return fresh visa news for Indians
+        <!-- PERSONAL DETAILS -->
+        <div class="form-section">
+          <div class="form-section-title">👤 Personal Details</div>
+          <div class="form-row">
+            <div class="form-group">
+              <label>Full Name <span class="req">*</span></label>
+              <input type="text" id="f_name" placeholder="As per passport" required />
+            </div>
+            <div class="form-group">
+              <label>Mobile Number <span class="req">*</span></label>
+              <input type="tel" id="f_mobile" placeholder="+91 XXXXX XXXXX" required />
+            </div>
+          </div>
+          <div class="form-row" style="margin-top:14px;">
+            <div class="form-group">
+              <label>Email Address <span class="req">*</span></label>
+              <input type="email" id="f_email" placeholder="your@email.com" required />
+            </div>
+            <div class="form-group">
+              <label>City of Residence</label>
+              <input type="text" id="f_city" placeholder="e.g. Jaipur, Delhi, Mumbai" />
+            </div>
+          </div>
+          <div class="form-row single" style="margin-top:14px;">
+            <div class="form-group">
+              <label>Nationality <span class="req">*</span></label>
+              <select id="f_nationality" required>
+                <option value="">Select nationality</option>
+                <option value="Indian" selected>Indian</option>
+                <option value="NRI - USA">NRI – USA</option>
+                <option value="NRI - UK">NRI – UK</option>
+                <option value="NRI - Canada">NRI – Canada</option>
+                <option value="NRI - Australia">NRI – Australia</option>
+                <option value="NRI - UAE">NRI – UAE</option>
+                <option value="Other">Other</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <!-- TRAVEL DETAILS -->
+        <div class="form-section">
+          <div class="form-section-title">✈️ Travel Details</div>
+          <div class="form-row">
+            <div class="form-group">
+              <label>Destination Country <span class="req">*</span></label>
+              <input type="text" id="f_destination" placeholder="e.g. Dubai, UK, Australia" required />
+            </div>
+            <div class="form-group">
+              <label>Intended Travel Date</label>
+              <input type="date" id="f_traveldate" />
+            </div>
+          </div>
+          <div class="form-row" style="margin-top:14px;">
+            <div class="form-group">
+              <label>Number of Travelers</label>
+              <select id="f_travelers">
+                <option value="1">1 Person</option>
+                <option value="2">2 Persons</option>
+                <option value="3">3 Persons</option>
+                <option value="4">4 Persons</option>
+                <option value="5">5 Persons</option>
+                <option value="6+">6 or more</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label>Visa Type</label>
+              <select id="f_visatype">
+                <option value="">Select visa type</option>
+                <option value="Tourist Visa">Tourist Visa</option>
+                <option value="Business Visa">Business Visa</option>
+                <option value="Student Visa">Student Visa</option>
+                <option value="Work Visa">Work Visa</option>
+                <option value="Transit Visa">Transit Visa</option>
+                <option value="Medical Visa">Medical Visa</option>
+                <option value="Other">Other</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <!-- TRAVEL & VISA HISTORY -->
+        <div class="form-section">
+          <div class="form-section-title">🗂️ Travel & Visa History</div>
+          <div class="form-group" style="margin-bottom:16px;">
+            <label>Have you traveled internationally before?</label>
+            <div class="radio-group">
+              <label class="radio-option"><input type="radio" name="traveled" value="Yes"> Yes</label>
+              <label class="radio-option"><input type="radio" name="traveled" value="No"> No</label>
+            </div>
+          </div>
+          <div class="form-group" style="margin-bottom:16px;">
+            <label>Do you currently hold a valid visa for any other country?</label>
+            <div class="radio-group">
+              <label class="radio-option"><input type="radio" name="hasVisa" value="Yes"> Yes</label>
+              <label class="radio-option"><input type="radio" name="hasVisa" value="No"> No</label>
+            </div>
+            <div class="conditional-block" id="existingVisaBlock">
+              <div class="form-row triple">
+                <div class="form-group">
+                  <label>Country Name</label>
+                  <input type="text" id="f_existingCountry" placeholder="e.g. USA, UK" />
+                </div>
+                <div class="form-group">
+                  <label>Visa Type</label>
+                  <input type="text" id="f_existingVisaType" placeholder="e.g. B1/B2, Tier 2" />
+                </div>
+                <div class="form-group">
+                  <label>Visa Expiry Date</label>
+                  <input type="date" id="f_existingExpiry" />
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Any previous visa refusal / rejection?</label>
+            <div class="radio-group">
+              <label class="radio-option"><input type="radio" name="refused" value="Yes"> Yes</label>
+              <label class="radio-option"><input type="radio" name="refused" value="No"> No</label>
+            </div>
+            <div class="conditional-block" id="refusedBlock">
+              <div class="form-group">
+                <label>Please provide details of refusal</label>
+                <textarea id="f_refusalDetails" rows="3" placeholder="Country, year, reason (if known)…"></textarea>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ADDITIONAL INFO -->
+        <div class="form-section">
+          <div class="form-section-title">📝 Additional Information</div>
+          <div class="form-group">
+            <label>Message / Special Requirements</label>
+            <textarea id="f_message" rows="3" placeholder="Any specific requirements, urgent processing needed, group details, etc."></textarea>
+          </div>
+        </div>
+
+        <button type="submit" class="submit-btn">🚀 Get Visa Assistance</button>
+        <p class="submit-note">🔒 Your information is safe with us. Our expert will contact you within 2 hours.</p>
+
+        <div class="success-msg" id="successMsg">
+          <h3>✅ Enquiry Submitted Successfully!</h3>
+          <p>Thank you! Our visa expert will call or WhatsApp you within 2 hours.<br>You can also reach us directly at <strong>+91 9998952926</strong>.</p>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<script>
+/* ── GOOGLE NEWS RSS via rss2json ── */
+const RSS2JSON = "https://api.rss2json.com/v1/api.json?rss_url=";
 const GNEWS_FEEDS = [
-  {
-    label: "Google News – Visa India",
-    url: "https://news.google.com/rss/search?q=visa+india+indian+passport&hl=en-IN&gl=IN&ceid=IN:en"
-  },
-  {
-    label: "Google News – Immigration India",
-    url: "https://news.google.com/rss/search?q=immigration+visa+indian+travellers+2026&hl=en-IN&gl=IN&ceid=IN:en"
-  },
-  {
-    label: "Google News – Travel Visa",
-    url: "https://news.google.com/rss/search?q=visa+update+Indian+passport+holders&hl=en-IN&gl=IN&ceid=IN:en"
-  }
+  { label:"Google News – Visa India", url:"https://news.google.com/rss/search?q=visa+india+indian+passport&hl=en-IN&gl=IN&ceid=IN:en" },
+  { label:"Google News – Immigration India", url:"https://news.google.com/rss/search?q=immigration+visa+indian+travellers+2026&hl=en-IN&gl=IN&ceid=IN:en" },
+  { label:"Google News – Travel Visa", url:"https://news.google.com/rss/search?q=visa+update+Indian+passport+holders&hl=en-IN&gl=IN&ceid=IN:en" }
 ];
 
 function showSkeletons() {
@@ -239,7 +463,6 @@ async function loadNews() {
   const btn = document.getElementById("refreshBtn");
   btn.classList.add("spinning");
   let allItems = [];
-
   for (const feed of GNEWS_FEEDS) {
     try {
       const res = await fetch(`${RSS2JSON}${encodeURIComponent(feed.url)}&count=10`);
@@ -254,10 +477,8 @@ async function loadNews() {
         }));
         allItems = allItems.concat(items);
       }
-    } catch(e) { /* silent */ }
+    } catch(e) {}
   }
-
-  // Deduplicate by title similarity
   const seen = new Set();
   const unique = allItems.filter(item => {
     const key = item.title.toLowerCase().slice(0, 40);
@@ -277,7 +498,6 @@ async function loadNews() {
         <div class="rss-link">Read full article →</div>
       </a>`).join("");
   } else {
-    // Clean placeholder — NOT the archive
     document.getElementById("rssGrid").innerHTML = `
       <div class="news-placeholder">
         <div style="font-size:2rem;">📡</div>
@@ -289,23 +509,10 @@ async function loadNews() {
   btn.classList.remove("spinning");
 }
 
-// Google News titles come as "Headline - Source Name"
-function cleanGoogleTitle(title) {
-  return title.replace(/\s*-\s*[^-]+$/, "").trim();
-}
-function extractSource(title, author, fallback) {
-  const match = title.match(/-\s*([^-]+)$/);
-  return match ? match[1].trim() : (author || fallback);
-}
-function stripHTML(html) {
-  const d = document.createElement("div"); d.innerHTML = html;
-  return d.textContent || d.innerText || "";
-}
-function formatDate(str) {
-  if (!str) return "";
-  try { return new Date(str).toLocaleDateString("en-IN", {day:"numeric",month:"short",year:"numeric"}); }
-  catch { return ""; }
-}
+function cleanGoogleTitle(title) { return title.replace(/\s*-\s*[^-]+$/, "").trim(); }
+function extractSource(title, author, fallback) { const match = title.match(/-\s*([^-]+)$/); return match ? match[1].trim() : (author || fallback); }
+function stripHTML(html) { const d = document.createElement("div"); d.innerHTML = html; return d.textContent || d.innerText || ""; }
+function formatDate(str) { if (!str) return ""; try { return new Date(str).toLocaleDateString("en-IN", {day:"numeric",month:"short",year:"numeric"}); } catch { return ""; } }
 
 /* ── ARCHIVE ── */
 const ARCHIVE = [
@@ -374,6 +581,69 @@ document.getElementById("filterTabs").addEventListener("click",e=>{
 function filterCountry(c,el){document.querySelectorAll(".country-btn").forEach(b=>b.classList.remove("active"));el.classList.add("active");currentCountry=c;currentPage=1;renderArchive();}
 function filterArchive(){searchQ=document.getElementById("searchInput").value.trim().toLowerCase();currentPage=1;renderArchive();}
 function setSearch(q){document.getElementById("searchInput").value=q;searchQ=q.toLowerCase();currentPage=1;renderArchive();window.scrollTo({top:300,behavior:"smooth"});}
+
+/* ── MODAL ── */
+function openForm(country, flag) {
+  if (country) document.getElementById('f_destination').value = country;
+  document.getElementById('modalTitle').textContent = (flag || '🛂') + ' Visa Enquiry' + (country ? ' — ' + country : '');
+  document.getElementById('modalSubtitle').textContent = 'Fill in your details — our expert will contact you within 2 hours';
+  document.getElementById('successMsg').classList.remove('show');
+  document.getElementById('visaForm').style.display = 'block';
+  document.getElementById('modalOverlay').classList.add('open');
+  document.body.style.overflow = 'hidden';
+  ['f_name','f_mobile','f_email','f_city','f_traveldate','f_message','f_existingCountry','f_existingVisaType','f_existingExpiry','f_refusalDetails'].forEach(id => { const el = document.getElementById(id); if(el) el.value = ''; });
+  if (!country) document.getElementById('f_destination').value = '';
+  document.querySelectorAll('input[type="radio"]').forEach(r => r.checked = false);
+  document.querySelectorAll('.conditional-block').forEach(b => b.classList.remove('show'));
+}
+function closeForm() {
+  document.getElementById('modalOverlay').classList.remove('open');
+  document.body.style.overflow = '';
+}
+function handleOverlayClick(e) {
+  if (e.target === document.getElementById('modalOverlay')) closeForm();
+}
+document.querySelectorAll('input[type="radio"]').forEach(radio => {
+  radio.addEventListener('change', () => {
+    if (radio.name === 'hasVisa') document.getElementById('existingVisaBlock').classList.toggle('show', radio.value === 'Yes');
+    if (radio.name === 'refused') document.getElementById('refusedBlock').classList.toggle('show', radio.value === 'Yes');
+  });
+});
+function submitForm(e) {
+  e.preventDefault();
+  const name       = document.getElementById('f_name').value.trim();
+  const mobile     = document.getElementById('f_mobile').value.trim();
+  const email      = document.getElementById('f_email').value.trim();
+  const dest       = document.getElementById('f_destination').value.trim();
+  const nationality= document.getElementById('f_nationality').value;
+  const city       = document.getElementById('f_city').value.trim();
+  const tdate      = document.getElementById('f_traveldate').value;
+  const travelers  = document.getElementById('f_travelers').value;
+  const visatype   = document.getElementById('f_visatype').value;
+  const traveled   = document.querySelector('input[name="traveled"]:checked')?.value || 'Not specified';
+  const hasVisa    = document.querySelector('input[name="hasVisa"]:checked')?.value || 'Not specified';
+  const exCountry  = document.getElementById('f_existingCountry').value.trim();
+  const exType     = document.getElementById('f_existingVisaType').value.trim();
+  const exExpiry   = document.getElementById('f_existingExpiry').value;
+  const refused    = document.querySelector('input[name="refused"]:checked')?.value || 'Not specified';
+  const refDetails = document.getElementById('f_refusalDetails').value.trim();
+  const message    = document.getElementById('f_message').value.trim();
+
+  let text = `🛂 *VISA ENQUIRY — VacationPe*\n\n`;
+  text += `👤 *Personal Details*\n• Name: ${name}\n• Mobile: ${mobile}\n• Email: ${email}\n• Nationality: ${nationality}\n• City: ${city || 'Not specified'}\n\n`;
+  text += `✈️ *Travel Details*\n• Destination: ${dest}\n• Travel Date: ${tdate || 'Not specified'}\n• Travelers: ${travelers}\n• Visa Type: ${visatype || 'Not specified'}\n\n`;
+  text += `🗂️ *Travel & Visa History*\n• Traveled internationally before: ${traveled}\n• Holds valid visa: ${hasVisa}\n`;
+  if (hasVisa === 'Yes') text += `  - Country: ${exCountry || '-'} | Type: ${exType || '-'} | Expiry: ${exExpiry || '-'}\n`;
+  text += `• Previous refusal: ${refused}\n`;
+  if (refused === 'Yes') text += `  - Details: ${refDetails || '-'}\n`;
+  if (message) text += `\n📝 *Message*\n${message}`;
+
+  const waUrl = `https://api.whatsapp.com/send?phone=919998952926&text=${encodeURIComponent(text)}`;
+  window.open(waUrl, '_blank');
+  document.getElementById('visaForm').style.display = 'none';
+  document.getElementById('successMsg').classList.add('show');
+}
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeForm(); });
 
 loadNews();
 renderArchive();
