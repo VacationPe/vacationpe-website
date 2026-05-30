@@ -28,7 +28,7 @@
 
     /* ── NAV ── */
     nav {
-      position: sticky; top: 0; z-index: 100;
+      position: sticky; top: 0; z-index: 200;
       background: var(--white);
       border-bottom: 1px solid var(--border);
       padding: 0 24px;
@@ -57,11 +57,14 @@
       text-align: center;
       position: relative; overflow: hidden;
     }
+    /* FIX: pseudo-element must have pointer-events:none so inputs are clickable */
     .hero::before {
       content: '';
       position: absolute; inset: 0;
+      pointer-events: none;
       background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.04'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
     }
+    .hero-content { position: relative; z-index: 2; }
     .hero-badge {
       display: inline-flex; align-items: center; gap: 6px;
       background: rgba(255,255,255,0.15); backdrop-filter: blur(8px);
@@ -79,15 +82,18 @@
       display: flex; max-width: 520px; margin: 0 auto 28px;
       background: #fff; border-radius: 14px; overflow: hidden;
       box-shadow: 0 8px 32px rgba(0,0,0,0.25);
+      position: relative; z-index: 10;
     }
     .hero-search input {
       flex: 1; border: none; outline: none; padding: 18px 20px;
       font-size: 1rem; color: var(--text); font-family: 'Inter', sans-serif;
+      position: relative; z-index: 10; cursor: text;
     }
     .hero-search button {
       background: var(--orange); color: #fff; border: none; cursor: pointer;
       padding: 18px 28px; font-size: 0.95rem; font-weight: 700;
       font-family: 'Inter', sans-serif; transition: background 0.2s;
+      position: relative; z-index: 10;
     }
     .hero-search button:hover { background: #e85a24; }
 
@@ -135,14 +141,17 @@
       width: 44px; height: 44px; border-radius: 10px; display: flex; align-items: center; justify-content: center;
       font-size: 1.6rem; background: var(--bg);
     }
-    .dest-card .refund-tag {
-      position: absolute; top: 10px; right: 10px;
-      background: #fff3cd; color: #92660a; font-size: 0.65rem; font-weight: 700;
-      padding: 2px 7px; border-radius: 20px; border: 1px solid #fcd34d;
-    }
     .dest-card .country { font-weight: 700; font-size: 0.95rem; }
     .dest-card .visa-type { color: var(--text-muted); font-size: 0.78rem; }
-    .dest-card .price { font-weight: 800; font-size: 1rem; color: var(--blue); margin-top: auto; }
+    .dest-card .price {
+      font-weight: 800; font-size: 0.88rem; color: var(--blue); margin-top: auto;
+      line-height: 1.3;
+    }
+    .dest-card .price .starting {
+      display: block; font-size: 0.7rem; font-weight: 600; color: var(--text-muted); margin-bottom: 2px;
+    }
+    .dest-card .price .amount { font-size: 1rem; }
+    .dest-card .price .asterisk { font-size: 0.7rem; vertical-align: super; }
 
     /* ── BLOG SECTION ── */
     .blog-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 20px; }
@@ -199,9 +208,7 @@
     .update-arrow { color: var(--text-muted); font-size: 1rem; flex-shrink: 0; }
 
     /* ── FOOTER ── */
-    footer {
-      background: #0f1923; color: rgba(255,255,255,0.7); padding: 56px 24px 32px;
-    }
+    footer { background: #0f1923; color: rgba(255,255,255,0.7); padding: 56px 24px 32px; }
     .footer-inner { max-width: 1200px; margin: 0 auto; }
     .footer-grid { display: grid; grid-template-columns: 2fr repeat(4, 1fr); gap: 40px; margin-bottom: 40px; }
     .footer-brand { display: flex; flex-direction: column; gap: 12px; }
@@ -239,14 +246,16 @@
 
 <!-- HERO -->
 <section class="hero">
-  <div class="hero-badge">🌍 70+ Destinations Available</div>
-  <h1>Global Visa Made Easy.</h1>
-  <p>Fast, reliable visa services trusted by thousands of Indian travellers</p>
-  <div class="hero-search">
-    <input type="text" id="heroSearch" placeholder="Search destination e.g. Dubai, UK, USA…" />
-    <button onclick="doSearch()">Search</button>
+  <div class="hero-content">
+    <div class="hero-badge">🌍 70+ Destinations Available</div>
+    <h1>Global Visa Made Easy.</h1>
+    <p>Fast, reliable visa services trusted by thousands of Indian travellers</p>
+    <div class="hero-search">
+      <input type="text" id="heroSearch" placeholder="Search destination e.g. Dubai, UK, USA…" autocomplete="off" />
+      <button onclick="doSearch()">Search</button>
+    </div>
+
   </div>
-  <a href="terms.html" class="refund-badge">Get 100% Refund In Case Of Visa Rejection*</a>
 </section>
 
 <!-- POPULAR DESTINATIONS -->
@@ -264,9 +273,7 @@
     <button class="tab" data-filter="free">Visa Free</button>
     <button class="tab" data-filter="instant">Instant Visa</button>
   </div>
-  <div class="destinations-grid" id="destGrid">
-    <!-- cards injected by JS -->
-  </div>
+  <div class="destinations-grid" id="destGrid"></div>
 </div>
 </div>
 
@@ -277,7 +284,7 @@
     <a href="blog.html" class="view-all">View All →</a>
   </div>
   <div class="blog-grid">
-    <a href="blog/schengen-tips.html" class="blog-card">
+    <a href="blog.html#schengen-guide" class="blog-card">
       <div class="blog-img">🇪🇺</div>
       <div class="blog-body">
         <div class="blog-tag">Schengen</div>
@@ -285,20 +292,44 @@
         <div class="blog-date">May 20, 2026</div>
       </div>
     </a>
-    <a href="blog/dubai-guide.html" class="blog-card">
+    <a href="blog.html#dubai-guide" class="blog-card">
       <div class="blog-img">🇦🇪</div>
       <div class="blog-body">
         <div class="blog-tag">Dubai</div>
-        <div class="blog-title">Dubai Visa on Arrival for Indians: Everything You Need to Know</div>
+        <div class="blog-title">Dubai Visa for Indians: Types, Fees & How to Apply Online</div>
         <div class="blog-date">May 14, 2026</div>
       </div>
     </a>
-    <a href="blog/japan-visa.html" class="blog-card">
+    <a href="blog.html#japan-visa" class="blog-card">
       <div class="blog-img">🇯🇵</div>
       <div class="blog-body">
         <div class="blog-tag">Japan</div>
-        <div class="blog-title">Japan Visa 2026: New Fee Changes & How to Apply</div>
+        <div class="blog-title">Japan Visa 2026: Documents Required & Step-by-Step Process</div>
         <div class="blog-date">May 8, 2026</div>
+      </div>
+    </a>
+    <a href="blog.html#singapore-visa" class="blog-card">
+      <div class="blog-img">🇸🇬</div>
+      <div class="blog-body">
+        <div class="blog-tag">Singapore</div>
+        <div class="blog-title">Singapore Visa from India: Requirements, Fees & Processing Time</div>
+        <div class="blog-date">May 2, 2026</div>
+      </div>
+    </a>
+    <a href="blog.html#thailand-visa" class="blog-card">
+      <div class="blog-img">🇹🇭</div>
+      <div class="blog-body">
+        <div class="blog-tag">Thailand</div>
+        <div class="blog-title">Thailand Visa-Free for Indians 2026: What You Need to Carry</div>
+        <div class="blog-date">Apr 28, 2026</div>
+      </div>
+    </a>
+    <a href="blog.html#usa-visa" class="blog-card">
+      <div class="blog-img">🇺🇸</div>
+      <div class="blog-body">
+        <div class="blog-tag">USA</div>
+        <div class="blog-title">US Tourist Visa (B1/B2): Interview Tips & Common Rejection Reasons</div>
+        <div class="blog-date">Apr 20, 2026</div>
       </div>
     </a>
   </div>
@@ -315,57 +346,27 @@
     <div class="review-card">
       <div class="review-stars">★★★★★</div>
       <p class="review-text">Dubai eVisa service is awesome. I applied at 1pm and received my visa in less than 24 hrs. That's amazing speed. Thanks VacationPe!</p>
-      <div class="reviewer">
-        <div class="reviewer-avatar">AS</div>
-        <div>
-          <div class="reviewer-name">Amandeep Singh</div>
-          <div class="reviewer-visa">Dubai Visa</div>
-        </div>
-      </div>
+      <div class="reviewer"><div class="reviewer-avatar">AS</div><div><div class="reviewer-name">Amandeep Singh</div><div class="reviewer-visa">Dubai Visa</div></div></div>
     </div>
     <div class="review-card">
       <div class="review-stars">★★★★★</div>
       <p class="review-text">Excellent service for UAE tourist visa. The team is prompt, courteous and very professional. Truly personalized service!</p>
-      <div class="reviewer">
-        <div class="reviewer-avatar">C</div>
-        <div>
-          <div class="reviewer-name">Chandrasekhar</div>
-          <div class="reviewer-visa">UAE Visa</div>
-        </div>
-      </div>
+      <div class="reviewer"><div class="reviewer-avatar">C</div><div><div class="reviewer-name">Chandrasekhar</div><div class="reviewer-visa">UAE Visa</div></div></div>
     </div>
     <div class="review-card">
       <div class="review-stars">★★★★★</div>
       <p class="review-text">Got Australia visa in 1 week because of proper guidance given on time. Very helpful and professional team throughout the process.</p>
-      <div class="reviewer">
-        <div class="reviewer-avatar">MB</div>
-        <div>
-          <div class="reviewer-name">Mala Bhatt</div>
-          <div class="reviewer-visa">Australia Visa</div>
-        </div>
-      </div>
+      <div class="reviewer"><div class="reviewer-avatar">MB</div><div><div class="reviewer-name">Mala Bhatt</div><div class="reviewer-visa">Australia Visa</div></div></div>
     </div>
     <div class="review-card">
       <div class="review-stars">★★★★★</div>
       <p class="review-text">Prompt service and no fuss. Got Dubai visa for self and family without any hassle. Highly recommend VacationPe for all visa needs.</p>
-      <div class="reviewer">
-        <div class="reviewer-avatar">RM</div>
-        <div>
-          <div class="reviewer-name">Rajnikant Mehta</div>
-          <div class="reviewer-visa">Dubai Visa</div>
-        </div>
-      </div>
+      <div class="reviewer"><div class="reviewer-avatar">RM</div><div><div class="reviewer-name">Rajnikant Mehta</div><div class="reviewer-visa">Dubai Visa</div></div></div>
     </div>
     <div class="review-card">
       <div class="review-stars">★★★★★</div>
       <p class="review-text">Singapore visa done smoothly. Documents checklist was very clear. The whole process took just 3 days. Will use again!</p>
-      <div class="reviewer">
-        <div class="reviewer-avatar">PK</div>
-        <div>
-          <div class="reviewer-name">Priya Kapoor</div>
-          <div class="reviewer-visa">Singapore Visa</div>
-        </div>
-      </div>
+      <div class="reviewer"><div class="reviewer-avatar">PK</div><div><div class="reviewer-name">Priya Kapoor</div><div class="reviewer-visa">Singapore Visa</div></div></div>
     </div>
   </div>
 </div>
@@ -379,66 +380,39 @@
   </div>
   <div class="visa-update-list">
     <a href="visa-update.html#saudi-umrah-2026" class="update-item">
-      <div class="update-info">
-        <div class="update-country">🇸🇦 Saudi Arabia · Mar 18, 2026</div>
-        <div class="update-title">Saudi Arabia Umrah Visa Deadlines March 2026: Entry &amp; Exit Dates</div>
-      </div>
+      <div class="update-info"><div class="update-country">🇸🇦 Saudi Arabia · Mar 18, 2026</div><div class="update-title">Saudi Arabia Umrah Visa Deadlines March 2026: Entry &amp; Exit Dates</div></div>
       <span class="update-arrow">›</span>
     </a>
     <a href="visa-update.html#us-visa-suspended" class="update-item">
-      <div class="update-info">
-        <div class="update-country">🇺🇸 USA · Mar 18, 2026</div>
-        <div class="update-title">US Visa Processing Suspended in 6 Countries Due to Middle East Conflict</div>
-      </div>
+      <div class="update-info"><div class="update-country">🇺🇸 USA · Mar 18, 2026</div><div class="update-title">US Visa Processing Suspended in 6 Countries Due to Middle East Conflict</div></div>
       <span class="update-arrow">›</span>
     </a>
     <a href="visa-update.html#australia-study-fees" class="update-item">
-      <div class="update-info">
-        <div class="update-country">🇦🇺 Australia · Mar 12, 2026</div>
-        <div class="update-title">Australia Doubles Post-Study Work Visa Fees for Indians</div>
-      </div>
+      <div class="update-info"><div class="update-country">🇦🇺 Australia · Mar 12, 2026</div><div class="update-title">Australia Doubles Post-Study Work Visa Fees for Indians</div></div>
       <span class="update-arrow">›</span>
     </a>
     <a href="visa-update.html#japan-fees" class="update-item">
-      <div class="update-info">
-        <div class="update-country">🇯🇵 Japan · Mar 12, 2026</div>
-        <div class="update-title">Japan Visa Fees May Rise 10x to ₹60,000 for Permanent Residency</div>
-      </div>
+      <div class="update-info"><div class="update-country">🇯🇵 Japan · Mar 12, 2026</div><div class="update-title">Japan Visa Fees May Rise 10x to ₹60,000 for Permanent Residency</div></div>
       <span class="update-arrow">›</span>
     </a>
     <a href="visa-update.html#uk-fraud" class="update-item">
-      <div class="update-info">
-        <div class="update-country">🇬🇧 UK · Mar 2, 2026</div>
-        <div class="update-title">UK Launches Anti-Fraud Campaign in Haryana</div>
-      </div>
+      <div class="update-info"><div class="update-country">🇬🇧 UK · Mar 2, 2026</div><div class="update-title">UK Launches Anti-Fraud Campaign in Haryana</div></div>
       <span class="update-arrow">›</span>
     </a>
     <a href="visa-update.html#jeju-denied" class="update-item">
-      <div class="update-info">
-        <div class="update-country">🇰🇷 Jeju Island · Mar 2, 2026</div>
-        <div class="update-title">Jeju Visa-Free Entry Denied to Indians</div>
-      </div>
+      <div class="update-info"><div class="update-country">🇰🇷 Jeju Island · Mar 2, 2026</div><div class="update-title">Jeju Visa-Free Entry Denied to Indians</div></div>
       <span class="update-arrow">›</span>
     </a>
     <a href="visa-update.html#uk-evisa-boarding" class="update-item">
-      <div class="update-info">
-        <div class="update-country">🇬🇧 UK · Mar 2, 2026</div>
-        <div class="update-title">UK eVisa for Indians: Airlines Can Now Refuse Boarding</div>
-      </div>
+      <div class="update-info"><div class="update-country">🇬🇧 UK · Mar 2, 2026</div><div class="update-title">UK eVisa for Indians: Airlines Can Now Refuse Boarding</div></div>
       <span class="update-arrow">›</span>
     </a>
     <a href="visa-update.html#egypt-fee" class="update-item">
-      <div class="update-info">
-        <div class="update-country">🇪🇬 Egypt · Mar 2, 2026</div>
-        <div class="update-title">Egypt Visa Fee May Rise to $30 from March 2026</div>
-      </div>
+      <div class="update-info"><div class="update-country">🇪🇬 Egypt · Mar 2, 2026</div><div class="update-title">Egypt Visa Fee May Rise to $30 from March 2026</div></div>
       <span class="update-arrow">›</span>
     </a>
     <a href="visa-update.html#japan-walkin" class="update-item">
-      <div class="update-info">
-        <div class="update-country">🇯🇵 Japan · Mar 2, 2026</div>
-        <div class="update-title">Japan Ends Walk-In Visa Applications in Chennai &amp; Hyderabad From March 2</div>
-      </div>
+      <div class="update-info"><div class="update-country">🇯🇵 Japan · Mar 2, 2026</div><div class="update-title">Japan Ends Walk-In Visa Applications in Chennai &amp; Hyderabad From March 2</div></div>
       <span class="update-arrow">›</span>
     </a>
   </div>
@@ -513,23 +487,24 @@
 </footer>
 
 <script>
+  // price field is the display string — no refund tag, format: "Starting ₹X,XXX*"
   const destinations = [
-    { name: "Dubai", type: "evisa", flag: "🇦🇪", validity: "30 Days", price: "₹3,299", label: "E-Visa", refund: true, href: "visa/dubai.html" },
-    { name: "Singapore", type: "evisa", flag: "🇸🇬", validity: "2 Year", price: "₹3,799", label: "E-Visa", refund: false, href: "visa/singapore.html" },
-    { name: "Australia", type: "evisa", flag: "🇦🇺", validity: "1 Year", price: "₹15,699", label: "E-Visa", refund: false, href: "visa/australia.html" },
-    { name: "New Zealand", type: "evisa", flag: "🇳🇿", validity: "1 Year", price: "₹27,099", label: "E-Visa", refund: false, href: "visa/new-zealand.html" },
-    { name: "USA", type: "sticker", flag: "🇺🇸", validity: "10 Year", price: "₹19,999", label: "Sticker Visa", refund: false, href: "visa/usa.html" },
-    { name: "UK", type: "evisa", flag: "🇬🇧", validity: "6 Month", price: "₹21,399", label: "E-Visa", refund: false, href: "visa/uk.html" },
-    { name: "Vietnam", type: "evisa", flag: "🇻🇳", validity: "30 Days", price: "₹2,999", label: "E-Visa", refund: true, href: "visa/vietnam.html" },
-    { name: "Indonesia", type: "evisa", flag: "🇮🇩", validity: "90 Days", price: "₹3,999", label: "E-Visa", refund: true, href: "visa/indonesia.html" },
-    { name: "Sri Lanka", type: "instant", flag: "🇱🇰", validity: "180 Days", price: "₹499", label: "ETA", refund: false, href: "visa/sri-lanka.html" },
-    { name: "Egypt", type: "evisa", flag: "🇪🇬", validity: "90 Days", price: "₹6,799", label: "E-Visa", refund: false, href: "visa/egypt.html" },
-    { name: "Oman", type: "evisa", flag: "🇴🇲", validity: "10 Days", price: "₹2,999", label: "E-Visa", refund: true, href: "visa/oman.html" },
-    { name: "Thailand", type: "free", flag: "🇹🇭", validity: "90 Days", price: "₹250", label: "TDAC", refund: false, href: "visa/thailand.html" },
-    { name: "France", type: "schengen", flag: "🇫🇷", validity: "90 Days", price: "₹8,499", label: "Schengen", refund: false, href: "visa/france.html" },
-    { name: "Germany", type: "schengen", flag: "🇩🇪", validity: "90 Days", price: "₹8,499", label: "Schengen", refund: false, href: "visa/germany.html" },
-    { name: "Japan", type: "sticker", flag: "🇯🇵", validity: "15 Days", price: "₹4,999", label: "Sticker Visa", refund: false, href: "visa/japan.html" },
-    { name: "Malaysia", type: "free", flag: "🇲🇾", validity: "30 Days", price: "Free", label: "Visa Free", refund: false, href: "visa/malaysia.html" },
+    { name: "Dubai",       type: "evisa",   flag: "🇦🇪", validity: "30 Days",  price: "₹3,299",  label: "E-Visa",       href: "visa/dubai.html" },
+    { name: "Singapore",   type: "evisa",   flag: "🇸🇬", validity: "2 Year",   price: "₹3,799",  label: "E-Visa",       href: "visa/singapore.html" },
+    { name: "Australia",   type: "evisa",   flag: "🇦🇺", validity: "1 Year",   price: "₹15,699", label: "E-Visa",       href: "visa/australia.html" },
+    { name: "New Zealand", type: "evisa",   flag: "🇳🇿", validity: "1 Year",   price: "₹27,099", label: "E-Visa",       href: "visa/new-zealand.html" },
+    { name: "USA",         type: "sticker", flag: "🇺🇸", validity: "10 Year",  price: "₹19,999", label: "Sticker Visa", href: "visa/usa.html" },
+    { name: "UK",          type: "evisa",   flag: "🇬🇧", validity: "6 Month",  price: "₹21,399", label: "E-Visa",       href: "visa/uk.html" },
+    { name: "Vietnam",     type: "evisa",   flag: "🇻🇳", validity: "30 Days",  price: "₹2,999",  label: "E-Visa",       href: "visa/vietnam.html" },
+    { name: "Indonesia",   type: "evisa",   flag: "🇮🇩", validity: "90 Days",  price: "₹3,999",  label: "E-Visa",       href: "visa/indonesia.html" },
+    { name: "Sri Lanka",   type: "instant", flag: "🇱🇰", validity: "180 Days", price: "₹499",    label: "ETA",          href: "visa/sri-lanka.html" },
+    { name: "Egypt",       type: "evisa",   flag: "🇪🇬", validity: "90 Days",  price: "₹6,799",  label: "E-Visa",       href: "visa/egypt.html" },
+    { name: "Oman",        type: "evisa",   flag: "🇴🇲", validity: "10 Days",  price: "₹2,999",  label: "E-Visa",       href: "visa/oman.html" },
+    { name: "Thailand",    type: "free",    flag: "🇹🇭", validity: "90 Days",  price: "₹250",    label: "TDAC",         href: "visa/thailand.html" },
+    { name: "France",      type: "schengen",flag: "🇫🇷", validity: "90 Days",  price: "₹8,499",  label: "Schengen",     href: "visa/france.html" },
+    { name: "Germany",     type: "schengen",flag: "🇩🇪", validity: "90 Days",  price: "₹8,499",  label: "Schengen",     href: "visa/germany.html" },
+    { name: "Japan",       type: "sticker", flag: "🇯🇵", validity: "15 Days",  price: "₹4,999",  label: "Sticker Visa", href: "visa/japan.html" },
+    { name: "Malaysia",    type: "free",    flag: "🇲🇾", validity: "30 Days",  price: "Free",    label: "Visa Free",    href: "visa/malaysia.html" },
   ];
 
   let activeFilter = "all";
@@ -537,17 +512,20 @@
   function renderCards(filter) {
     const grid = document.getElementById("destGrid");
     const filtered = filter === "all" ? destinations : destinations.filter(d => d.type === filter);
-    grid.innerHTML = filtered.map(d => `
-      <a href="${d.href}" class="dest-card">
-        ${d.refund ? '<span class="refund-tag">100% Refund</span>' : ''}
-        <div class="flag">${d.flag}</div>
-        <div>
-          <div class="country">${d.name} Visa</div>
-          <div class="visa-type">${d.label} · Valid: ${d.validity}</div>
-        </div>
-        <div class="price">${d.price}</div>
-      </a>
-    `).join("");
+    grid.innerHTML = filtered.map(d => {
+      const priceHTML = d.price === "Free"
+        ? `<div class="price"><span class="amount" style="color:var(--green)">Free</span></div>`
+        : `<div class="price"><span class="starting">Starting</span><span class="amount">${d.price}<span class="asterisk">*</span></span></div>`;
+      return `
+        <a href="${d.href}" class="dest-card">
+          <div class="flag">${d.flag}</div>
+          <div>
+            <div class="country">${d.name} Visa</div>
+            <div class="visa-type">${d.label} · Valid: ${d.validity}</div>
+          </div>
+          ${priceHTML}
+        </a>`;
+    }).join("");
   }
 
   document.getElementById("filterTabs").addEventListener("click", e => {
@@ -560,7 +538,7 @@
 
   function doSearch() {
     const q = document.getElementById("heroSearch").value.trim().toLowerCase();
-    if (!q) return;
+    if (!q) { renderCards("all"); return; }
     document.querySelectorAll(".tab").forEach(t => t.classList.remove("active"));
     document.querySelector(".tab[data-filter='all']").classList.add("active");
     const grid = document.getElementById("destGrid");
@@ -568,7 +546,20 @@
     if (filtered.length === 0) {
       grid.innerHTML = `<p style="grid-column:1/-1;color:var(--text-muted);padding:24px 0;">No destinations found for "<strong>${q}</strong>". Try a different search.</p>`;
     } else {
-      renderCards("all");
+      grid.innerHTML = filtered.map(d => {
+        const priceHTML = d.price === "Free"
+          ? `<div class="price"><span class="amount" style="color:var(--green)">Free</span></div>`
+          : `<div class="price"><span class="starting">Starting</span><span class="amount">${d.price}<span class="asterisk">*</span></span></div>`;
+        return `
+          <a href="${d.href}" class="dest-card">
+            <div class="flag">${d.flag}</div>
+            <div>
+              <div class="country">${d.name} Visa</div>
+              <div class="visa-type">${d.label} · Valid: ${d.validity}</div>
+            </div>
+            ${priceHTML}
+          </a>`;
+      }).join("");
     }
     document.querySelector(".destinations-grid").scrollIntoView({ behavior: "smooth", block: "start" });
   }
