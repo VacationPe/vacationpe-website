@@ -6,6 +6,7 @@
   <title>Apply for a Visa Online from India | VacationPe</title>
   <meta name="description" content="Browse 70+ visa destinations. Compare prices, processing times, and requirements. Apply online with VacationPe." />
   <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flag-icons/7.2.3/css/flag-icons.min.css" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     :root {
@@ -31,8 +32,8 @@
     .hero h1 { font-family: 'Nunito', sans-serif; font-size: clamp(2rem, 5vw, 3.2rem); font-weight: 900; color: #fff; line-height: 1.15; margin-bottom: 12px; }
     .hero p { color: rgba(255,255,255,0.85); font-size: 1.05rem; margin-bottom: 32px; }
     .hero-search { display: flex; max-width: 520px; margin: 0 auto 28px; background: #fff; border-radius: 14px; overflow: hidden; box-shadow: 0 8px 32px rgba(0,0,0,0.25); position: relative; z-index: 10; }
-    .hero-search input { flex: 1; border: none; outline: none; padding: 18px 20px; font-size: 1rem; color: var(--text); font-family: 'Inter', sans-serif; position: relative; z-index: 10; cursor: text; }
-    .hero-search button { background: var(--orange); color: #fff; border: none; cursor: pointer; padding: 18px 28px; font-size: 0.95rem; font-weight: 700; font-family: 'Inter', sans-serif; transition: background 0.2s; position: relative; z-index: 10; }
+    .hero-search input { flex: 1; border: none; outline: none; padding: 18px 20px; font-size: 1rem; color: var(--text); font-family: 'Inter', sans-serif; }
+    .hero-search button { background: var(--orange); color: #fff; border: none; cursor: pointer; padding: 18px 28px; font-size: 0.95rem; font-weight: 700; font-family: 'Inter', sans-serif; transition: background 0.2s; }
     .hero-search button:hover { background: #e85a24; }
     .section { padding: 56px 24px; max-width: 1200px; margin: 0 auto; }
     .section-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 28px; }
@@ -45,7 +46,8 @@
     .destinations-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(175px, 1fr)); gap: 16px; }
     .dest-card { background: #fff; border: 1.5px solid var(--border); border-radius: 14px; padding: 16px; text-decoration: none; color: inherit; transition: all 0.22s; display: flex; flex-direction: column; gap: 10px; position: relative; overflow: hidden; }
     .dest-card:hover { border-color: var(--blue); box-shadow: var(--shadow-lg); transform: translateY(-2px); }
-    .dest-card .flag { width: 44px; height: 44px; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 1.6rem; background: var(--bg); }
+    .dest-card .flag-wrap { width: 48px; height: 34px; border-radius: 6px; overflow: hidden; box-shadow: 0 1px 4px rgba(0,0,0,0.15); flex-shrink: 0; }
+    .dest-card .flag-wrap img { width: 100%; height: 100%; object-fit: cover; display: block; }
     .dest-card .country { font-weight: 700; font-size: 0.95rem; }
     .dest-card .visa-type { color: var(--text-muted); font-size: 0.78rem; }
     .dest-card .price { font-weight: 800; font-size: 0.88rem; color: var(--blue); margin-top: auto; line-height: 1.3; }
@@ -70,7 +72,7 @@
     .reviewer-avatar { width: 36px; height: 36px; border-radius: 50%; background: var(--blue); display: flex; align-items: center; justify-content: center; color: #fff; font-weight: 700; font-size: 0.8rem; }
     .reviewer-name { font-weight: 700; font-size: 0.88rem; }
     .reviewer-visa { font-size: 0.75rem; color: var(--text-muted); }
-    .visa-update-list { display: flex; flex-direction: column; gap: 0; }
+    .visa-update-list { display: flex; flex-direction: column; }
     .update-item { display: flex; align-items: center; justify-content: space-between; padding: 16px 0; border-bottom: 1px solid var(--border); text-decoration: none; color: inherit; gap: 16px; transition: all 0.15s; }
     .update-item:hover { color: var(--blue); }
     .update-item:last-child { border-bottom: none; }
@@ -214,126 +216,135 @@
 
 <script>
   const destinations = [
-    { name: "Anguilla",             type: "evisa", flag: "🇦🇮", validity: "90 Days",   price: "₹15,700", label: "E-Visa", href: "visa/anguilla.html" },
-    { name: "Australia",    type: "evisa",    flag: "🇦🇺", validity: "1 Year",   price: "₹15,699", label: "E-Visa",       href: "visa/australia.html" },
-    { name: "Azerbaijan",           type: "evisa", flag: "🇦🇿", validity: "30 Days",   price: "₹2,650",  label: "E-Visa", href: "visa/azerbaijan.html" },
-    { name: "Bahamas",              type: "evisa", flag: "🇧🇸", validity: "90 Days",   price: "₹25,220", label: "E-Visa", href: "visa/bahamas.html" },
-    { name: "Bahrain",              type: "evisa", flag: "🇧🇭", validity: "30 Days",   price: "₹4,450",  label: "E-Visa", href: "visa/bahrain.html" },
-    { name: "Bangladesh",           type: "evisa", flag: "🇧🇩", validity: "180 Days",  price: "₹3,500",  label: "E-Visa", href: "visa/bangladesh.html" },
-    { name: "Barbados",               type: "free", flag: "🇧🇧", validity: "180 Days", price: "Free", label: "Visa Free", href: "visa/barbados.html" },
-    { name: "Belarus",              type: "arrival", flag: "🇧🇾", validity: "30 Days",  price: "Free", label: "Visa on Arrival", href: "visa/belarus.html" },
-    { name: "Bhutan",               type: "evisa", flag: "🇧🇹", validity: "90 Days",   price: "₹7,999",  label: "E-Visa", href: "visa/bhutan.html" },
-    { name: "British Virgin Islands", type: "free", flag: "🇻🇬", validity: "30 Days",  price: "Free", label: "Visa Free", href: "visa/british-virgin-islands.html" },
-    { name: "Burkina Faso",         type: "evisa", flag: "🇧🇫", validity: "30 Days",   price: "₹4,550",  label: "E-Visa", href: "visa/burkina-faso.html" },
-    { name: "Burundi",              type: "arrival", flag: "🇧🇮", validity: "30 Days",  price: "Free", label: "Visa on Arrival", href: "visa/burundi.html" },
-    { name: "Cambodia",             type: "evisa", flag: "🇰🇭", validity: "30 Days",   price: "₹2,500",  label: "E-Visa", href: "visa/cambodia.html" },
-    { name: "Chad",                 type: "evisa", flag: "🇹🇩", validity: "90 Days",   price: "₹13,500", label: "E-Visa", href: "visa/chad.html" },
-    { name: "Colombia",             type: "evisa", flag: "🇨🇴", validity: "90 Days",   price: "₹7,000",  label: "E-Visa", href: "visa/colombia.html" },
-    { name: "Comoros",              type: "arrival", flag: "🇰🇲", validity: "45 Days",  price: "Free", label: "Visa on Arrival", href: "visa/comoros.html" },
-    { name: "Congo - Kinshasa",     type: "evisa", flag: "🇨🇩", validity: "30 Days",   price: "₹24,250", label: "E-Visa", href: "visa/congo-kinshasa.html" },
-    { name: "Cook Islands",           type: "free", flag: "🇨🇰", validity: "31 Days",  price: "Free", label: "Visa Free", href: "visa/cook-islands.html" },
-    { name: "Cuba",                 type: "evisa", flag: "🇨🇺", validity: "90 Days",   price: "₹4,900",  label: "E-Visa", href: "visa/cuba.html" },
-    { name: "Côte d'Ivoire",       type: "evisa", flag: "🇨🇮", validity: "90 Days",   price: "₹14,538", label: "E-Visa", href: "visa/cote-divoire.html" },
-    { name: "Djibouti",             type: "evisa", flag: "🇩🇯", validity: "90 Days",   price: "₹2,950",  label: "E-Visa", href: "visa/djibouti.html" },
-    { name: "Dominica",               type: "free", flag: "🇩🇲", validity: "21 Days",  price: "Free", label: "Visa Free", href: "visa/dominica.html" },
-    { name: "Dubai",        type: "evisa",    flag: "🇦🇪", validity: "30 Days",  price: "₹3,299",  label: "E-Visa",       href: "visa/dubai.html" },
-    { name: "Egypt",        type: "evisa",    flag: "🇪🇬", validity: "90 Days",  price: "₹6,799",  label: "E-Visa",       href: "visa/egypt.html" },
-    { name: "El Salvador",            type: "free", flag: "🇸🇻", validity: "90 Days",  price: "Free", label: "Visa Free", href: "visa/el-salvador.html" },
-    { name: "Equatorial Guinea",    type: "evisa", flag: "🇬🇶", validity: "90 Days",   price: "₹9,850",  label: "E-Visa", href: "visa/equatorial-guinea.html" },
-    { name: "Ethiopia",             type: "evisa", flag: "🇪🇹", validity: "30 Days",   price: "₹5,100",  label: "E-Visa", href: "visa/ethiopia.html" },
-    { name: "Fiji",                   type: "free", flag: "🇫🇯", validity: "4 Months", price: "Free", label: "Visa Free", href: "visa/fiji.html" },
-    { name: "France",       type: "schengen", flag: "🇫🇷", validity: "90 Days",  price: "₹8,499",  label: "Schengen",     href: "visa/france.html" },
-    { name: "Gabon",                type: "evisa", flag: "🇬🇦", validity: "30 Days",   price: "₹12,250", label: "E-Visa", href: "visa/gabon.html" },
-    { name: "Gambia",                 type: "free", flag: "🇬🇲", validity: "90 Days",  price: "Free", label: "Visa Free", href: "visa/gambia.html" },
-    { name: "Georgia",              type: "evisa", flag: "🇬🇪", validity: "30 Days",   price: "₹1,660",  label: "E-Visa", href: "visa/georgia.html" },
-    { name: "Germany",      type: "schengen", flag: "🇩🇪", validity: "90 Days",  price: "₹8,499",  label: "Schengen",     href: "visa/germany.html" },
-    { name: "Guinea-Bissau",        type: "arrival", flag: "🇬🇼", validity: "90 Days",  price: "Free", label: "Visa on Arrival", href: "visa/guinea-bissau.html" },
-    { name: "Guyana",               type: "evisa", flag: "🇬🇾", validity: "30 Days",   price: "₹2,452",  label: "E-Visa", href: "visa/guyana.html" },
-    { name: "Haiti",                  type: "free", flag: "🇭🇹", validity: "90 Days",  price: "Free", label: "Visa Free", href: "visa/haiti.html" },
-    { name: "Hong Kong",            type: "evisa", flag: "🇭🇰", validity: "14 Days",   price: "₹1,175",  label: "E-Visa", href: "visa/hong-kong.html" },
-    { name: "Indonesia",    type: "evisa",    flag: "🇮🇩", validity: "90 Days",  price: "₹3,999",  label: "E-Visa",       href: "visa/indonesia.html" },
-    { name: "Jamaica",                type: "free", flag: "🇯🇲", validity: "30 Days",  price: "Free", label: "Visa Free", href: "visa/jamaica.html" },
-    { name: "Japan",        type: "sticker",  flag: "🇯🇵", validity: "15 Days",  price: "₹4,999",  label: "Sticker Visa", href: "visa/japan.html" },
-    { name: "Jordan",               type: "evisa", flag: "🇯🇴", validity: "90 Days",   price: "₹12,550", label: "E-Visa", href: "visa/jordan.html" },
-    { name: "Kenya",                type: "evisa", flag: "🇰🇪", validity: "90 Days",   price: "₹2,450",  label: "E-Visa", href: "visa/kenya.html" },
-    { name: "Kuwait",               type: "evisa", flag: "🇰🇼", validity: "60 Days",   price: "₹48,500", label: "E-Visa", href: "visa/kuwait.html" },
-    { name: "Kyrgyzstan",           type: "evisa", flag: "🇰🇬", validity: "30 Days",   price: "₹16,900", label: "E-Visa", href: "visa/kyrgyzstan.html" },
-    { name: "Laos",                 type: "evisa", flag: "🇱🇦", validity: "30 Days",   price: "₹5,100",  label: "E-Visa", href: "visa/laos.html" },
-    { name: "Liberia",              type: "evisa", flag: "🇱🇷", validity: "90 Days",   price: "₹10,100", label: "E-Visa", href: "visa/liberia.html" },
-    { name: "Macao SAR China",        type: "free", flag: "🇲🇴", validity: "30 Days",  price: "Free", label: "Visa Free", href: "visa/macao.html" },
-    { name: "Madagascar",           type: "evisa", flag: "🇲🇬", validity: "30 Days",   price: "₹1,000",  label: "E-Visa", href: "visa/madagascar.html" },
-    { name: "Malawi",               type: "evisa", flag: "🇲🇼", validity: "30 Days",   price: "₹5,000",  label: "E-Visa", href: "visa/malawi.html" },
-    { name: "Malaysia eNTRI",       type: "evisa", flag: "🇲🇾", validity: "Per Trip",  price: "₹299",    label: "E-Visa", href: "visa/malaysia-entri.html" },
-    { name: "Marshall Islands",     type: "arrival", flag: "🇲🇭", validity: "90 Days",  price: "Free", label: "Visa on Arrival", href: "visa/marshall-islands.html" },
-    { name: "Mauritania",           type: "arrival", flag: "🇲🇷", validity: "90 Days",  price: "Free", label: "Visa on Arrival", href: "visa/mauritania.html" },
-    { name: "Mauritius",              type: "free", flag: "🇲🇺", validity: "60 Days",  price: "Free", label: "Visa Free", href: "visa/mauritius.html" },
-    { name: "Micronesia",             type: "free", flag: "🇫🇲", validity: "30 Days",  price: "Free", label: "Visa Free", href: "visa/micronesia.html" },
-    { name: "Moldova",              type: "evisa", flag: "🇲🇩", validity: "90 Days",   price: "₹3,300",  label: "E-Visa", href: "visa/moldova.html" },
-    { name: "Mongolia",             type: "evisa", flag: "🇲🇳", validity: "150 Days",  price: "₹550",    label: "E-Visa", href: "visa/mongolia.html" },
-    { name: "Montserrat",             type: "free", flag: "🇲🇸", validity: "180 Days", price: "Free", label: "Visa Free", href: "visa/montserrat.html" },
-    { name: "Morocco",              type: "evisa", flag: "🇲🇦", validity: "180 Days",  price: "₹5,800",  label: "E-Visa", href: "visa/morocco.html" },
-    { name: "Nepal",                  type: "free", flag: "🇳🇵", validity: "No Limit", price: "Free", label: "Visa Free", href: "visa/nepal.html" },
-    { name: "New Zealand",  type: "evisa",    flag: "🇳🇿", validity: "1 Year",   price: "₹27,099", label: "E-Visa",       href: "visa/new-zealand.html" },
-    { name: "Niue",                   type: "free", flag: "🇳🇺", validity: "30 Days",  price: "Free", label: "Visa Free", href: "visa/niue.html" },
-    { name: "Oman",         type: "evisa",    flag: "🇴🇲", validity: "10 Days",  price: "₹2,999",  label: "E-Visa",       href: "visa/oman.html" },
-    { name: "Palau",                type: "arrival", flag: "🇵🇼", validity: "30 Days",  price: "Free", label: "Visa on Arrival", href: "visa/palau.html" },
-    { name: "Qatar",                type: "evisa", flag: "🇶🇦", validity: "30 Days",   price: "₹900",    label: "E-Visa", href: "visa/qatar.html" },
-    { name: "Reunion",                type: "free", flag: "🇷🇪", validity: "90 Days",  price: "Free", label: "Visa Free", href: "visa/reunion.html" },
-    { name: "Russia",               type: "evisa", flag: "🇷🇺", validity: "120 Days",  price: "₹8,700",  label: "E-Visa", href: "visa/russia.html" },
-    { name: "Rwanda",               type: "evisa", flag: "🇷🇼", validity: "30 Days",   price: "₹450",    label: "E-Visa", href: "visa/rwanda.html" },
-    { name: "Samoa",                type: "arrival", flag: "🇼🇸", validity: "60 Days",  price: "Free", label: "Visa on Arrival", href: "visa/samoa.html" },
-    { name: "Saudi Arabia",         type: "evisa", flag: "🇸🇦", validity: "90 Days",   price: "₹10,500", label: "E-Visa", href: "visa/saudi-arabia.html" },
-    { name: "Senegal",                type: "free", flag: "🇸🇳", validity: "90 Days",  price: "Free", label: "Visa Free", href: "visa/senegal.html" },
-    { name: "Seychelles",           type: "evisa", flag: "🇸🇨", validity: "30 Days",   price: "₹1,050",  label: "E-Visa", href: "visa/seychelles.html" },
-    { name: "Sierra Leone",         type: "evisa", flag: "🇸🇱", validity: "60 Days",   price: "₹10,600", label: "E-Visa", href: "visa/sierra-leone.html" },
-    { name: "Singapore",    type: "evisa",    flag: "🇸🇬", validity: "2 Year",   price: "₹3,799",  label: "E-Visa",       href: "visa/singapore.html" },
-    { name: "Solomon Islands",      type: "arrival", flag: "🇸🇧", validity: "90 Days",  price: "Free", label: "Visa on Arrival", href: "visa/solomon-islands.html" },
-    { name: "Somalia",              type: "evisa", flag: "🇸🇴", validity: "180 Days",  price: "₹9,200",  label: "E-Visa", href: "visa/somalia.html" },
-    { name: "South Africa",         type: "evisa", flag: "🇿🇦", validity: "5 Years",   price: "₹2,999",  label: "E-Visa", href: "visa/south-africa.html" },
-    { name: "South Sudan",          type: "evisa", flag: "🇸🇸", validity: "60 Days",   price: "₹9,850",  label: "E-Visa", href: "visa/south-sudan.html" },
-    { name: "Sri Lanka",    type: "instant",  flag: "🇱🇰", validity: "180 Days", price: "₹499",    label: "ETA",          href: "visa/sri-lanka.html" },
-    { name: "St. Kitts & Nevis",      type: "free", flag: "🇰🇳", validity: "90 Days",  price: "Free", label: "Visa Free", href: "visa/st-kitts-nevis.html" },
-    { name: "St. Lucia",            type: "arrival", flag: "🇱🇨", validity: "42 Days",  price: "Free", label: "Visa on Arrival", href: "visa/st-lucia.html" },
-    { name: "St. Vincent & Grenadines", type: "free", flag: "🇻🇨", validity: "30 Days", price: "Free", label: "Visa Free", href: "visa/st-vincent.html" },
-    { name: "São Tomé & Príncipe",  type: "evisa", flag: "🇸🇹", validity: "30 Days",   price: "₹550",    label: "E-Visa", href: "visa/sao-tome.html" },
-    { name: "Tajikistan",           type: "evisa", flag: "🇹🇯", validity: "45 Days",   price: "₹2,550",  label: "E-Visa", href: "visa/tajikistan.html" },
-    { name: "Thailand",               type: "free", flag: "🇹🇭", validity: "90 Days",  price: "Free", label: "Visa Free", href: "visa/thailand.html" },
-    { name: "Togo",                 type: "evisa", flag: "🇹🇬", validity: "15 Days",   price: "₹4,450",  label: "E-Visa", href: "visa/togo.html" },
-    { name: "Trinidad & Tobago",      type: "free", flag: "🇹🇹", validity: "90 Days",  price: "Free", label: "Visa Free", href: "visa/trinidad-tobago.html" },
-    { name: "Turkey",               type: "evisa", flag: "🇹🇷", validity: "30 Days",   price: "₹4,850",  label: "E-Visa", href: "visa/turkey.html" },
-    { name: "Turks & Caicos Islands", type: "arrival", flag: "🇹🇨", validity: "90 Days", price: "Free", label: "Visa on Arrival", href: "visa/turks-caicos.html" },
-    { name: "UAE",                  type: "evisa", flag: "🇦🇪", validity: "30 Days",   price: "₹7,425",  label: "E-Visa", href: "visa/uae.html" },
-    { name: "Uganda",               type: "evisa", flag: "🇺🇬", validity: "90 Days",   price: "₹5,050",  label: "E-Visa", href: "visa/uganda.html" },
-    { name: "UK",           type: "evisa",    flag: "🇬🇧", validity: "6 Month",  price: "₹21,399", label: "E-Visa",       href: "visa/uk.html" },
-    { name: "USA",          type: "sticker",  flag: "🇺🇸", validity: "10 Year",  price: "₹19,999", label: "Sticker Visa", href: "visa/usa.html" },
-    { name: "Uzbekistan",           type: "evisa", flag: "🇺🇿", validity: "30 Days",   price: "₹2,150",  label: "E-Visa", href: "visa/uzbekistan.html" },
-    { name: "Vietnam",      type: "evisa",    flag: "🇻🇳", validity: "30 Days",  price: "₹2,999",  label: "E-Visa",       href: "visa/vietnam.html" },
-    { name: "Zambia",               type: "evisa", flag: "🇿🇲", validity: "90 Days",   price: "₹4,550",  label: "E-Visa", href: "visa/zambia.html" },
-    { name: "Zimbabwe",             type: "evisa", flag: "🇿🇼", validity: "90 Days",   price: "₹3,450",  label: "E-Visa", href: "visa/zimbabwe.html" },
+    { name:"Anguilla",                  type:"evisa",   code:"ai", validity:"90 Days",   price:"₹15,700",  label:"E-Visa",          href:"visa/anguilla.html" },
+    { name:"Australia",                 type:"evisa",   code:"au", validity:"1 Year",    price:"₹15,699",  label:"E-Visa",          href:"visa/australia.html" },
+    { name:"Azerbaijan",                type:"evisa",   code:"az", validity:"30 Days",   price:"₹2,650",   label:"E-Visa",          href:"visa/azerbaijan.html" },
+    { name:"Bahamas",                   type:"evisa",   code:"bs", validity:"90 Days",   price:"₹25,220",  label:"E-Visa",          href:"visa/bahamas.html" },
+    { name:"Bahrain",                   type:"evisa",   code:"bh", validity:"30 Days",   price:"₹4,450",   label:"E-Visa",          href:"visa/bahrain.html" },
+    { name:"Bangladesh",                type:"evisa",   code:"bd", validity:"180 Days",  price:"₹3,500",   label:"E-Visa",          href:"visa/bangladesh.html" },
+    { name:"Barbados",                  type:"free",    code:"bb", validity:"180 Days",  price:"Free",     label:"Visa Free",       href:"visa/barbados.html" },
+    { name:"Belarus",                   type:"arrival", code:"by", validity:"30 Days",   price:"Free",     label:"Visa on Arrival", href:"visa/belarus.html" },
+    { name:"Bhutan",                    type:"evisa",   code:"bt", validity:"90 Days",   price:"₹7,999",   label:"E-Visa",          href:"visa/bhutan.html" },
+    { name:"British Virgin Islands",    type:"free",    code:"vg", validity:"30 Days",   price:"Free",     label:"Visa Free",       href:"visa/british-virgin-islands.html" },
+    { name:"Burkina Faso",              type:"evisa",   code:"bf", validity:"30 Days",   price:"₹4,550",   label:"E-Visa",          href:"visa/burkina-faso.html" },
+    { name:"Burundi",                   type:"arrival", code:"bi", validity:"30 Days",   price:"Free",     label:"Visa on Arrival", href:"visa/burundi.html" },
+    { name:"Cambodia",                  type:"evisa",   code:"kh", validity:"30 Days",   price:"₹2,500",   label:"E-Visa",          href:"visa/cambodia.html" },
+    { name:"Chad",                      type:"evisa",   code:"td", validity:"90 Days",   price:"₹13,500",  label:"E-Visa",          href:"visa/chad.html" },
+    { name:"Colombia",                  type:"evisa",   code:"co", validity:"90 Days",   price:"₹7,000",   label:"E-Visa",          href:"visa/colombia.html" },
+    { name:"Comoros",                   type:"arrival", code:"km", validity:"45 Days",   price:"Free",     label:"Visa on Arrival", href:"visa/comoros.html" },
+    { name:"Congo - Kinshasa",          type:"evisa",   code:"cd", validity:"30 Days",   price:"₹24,250",  label:"E-Visa",          href:"visa/congo-kinshasa.html" },
+    { name:"Cook Islands",              type:"free",    code:"ck", validity:"31 Days",   price:"Free",     label:"Visa Free",       href:"visa/cook-islands.html" },
+    { name:"Cuba",                      type:"evisa",   code:"cu", validity:"90 Days",   price:"₹4,900",   label:"E-Visa",          href:"visa/cuba.html" },
+    { name:"Côte d'Ivoire",             type:"evisa",   code:"ci", validity:"90 Days",   price:"₹14,538",  label:"E-Visa",          href:"visa/cote-divoire.html" },
+    { name:"Djibouti",                  type:"evisa",   code:"dj", validity:"90 Days",   price:"₹2,950",   label:"E-Visa",          href:"visa/djibouti.html" },
+    { name:"Dominica",                  type:"free",    code:"dm", validity:"21 Days",   price:"Free",     label:"Visa Free",       href:"visa/dominica.html" },
+    { name:"Dubai / UAE",               type:"evisa",   code:"ae", validity:"30 Days",   price:"₹3,299",   label:"E-Visa",          href:"visa/dubai.html" },
+    { name:"Egypt",                     type:"evisa",   code:"eg", validity:"90 Days",   price:"₹6,799",   label:"E-Visa",          href:"visa/egypt.html" },
+    { name:"El Salvador",               type:"free",    code:"sv", validity:"90 Days",   price:"Free",     label:"Visa Free",       href:"visa/el-salvador.html" },
+    { name:"Equatorial Guinea",         type:"evisa",   code:"gq", validity:"90 Days",   price:"₹9,850",   label:"E-Visa",          href:"visa/equatorial-guinea.html" },
+    { name:"Ethiopia",                  type:"evisa",   code:"et", validity:"30 Days",   price:"₹5,100",   label:"E-Visa",          href:"visa/ethiopia.html" },
+    { name:"Fiji",                      type:"free",    code:"fj", validity:"4 Months",  price:"Free",     label:"Visa Free",       href:"visa/fiji.html" },
+    { name:"France",                    type:"schengen",code:"fr", validity:"90 Days",   price:"₹8,499",   label:"Schengen",        href:"visa/france.html" },
+    { name:"Gabon",                     type:"evisa",   code:"ga", validity:"30 Days",   price:"₹12,250",  label:"E-Visa",          href:"visa/gabon.html" },
+    { name:"Gambia",                    type:"free",    code:"gm", validity:"90 Days",   price:"Free",     label:"Visa Free",       href:"visa/gambia.html" },
+    { name:"Georgia",                   type:"evisa",   code:"ge", validity:"30 Days",   price:"₹1,660",   label:"E-Visa",          href:"visa/georgia.html" },
+    { name:"Germany",                   type:"schengen",code:"de", validity:"90 Days",   price:"₹8,499",   label:"Schengen",        href:"visa/germany.html" },
+    { name:"Guinea-Bissau",             type:"arrival", code:"gw", validity:"90 Days",   price:"Free",     label:"Visa on Arrival", href:"visa/guinea-bissau.html" },
+    { name:"Guyana",                    type:"evisa",   code:"gy", validity:"30 Days",   price:"₹2,452",   label:"E-Visa",          href:"visa/guyana.html" },
+    { name:"Haiti",                     type:"free",    code:"ht", validity:"90 Days",   price:"Free",     label:"Visa Free",       href:"visa/haiti.html" },
+    { name:"Hong Kong",                 type:"evisa",   code:"hk", validity:"14 Days",   price:"₹1,175",   label:"E-Visa",          href:"visa/hong-kong.html" },
+    { name:"Indonesia",                 type:"evisa",   code:"id", validity:"90 Days",   price:"₹3,999",   label:"E-Visa",          href:"visa/indonesia.html" },
+    { name:"Jamaica",                   type:"free",    code:"jm", validity:"30 Days",   price:"Free",     label:"Visa Free",       href:"visa/jamaica.html" },
+    { name:"Japan",                     type:"sticker", code:"jp", validity:"15 Days",   price:"₹4,999",   label:"Sticker Visa",    href:"visa/japan.html" },
+    { name:"Jordan",                    type:"evisa",   code:"jo", validity:"90 Days",   price:"₹12,550",  label:"E-Visa",          href:"visa/jordan.html" },
+    { name:"Kenya",                     type:"evisa",   code:"ke", validity:"90 Days",   price:"₹2,450",   label:"E-Visa",          href:"visa/kenya.html" },
+    { name:"Kuwait",                    type:"evisa",   code:"kw", validity:"60 Days",   price:"₹48,500",  label:"E-Visa",          href:"visa/kuwait.html" },
+    { name:"Kyrgyzstan",                type:"evisa",   code:"kg", validity:"30 Days",   price:"₹16,900",  label:"E-Visa",          href:"visa/kyrgyzstan.html" },
+    { name:"Laos",                      type:"evisa",   code:"la", validity:"30 Days",   price:"₹5,100",   label:"E-Visa",          href:"visa/laos.html" },
+    { name:"Liberia",                   type:"evisa",   code:"lr", validity:"90 Days",   price:"₹10,100",  label:"E-Visa",          href:"visa/liberia.html" },
+    { name:"Macao SAR China",           type:"free",    code:"mo", validity:"30 Days",   price:"Free",     label:"Visa Free",       href:"visa/macao.html" },
+    { name:"Madagascar",                type:"evisa",   code:"mg", validity:"30 Days",   price:"₹1,000",   label:"E-Visa",          href:"visa/madagascar.html" },
+    { name:"Malawi",                    type:"evisa",   code:"mw", validity:"30 Days",   price:"₹5,000",   label:"E-Visa",          href:"visa/malawi.html" },
+    { name:"Malaysia eNTRI",            type:"evisa",   code:"my", validity:"Per Trip",  price:"₹299",     label:"E-Visa",          href:"visa/malaysia-entri.html" },
+    { name:"Marshall Islands",          type:"arrival", code:"mh", validity:"90 Days",   price:"Free",     label:"Visa on Arrival", href:"visa/marshall-islands.html" },
+    { name:"Mauritania",                type:"arrival", code:"mr", validity:"90 Days",   price:"Free",     label:"Visa on Arrival", href:"visa/mauritania.html" },
+    { name:"Mauritius",                 type:"free",    code:"mu", validity:"60 Days",   price:"Free",     label:"Visa Free",       href:"visa/mauritius.html" },
+    { name:"Micronesia",                type:"free",    code:"fm", validity:"30 Days",   price:"Free",     label:"Visa Free",       href:"visa/micronesia.html" },
+    { name:"Moldova",                   type:"evisa",   code:"md", validity:"90 Days",   price:"₹3,300",   label:"E-Visa",          href:"visa/moldova.html" },
+    { name:"Mongolia",                  type:"evisa",   code:"mn", validity:"150 Days",  price:"₹550",     label:"E-Visa",          href:"visa/mongolia.html" },
+    { name:"Montserrat",                type:"free",    code:"ms", validity:"180 Days",  price:"Free",     label:"Visa Free",       href:"visa/montserrat.html" },
+    { name:"Morocco",                   type:"evisa",   code:"ma", validity:"180 Days",  price:"₹5,800",   label:"E-Visa",          href:"visa/morocco.html" },
+    { name:"Nepal",                     type:"free",    code:"np", validity:"No Limit",  price:"Free",     label:"Visa Free",       href:"visa/nepal.html" },
+    { name:"New Zealand",               type:"evisa",   code:"nz", validity:"1 Year",    price:"₹27,099",  label:"E-Visa",          href:"visa/new-zealand.html" },
+    { name:"Niue",                      type:"free",    code:"nu", validity:"30 Days",   price:"Free",     label:"Visa Free",       href:"visa/niue.html" },
+    { name:"Oman",                      type:"evisa",   code:"om", validity:"10 Days",   price:"₹2,999",   label:"E-Visa",          href:"visa/oman.html" },
+    { name:"Palau",                     type:"arrival", code:"pw", validity:"30 Days",   price:"Free",     label:"Visa on Arrival", href:"visa/palau.html" },
+    { name:"Qatar",                     type:"evisa",   code:"qa", validity:"30 Days",   price:"₹900",     label:"E-Visa",          href:"visa/qatar.html" },
+    { name:"Reunion",                   type:"free",    code:"re", validity:"90 Days",   price:"Free",     label:"Visa Free",       href:"visa/reunion.html" },
+    { name:"Russia",                    type:"evisa",   code:"ru", validity:"120 Days",  price:"₹8,700",   label:"E-Visa",          href:"visa/russia.html" },
+    { name:"Rwanda",                    type:"evisa",   code:"rw", validity:"30 Days",   price:"₹450",     label:"E-Visa",          href:"visa/rwanda.html" },
+    { name:"Samoa",                     type:"arrival", code:"ws", validity:"60 Days",   price:"Free",     label:"Visa on Arrival", href:"visa/samoa.html" },
+    { name:"Saudi Arabia",              type:"evisa",   code:"sa", validity:"90 Days",   price:"₹10,500",  label:"E-Visa",          href:"visa/saudi-arabia.html" },
+    { name:"Senegal",                   type:"free",    code:"sn", validity:"90 Days",   price:"Free",     label:"Visa Free",       href:"visa/senegal.html" },
+    { name:"Seychelles",                type:"evisa",   code:"sc", validity:"30 Days",   price:"₹1,050",   label:"E-Visa",          href:"visa/seychelles.html" },
+    { name:"Sierra Leone",              type:"evisa",   code:"sl", validity:"60 Days",   price:"₹10,600",  label:"E-Visa",          href:"visa/sierra-leone.html" },
+    { name:"Singapore",                 type:"evisa",   code:"sg", validity:"2 Year",    price:"₹3,799",   label:"E-Visa",          href:"visa/singapore.html" },
+    { name:"Solomon Islands",           type:"arrival", code:"sb", validity:"90 Days",   price:"Free",     label:"Visa on Arrival", href:"visa/solomon-islands.html" },
+    { name:"Somalia",                   type:"evisa",   code:"so", validity:"180 Days",  price:"₹9,200",   label:"E-Visa",          href:"visa/somalia.html" },
+    { name:"South Africa",              type:"evisa",   code:"za", validity:"5 Years",   price:"₹2,999",   label:"E-Visa",          href:"visa/south-africa.html" },
+    { name:"South Sudan",               type:"evisa",   code:"ss", validity:"60 Days",   price:"₹9,850",   label:"E-Visa",          href:"visa/south-sudan.html" },
+    { name:"Sri Lanka",                 type:"instant", code:"lk", validity:"180 Days",  price:"₹499",     label:"ETA",             href:"visa/sri-lanka.html" },
+    { name:"St. Kitts & Nevis",         type:"free",    code:"kn", validity:"90 Days",   price:"Free",     label:"Visa Free",       href:"visa/st-kitts-nevis.html" },
+    { name:"St. Lucia",                 type:"arrival", code:"lc", validity:"42 Days",   price:"Free",     label:"Visa on Arrival", href:"visa/st-lucia.html" },
+    { name:"St. Vincent & Grenadines",  type:"free",    code:"vc", validity:"30 Days",   price:"Free",     label:"Visa Free",       href:"visa/st-vincent.html" },
+    { name:"São Tomé & Príncipe",       type:"evisa",   code:"st", validity:"30 Days",   price:"₹550",     label:"E-Visa",          href:"visa/sao-tome.html" },
+    { name:"Tajikistan",                type:"evisa",   code:"tj", validity:"45 Days",   price:"₹2,550",   label:"E-Visa",          href:"visa/tajikistan.html" },
+    { name:"Thailand",                  type:"free",    code:"th", validity:"90 Days",   price:"Free",     label:"Visa Free",       href:"visa/thailand.html" },
+    { name:"Togo",                      type:"evisa",   code:"tg", validity:"15 Days",   price:"₹4,450",   label:"E-Visa",          href:"visa/togo.html" },
+    { name:"Trinidad & Tobago",         type:"free",    code:"tt", validity:"90 Days",   price:"Free",     label:"Visa Free",       href:"visa/trinidad-tobago.html" },
+    { name:"Turkey",                    type:"evisa",   code:"tr", validity:"30 Days",   price:"₹4,850",   label:"E-Visa",          href:"visa/turkey.html" },
+    { name:"Turks & Caicos Islands",    type:"arrival", code:"tc", validity:"90 Days",   price:"Free",     label:"Visa on Arrival", href:"visa/turks-caicos.html" },
+    { name:"UAE",                       type:"evisa",   code:"ae", validity:"30 Days",   price:"₹7,425",   label:"E-Visa",          href:"visa/uae.html" },
+    { name:"Uganda",                    type:"evisa",   code:"ug", validity:"90 Days",   price:"₹5,050",   label:"E-Visa",          href:"visa/uganda.html" },
+    { name:"UK",                        type:"evisa",   code:"gb", validity:"6 Month",   price:"₹21,399",  label:"E-Visa",          href:"visa/uk.html" },
+    { name:"USA",                       type:"sticker", code:"us", validity:"10 Year",   price:"₹19,999",  label:"Sticker Visa",    href:"visa/usa.html" },
+    { name:"Uzbekistan",                type:"evisa",   code:"uz", validity:"30 Days",   price:"₹2,150",   label:"E-Visa",          href:"visa/uzbekistan.html" },
+    { name:"Vietnam",                   type:"evisa",   code:"vn", validity:"30 Days",   price:"₹2,999",   label:"E-Visa",          href:"visa/vietnam.html" },
+    { name:"Zambia",                    type:"evisa",   code:"zm", validity:"90 Days",   price:"₹4,550",   label:"E-Visa",          href:"visa/zambia.html" },
+    { name:"Zimbabwe",                  type:"evisa",   code:"zw", validity:"90 Days",   price:"₹3,450",   label:"E-Visa",          href:"visa/zimbabwe.html" },
   ];
 
-  let activeFilter = "all";
+  function flagImg(code) {
+    // flagcdn.com correct format: /80x60/{code}.png
+    // On error, fall back to flag-icons CSS sprite, then emoji
+    return `<div class="flag-wrap">
+      <img
+        src="https://flagcdn.com/80x60/${code}.png"
+        srcset="https://flagcdn.com/160x120/${code}.png 2x"
+        alt="${code} flag"
+        loading="lazy"
+        width="80" height="60"
+        onerror="this.style.display='none';this.nextElementSibling.style.display='inline-block'"
+      /><span class="fi fi-${code}" style="display:none;width:48px;height:34px;background-size:cover;border-radius:4px;"></span>
+    </div>`;
+  }
+
+  function priceHTML(price) {
+    if (price === "Free") return `<div class="price"><span class="amount" style="color:var(--green)">Free</span></div>`;
+    return `<div class="price"><span class="starting">Starting</span><span class="amount">${price}<span class="asterisk">*</span></span></div>`;
+  }
+
+  function cardHTML(d) {
+    return `<a href="${d.href}" class="dest-card">
+      ${flagImg(d.code)}
+      <div><div class="country">${d.name} Visa</div><div class="visa-type">${d.label} · Valid: ${d.validity}</div></div>
+      ${priceHTML(d.price)}
+    </a>`;
+  }
 
   function renderCards(filter) {
-    const grid = document.getElementById("destGrid");
     const filtered = filter === "all" ? destinations : destinations.filter(d => d.type === filter);
-    grid.innerHTML = filtered.map(d => {
-      let priceHTML;
-      if (d.price === "Free") {
-        priceHTML = `<div class="price"><span class="amount" style="color:var(--green)">Free</span></div>`;
-      } else if (d.price === "₹0") {
-        priceHTML = `<div class="price"><span class="amount" style="color:var(--green)">Free</span></div>`;
-      } else if (d.price === "₹1") {
-        priceHTML = `<div class="price"><span class="starting">Starting</span><span class="amount">₹1<span class="asterisk">*</span></span></div>`;
-      } else {
-        priceHTML = `<div class="price"><span class="starting">Starting</span><span class="amount">${d.price}<span class="asterisk">*</span></span></div>`;
-      }
-      return `<a href="${d.href}" class="dest-card">
-        <div class="flag">${d.flag}</div>
-        <div><div class="country">${d.name} Visa</div><div class="visa-type">${d.label} · Valid: ${d.validity}</div></div>
-        ${priceHTML}
-      </a>`;
-    }).join("");
+    document.getElementById("destGrid").innerHTML = filtered.map(cardHTML).join("");
   }
 
   document.getElementById("filterTabs").addEventListener("click", e => {
@@ -349,23 +360,14 @@
     if (!q) { renderCards("all"); return; }
     document.querySelectorAll(".tab").forEach(t => t.classList.remove("active"));
     document.querySelector(".tab[data-filter='all']").classList.add("active");
-    const grid = document.getElementById("destGrid");
     const filtered = destinations.filter(d => d.name.toLowerCase().includes(q));
-    if (filtered.length === 0) {
+    const grid = document.getElementById("destGrid");
+    if (!filtered.length) {
       grid.innerHTML = `<p style="grid-column:1/-1;color:var(--text-muted);padding:24px 0;">No destinations found for "<strong>${q}</strong>". Try a different search.</p>`;
     } else {
-      grid.innerHTML = filtered.map(d => {
-        const priceHTML = d.price === "Free"
-          ? `<div class="price"><span class="amount" style="color:var(--green)">Free</span></div>`
-          : `<div class="price"><span class="starting">Starting</span><span class="amount">${d.price}<span class="asterisk">*</span></span></div>`;
-        return `<a href="${d.href}" class="dest-card">
-          <div class="flag">${d.flag}</div>
-          <div><div class="country">${d.name} Visa</div><div class="visa-type">${d.label} · Valid: ${d.validity}</div></div>
-          ${priceHTML}
-        </a>`;
-      }).join("");
+      grid.innerHTML = filtered.map(cardHTML).join("");
     }
-    document.querySelector(".destinations-grid").scrollIntoView({ behavior: "smooth", block: "start" });
+    document.querySelector(".destinations-grid").scrollIntoView({ behavior:"smooth", block:"start" });
   }
 
   document.getElementById("heroSearch").addEventListener("keydown", e => { if (e.key === "Enter") doSearch(); });
