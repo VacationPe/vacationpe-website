@@ -3,459 +3,1156 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Visa Services | VacationPe</title>
+  <title>Apply for a Visa Online from India | VacationPe</title>
+  <meta name="description" content="Browse 70+ visa destinations. Compare prices, processing times, and requirements. Apply online with VacationPe." />
   <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flag-icons/7.2.3/css/flag-icons.min.css" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     :root {
       --blue: #0077cc; --blue-dark: #005fa3; --blue-light: #e8f4fd;
-      --orange: #ff6b35; --text: #1a1a2e; --text-muted: #6b7280;
-      --border: #e5e7eb; --bg: #f9fafb; --white: #ffffff;
-      --shadow: 0 2px 12px rgba(0,0,0,0.08); --shadow-lg: 0 8px 32px rgba(0,0,0,0.12);
+      --orange: #ff6b35; --green: #22c55e; --text: #1a1a2e;
+      --text-muted: #6b7280; --border: #e5e7eb; --bg: #f9fafb;
+      --white: #ffffff; --shadow: 0 2px 12px rgba(0,0,0,0.08);
+      --shadow-lg: 0 8px 32px rgba(0,0,0,0.12);
     }
     body { font-family: 'Inter', sans-serif; color: var(--text); background: var(--white); }
-    nav { position:sticky; top:0; z-index:100; background:var(--white); border-bottom:1px solid var(--border); padding:0 24px; display:flex; align-items:center; justify-content:space-between; height:64px; box-shadow:0 1px 4px rgba(0,0,0,0.06); }
-    .nav-logo { font-family:'Nunito',sans-serif; font-size:1.5rem; font-weight:900; color:var(--blue); text-decoration:none; }
-    .nav-logo span { color:var(--orange); }
-    .nav-links { display:flex; gap:6px; align-items:center; }
-    .nav-links a { text-decoration:none; color:var(--text-muted); font-size:0.9rem; font-weight:500; padding:8px 14px; border-radius:8px; transition:all 0.2s; }
-    .nav-links a:hover, .nav-links a.active { background:var(--blue-light); color:var(--blue); }
-    .nav-cta { background:var(--blue) !important; color:#fff !important; border-radius:8px !important; }
-    .page-hero { background:linear-gradient(135deg,#0f4c81 0%,#1565c0 50%,#0288d1 100%); padding:52px 24px 60px; text-align:center; }
-    .page-hero h1 { font-family:'Nunito',sans-serif; font-size:clamp(1.6rem,4vw,2.4rem); font-weight:900; color:#fff; margin-bottom:10px; }
-    .page-hero p { color:rgba(255,255,255,0.8); font-size:1rem; max-width:560px; margin:0 auto; }
-    .main-wrap { max-width:1100px; margin:0 auto; padding:40px 24px; }
-    .section-title { font-family:'Nunito',sans-serif; font-size:1.3rem; font-weight:800; margin-bottom:20px; color:var(--text); }
-    .visa-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(160px,1fr)); gap:16px; margin-bottom:48px; }
-    .visa-card { background:#fff; border:1.5px solid var(--border); border-radius:14px; padding:20px 14px; text-align:center; cursor:pointer; transition:all 0.2s; display:flex; flex-direction:column; align-items:center; gap:8px; }
-    .visa-card:hover { border-color:var(--blue); box-shadow:var(--shadow-lg); transform:translateY(-3px); }
-    .visa-card .flag { font-size:2.2rem; }
-    .visa-card .country-name { font-weight:700; font-size:0.9rem; color:var(--text); }
-    .visa-card .visa-tag { font-size:0.7rem; font-weight:700; padding:3px 10px; border-radius:20px; }
-    .tag-evisa { background:#dcfce7; color:#166534; }
-    .tag-sticker { background:#fef3c7; color:#92660a; }
-    .tag-arrival { background:#e0f2fe; color:#075985; }
-    .tag-free { background:#f3e8ff; color:#6b21a8; }
-    .visa-price { font-size:0.82rem; font-weight:700; color:var(--blue); }
-    .wa-float { position:fixed; bottom:28px; right:28px; z-index:200; background:#25d366; color:#fff; border-radius:50%; width:56px; height:56px; display:flex; align-items:center; justify-content:center; font-size:1.6rem; text-decoration:none; box-shadow:0 4px 20px rgba(37,211,102,0.4); transition:transform 0.2s; }
-    .wa-float:hover { transform:scale(1.1); }
-    footer { background:#0f1923; color:rgba(255,255,255,0.6); padding:36px 24px; text-align:center; }
-    .footer-logo { font-family:'Nunito',sans-serif; font-size:1.3rem; font-weight:900; color:#fff; margin-bottom:6px; }
-    .footer-logo span { color:var(--orange); }
+    nav { position: sticky; top: 0; z-index: 200; background: var(--white); border-bottom: 1px solid var(--border); padding: 0 24px; display: flex; align-items: center; justify-content: space-between; height: 64px; box-shadow: 0 1px 4px rgba(0,0,0,0.06); }
+    .nav-logo { font-family: 'Nunito', sans-serif; font-size: 1.5rem; font-weight: 900; color: var(--blue); text-decoration: none; }
+    .nav-logo span { color: var(--orange); }
+    .nav-links { display: flex; gap: 6px; align-items: center; }
+    .nav-links a { text-decoration: none; color: var(--text-muted); font-size: 0.9rem; font-weight: 500; padding: 8px 14px; border-radius: 8px; transition: all 0.2s; }
+    .nav-links a:hover, .nav-links a.active { background: var(--blue-light); color: var(--blue); }
+    .nav-cta { background: var(--blue); color: #fff !important; border-radius: 8px !important; padding: 8px 18px !important; }
+    .nav-cta:hover { background: var(--blue-dark) !important; color: #fff !important; }
+    .hero { background: linear-gradient(135deg, #0f4c81 0%, #1565c0 40%, #0288d1 100%); padding: 72px 24px 80px; text-align: center; position: relative; overflow: hidden; }
+    .hero::before { content: ''; position: absolute; inset: 0; pointer-events: none; background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.04'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E"); }
+    .hero-content { position: relative; z-index: 2; }
+    .hero-badge { display: inline-flex; align-items: center; gap: 6px; background: rgba(255,255,255,0.15); backdrop-filter: blur(8px); color: #fff; font-size: 0.8rem; font-weight: 600; padding: 6px 14px; border-radius: 20px; margin-bottom: 20px; border: 1px solid rgba(255,255,255,0.25); }
+    .hero h1 { font-family: 'Nunito', sans-serif; font-size: clamp(2rem, 5vw, 3.2rem); font-weight: 900; color: #fff; line-height: 1.15; margin-bottom: 12px; }
+    .hero p { color: rgba(255,255,255,0.85); font-size: 1.05rem; margin-bottom: 32px; }
+    .hero-search { display: flex; max-width: 520px; margin: 0 auto 28px; background: #fff; border-radius: 14px; overflow: visible; box-shadow: 0 8px 32px rgba(0,0,0,0.25); position: relative; z-index: 100; }
+    .hero-search input { flex: 1; border: none; outline: none; padding: 18px 20px; font-size: 1rem; color: var(--text); font-family: 'Inter', sans-serif; border-radius: 14px 0 0 14px; }
+    #suggestBox { position:absolute; top:calc(100% + 4px); left:0; right:0; background:#fff; border-radius:12px; box-shadow:0 12px 40px rgba(0,0,0,0.18); z-index:200; max-height:340px; overflow-y:auto; display:none; }
+    .suggest-item { display:flex; align-items:center; gap:12px; padding:12px 18px; cursor:pointer; border-bottom:1px solid var(--border); transition:background 0.15s; }
+    .suggest-item:last-child { border-bottom:none; border-radius:0 0 12px 12px; }
+    .suggest-item:first-child { border-radius:12px 12px 0 0; }
+    .suggest-item:hover, .suggest-item.si-active { background:var(--blue-light); }
+    .suggest-flag { width:36px; height:26px; border-radius:4px; object-fit:cover; flex-shrink:0; box-shadow:0 1px 3px rgba(0,0,0,0.15); }
+    .suggest-name { font-weight:700; font-size:0.92rem; color:var(--text); flex:1; }
+    .suggest-label { font-size:0.74rem; color:var(--text-muted); background:var(--bg); padding:2px 8px; border-radius:20px; }
+    .suggest-price { font-weight:800; font-size:0.88rem; color:var(--blue); }
+    .hero-search button { background: var(--orange); color: #fff; border: none; cursor: pointer; padding: 18px 28px; font-size: 0.95rem; font-weight: 700; font-family: 'Inter', sans-serif; transition: background 0.2s; border-radius: 0 14px 14px 0; white-space: nowrap; }
+    .hero-search button:hover { background: #e85a24; }
+    .section { padding: 56px 24px; max-width: 1200px; margin: 0 auto; }
+    .section-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 28px; }
+    .section-title { font-family: 'Nunito', sans-serif; font-size: 1.6rem; font-weight: 800; color: var(--text); }
+    .view-all { color: var(--blue); text-decoration: none; font-weight: 600; font-size: 0.9rem; display: flex; align-items: center; gap: 4px; transition: gap 0.2s; }
+    .view-all:hover { gap: 8px; }
+    .filter-tabs { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 28px; }
+    .tab { padding: 8px 18px; border-radius: 20px; border: 1.5px solid var(--border); background: #fff; color: var(--text-muted); font-size: 0.85rem; font-weight: 600; cursor: pointer; transition: all 0.2s; }
+    .tab:hover, .tab.active { border-color: var(--blue); background: var(--blue-light); color: var(--blue); }
+    .destinations-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(175px, 1fr)); gap: 16px; }
+    .dest-card { background: #fff; border: 1.5px solid var(--border); border-radius: 14px; padding: 16px; text-decoration: none; color: inherit; transition: all 0.22s; display: flex; flex-direction: column; gap: 10px; position: relative; overflow: hidden; cursor: pointer; }
+    .dest-card:hover { border-color: var(--blue); box-shadow: var(--shadow-lg); transform: translateY(-2px); }
+    .dest-card .flag-wrap { width: 48px; height: 34px; border-radius: 6px; overflow: hidden; box-shadow: 0 1px 4px rgba(0,0,0,0.15); flex-shrink: 0; }
+    .dest-card .flag-wrap img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .dest-card .country { font-weight: 700; font-size: 0.95rem; }
+    .dest-card .visa-type { color: var(--text-muted); font-size: 0.78rem; }
+    .dest-card .price { font-weight: 800; font-size: 0.88rem; color: var(--blue); margin-top: auto; line-height: 1.3; }
+    .dest-card .price .starting { display: block; font-size: 0.7rem; font-weight: 600; color: var(--text-muted); margin-bottom: 2px; }
+    .dest-card .price .amount { font-size: 1rem; }
+    .dest-card .price .asterisk { font-size: 0.7rem; vertical-align: super; }
+    .blog-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 20px; }
+    .blog-card { border-radius: 14px; overflow: hidden; border: 1.5px solid var(--border); text-decoration: none; color: inherit; transition: all 0.22s; background: #fff; }
+    .blog-card:hover { box-shadow: var(--shadow-lg); transform: translateY(-2px); }
+    .blog-card .blog-img { width: 100%; height: 160px; background: linear-gradient(135deg, #e8f4fd, #bfdbfe); display: flex; align-items: center; justify-content: center; font-size: 2.5rem; }
+    .blog-card .blog-body { padding: 16px; }
+    .blog-card .blog-tag { font-size: 0.75rem; font-weight: 700; color: var(--blue); text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 8px; }
+    .blog-card .blog-title { font-weight: 700; font-size: 0.95rem; line-height: 1.4; margin-bottom: 8px; }
+    .blog-card .blog-date { color: var(--text-muted); font-size: 0.78rem; }
+    .reviews-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 16px; }
+    .review-card { background: #fff; border: 1.5px solid var(--border); border-radius: 14px; padding: 20px; display: flex; flex-direction: column; gap: 12px; }
+    .review-stars { color: #f59e0b; font-size: 0.85rem; }
+    .review-text { font-size: 0.9rem; line-height: 1.6; color: var(--text-muted); font-style: italic; }
+    .review-text::before { content: '"'; font-size: 1.4rem; color: var(--blue); line-height: 0; vertical-align: -6px; }
+    .review-text::after { content: '"'; font-size: 1.4rem; color: var(--blue); line-height: 0; vertical-align: -6px; }
+    .reviewer { display: flex; align-items: center; gap: 10px; }
+    .reviewer-avatar { width: 36px; height: 36px; border-radius: 50%; background: var(--blue); display: flex; align-items: center; justify-content: center; color: #fff; font-weight: 700; font-size: 0.8rem; }
+    .reviewer-name { font-weight: 700; font-size: 0.88rem; }
+    .reviewer-visa { font-size: 0.75rem; color: var(--text-muted); }
+    .visa-update-list { display: flex; flex-direction: column; }
+    .update-item { display: flex; align-items: center; justify-content: space-between; padding: 16px 0; border-bottom: 1px solid var(--border); text-decoration: none; color: inherit; gap: 16px; transition: all 0.15s; }
+    .update-item:hover { color: var(--blue); }
+    .update-item:last-child { border-bottom: none; }
+    .update-info { display: flex; flex-direction: column; gap: 4px; flex: 1; }
+    .update-country { font-size: 0.75rem; font-weight: 700; color: var(--blue); display: flex; align-items: center; gap: 6px; text-transform: uppercase; letter-spacing: 0.4px; }
+    .update-title { font-weight: 600; font-size: 0.92rem; line-height: 1.4; }
+    .update-date { font-size: 0.75rem; color: var(--text-muted); }
+    .update-arrow { color: var(--text-muted); font-size: 1rem; flex-shrink: 0; }
+    footer { background: #0f1923; color: rgba(255,255,255,0.7); padding: 56px 24px 32px; }
+    .footer-inner { max-width: 1200px; margin: 0 auto; }
+    .footer-grid { display: grid; grid-template-columns: 2fr repeat(4, 1fr); gap: 40px; margin-bottom: 40px; }
+    .footer-brand { display: flex; flex-direction: column; gap: 12px; }
+    .footer-logo { font-family: 'Nunito', sans-serif; font-size: 1.4rem; font-weight: 900; color: #fff; }
+    .footer-logo span { color: var(--orange); }
+    .footer-desc { font-size: 0.85rem; line-height: 1.6; }
+    .footer-col h4 { color: #fff; font-weight: 700; font-size: 0.9rem; margin-bottom: 14px; }
+    .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+    .footer-col ul li a { color: rgba(255,255,255,0.6); text-decoration: none; font-size: 0.85rem; transition: color 0.2s; }
+    .footer-col ul li a:hover { color: #fff; }
+    .footer-bottom { border-top: 1px solid rgba(255,255,255,0.1); padding-top: 24px; font-size: 0.82rem; display: flex; justify-content: space-between; align-items: center; }
+    @media (max-width: 768px) { .footer-grid { grid-template-columns: 1fr 1fr; } .footer-brand { grid-column: 1 / -1; } nav .nav-links { display: none; } }
 
-    /* ===== MODAL OVERLAY ===== */
-    .modal-overlay {
-      position:fixed; inset:0; background:rgba(15,25,35,0.7); z-index:1000;
-      display:none; align-items:center; justify-content:center;
-      padding:16px; backdrop-filter:blur(4px);
+    /* ═══════════════════════════════════════════════════════
+       ENQUIRY MODAL
+    ═══════════════════════════════════════════════════════ */
+    .eq-overlay {
+      position: fixed; inset: 0; z-index: 9000;
+      background: rgba(8, 18, 34, 0.75); backdrop-filter: blur(5px);
+      display: none; align-items: flex-start; justify-content: center;
+      padding: 12px; overflow-y: auto;
     }
-    .modal-overlay.open { display:flex; }
-    .modal {
-      background:#fff; border-radius:20px; width:100%; max-width:680px;
-      max-height:92vh; overflow-y:auto; box-shadow:0 24px 64px rgba(0,0,0,0.25);
-      animation:slideUp 0.3s ease;
+    .eq-overlay.open { display: flex; }
+    .eq-modal {
+      background: #fff; border-radius: 20px; width: 100%; max-width: 660px;
+      margin: auto; box-shadow: 0 32px 80px rgba(0,0,0,0.3);
+      animation: eqIn 0.35s cubic-bezier(0.34,1.4,0.64,1);
+      overflow: hidden;
     }
-    @keyframes slideUp { from{opacity:0;transform:translateY(30px)} to{opacity:1;transform:translateY(0)} }
-    .modal-header {
-      background:linear-gradient(135deg,#0f4c81,#1565c0);
-      padding:24px 28px 20px;
-      border-radius:20px 20px 0 0;
-      display:flex; justify-content:space-between; align-items:flex-start;
-    }
-    .modal-header h2 { font-family:'Nunito',sans-serif; font-size:1.25rem; font-weight:900; color:#fff; margin-bottom:4px; }
-    .modal-header p { color:rgba(255,255,255,0.75); font-size:0.83rem; }
-    .modal-close { background:rgba(255,255,255,0.15); border:none; color:#fff; width:32px; height:32px; border-radius:50%; cursor:pointer; font-size:1.1rem; display:flex; align-items:center; justify-content:center; flex-shrink:0; transition:background 0.2s; }
-    .modal-close:hover { background:rgba(255,255,255,0.3); }
-    .modal-body { padding:24px 28px; }
+    @keyframes eqIn { from { opacity:0; transform:translateY(40px) scale(0.96); } to { opacity:1; transform:translateY(0) scale(1); } }
 
-    /* Form sections */
-    .form-section { margin-bottom:24px; }
-    .form-section-title {
-      font-family:'Nunito',sans-serif; font-weight:800; font-size:0.88rem;
-      text-transform:uppercase; letter-spacing:0.5px; color:var(--blue);
-      margin-bottom:14px; padding-bottom:8px;
-      border-bottom:2px solid var(--blue-light);
-      display:flex; align-items:center; gap:6px;
+    /* Header */
+    .eq-head {
+      background: linear-gradient(135deg, #0b3d6b 0%, #1565c0 55%, #0288d1 100%);
+      padding: 20px 24px 16px; position: relative;
     }
-    .form-row { display:grid; grid-template-columns:1fr 1fr; gap:14px; }
-    .form-row.single { grid-template-columns:1fr; }
-    .form-row.triple { grid-template-columns:1fr 1fr 1fr; }
-    @media(max-width:520px) { .form-row, .form-row.triple { grid-template-columns:1fr; } }
-    .form-group { display:flex; flex-direction:column; gap:5px; }
-    .form-group label { font-size:0.8rem; font-weight:600; color:var(--text); }
-    .form-group label .req { color:#ef4444; margin-left:2px; }
-    .form-group input, .form-group select, .form-group textarea {
-      border:1.5px solid var(--border); border-radius:9px;
-      padding:10px 13px; font-size:0.88rem; font-family:'Inter',sans-serif;
-      color:var(--text); background:#fff; transition:border-color 0.2s;
-      width:100%;
+    .eq-head-inner { display: flex; justify-content: space-between; align-items: flex-start; }
+    .eq-head-text h2 {
+      font-family: 'Nunito', sans-serif; font-weight: 900; font-size: 1.15rem;
+      color: #fff; margin-bottom: 3px;
     }
-    .form-group input:focus, .form-group select:focus, .form-group textarea:focus {
-      outline:none; border-color:var(--blue); box-shadow:0 0 0 3px rgba(0,119,204,0.1);
+    .eq-head-text p { color: rgba(255,255,255,0.72); font-size: 0.8rem; line-height: 1.4; max-width: 480px; }
+    .eq-close {
+      background: rgba(255,255,255,0.15); border: none; color: #fff;
+      width: 32px; height: 32px; border-radius: 50%; cursor: pointer;
+      font-size: 1rem; display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0; margin-left: 16px; transition: background 0.2s;
     }
-    .form-group textarea { resize:vertical; min-height:80px; }
-    .radio-group { display:flex; gap:16px; margin-top:4px; }
-    .radio-option { display:flex; align-items:center; gap:6px; cursor:pointer; font-size:0.88rem; font-weight:500; }
-    .radio-option input[type="radio"] { accent-color:var(--blue); width:15px; height:15px; cursor:pointer; }
-    .conditional-block { background:var(--bg); border:1.5px solid var(--border); border-radius:10px; padding:14px; margin-top:10px; display:none; }
-    .conditional-block.show { display:block; }
-    .submit-btn {
-      width:100%; background:linear-gradient(135deg,var(--blue),var(--blue-dark));
-      color:#fff; border:none; border-radius:12px; padding:14px;
-      font-size:1rem; font-weight:800; font-family:'Nunito',sans-serif;
-      cursor:pointer; transition:all 0.2s; margin-top:4px;
-      display:flex; align-items:center; justify-content:center; gap:8px;
+    .eq-close:hover { background: rgba(255,255,255,0.3); }
+
+    /* Step bar */
+    .eq-steps {
+      display: flex; align-items: center; gap: 0;
+      background: rgba(255,255,255,0.1); border-radius: 10px;
+      padding: 10px 14px; margin-top: 14px;
     }
-    .submit-btn:hover { transform:translateY(-2px); box-shadow:0 8px 24px rgba(0,119,204,0.35); }
-    .submit-note { text-align:center; font-size:0.75rem; color:var(--text-muted); margin-top:8px; }
-    .success-msg {
-      display:none; background:linear-gradient(135deg,#dcfce7,#bbf7d0);
-      border:1.5px solid #86efac; border-radius:14px; padding:24px;
-      text-align:center; margin-top:8px;
+    .eq-step { display: flex; align-items: center; gap: 6px; flex: 1; min-width: 0; }
+    .eq-step-num {
+      width: 26px; height: 26px; border-radius: 50%; display: flex; align-items: center;
+      justify-content: center; font-size: 0.72rem; font-weight: 800; flex-shrink: 0;
+      background: rgba(255,255,255,0.2); color: rgba(255,255,255,0.7);
+      border: 2px solid rgba(255,255,255,0.25); transition: all 0.3s;
     }
-    .success-msg.show { display:block; }
-    .success-msg h3 { font-family:'Nunito',sans-serif; font-weight:900; color:#166534; font-size:1.1rem; margin-bottom:6px; }
-    .success-msg p { color:#166534; font-size:0.85rem; }
+    .eq-step-label { font-size: 0.7rem; font-weight: 700; color: rgba(255,255,255,0.6); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; transition: color 0.3s; }
+    .eq-step-line { flex: 1; height: 2px; background: rgba(255,255,255,0.2); margin: 0 4px; transition: background 0.3s; min-width: 8px; }
+    .eq-step.s-active .eq-step-num { background: #fff; color: var(--blue); border-color: #fff; }
+    .eq-step.s-active .eq-step-label { color: #fff; }
+    .eq-step.s-done .eq-step-num { background: var(--green); color: #fff; border-color: var(--green); }
+    .eq-step.s-done .eq-step-label { color: rgba(255,255,255,0.85); }
+    .eq-step-line.sl-done { background: var(--green); }
+    .eq-step-line.sl-active { background: rgba(255,255,255,0.6); }
+
+    /* Body */
+    .eq-body { padding: 22px 24px 24px; max-height: 65vh; overflow-y: auto; scrollbar-width: thin; scrollbar-color: var(--border) transparent; }
+
+    /* Panel */
+    .eq-panel { display: none; animation: pnlIn 0.25s ease; }
+    .eq-panel.p-active { display: block; }
+    @keyframes pnlIn { from { opacity:0; transform:translateX(10px); } to { opacity:1; transform:translateX(0); } }
+
+    .eq-section-title {
+      font-family: 'Nunito', sans-serif; font-weight: 800; font-size: 0.78rem;
+      text-transform: uppercase; letter-spacing: 0.7px; color: var(--blue);
+      margin-bottom: 14px; padding-bottom: 7px;
+      border-bottom: 2px solid var(--blue-light);
+      display: flex; align-items: center; gap: 6px;
+    }
+
+    /* Form layout */
+    .fg { display: flex; flex-direction: column; gap: 4px; }
+    .fg label { font-size: 0.78rem; font-weight: 600; color: #374151; }
+    .fg label .req { color: #ef4444; }
+    .fg input, .fg select, .fg textarea {
+      border: 1.5px solid var(--border); border-radius: 9px;
+      padding: 9px 12px; font-size: 0.86rem; font-family: 'Inter', sans-serif;
+      color: var(--text); background: #fff; width: 100%;
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+    .fg input:focus, .fg select:focus, .fg textarea:focus {
+      outline: none; border-color: var(--blue); box-shadow: 0 0 0 3px rgba(0,119,204,0.1);
+    }
+    .fg input.err, .fg select.err { border-color: #ef4444 !important; box-shadow: 0 0 0 3px rgba(239,68,68,0.12) !important; }
+    .fg textarea { resize: vertical; min-height: 76px; }
+
+    .gr2 { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 12px; }
+    .gr1 { display: grid; grid-template-columns: 1fr; gap: 12px; margin-bottom: 12px; }
+    .gr3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px; margin-bottom: 12px; }
+    @media(max-width:520px) { .gr2,.gr3 { grid-template-columns:1fr; } }
+
+    /* Radio toggle rows */
+    .radio-row { display: flex; gap: 10px; margin-top: 5px; flex-wrap: wrap; }
+    .radio-chip {
+      display: flex; align-items: center; gap: 6px; cursor: pointer;
+      padding: 7px 14px; border-radius: 20px; border: 1.5px solid var(--border);
+      font-size: 0.82rem; font-weight: 600; color: var(--text-muted);
+      transition: all 0.18s; user-select: none;
+    }
+    .radio-chip input[type="radio"] { display: none; }
+    .radio-chip:has(input:checked) { border-color: var(--blue); background: var(--blue-light); color: var(--blue); }
+    .radio-chip-dot {
+      width: 14px; height: 14px; border-radius: 50%;
+      border: 2px solid currentColor; display: inline-flex;
+      align-items: center; justify-content: center; flex-shrink: 0;
+    }
+    .radio-chip:has(input:checked) .radio-chip-dot::after {
+      content: ''; width: 6px; height: 6px; background: var(--blue); border-radius: 50;
+    }
+
+    /* Conditional block */
+    .cond { background: #f0f7ff; border: 1.5px solid #bfdbfe; border-radius: 10px; padding: 14px; margin-top: 10px; display: none; }
+    .cond.show { display: block; animation: pnlIn 0.2s ease; }
+
+    /* Info hint */
+    .field-hint { font-size: 0.72rem; color: var(--text-muted); margin-top: 3px; }
+
+    /* Nav buttons */
+    .eq-nav { display: flex; gap: 10px; padding: 14px 24px 18px; border-top: 1px solid var(--border); background: #fff; position: sticky; bottom: 0; }
+    .btn-back {
+      flex: 1; background: #fff; border: 1.5px solid var(--border); color: var(--text-muted);
+      border-radius: 10px; padding: 11px 16px; font-size: 0.88rem; font-weight: 700;
+      font-family: 'Nunito', sans-serif; cursor: pointer; transition: all 0.2s;
+    }
+    .btn-back:hover { border-color: var(--blue); color: var(--blue); }
+    .btn-next {
+      flex: 2; background: linear-gradient(135deg, var(--blue), var(--blue-dark));
+      color: #fff; border: none; border-radius: 10px; padding: 11px 16px;
+      font-size: 0.88rem; font-weight: 800; font-family: 'Nunito', sans-serif;
+      cursor: pointer; transition: all 0.2s; display: flex; align-items: center; justify-content: center; gap: 6px;
+    }
+    .btn-next:hover { transform: translateY(-1px); box-shadow: 0 6px 20px rgba(0,119,204,0.35); }
+    .btn-submit {
+      flex: 2; background: linear-gradient(135deg, #059669, #047857);
+      color: #fff; border: none; border-radius: 10px; padding: 11px 16px;
+      font-size: 0.9rem; font-weight: 800; font-family: 'Nunito', sans-serif;
+      cursor: pointer; transition: all 0.2s; display: flex; align-items: center; justify-content: center; gap: 6px;
+    }
+    .btn-submit:hover { transform: translateY(-1px); box-shadow: 0 6px 20px rgba(5,150,105,0.35); }
+    .submit-note { font-size: 0.72rem; color: var(--text-muted); text-align: center; margin-top: 6px; padding: 0 24px 12px; }
+
+    /* Success */
+    .eq-success {
+      display: none; padding: 36px 24px 28px; text-align: center;
+    }
+    .eq-success.show { display: block; animation: pnlIn 0.3s ease; }
+    .eq-success .s-icon { font-size: 3.5rem; margin-bottom: 14px; }
+    .eq-success h3 { font-family: 'Nunito', sans-serif; font-size: 1.25rem; font-weight: 900; color: #065f46; margin-bottom: 8px; }
+    .eq-success .s-box {
+      background: linear-gradient(135deg, #dcfce7, #d1fae5);
+      border: 1.5px solid #6ee7b7; border-radius: 14px;
+      padding: 18px 20px; margin: 14px 0 20px; text-align: left;
+    }
+    .eq-success .s-box p { font-size: 0.88rem; color: #065f46; line-height: 1.6; }
+    .eq-success .s-box strong { color: #064e3b; }
+    .eq-success .s-contact { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; }
+    .btn-wa {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: #25d366; color: #fff; border: none; border-radius: 10px;
+      padding: 11px 20px; font-size: 0.88rem; font-weight: 700;
+      font-family: 'Nunito', sans-serif; cursor: pointer; text-decoration: none;
+      transition: all 0.2s;
+    }
+    .btn-wa:hover { background: #1fba58; transform: translateY(-1px); }
+    .btn-close-success {
+      display: inline-flex; align-items: center; gap: 6px;
+      background: #fff; border: 1.5px solid var(--border); color: var(--text-muted);
+      border-radius: 10px; padding: 11px 20px; font-size: 0.88rem; font-weight: 700;
+      font-family: 'Nunito', sans-serif; cursor: pointer; transition: all 0.2s;
+    }
+    .btn-close-success:hover { border-color: var(--blue); color: var(--blue); }
+
+    /* ═══════════════════════════════════════════════════════
+       NOT-AVAILABLE ALERT
+    ═══════════════════════════════════════════════════════ */
+    .na-overlay {
+      position: fixed; inset: 0; z-index: 10000;
+      background: rgba(8,18,34,0.8); backdrop-filter: blur(6px);
+      display: none; align-items: center; justify-content: center; padding: 16px;
+    }
+    .na-overlay.open { display: flex; }
+    .na-box {
+      background: #fff; border-radius: 20px; width: 100%; max-width: 420px;
+      padding: 32px 28px; text-align: center;
+      box-shadow: 0 28px 80px rgba(0,0,0,0.25);
+      animation: eqIn 0.3s cubic-bezier(0.34,1.4,0.64,1);
+    }
+    .na-icon { font-size: 3rem; margin-bottom: 12px; }
+    .na-box h3 { font-family: 'Nunito', sans-serif; font-weight: 900; font-size: 1.2rem; color: var(--text); margin-bottom: 8px; }
+    .na-pill { display: inline-block; background: #fef3c7; color: #92400e; font-weight: 700; padding: 4px 14px; border-radius: 20px; font-size: 0.82rem; margin-bottom: 14px; }
+    .na-box p { font-size: 0.88rem; color: var(--text-muted); line-height: 1.65; margin-bottom: 22px; }
+    .na-box p strong { color: var(--text); }
+    .na-btns { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; }
+    .btn-na-ok { background: linear-gradient(135deg, var(--blue), var(--blue-dark)); color: #fff; border: none; border-radius: 10px; padding: 11px 24px; font-size: 0.88rem; font-weight: 800; font-family: 'Nunito', sans-serif; cursor: pointer; transition: all 0.2s; }
+    .btn-na-ok:hover { transform: translateY(-1px); box-shadow: 0 6px 20px rgba(0,119,204,0.3); }
   </style>
 </head>
 <body>
 
-<a href="https://api.whatsapp.com/send?phone=919998952926" class="wa-float" target="_blank">💬</a>
-
 <nav>
   <a href="index.html" class="nav-logo">Vacation<span>Pe</span></a>
   <div class="nav-links">
-    <a href="index.html">Home</a>
-    <a href="destinations.html">Destinations</a>
+    <a href="hotels.html">Hotels</a>
     <a href="visa.html" class="active">Visa</a>
-    <a href="about.html">About Us</a>
-    <a href="contact.html">Contact</a>
-    <a href="payment.html">Payment</a>
-    <a href="https://api.whatsapp.com/send?phone=919998952926" class="nav-cta">💬 Book Now</a>
+    <a href="holidays.html">Holidays</a>
+    <a href="blog.html">Blog</a>
+    <a href="business.html">Business</a>
+    <a href="visa-update.html">Visa Update</a>
+    <a href="#" class="nav-cta" onclick="openEnquiry('');return false;">Apply Now</a>
   </div>
 </nav>
 
-<div class="page-hero">
-  <h1>🌍 Visa Services</h1>
-  <p>Click any destination to get personalised visa assistance from our experts</p>
-</div>
-
-<div class="main-wrap">
-
-  <div class="section-title">🌟 Popular International Visas</div>
-  <div class="visa-grid">
-    <div class="visa-card" onclick="openForm('Dubai / UAE','🇦🇪')"><div class="flag">🇦🇪</div><div class="country-name">Dubai / UAE</div><span class="visa-tag tag-evisa">E-Visa</span><div class="visa-price">₹3,299+</div></div>
-    <div class="visa-card" onclick="openForm('Singapore','🇸🇬')"><div class="flag">🇸🇬</div><div class="country-name">Singapore</div><span class="visa-tag tag-sticker">Sticker Visa</span><div class="visa-price">₹3,799+</div></div>
-    <div class="visa-card" onclick="openForm('Australia','🇦🇺')"><div class="flag">🇦🇺</div><div class="country-name">Australia</div><span class="visa-tag tag-evisa">E-Visa</span><div class="visa-price">₹15,699+</div></div>
-    <div class="visa-card" onclick="openForm('USA','🇺🇸')"><div class="flag">🇺🇸</div><div class="country-name">USA</div><span class="visa-tag tag-sticker">Sticker Visa</span><div class="visa-price">₹19,999+</div></div>
-    <div class="visa-card" onclick="openForm('UK','🇬🇧')"><div class="flag">🇬🇧</div><div class="country-name">UK</div><span class="visa-tag tag-evisa">E-Visa</span><div class="visa-price">₹21,399+</div></div>
-    <div class="visa-card" onclick="openForm('Thailand','🇹🇭')"><div class="flag">🇹🇭</div><div class="country-name">Thailand</div><span class="visa-tag tag-free">Visa Free</span><div class="visa-price">₹0</div></div>
-    <div class="visa-card" onclick="openForm('Bali / Indonesia','🇮🇩')"><div class="flag">🇮🇩</div><div class="country-name">Bali / Indonesia</div><span class="visa-tag tag-arrival">On Arrival</span><div class="visa-price">₹3,999+</div></div>
-    <div class="visa-card" onclick="openForm('Malaysia','🇲🇾')"><div class="flag">🇲🇾</div><div class="country-name">Malaysia</div><span class="visa-tag tag-free">Visa Free</span><div class="visa-price">₹0</div></div>
-    <div class="visa-card" onclick="openForm('Maldives','🏝️')"><div class="flag">🏝️</div><div class="country-name">Maldives</div><span class="visa-tag tag-free">Visa Free</span><div class="visa-price">₹0</div></div>
-    <div class="visa-card" onclick="openForm('Mauritius','🇲🇺')"><div class="flag">🇲🇺</div><div class="country-name">Mauritius</div><span class="visa-tag tag-free">Visa Free</span><div class="visa-price">₹0</div></div>
-    <div class="visa-card" onclick="openForm('Schengen / Europe','🇪🇺')"><div class="flag">🇪🇺</div><div class="country-name">Schengen / Europe</div><span class="visa-tag tag-sticker">Sticker Visa</span><div class="visa-price">₹12,999+</div></div>
-    <div class="visa-card" onclick="openForm('Canada','🇨🇦')"><div class="flag">🇨🇦</div><div class="country-name">Canada</div><span class="visa-tag tag-sticker">Sticker Visa</span><div class="visa-price">₹18,999+</div></div>
-    <div class="visa-card" onclick="openForm('Japan','🇯🇵')"><div class="flag">🇯🇵</div><div class="country-name">Japan</div><span class="visa-tag tag-sticker">Sticker Visa</span><div class="visa-price">₹5,499+</div></div>
-    <div class="visa-card" onclick="openForm('Sri Lanka','🇱🇰')"><div class="flag">🇱🇰</div><div class="country-name">Sri Lanka</div><span class="visa-tag tag-evisa">E-Visa (ETA)</span><div class="visa-price">₹499+</div></div>
-    <div class="visa-card" onclick="openForm('Turkey','🇹🇷')"><div class="flag">🇹🇷</div><div class="country-name">Turkey</div><span class="visa-tag tag-evisa">E-Visa</span><div class="visa-price">₹5,999+</div></div>
-    <div class="visa-card" onclick="openForm('South Africa','🇿🇦')"><div class="flag">🇿🇦</div><div class="country-name">South Africa</div><span class="visa-tag tag-sticker">Sticker Visa</span><div class="visa-price">₹8,999+</div></div>
-    <div class="visa-card" onclick="openForm('Vietnam','🇻🇳')"><div class="flag">🇻🇳</div><div class="country-name">Vietnam</div><span class="visa-tag tag-evisa">E-Visa</span><div class="visa-price">₹2,499+</div></div>
-    <div class="visa-card" onclick="openForm('New Zealand','🇳🇿')"><div class="flag">🇳🇿</div><div class="country-name">New Zealand</div><span class="visa-tag tag-evisa">E-Visa</span><div class="visa-price">₹10,999+</div></div>
-    <div class="visa-card" onclick="openForm('Egypt','🇪🇬')"><div class="flag">🇪🇬</div><div class="country-name">Egypt</div><span class="visa-tag tag-arrival">On Arrival</span><div class="visa-price">₹4,499+</div></div>
-    <div class="visa-card" onclick="openForm('Kenya','🇰🇪')"><div class="flag">🇰🇪</div><div class="country-name">Kenya</div><span class="visa-tag tag-evisa">E-Visa</span><div class="visa-price">₹6,999+</div></div>
-    <div class="visa-card" onclick="openForm('Switzerland','🇨🇭')"><div class="flag">🇨🇭</div><div class="country-name">Switzerland</div><span class="visa-tag tag-sticker">Sticker Visa</span><div class="visa-price">₹14,999+</div></div>
-    <div class="visa-card" onclick="openForm('Greece','🇬🇷')"><div class="flag">🇬🇷</div><div class="country-name">Greece</div><span class="visa-tag tag-sticker">Sticker Visa</span><div class="visa-price">₹12,999+</div></div>
-    <div class="visa-card" onclick="openForm('Norway','🇳🇴')"><div class="flag">🇳🇴</div><div class="country-name">Norway</div><span class="visa-tag tag-sticker">Sticker Visa</span><div class="visa-price">₹13,999+</div></div>
-    <div class="visa-card" onclick="openForm('Other Destination','🌍')"><div class="flag">🌍</div><div class="country-name">Other Destination</div><span class="visa-tag tag-evisa">Any Country</span><div class="visa-price">Ask Us</div></div>
+<section class="hero">
+  <div class="hero-content">
+    <div class="hero-badge">🌍 70+ Destinations Available</div>
+    <h1>Global Visa Made Easy.</h1>
+    <p>Fast, reliable visa services trusted by thousands of Indian travellers</p>
+    <div class="hero-search">
+      <input type="text" id="heroSearch" placeholder="Search destination e.g. Dubai, UK, USA…" autocomplete="off" oninput="liveSearch(this.value)" onkeydown="searchKeyNav(event)" />
+      <button onclick="doSearch()">Search</button>
+      <div id="suggestBox"></div>
+    </div>
   </div>
+</section>
 
+<div style="background: var(--bg);">
+<div class="section">
+  <div class="section-header">
+    <h2 class="section-title">Popular Destinations</h2>
+  </div>
+  <div class="filter-tabs" id="filterTabs">
+    <button class="tab active" data-filter="all">All</button>
+    <button class="tab" data-filter="evisa">E-Visa</button>
+    <button class="tab" data-filter="sticker">Sticker Visa</button>
+    <button class="tab" data-filter="schengen">Schengen Visa</button>
+    <button class="tab" data-filter="arrival">Visa on Arrival</button>
+    <button class="tab" data-filter="free">Visa Free</button>
+    <button class="tab" data-filter="instant">Instant Visa</button>
+  </div>
+  <div class="destinations-grid" id="destGrid"></div>
+</div>
 </div>
 
-<!-- ===== VISA ENQUIRY MODAL ===== -->
-<div class="modal-overlay" id="modalOverlay" onclick="handleOverlayClick(event)">
-  <div class="modal" id="modalBox">
+<div class="section">
+  <div class="section-header">
+    <h2 class="section-title">Latest from Our Blog</h2>
+    <a href="blog.html" class="view-all">View All →</a>
+  </div>
+  <div class="blog-grid">
+    <a href="blog.html#schengen-guide" class="blog-card"><div class="blog-img">🇪🇺</div><div class="blog-body"><div class="blog-tag">Schengen</div><div class="blog-title">Complete Guide to Schengen Visa Application from India 2026</div><div class="blog-date">May 20, 2026</div></div></a>
+    <a href="blog.html#dubai-guide" class="blog-card"><div class="blog-img">🇦🇪</div><div class="blog-body"><div class="blog-tag">Dubai</div><div class="blog-title">Dubai Visa for Indians: Types, Fees &amp; How to Apply Online</div><div class="blog-date">May 14, 2026</div></div></a>
+    <a href="blog.html#japan-visa" class="blog-card"><div class="blog-img">🇯🇵</div><div class="blog-body"><div class="blog-tag">Japan</div><div class="blog-title">Japan Visa 2026: Documents Required &amp; Step-by-Step Process</div><div class="blog-date">May 8, 2026</div></div></a>
+    <a href="blog.html#singapore-visa" class="blog-card"><div class="blog-img">🇸🇬</div><div class="blog-body"><div class="blog-tag">Singapore</div><div class="blog-title">Singapore Visa from India: Requirements, Fees &amp; Processing Time</div><div class="blog-date">May 2, 2026</div></div></a>
+    <a href="blog.html#thailand-visa" class="blog-card"><div class="blog-img">🇹🇭</div><div class="blog-body"><div class="blog-tag">Thailand</div><div class="blog-title">Thailand Visa-Free for Indians 2026: What You Need to Carry</div><div class="blog-date">Apr 28, 2026</div></div></a>
+    <a href="blog.html#usa-visa" class="blog-card"><div class="blog-img">🇺🇸</div><div class="blog-body"><div class="blog-tag">USA</div><div class="blog-title">US Tourist Visa (B1/B2): Interview Tips &amp; Common Rejection Reasons</div><div class="blog-date">Apr 20, 2026</div></div></a>
+  </div>
+</div>
 
-    <div class="modal-header">
-      <div>
-        <h2 id="modalTitle">🛂 Visa Enquiry Form</h2>
-        <p id="modalSubtitle">Fill in your details — our expert will call you within 2 hours</p>
-      </div>
-      <button class="modal-close" onclick="closeForm()">✕</button>
-    </div>
+<div style="background: var(--bg);">
+<div class="section">
+  <div class="section-header">
+    <h2 class="section-title">What Customers Say</h2>
+    <a href="reviews.html" class="view-all">View All →</a>
+  </div>
+  <div class="reviews-grid">
+    <div class="review-card"><div class="review-stars">★★★★★</div><p class="review-text">Dubai eVisa service is awesome. I applied at 1pm and received my visa in less than 24 hrs. That's amazing speed. Thanks VacationPe!</p><div class="reviewer"><div class="reviewer-avatar">AS</div><div><div class="reviewer-name">Amandeep Singh</div><div class="reviewer-visa">Dubai Visa</div></div></div></div>
+    <div class="review-card"><div class="review-stars">★★★★★</div><p class="review-text">Excellent service for UAE tourist visa. The team is prompt, courteous and very professional. Truly personalized service!</p><div class="reviewer"><div class="reviewer-avatar">C</div><div><div class="reviewer-name">Chandrasekhar</div><div class="reviewer-visa">UAE Visa</div></div></div></div>
+    <div class="review-card"><div class="review-stars">★★★★★</div><p class="review-text">Got Australia visa in 1 week because of proper guidance given on time. Very helpful and professional team throughout the process.</p><div class="reviewer"><div class="reviewer-avatar">MB</div><div><div class="reviewer-name">Mala Bhatt</div><div class="reviewer-visa">Australia Visa</div></div></div></div>
+    <div class="review-card"><div class="review-stars">★★★★★</div><p class="review-text">Prompt service and no fuss. Got Dubai visa for self and family without any hassle. Highly recommend VacationPe for all visa needs.</p><div class="reviewer"><div class="reviewer-avatar">RM</div><div><div class="reviewer-name">Rajnikant Mehta</div><div class="reviewer-visa">Dubai Visa</div></div></div></div>
+    <div class="review-card"><div class="review-stars">★★★★★</div><p class="review-text">Singapore visa done smoothly. Documents checklist was very clear. The whole process took just 3 days. Will use again!</p><div class="reviewer"><div class="reviewer-avatar">PK</div><div><div class="reviewer-name">Priya Kapoor</div><div class="reviewer-visa">Singapore Visa</div></div></div></div>
+  </div>
+</div>
+</div>
 
-    <div class="modal-body">
-      <form id="visaForm" onsubmit="submitForm(event)">
-
-        <!-- PERSONAL DETAILS -->
-        <div class="form-section">
-          <div class="form-section-title">👤 Personal Details</div>
-          <div class="form-row">
-            <div class="form-group">
-              <label>Full Name <span class="req">*</span></label>
-              <input type="text" id="f_name" placeholder="As per passport" required />
-            </div>
-            <div class="form-group">
-              <label>Mobile Number <span class="req">*</span></label>
-              <input type="tel" id="f_mobile" placeholder="+91 XXXXX XXXXX" required />
-            </div>
-          </div>
-          <div class="form-row" style="margin-top:14px;">
-            <div class="form-group">
-              <label>Email Address <span class="req">*</span></label>
-              <input type="email" id="f_email" placeholder="your@email.com" required />
-            </div>
-            <div class="form-group">
-              <label>City of Residence</label>
-              <input type="text" id="f_city" placeholder="e.g. Jaipur, Delhi, Mumbai" />
-            </div>
-          </div>
-          <div class="form-row single" style="margin-top:14px;">
-            <div class="form-group">
-              <label>Nationality <span class="req">*</span></label>
-              <select id="f_nationality" required>
-                <option value="">Select nationality</option>
-                <option value="Indian" selected>Indian</option>
-                <option value="NRI - USA">NRI – USA</option>
-                <option value="NRI - UK">NRI – UK</option>
-                <option value="NRI - Canada">NRI – Canada</option>
-                <option value="NRI - Australia">NRI – Australia</option>
-                <option value="NRI - UAE">NRI – UAE</option>
-                <option value="Other">Other</option>
-              </select>
-            </div>
-          </div>
-        </div>
-
-        <!-- TRAVEL DETAILS -->
-        <div class="form-section">
-          <div class="form-section-title">✈️ Travel Details</div>
-          <div class="form-row">
-            <div class="form-group">
-              <label>Destination Country <span class="req">*</span></label>
-              <input type="text" id="f_destination" placeholder="e.g. Dubai, UK, Australia" required />
-            </div>
-            <div class="form-group">
-              <label>Intended Travel Date</label>
-              <input type="date" id="f_traveldate" />
-            </div>
-          </div>
-          <div class="form-row" style="margin-top:14px;">
-            <div class="form-group">
-              <label>Number of Travelers</label>
-              <select id="f_travelers">
-                <option value="1">1 Person</option>
-                <option value="2">2 Persons</option>
-                <option value="3">3 Persons</option>
-                <option value="4">4 Persons</option>
-                <option value="5">5 Persons</option>
-                <option value="6+">6 or more</option>
-              </select>
-            </div>
-            <div class="form-group">
-              <label>Visa Type</label>
-              <select id="f_visatype">
-                <option value="">Select visa type</option>
-                <option value="Tourist Visa">Tourist Visa</option>
-                <option value="Business Visa">Business Visa</option>
-                <option value="Student Visa">Student Visa</option>
-                <option value="Work Visa">Work Visa</option>
-                <option value="Transit Visa">Transit Visa</option>
-                <option value="Medical Visa">Medical Visa</option>
-                <option value="Other">Other</option>
-              </select>
-            </div>
-          </div>
-        </div>
-
-        <!-- TRAVEL & VISA HISTORY -->
-        <div class="form-section">
-          <div class="form-section-title">🗂️ Travel & Visa History</div>
-
-          <!-- International travel before? -->
-          <div class="form-group" style="margin-bottom:16px;">
-            <label>Have you traveled internationally before?</label>
-            <div class="radio-group">
-              <label class="radio-option"><input type="radio" name="traveled" value="Yes" onchange="toggleBlock('traveledBlock','Yes',this)"> Yes</label>
-              <label class="radio-option"><input type="radio" name="traveled" value="No" onchange="toggleBlock('traveledBlock','No',this)"> No</label>
-            </div>
-          </div>
-
-          <!-- Valid visa for another country? -->
-          <div class="form-group" style="margin-bottom:16px;">
-            <label>Do you currently hold a valid visa for any other country?</label>
-            <div class="radio-group">
-              <label class="radio-option"><input type="radio" name="hasVisa" value="Yes" onchange="toggleBlock('existingVisaBlock','Yes',this)"> Yes</label>
-              <label class="radio-option"><input type="radio" name="hasVisa" value="No" onchange="toggleBlock('existingVisaBlock','No',this)"> No</label>
-            </div>
-            <div class="conditional-block" id="existingVisaBlock">
-              <div class="form-row triple">
-                <div class="form-group">
-                  <label>Country Name</label>
-                  <input type="text" id="f_existingCountry" placeholder="e.g. USA, UK" />
-                </div>
-                <div class="form-group">
-                  <label>Visa Type</label>
-                  <input type="text" id="f_existingVisaType" placeholder="e.g. B1/B2, Tier 2" />
-                </div>
-                <div class="form-group">
-                  <label>Visa Expiry Date</label>
-                  <input type="date" id="f_existingExpiry" />
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Previous visa refusal? -->
-          <div class="form-group">
-            <label>Any previous visa refusal / rejection?</label>
-            <div class="radio-group">
-              <label class="radio-option"><input type="radio" name="refused" value="Yes" onchange="toggleBlock('refusedBlock','Yes',this)"> Yes</label>
-              <label class="radio-option"><input type="radio" name="refused" value="No" onchange="toggleBlock('refusedBlock','No',this)"> No</label>
-            </div>
-            <div class="conditional-block" id="refusedBlock">
-              <div class="form-group">
-                <label>Please provide details of refusal</label>
-                <textarea id="f_refusalDetails" rows="3" placeholder="Country, year, reason (if known)…"></textarea>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- ADDITIONAL INFO -->
-        <div class="form-section">
-          <div class="form-section-title">📝 Additional Information</div>
-          <div class="form-group">
-            <label>Message / Special Requirements</label>
-            <textarea id="f_message" rows="3" placeholder="Any specific requirements, urgent processing needed, group details, etc."></textarea>
-          </div>
-        </div>
-
-        <!-- SUBMIT -->
-        <button type="submit" class="submit-btn">
-          🚀 Get Visa Assistance
-        </button>
-        <p class="submit-note">🔒 Your information is safe with us. Our expert will contact you within 2 hours.</p>
-
-        <!-- SUCCESS -->
-        <div class="success-msg" id="successMsg">
-          <h3>✅ Enquiry Submitted Successfully!</h3>
-          <p>Thank you! Bajrang Singh will call or WhatsApp you within 2 hours.<br>You can also reach us directly at <strong>+91 9998952926</strong>.</p>
-        </div>
-
-      </form>
-    </div>
+<div class="section">
+  <div class="section-header">
+    <h2 class="section-title">Visa Update</h2>
+    <a href="visa-update.html" class="view-all">View All →</a>
+  </div>
+  <div class="visa-update-list">
+    <a href="visa-update.html#saudi-umrah-2026" class="update-item"><div class="update-info"><div class="update-country">🇸🇦 Saudi Arabia · Mar 18, 2026</div><div class="update-title">Saudi Arabia Umrah Visa Deadlines March 2026: Entry &amp; Exit Dates</div></div><span class="update-arrow">›</span></a>
+    <a href="visa-update.html#us-visa-suspended" class="update-item"><div class="update-info"><div class="update-country">🇺🇸 USA · Mar 18, 2026</div><div class="update-title">US Visa Processing Suspended in 6 Countries Due to Middle East Conflict</div></div><span class="update-arrow">›</span></a>
+    <a href="visa-update.html#australia-study-fees" class="update-item"><div class="update-info"><div class="update-country">🇦🇺 Australia · Mar 12, 2026</div><div class="update-title">Australia Doubles Post-Study Work Visa Fees for Indians</div></div><span class="update-arrow">›</span></a>
+    <a href="visa-update.html#japan-fees" class="update-item"><div class="update-info"><div class="update-country">🇯🇵 Japan · Mar 12, 2026</div><div class="update-title">Japan Visa Fees May Rise 10x to ₹60,000 for Permanent Residency</div></div><span class="update-arrow">›</span></a>
+    <a href="visa-update.html#uk-fraud" class="update-item"><div class="update-info"><div class="update-country">🇬🇧 UK · Mar 2, 2026</div><div class="update-title">UK Launches Anti-Fraud Campaign in Haryana</div></div><span class="update-arrow">›</span></a>
+    <a href="visa-update.html#jeju-denied" class="update-item"><div class="update-info"><div class="update-country">🇰🇷 Jeju Island · Mar 2, 2026</div><div class="update-title">Jeju Visa-Free Entry Denied to Indians</div></div><span class="update-arrow">›</span></a>
+    <a href="visa-update.html#uk-evisa-boarding" class="update-item"><div class="update-info"><div class="update-country">🇬🇧 UK · Mar 2, 2026</div><div class="update-title">UK eVisa for Indians: Airlines Can Now Refuse Boarding</div></div><span class="update-arrow">›</span></a>
+    <a href="visa-update.html#egypt-fee" class="update-item"><div class="update-info"><div class="update-country">🇪🇬 Egypt · Mar 2, 2026</div><div class="update-title">Egypt Visa Fee May Rise to $30 from March 2026</div></div><span class="update-arrow">›</span></a>
+    <a href="visa-update.html#japan-walkin" class="update-item"><div class="update-info"><div class="update-country">🇯🇵 Japan · Mar 2, 2026</div><div class="update-title">Japan Ends Walk-In Visa Applications in Chennai &amp; Hyderabad From March 2</div></div><span class="update-arrow">›</span></a>
   </div>
 </div>
 
 <footer>
-  <div class="footer-logo">Vacation<span>Pe</span></div>
-  <p style="margin-top:4px;">© 2026 VacationPe · Visa services for Indian passport holders · Jaipur, Rajasthan</p>
+  <div class="footer-inner">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="footer-logo">Vacation<span>Pe</span></div>
+        <p class="footer-desc">Your trusted partner for global visa services, holiday packages, and travel solutions for Indian travellers.</p>
+        <div style="display:flex;gap:12px;margin-top:4px;">
+          <a href="#" style="color:rgba(255,255,255,0.6);font-size:0.8rem;">Facebook</a>
+          <a href="#" style="color:rgba(255,255,255,0.6);font-size:0.8rem;">Instagram</a>
+          <a href="#" style="color:rgba(255,255,255,0.6);font-size:0.8rem;">Twitter</a>
+        </div>
+      </div>
+      <div class="footer-col"><h4>Tourist Visas</h4><ul><li><a href="visa/dubai.html">Dubai Visa</a></li><li><a href="visa/singapore.html">Singapore Visa</a></li><li><a href="visa/australia.html">Australia Visa</a></li><li><a href="visa/new-zealand.html">New Zealand Visa</a></li><li><a href="visa/sri-lanka.html">Sri Lanka Visa</a></li><li><a href="visa/usa.html">US Visa</a></li><li><a href="visa/uk.html">UK Visa</a></li><li><a href="visa/japan.html">Japan Visa</a></li></ul></div>
+      <div class="footer-col"><h4>Top Holidays</h4><ul><li><a href="#">Dubai Packages</a></li><li><a href="#">Singapore Packages</a></li><li><a href="#">Thailand Packages</a></li><li><a href="#">Bali Packages</a></li><li><a href="#">Japan Packages</a></li><li><a href="#">Vietnam Packages</a></li><li><a href="#">India Packages</a></li></ul></div>
+      <div class="footer-col"><h4>Quick Links</h4><ul><li><a href="blog.html">Blog</a></li><li><a href="visa-update.html">Visa Updates</a></li><li><a href="faq.html">FAQ</a></li><li><a href="about.html">About Us</a></li><li><a href="contact.html">Contact</a></li><li><a href="terms.html">Terms</a></li><li><a href="privacy.html">Privacy Policy</a></li></ul></div>
+      <div class="footer-col"><h4>Support</h4><ul><li><a href="#">WhatsApp Support</a></li><li><a href="#">Track Application</a></li><li><a href="#">Document Checklist</a></li><li><a href="#">Refund Policy</a></li><li><a href="#">Careers</a></li></ul></div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 VacationPe. All rights reserved.</span>
+      <span>Made with ❤️ for Indian Travellers</span>
+    </div>
+  </div>
 </footer>
 
+
+<!-- ═══════════════════════════════════════════════════════════
+     VISA ENQUIRY MODAL
+═══════════════════════════════════════════════════════════ -->
+<div class="eq-overlay" id="eqOverlay" onclick="overlayClick(event)">
+  <div class="eq-modal" id="eqModal">
+
+    <!-- Header -->
+    <div class="eq-head">
+      <div class="eq-head-inner">
+        <div class="eq-head-text">
+          <h2>🛂 Visa Assistance Request Form</h2>
+          <p>Planning an international trip? Fill in your details and our visa experts will guide you through the documentation and application process.</p>
+        </div>
+        <button class="eq-close" onclick="closeEnquiry()">✕</button>
+      </div>
+      <!-- Step bar -->
+      <div class="eq-steps" id="eqSteps">
+        <div class="eq-step s-active" id="sInd1">
+          <div class="eq-step-num">1</div>
+          <span class="eq-step-label">Personal</span>
+        </div>
+        <div class="eq-step-line" id="sl1"></div>
+        <div class="eq-step" id="sInd2">
+          <div class="eq-step-num">2</div>
+          <span class="eq-step-label">Travel</span>
+        </div>
+        <div class="eq-step-line" id="sl2"></div>
+        <div class="eq-step" id="sInd3">
+          <div class="eq-step-num">3</div>
+          <span class="eq-step-label">Visa Details</span>
+        </div>
+        <div class="eq-step-line" id="sl3"></div>
+        <div class="eq-step" id="sInd4">
+          <div class="eq-step-num">4</div>
+          <span class="eq-step-label">History</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Body (scrollable) -->
+    <div class="eq-body" id="eqBody">
+
+      <!-- ── PANEL 1: Personal Details ── -->
+      <div class="eq-panel p-active" id="panel1">
+        <div class="eq-section-title">👤 Personal Details</div>
+        <div class="gr2">
+          <div class="fg">
+            <label>Full Name <span class="req">*</span></label>
+            <input type="text" id="f_name" placeholder="As per passport" />
+          </div>
+          <div class="fg">
+            <label>Mobile Number <span class="req">*</span></label>
+            <input type="tel" id="f_mobile" placeholder="+91 XXXXX XXXXX" />
+          </div>
+        </div>
+        <div class="gr2">
+          <div class="fg">
+            <label>Email Address <span class="req">*</span></label>
+            <input type="email" id="f_email" placeholder="your@email.com" />
+          </div>
+          <div class="fg">
+            <label>City of Residence</label>
+            <input type="text" id="f_city" placeholder="e.g. Jaipur, Delhi, Mumbai" />
+          </div>
+        </div>
+        <div class="gr2">
+          <div class="fg">
+            <label>Nationality <span class="req">*</span></label>
+            <select id="f_nationality">
+              <option value="">Select nationality</option>
+              <option value="Indian" selected>Indian</option>
+              <option value="NRI - USA">NRI – USA</option>
+              <option value="NRI - UK">NRI – UK</option>
+              <option value="NRI - Canada">NRI – Canada</option>
+              <option value="NRI - Australia">NRI – Australia</option>
+              <option value="NRI - UAE">NRI – UAE</option>
+              <option value="Other">Other</option>
+            </select>
+          </div>
+          <div class="fg">
+            <label>WhatsApp Number</label>
+            <input type="tel" id="f_wa" placeholder="If different from mobile" />
+            <span class="field-hint">Leave blank if same as mobile</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── PANEL 2: Travel Details ── -->
+      <div class="eq-panel" id="panel2">
+        <div class="eq-section-title">✈️ Travel Details</div>
+        <div class="gr2">
+          <div class="fg">
+            <label>Destination Country <span class="req">*</span></label>
+            <input type="text" id="f_destination" placeholder="e.g. Dubai, UK, Australia" />
+          </div>
+          <div class="fg">
+            <label>Intended Travel Date</label>
+            <input type="date" id="f_traveldate" />
+          </div>
+        </div>
+        <div class="gr2">
+          <div class="fg">
+            <label>Return / Travel Until Date</label>
+            <input type="date" id="f_returndate" />
+          </div>
+          <div class="fg">
+            <label>Number of Travellers</label>
+            <select id="f_travelers">
+              <option value="1">1 Person (Solo)</option>
+              <option value="2">2 Persons (Couple)</option>
+              <option value="3">3 Persons</option>
+              <option value="4">4 Persons (Family)</option>
+              <option value="5">5 Persons</option>
+              <option value="6-10">6–10 Persons (Group)</option>
+              <option value="10+">10+ Persons (Large Group)</option>
+            </select>
+          </div>
+        </div>
+        <div class="gr1">
+          <div class="fg">
+            <label>Purpose of Visit</label>
+            <select id="f_purpose">
+              <option value="">Select purpose</option>
+              <option value="Tourism / Holiday">Tourism / Holiday</option>
+              <option value="Business Meeting">Business Meeting</option>
+              <option value="Transit / Stopover">Transit / Stopover</option>
+              <option value="Visiting Family / Friends">Visiting Family / Friends</option>
+              <option value="Honeymoon">Honeymoon</option>
+              <option value="Other">Other</option>
+            </select>
+          </div>
+        </div>
+        <div class="gr1">
+          <div class="fg">
+            <label>Any special travel requirements or notes</label>
+            <textarea id="f_travelNotes" rows="2" placeholder="e.g. travelling with elderly parents, infant, wheelchair accessibility needed…"></textarea>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── PANEL 3: Visa Details ── -->
+      <div class="eq-panel" id="panel3">
+        <div class="eq-section-title">🗂️ Visa Details</div>
+        <div class="gr2">
+          <div class="fg">
+            <label>Visa Type Required <span class="req">*</span></label>
+            <select id="f_visatype" onchange="checkVisaType(this.value)">
+              <option value="">Select visa type</option>
+              <option value="Tourist Visa">Tourist Visa</option>
+              <option value="Business Visa">Business Visa</option>
+              <option value="Transit Visa">Transit Visa</option>
+              <option value="Work Visa">Work Visa</option>
+              <option value="Student Visa">Student Visa</option>
+              <option value="Medical Visa">Medical Visa</option>
+              <option value="Other">Other</option>
+            </select>
+          </div>
+          <div class="fg">
+            <label>Processing Urgency</label>
+            <select id="f_urgency">
+              <option value="Normal (7–15 days)">Normal (7–15 days)</option>
+              <option value="Express (3–5 days)">Express (3–5 days)</option>
+              <option value="Urgent (1–2 days)">Urgent (1–2 days)</option>
+              <option value="Not sure">Not sure</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="fg" style="margin-bottom:12px;">
+          <label>Do you have a valid passport?</label>
+          <div class="radio-row" id="passportRadios">
+            <label class="radio-chip"><input type="radio" name="hasPassport" value="Yes"><span class="radio-chip-dot"></span> Yes</label>
+            <label class="radio-chip"><input type="radio" name="hasPassport" value="No"><span class="radio-chip-dot"></span> No — need guidance</label>
+            <label class="radio-chip"><input type="radio" name="hasPassport" value="Expiring soon"><span class="radio-chip-dot"></span> Expiring soon</label>
+          </div>
+        </div>
+
+        <!-- Passport details (show if Yes or Expiring soon) -->
+        <div class="cond" id="passportCond">
+          <div class="eq-section-title" style="font-size:0.72rem;margin-bottom:10px;">📘 Passport Details</div>
+          <div class="gr3">
+            <div class="fg">
+              <label>Passport Number</label>
+              <input type="text" id="f_ppNum" placeholder="A1234567" style="text-transform:uppercase;" />
+            </div>
+            <div class="fg">
+              <label>Issue Date</label>
+              <input type="date" id="f_ppIssue" />
+            </div>
+            <div class="fg">
+              <label>Expiry Date</label>
+              <input type="date" id="f_ppExpiry" />
+            </div>
+          </div>
+        </div>
+
+        <div class="fg" style="margin-bottom:12px;margin-top:4px;">
+          <label>Message / Special Requirements</label>
+          <textarea id="f_message" rows="2" placeholder="Any specific requirements, urgent processing, group details, questions…"></textarea>
+        </div>
+      </div>
+
+      <!-- ── PANEL 4: Travel & Visa History ── -->
+      <div class="eq-panel" id="panel4">
+        <div class="eq-section-title">🌐 Travel &amp; Visa History</div>
+
+        <!-- Travelled internationally before? -->
+        <div class="fg" style="margin-bottom:14px;">
+          <label>Have you travelled internationally before?</label>
+          <div class="radio-row">
+            <label class="radio-chip"><input type="radio" name="traveled" value="Yes" onchange="toggleCond('traveledCond', 'Yes', this)"><span class="radio-chip-dot"></span> Yes</label>
+            <label class="radio-chip"><input type="radio" name="traveled" value="No" onchange="toggleCond('traveledCond', 'Yes', this)"><span class="radio-chip-dot"></span> No — first trip</label>
+          </div>
+          <div class="cond" id="traveledCond">
+            <div class="fg">
+              <label>Countries visited previously</label>
+              <input type="text" id="f_prevCountries" placeholder="e.g. Dubai, Singapore, Thailand, UK…" />
+              <span class="field-hint">List any countries you have visited before</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Valid visa for another country? -->
+        <div class="fg" style="margin-bottom:14px;">
+          <label>Do you currently hold a valid visa for any other country?</label>
+          <div class="radio-row">
+            <label class="radio-chip"><input type="radio" name="hasVisa" value="Yes" onchange="toggleCond('existingVisaCond','Yes',this)"><span class="radio-chip-dot"></span> Yes</label>
+            <label class="radio-chip"><input type="radio" name="hasVisa" value="No" onchange="toggleCond('existingVisaCond','Yes',this)"><span class="radio-chip-dot"></span> No</label>
+          </div>
+          <div class="cond" id="existingVisaCond">
+            <div class="eq-section-title" style="font-size:0.72rem;margin-bottom:10px;">📋 Existing Visa Details</div>
+            <div class="gr3">
+              <div class="fg">
+                <label>Country Name</label>
+                <input type="text" id="f_exCountry" placeholder="e.g. USA, UK, Schengen" />
+              </div>
+              <div class="fg">
+                <label>Visa Type</label>
+                <input type="text" id="f_exType" placeholder="e.g. B1/B2, Tier 2" />
+              </div>
+              <div class="fg">
+                <label>Visa Valid Until</label>
+                <input type="date" id="f_exExpiry" />
+              </div>
+            </div>
+            <div class="fg" style="margin-top:8px;">
+              <label>Additional countries (if multiple)</label>
+              <input type="text" id="f_exOthers" placeholder="e.g. Canada Visitor, Australia ETA…" />
+            </div>
+          </div>
+        </div>
+
+        <!-- Previous refusal -->
+        <div class="fg" style="margin-bottom:14px;">
+          <label>Any previous visa refusal or rejection?</label>
+          <div class="radio-row">
+            <label class="radio-chip"><input type="radio" name="refused" value="Yes" onchange="toggleCond('refusedCond','Yes',this)"><span class="radio-chip-dot"></span> Yes</label>
+            <label class="radio-chip"><input type="radio" name="refused" value="No" onchange="toggleCond('refusedCond','Yes',this)"><span class="radio-chip-dot"></span> No</label>
+          </div>
+          <div class="cond" id="refusedCond">
+            <div class="fg">
+              <label>Please provide details of refusal</label>
+              <textarea id="f_refDetails" rows="2" placeholder="Country, year, reason if known…"></textarea>
+            </div>
+          </div>
+        </div>
+
+        <!-- How did you hear -->
+        <div class="fg" style="margin-bottom:0;">
+          <label>How did you hear about us?</label>
+          <select id="f_source">
+            <option value="">Select an option</option>
+            <option value="Google Search">Google Search</option>
+            <option value="WhatsApp">WhatsApp</option>
+            <option value="Instagram">Instagram</option>
+            <option value="Facebook">Facebook</option>
+            <option value="Friend / Family Referral">Friend / Family Referral</option>
+            <option value="Previous Customer">Previous Customer</option>
+            <option value="Other">Other</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- ── SUCCESS SCREEN ── -->
+      <div class="eq-success" id="eqSuccess">
+        <div class="s-icon">✅</div>
+        <h3>Enquiry Submitted Successfully!</h3>
+        <div class="s-box">
+          <p>
+            <strong>Thank you for contacting VacationPe!</strong><br/><br/>
+            We have received your visa enquiry. Our visa specialist will review your requirements and contact you shortly.<br/><br/>
+            For urgent assistance, please call or WhatsApp us directly.<br/><br/>
+            <strong>VacationPe — Personalized Holidays &amp; Visa Assistance</strong>
+          </p>
+        </div>
+        <div class="s-contact">
+          <a href="https://api.whatsapp.com/send?phone=919998952926" target="_blank" class="btn-wa">💬 WhatsApp Us</a>
+          <button class="btn-close-success" onclick="closeEnquiry()">✕ Close</button>
+        </div>
+      </div>
+
+    </div><!-- /eq-body -->
+
+    <!-- Sticky Nav Buttons -->
+    <div id="eqNav">
+      <div class="eq-nav" id="navBtns">
+        <button class="btn-back" id="btnBack" style="display:none;" onclick="goStep(currentStep-1)">← Back</button>
+        <button class="btn-next" id="btnNext" onclick="goStep(currentStep+1)">Continue →</button>
+      </div>
+      <p class="submit-note" id="navNote">🔒 Your information is safe with us. Our expert will contact you within 2 hours.</p>
+    </div>
+
+  </div><!-- /eq-modal -->
+</div><!-- /eq-overlay -->
+
+
+<!-- ═══════════════════════════════════════════════════════════
+     NOT-AVAILABLE ALERT
+═══════════════════════════════════════════════════════════ -->
+<div class="na-overlay" id="naOverlay">
+  <div class="na-box">
+    <div class="na-icon">🚫</div>
+    <h3>We Don't Handle This Visa Type</h3>
+    <div class="na-pill" id="naPill">Work Visa</div>
+    <p>
+      VacationPe specialises in <strong>Tourist, Business &amp; Transit visas</strong> only.<br/><br/>
+      We currently <strong>do not</strong> process Work, Student, or Medical visas.<br/><br/>
+      Feel free to reach out to us on WhatsApp — we'll be happy to guide you to the right authority or service.
+    </p>
+    <div class="na-btns">
+      <button class="btn-na-ok" onclick="closeAlert()">Got it</button>
+      <a href="https://api.whatsapp.com/send?phone=919998952926&text=Hi%2C%20I%20need%20help%20with%20a%20visa%20query." target="_blank" class="btn-wa" style="text-decoration:none;">💬 WhatsApp Us</a>
+    </div>
+  </div>
+</div>
+
+
 <script>
-  // Open modal and pre-fill destination
-  function openForm(country, flag) {
-    document.getElementById('f_destination').value = country;
-    document.getElementById('modalTitle').textContent = flag + ' Visa Enquiry — ' + country;
-    document.getElementById('modalSubtitle').textContent = 'Fill in your details — our expert will contact you within 2 hours';
-    document.getElementById('successMsg').classList.remove('show');
-    document.getElementById('visaForm').style.display = 'block';
-    document.getElementById('modalOverlay').classList.add('open');
-    document.body.style.overflow = 'hidden';
-    // Reset form except destination
-    document.getElementById('f_name').value = '';
-    document.getElementById('f_mobile').value = '';
-    document.getElementById('f_email').value = '';
-    document.getElementById('f_city').value = '';
-    document.getElementById('f_traveldate').value = '';
-    document.getElementById('f_message').value = '';
-    document.getElementById('f_existingCountry').value = '';
-    document.getElementById('f_existingVisaType').value = '';
-    document.getElementById('f_existingExpiry').value = '';
-    document.getElementById('f_refusalDetails').value = '';
-    document.querySelectorAll('input[type="radio"]').forEach(r => r.checked = false);
-    document.querySelectorAll('.conditional-block').forEach(b => b.classList.remove('show'));
-  }
+/* ═══════════════════════════════════════════════════════
+   DESTINATIONS DATA
+═══════════════════════════════════════════════════════ */
+const destinations = [
+  { name:"Anguilla", type:"evisa", code:"ai", validity:"90 Days", price:"₹15,700", label:"E-Visa", href:"visa/anguilla.html" },
+  { name:"Australia", type:"evisa", code:"au", validity:"1 Year", price:"₹15,699", label:"E-Visa", href:"visa/australia.html" },
+  { name:"Azerbaijan", type:"evisa", code:"az", validity:"30 Days", price:"₹2,650", label:"E-Visa", href:"visa/azerbaijan.html" },
+  { name:"Bahamas", type:"evisa", code:"bs", validity:"90 Days", price:"₹25,220", label:"E-Visa", href:"visa/bahamas.html" },
+  { name:"Bahrain", type:"evisa", code:"bh", validity:"30 Days", price:"₹4,450", label:"E-Visa", href:"visa/bahrain.html" },
+  { name:"Bangladesh", type:"evisa", code:"bd", validity:"180 Days", price:"₹3,500", label:"E-Visa", href:"visa/bangladesh.html" },
+  { name:"Barbados", type:"free", code:"bb", validity:"180 Days", price:"Free", label:"Visa Free", href:"visa/barbados.html" },
+  { name:"Belarus", type:"arrival", code:"by", validity:"30 Days", price:"Free", label:"Visa on Arrival", href:"visa/belarus.html" },
+  { name:"Bhutan", type:"evisa", code:"bt", validity:"90 Days", price:"₹7,999", label:"E-Visa", href:"visa/bhutan.html" },
+  { name:"British Virgin Islands", type:"free", code:"vg", validity:"30 Days", price:"Free", label:"Visa Free", href:"visa/british-virgin-islands.html" },
+  { name:"Burkina Faso", type:"evisa", code:"bf", validity:"30 Days", price:"₹4,550", label:"E-Visa", href:"visa/burkina-faso.html" },
+  { name:"Burundi", type:"arrival", code:"bi", validity:"30 Days", price:"Free", label:"Visa on Arrival", href:"visa/burundi.html" },
+  { name:"Cambodia", type:"evisa", code:"kh", validity:"30 Days", price:"₹2,500", label:"E-Visa", href:"visa/cambodia.html" },
+  { name:"Chad", type:"evisa", code:"td", validity:"90 Days", price:"₹13,500", label:"E-Visa", href:"visa/chad.html" },
+  { name:"Colombia", type:"evisa", code:"co", validity:"90 Days", price:"₹7,000", label:"E-Visa", href:"visa/colombia.html" },
+  { name:"Comoros", type:"arrival", code:"km", validity:"45 Days", price:"Free", label:"Visa on Arrival", href:"visa/comoros.html" },
+  { name:"Congo - Kinshasa", type:"evisa", code:"cd", validity:"30 Days", price:"₹24,250", label:"E-Visa", href:"visa/congo-kinshasa.html" },
+  { name:"Cook Islands", type:"free", code:"ck", validity:"31 Days", price:"Free", label:"Visa Free", href:"visa/cook-islands.html" },
+  { name:"Cuba", type:"evisa", code:"cu", validity:"90 Days", price:"₹4,900", label:"E-Visa", href:"visa/cuba.html" },
+  { name:"Côte d'Ivoire", type:"evisa", code:"ci", validity:"90 Days", price:"₹14,538", label:"E-Visa", href:"visa/cote-divoire.html" },
+  { name:"Djibouti", type:"evisa", code:"dj", validity:"90 Days", price:"₹2,950", label:"E-Visa", href:"visa/djibouti.html" },
+  { name:"Dominica", type:"free", code:"dm", validity:"21 Days", price:"Free", label:"Visa Free", href:"visa/dominica.html" },
+  { name:"Dubai / UAE", type:"evisa", code:"ae", validity:"30 Days", price:"₹3,299", label:"E-Visa", href:"visa/dubai.html" },
+  { name:"Egypt", type:"evisa", code:"eg", validity:"90 Days", price:"₹6,799", label:"E-Visa", href:"visa/egypt.html" },
+  { name:"El Salvador", type:"free", code:"sv", validity:"90 Days", price:"Free", label:"Visa Free", href:"visa/el-salvador.html" },
+  { name:"Equatorial Guinea", type:"evisa", code:"gq", validity:"90 Days", price:"₹9,850", label:"E-Visa", href:"visa/equatorial-guinea.html" },
+  { name:"Ethiopia", type:"evisa", code:"et", validity:"30 Days", price:"₹5,100", label:"E-Visa", href:"visa/ethiopia.html" },
+  { name:"Fiji", type:"free", code:"fj", validity:"4 Months", price:"Free", label:"Visa Free", href:"visa/fiji.html" },
+  { name:"France", type:"schengen", code:"fr", validity:"90 Days", price:"₹8,499", label:"Schengen", href:"visa/france.html" },
+  { name:"Gabon", type:"evisa", code:"ga", validity:"30 Days", price:"₹12,250", label:"E-Visa", href:"visa/gabon.html" },
+  { name:"Gambia", type:"free", code:"gm", validity:"90 Days", price:"Free", label:"Visa Free", href:"visa/gambia.html" },
+  { name:"Georgia", type:"evisa", code:"ge", validity:"30 Days", price:"₹1,660", label:"E-Visa", href:"visa/georgia.html" },
+  { name:"Germany", type:"schengen", code:"de", validity:"90 Days", price:"₹8,499", label:"Schengen", href:"visa/germany.html" },
+  { name:"Guinea-Bissau", type:"arrival", code:"gw", validity:"90 Days", price:"Free", label:"Visa on Arrival", href:"visa/guinea-bissau.html" },
+  { name:"Guyana", type:"evisa", code:"gy", validity:"30 Days", price:"₹2,452", label:"E-Visa", href:"visa/guyana.html" },
+  { name:"Haiti", type:"free", code:"ht", validity:"90 Days", price:"Free", label:"Visa Free", href:"visa/haiti.html" },
+  { name:"Hong Kong", type:"evisa", code:"hk", validity:"14 Days", price:"₹1,175", label:"E-Visa", href:"visa/hong-kong.html" },
+  { name:"Indonesia", type:"evisa", code:"id", validity:"90 Days", price:"₹3,999", label:"E-Visa", href:"visa/indonesia.html" },
+  { name:"Jamaica", type:"free", code:"jm", validity:"30 Days", price:"Free", label:"Visa Free", href:"visa/jamaica.html" },
+  { name:"Japan", type:"sticker", code:"jp", validity:"15 Days", price:"₹4,999", label:"Sticker Visa", href:"visa/japan.html" },
+  { name:"Jordan", type:"evisa", code:"jo", validity:"90 Days", price:"₹12,550", label:"E-Visa", href:"visa/jordan.html" },
+  { name:"Kenya", type:"evisa", code:"ke", validity:"90 Days", price:"₹2,450", label:"E-Visa", href:"visa/kenya.html" },
+  { name:"Kuwait", type:"evisa", code:"kw", validity:"60 Days", price:"₹48,500", label:"E-Visa", href:"visa/kuwait.html" },
+  { name:"Kyrgyzstan", type:"evisa", code:"kg", validity:"30 Days", price:"₹16,900", label:"E-Visa", href:"visa/kyrgyzstan.html" },
+  { name:"Laos", type:"evisa", code:"la", validity:"30 Days", price:"₹5,100", label:"E-Visa", href:"visa/laos.html" },
+  { name:"Liberia", type:"evisa", code:"lr", validity:"90 Days", price:"₹10,100", label:"E-Visa", href:"visa/liberia.html" },
+  { name:"Macao SAR China", type:"free", code:"mo", validity:"30 Days", price:"Free", label:"Visa Free", href:"visa/macao.html" },
+  { name:"Madagascar", type:"evisa", code:"mg", validity:"30 Days", price:"₹1,000", label:"E-Visa", href:"visa/madagascar.html" },
+  { name:"Malawi", type:"evisa", code:"mw", validity:"30 Days", price:"₹5,000", label:"E-Visa", href:"visa/malawi.html" },
+  { name:"Malaysia eNTRI", type:"evisa", code:"my", validity:"Per Trip", price:"₹299", label:"E-Visa", href:"visa/malaysia-entri.html" },
+  { name:"Marshall Islands", type:"arrival", code:"mh", validity:"90 Days", price:"Free", label:"Visa on Arrival", href:"visa/marshall-islands.html" },
+  { name:"Mauritania", type:"arrival", code:"mr", validity:"90 Days", price:"Free", label:"Visa on Arrival", href:"visa/mauritania.html" },
+  { name:"Mauritius", type:"free", code:"mu", validity:"60 Days", price:"Free", label:"Visa Free", href:"visa/mauritius.html" },
+  { name:"Micronesia", type:"free", code:"fm", validity:"30 Days", price:"Free", label:"Visa Free", href:"visa/micronesia.html" },
+  { name:"Moldova", type:"evisa", code:"md", validity:"90 Days", price:"₹3,300", label:"E-Visa", href:"visa/moldova.html" },
+  { name:"Mongolia", type:"evisa", code:"mn", validity:"150 Days", price:"₹550", label:"E-Visa", href:"visa/mongolia.html" },
+  { name:"Montserrat", type:"free", code:"ms", validity:"180 Days", price:"Free", label:"Visa Free", href:"visa/montserrat.html" },
+  { name:"Morocco", type:"evisa", code:"ma", validity:"180 Days", price:"₹5,800", label:"E-Visa", href:"visa/morocco.html" },
+  { name:"Nepal", type:"free", code:"np", validity:"No Limit", price:"Free", label:"Visa Free", href:"visa/nepal.html" },
+  { name:"New Zealand", type:"evisa", code:"nz", validity:"1 Year", price:"₹27,099", label:"E-Visa", href:"visa/new-zealand.html" },
+  { name:"Niue", type:"free", code:"nu", validity:"30 Days", price:"Free", label:"Visa Free", href:"visa/niue.html" },
+  { name:"Oman", type:"evisa", code:"om", validity:"10 Days", price:"₹2,999", label:"E-Visa", href:"visa/oman.html" },
+  { name:"Palau", type:"arrival", code:"pw", validity:"30 Days", price:"Free", label:"Visa on Arrival", href:"visa/palau.html" },
+  { name:"Qatar", type:"evisa", code:"qa", validity:"30 Days", price:"₹900", label:"E-Visa", href:"visa/qatar.html" },
+  { name:"Reunion", type:"free", code:"re", validity:"90 Days", price:"Free", label:"Visa Free", href:"visa/reunion.html" },
+  { name:"Russia", type:"evisa", code:"ru", validity:"120 Days", price:"₹8,700", label:"E-Visa", href:"visa/russia.html" },
+  { name:"Rwanda", type:"evisa", code:"rw", validity:"30 Days", price:"₹450", label:"E-Visa", href:"visa/rwanda.html" },
+  { name:"Samoa", type:"arrival", code:"ws", validity:"60 Days", price:"Free", label:"Visa on Arrival", href:"visa/samoa.html" },
+  { name:"Saudi Arabia", type:"evisa", code:"sa", validity:"90 Days", price:"₹10,500", label:"E-Visa", href:"visa/saudi-arabia.html" },
+  { name:"Senegal", type:"free", code:"sn", validity:"90 Days", price:"Free", label:"Visa Free", href:"visa/senegal.html" },
+  { name:"Seychelles", type:"evisa", code:"sc", validity:"30 Days", price:"₹1,050", label:"E-Visa", href:"visa/seychelles.html" },
+  { name:"Sierra Leone", type:"evisa", code:"sl", validity:"60 Days", price:"₹10,600", label:"E-Visa", href:"visa/sierra-leone.html" },
+  { name:"Singapore", type:"evisa", code:"sg", validity:"2 Year", price:"₹3,799", label:"E-Visa", href:"visa/singapore.html" },
+  { name:"Solomon Islands", type:"arrival", code:"sb", validity:"90 Days", price:"Free", label:"Visa on Arrival", href:"visa/solomon-islands.html" },
+  { name:"Somalia", type:"evisa", code:"so", validity:"180 Days", price:"₹9,200", label:"E-Visa", href:"visa/somalia.html" },
+  { name:"South Africa", type:"evisa", code:"za", validity:"5 Years", price:"₹2,999", label:"E-Visa", href:"visa/south-africa.html" },
+  { name:"South Sudan", type:"evisa", code:"ss", validity:"60 Days", price:"₹9,850", label:"E-Visa", href:"visa/south-sudan.html" },
+  { name:"Sri Lanka", type:"instant", code:"lk", validity:"180 Days", price:"₹499", label:"ETA", href:"visa/sri-lanka.html" },
+  { name:"St. Kitts & Nevis", type:"free", code:"kn", validity:"90 Days", price:"Free", label:"Visa Free", href:"visa/st-kitts-nevis.html" },
+  { name:"St. Lucia", type:"arrival", code:"lc", validity:"42 Days", price:"Free", label:"Visa on Arrival", href:"visa/st-lucia.html" },
+  { name:"St. Vincent & Grenadines", type:"free", code:"vc", validity:"30 Days", price:"Free", label:"Visa Free", href:"visa/st-vincent.html" },
+  { name:"São Tomé & Príncipe", type:"evisa", code:"st", validity:"30 Days", price:"₹550", label:"E-Visa", href:"visa/sao-tome.html" },
+  { name:"Tajikistan", type:"evisa", code:"tj", validity:"45 Days", price:"₹2,550", label:"E-Visa", href:"visa/tajikistan.html" },
+  { name:"Thailand", type:"free", code:"th", validity:"90 Days", price:"Free", label:"Visa Free", href:"visa/thailand.html" },
+  { name:"Togo", type:"evisa", code:"tg", validity:"15 Days", price:"₹4,450", label:"E-Visa", href:"visa/togo.html" },
+  { name:"Trinidad & Tobago", type:"free", code:"tt", validity:"90 Days", price:"Free", label:"Visa Free", href:"visa/trinidad-tobago.html" },
+  { name:"Turkey", type:"evisa", code:"tr", validity:"30 Days", price:"₹4,850", label:"E-Visa", href:"visa/turkey.html" },
+  { name:"Turks & Caicos Islands", type:"arrival", code:"tc", validity:"90 Days", price:"Free", label:"Visa on Arrival", href:"visa/turks-caicos.html" },
+  { name:"UAE", type:"evisa", code:"ae", validity:"30 Days", price:"₹7,425", label:"E-Visa", href:"visa/uae.html" },
+  { name:"Uganda", type:"evisa", code:"ug", validity:"90 Days", price:"₹5,050", label:"E-Visa", href:"visa/uganda.html" },
+  { name:"UK", type:"evisa", code:"gb", validity:"6 Month", price:"₹21,399", label:"E-Visa", href:"visa/uk.html" },
+  { name:"USA", type:"sticker", code:"us", validity:"10 Year", price:"₹19,999", label:"Sticker Visa", href:"visa/usa.html" },
+  { name:"Uzbekistan", type:"evisa", code:"uz", validity:"30 Days", price:"₹2,150", label:"E-Visa", href:"visa/uzbekistan.html" },
+  { name:"Vietnam", type:"evisa", code:"vn", validity:"30 Days", price:"₹2,999", label:"E-Visa", href:"visa/vietnam.html" },
+  { name:"Zambia", type:"evisa", code:"zm", validity:"90 Days", price:"₹4,550", label:"E-Visa", href:"visa/zambia.html" },
+  { name:"Zimbabwe", type:"evisa", code:"zw", validity:"90 Days", price:"₹3,450", label:"E-Visa", href:"visa/zimbabwe.html" },
+];
 
-  function closeForm() {
-    document.getElementById('modalOverlay').classList.remove('open');
-    document.body.style.overflow = '';
+function flagImg(code) {
+  return `<div class="flag-wrap">
+    <img src="https://flagcdn.com/80x60/${code}.png" srcset="https://flagcdn.com/160x120/${code}.png 2x"
+      alt="${code} flag" loading="lazy" width="80" height="60"
+      onerror="this.style.display='none';this.nextElementSibling.style.display='inline-block'" />
+    <span class="fi fi-${code}" style="display:none;width:48px;height:34px;background-size:cover;border-radius:4px;"></span>
+  </div>`;
+}
+function priceHTML(price) {
+  if (price === "Free") return `<div class="price"><span class="amount" style="color:var(--green)">Free</span></div>`;
+  return `<div class="price"><span class="starting">Starting</span><span class="amount">${price}<span class="asterisk">*</span></span></div>`;
+}
+function cardHTML(d) {
+  const dn = d.name.replace(/'/g,"\\'");
+  return `<div class="dest-card" onclick="openEnquiry('${dn}')">
+    ${flagImg(d.code)}
+    <div><div class="country">${d.name} Visa</div><div class="visa-type">${d.label} · Valid: ${d.validity}</div></div>
+    ${priceHTML(d.price)}
+  </div>`;
+}
+function renderCards(filter) {
+  const filtered = filter === "all" ? destinations : destinations.filter(d => d.type === filter);
+  document.getElementById("destGrid").innerHTML = filtered.map(cardHTML).join("");
+}
+document.getElementById("filterTabs").addEventListener("click", e => {
+  if (e.target.classList.contains("tab")) {
+    document.querySelectorAll(".tab").forEach(t => t.classList.remove("active"));
+    e.target.classList.add("active");
+    renderCards(e.target.dataset.filter);
   }
+});
 
-  function handleOverlayClick(e) {
-    if (e.target === document.getElementById('modalOverlay')) closeForm();
+let _sidx = -1;
+function liveSearch(raw) {
+  const q = (raw || "").trim().toLowerCase();
+  const box = document.getElementById("suggestBox");
+  _sidx = -1;
+  const filtered = q ? destinations.filter(d => d.name.toLowerCase().includes(q)) : destinations;
+  document.querySelectorAll(".tab").forEach(t => t.classList.remove("active"));
+  document.querySelector(".tab[data-filter='all']").classList.add("active");
+  const grid = document.getElementById("destGrid");
+  if (!filtered.length) {
+    grid.innerHTML = '<p style="grid-column:1/-1;color:var(--text-muted);padding:24px 0;">No destinations found. Try a different search.</p>';
+    box.style.display = "none"; return;
   }
+  grid.innerHTML = filtered.map(cardHTML).join("");
+  if (!q) { box.style.display = "none"; return; }
+  const top = filtered.slice(0, 6);
+  box.innerHTML = top.map(d =>
+    `<div class="suggest-item" onclick="openEnquiry('${d.name.replace(/'/g,"\\'")}')">` +
+    `<img class="suggest-flag" src="https://flagcdn.com/80x60/${d.code}.png" onerror="this.style.display='none'" />` +
+    `<span class="suggest-name">${d.name} Visa</span>` +
+    `<span class="suggest-label">${d.label}</span>` +
+    `<span class="suggest-price">${d.price === "Free" ? "Free" : d.price}</span>` +
+    `</div>`
+  ).join("");
+  box.style.display = "block";
+}
+function searchKeyNav(e) {
+  const items = document.querySelectorAll(".suggest-item");
+  if (!items.length) return;
+  if (e.key === "ArrowDown") { e.preventDefault(); _sidx = Math.min(_sidx+1,items.length-1); items.forEach((el,i) => el.classList.toggle("si-active",i===_sidx)); }
+  else if (e.key === "ArrowUp") { e.preventDefault(); _sidx = Math.max(_sidx-1,0); items.forEach((el,i) => el.classList.toggle("si-active",i===_sidx)); }
+  else if (e.key === "Enter") { e.preventDefault(); if (_sidx>=0 && items[_sidx]) items[_sidx].click(); else doSearch(); }
+  else if (e.key === "Escape") { document.getElementById("suggestBox").style.display = "none"; }
+}
+document.addEventListener("click", e => {
+  if (!document.querySelector(".hero-search").contains(e.target))
+    document.getElementById("suggestBox").style.display = "none";
+});
+function doSearch() {
+  liveSearch(document.getElementById("heroSearch").value);
+  document.getElementById("suggestBox").style.display = "none";
+  const grid = document.querySelector(".destinations-grid");
+  if (grid) grid.scrollIntoView({ behavior:"smooth", block:"start" });
+}
+renderCards("all");
 
-  // Show/hide conditional blocks
-  function toggleBlock(blockId, triggerValue, radio) {
-    const block = document.getElementById(blockId);
-    if (radio.value === triggerValue && triggerValue === 'Yes') {
-      block.classList.add('show');
-    } else {
-      block.classList.remove('show');
+/* ═══════════════════════════════════════════════════════
+   ENQUIRY MODAL LOGIC
+═══════════════════════════════════════════════════════ */
+let currentStep = 1;
+const TOTAL_STEPS = 4;
+const RESTRICTED = ['Work Visa','Student Visa','Medical Visa'];
+
+function openEnquiry(destName) {
+  currentStep = 1;
+  resetForm();
+  if (destName) document.getElementById('f_destination').value = destName;
+  renderStep(1);
+  document.getElementById('eqSuccess').classList.remove('show');
+  document.getElementById('eqSteps').style.display = 'flex';
+  document.getElementById('eqNav').style.display = 'block';
+  for(let i=1;i<=4;i++) {
+    const p = document.getElementById('panel'+i);
+    p.classList.toggle('p-active', i===1);
+  }
+  document.getElementById('eqOverlay').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeEnquiry() {
+  document.getElementById('eqOverlay').classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+function overlayClick(e) {
+  if (e.target === document.getElementById('eqOverlay')) closeEnquiry();
+}
+
+function resetForm() {
+  const ids = ['f_name','f_mobile','f_email','f_city','f_wa','f_destination',
+    'f_travelNotes','f_message','f_ppNum','f_prevCountries',
+    'f_exCountry','f_exType','f_exOthers','f_refDetails'];
+  ids.forEach(id => { const el=document.getElementById(id); if(el) el.value=''; });
+  const dates = ['f_traveldate','f_returndate','f_ppIssue','f_ppExpiry','f_exExpiry'];
+  dates.forEach(id => { const el=document.getElementById(id); if(el) el.value=''; });
+  document.getElementById('f_nationality').value = 'Indian';
+  document.getElementById('f_travelers').value = '1';
+  document.getElementById('f_purpose').value = '';
+  document.getElementById('f_visatype').value = '';
+  document.getElementById('f_urgency').value = 'Normal (7–15 days)';
+  document.getElementById('f_source').value = '';
+  document.querySelectorAll('input[type="radio"]').forEach(r => r.checked = false);
+  document.querySelectorAll('.cond').forEach(c => c.classList.remove('show'));
+  document.querySelectorAll('.fg input, .fg select').forEach(el => el.classList.remove('err'));
+}
+
+function renderStep(step) {
+  // Panels
+  for(let i=1;i<=4;i++) {
+    document.getElementById('panel'+i).classList.toggle('p-active', i===step);
+  }
+  // Step indicators
+  for(let i=1;i<=4;i++) {
+    const ind = document.getElementById('sInd'+i);
+    ind.className = 'eq-step' + (i<step?' s-done': i===step?' s-active':'');
+  }
+  // Lines
+  for(let i=1;i<=3;i++) {
+    const line = document.getElementById('sl'+i);
+    line.className = 'eq-step-line' + (step>i+1?' sl-done': step===i+1?' sl-active':'');
+  }
+  // Buttons
+  const btnBack = document.getElementById('btnBack');
+  const btnNext = document.getElementById('btnNext');
+  btnBack.style.display = step > 1 ? 'block' : 'none';
+  if (step === TOTAL_STEPS) {
+    btnNext.textContent = '🚀 Get Visa Assistance';
+    btnNext.className = 'btn-submit';
+    btnNext.onclick = submitEnquiry;
+  } else {
+    btnNext.textContent = 'Continue →';
+    btnNext.className = 'btn-next';
+    btnNext.onclick = () => goStep(currentStep+1);
+  }
+  // Scroll to top of body
+  document.getElementById('eqBody').scrollTop = 0;
+}
+
+function goStep(n) {
+  if (n > currentStep) {
+    if (!validateStep(currentStep)) return;
+  }
+  currentStep = n;
+  renderStep(n);
+}
+
+function validateStep(step) {
+  let ok = true;
+  const req = {
+    1: ['f_name','f_mobile','f_email','f_nationality'],
+    2: ['f_destination'],
+    3: ['f_visatype'],
+    4: []
+  };
+  (req[step]||[]).forEach(id => {
+    const el = document.getElementById(id);
+    if (!el || !el.value.trim()) {
+      el && el.classList.add('err');
+      el && el.addEventListener('input', () => el.classList.remove('err'), {once:true});
+      ok = false;
     }
-  }
-
-  // Re-check on any radio change
-  document.querySelectorAll('input[type="radio"]').forEach(radio => {
-    radio.addEventListener('change', () => {
-      if (radio.name === 'hasVisa') {
-        document.getElementById('existingVisaBlock').classList.toggle('show', radio.value === 'Yes');
-      }
-      if (radio.name === 'refused') {
-        document.getElementById('refusedBlock').classList.toggle('show', radio.value === 'Yes');
-      }
-    });
   });
+  if (!ok) {
+    const firstErr = document.querySelector('.fg input.err, .fg select.err');
+    if (firstErr) firstErr.focus();
+  }
+  return ok;
+}
 
-  function submitForm(e) {
-    e.preventDefault();
-    const name       = document.getElementById('f_name').value.trim();
-    const mobile     = document.getElementById('f_mobile').value.trim();
-    const email      = document.getElementById('f_email').value.trim();
-    const dest       = document.getElementById('f_destination').value.trim();
-    const nationality= document.getElementById('f_nationality').value;
-    const city       = document.getElementById('f_city').value.trim();
-    const tdate      = document.getElementById('f_traveldate').value;
-    const travelers  = document.getElementById('f_travelers').value;
-    const visatype   = document.getElementById('f_visatype').value;
-    const traveled   = document.querySelector('input[name="traveled"]:checked')?.value || 'Not specified';
-    const hasVisa    = document.querySelector('input[name="hasVisa"]:checked')?.value || 'Not specified';
-    const exCountry  = document.getElementById('f_existingCountry').value.trim();
-    const exType     = document.getElementById('f_existingVisaType').value.trim();
-    const exExpiry   = document.getElementById('f_existingExpiry').value;
-    const refused    = document.querySelector('input[name="refused"]:checked')?.value || 'Not specified';
-    const refDetails = document.getElementById('f_refusalDetails').value.trim();
-    const message    = document.getElementById('f_message').value.trim();
+function toggleCond(blockId, triggerVal, radio) {
+  document.getElementById(blockId).classList.toggle('show', radio.value === triggerVal);
+}
 
-    let text = `🛂 *VISA ENQUIRY — VacationPe*\n\n`;
-    text += `👤 *Personal Details*\n`;
-    text += `• Name: ${name}\n• Mobile: ${mobile}\n• Email: ${email}\n`;
-    text += `• Nationality: ${nationality}\n• City: ${city || 'Not specified'}\n\n`;
-    text += `✈️ *Travel Details*\n`;
-    text += `• Destination: ${dest}\n• Travel Date: ${tdate || 'Not specified'}\n`;
-    text += `• Travelers: ${travelers}\n• Visa Type: ${visatype || 'Not specified'}\n\n`;
-    text += `🗂️ *Travel & Visa History*\n`;
-    text += `• Traveled internationally before: ${traveled}\n`;
-    text += `• Holds valid visa: ${hasVisa}\n`;
-    if (hasVisa === 'Yes') {
-      text += `  - Country: ${exCountry || '-'} | Type: ${exType || '-'} | Expiry: ${exExpiry || '-'}\n`;
-    }
-    text += `• Previous refusal: ${refused}\n`;
-    if (refused === 'Yes') text += `  - Details: ${refDetails || '-'}\n`;
-    if (message) text += `\n📝 *Message*\n${message}`;
+// Passport radio — show passport details if Yes or Expiring soon
+document.querySelectorAll('input[name="hasPassport"]').forEach(r => {
+  r.addEventListener('change', () => {
+    const show = r.value === 'Yes' || r.value === 'Expiring soon';
+    document.getElementById('passportCond').classList.toggle('show', show && r.checked);
+  });
+});
 
-    const waUrl = `https://api.whatsapp.com/send?phone=919998952926&text=${encodeURIComponent(text)}`;
-    window.open(waUrl, '_blank');
+function checkVisaType(val) {
+  if (RESTRICTED.includes(val)) {
+    document.getElementById('f_visatype').value = '';
+    document.getElementById('naPill').textContent = val;
+    document.getElementById('naOverlay').classList.add('open');
+  }
+}
 
-    // Show success
-    document.getElementById('visaForm').style.display = 'none';
-    document.getElementById('successMsg').classList.add('show');
+function closeAlert() {
+  document.getElementById('naOverlay').classList.remove('open');
+}
+
+function submitEnquiry() {
+  if (!validateStep(4)) return;
+
+  const g = id => (document.getElementById(id)||{}).value||'';
+  const r = name => document.querySelector(`input[name="${name}"]:checked`)?.value || 'Not specified';
+
+  const name      = g('f_name').trim();
+  const mobile    = g('f_mobile').trim();
+  const email     = g('f_email').trim();
+  if (!name || !mobile || !email || !g('f_destination').trim()) {
+    alert('Please complete required fields before submitting.'); return;
   }
 
-  // Close on Escape key
-  document.addEventListener('keydown', e => { if (e.key === 'Escape') closeForm(); });
+  let txt = `🛂 *VISA ASSISTANCE REQUEST — VacationPe*\n`;
+  txt += `━━━━━━━━━━━━━━━━━━━━━━━━\n\n`;
+
+  txt += `👤 *PERSONAL DETAILS*\n`;
+  txt += `• Name: ${name}\n`;
+  txt += `• Mobile: ${mobile}\n`;
+  const wa = g('f_wa').trim();
+  if (wa) txt += `• WhatsApp: ${wa}\n`;
+  txt += `• Email: ${email}\n`;
+  txt += `• Nationality: ${g('f_nationality')}\n`;
+  const city = g('f_city').trim();
+  if (city) txt += `• City: ${city}\n`;
+
+  txt += `\n✈️ *TRAVEL DETAILS*\n`;
+  txt += `• Destination: ${g('f_destination')}\n`;
+  const td = g('f_traveldate'); if (td) txt += `• Travel Date: ${td}\n`;
+  const rd = g('f_returndate'); if (rd) txt += `• Return Date: ${rd}\n`;
+  txt += `• Travellers: ${g('f_travelers')}\n`;
+  const purpose = g('f_purpose'); if (purpose) txt += `• Purpose: ${purpose}\n`;
+  const tnotes = g('f_travelNotes').trim(); if (tnotes) txt += `• Travel Notes: ${tnotes}\n`;
+
+  txt += `\n🗂️ *VISA DETAILS*\n`;
+  txt += `• Visa Type: ${g('f_visatype')||'Not specified'}\n`;
+  txt += `• Urgency: ${g('f_urgency')}\n`;
+  txt += `• Valid Passport: ${r('hasPassport')}\n`;
+  const ppNum = g('f_ppNum').trim();
+  if (ppNum) {
+    txt += `• Passport No: ${ppNum}\n`;
+    const ppI = g('f_ppIssue'); if (ppI) txt += `• PP Issue: ${ppI}\n`;
+    const ppE = g('f_ppExpiry'); if (ppE) txt += `• PP Expiry: ${ppE}\n`;
+  }
+  const msg = g('f_message').trim(); if (msg) txt += `• Message: ${msg}\n`;
+
+  txt += `\n🌐 *TRAVEL & VISA HISTORY*\n`;
+  txt += `• Travelled before: ${r('traveled')}\n`;
+  const prev = g('f_prevCountries').trim(); if (prev) txt += `• Countries visited: ${prev}\n`;
+  txt += `• Holds valid visa: ${r('hasVisa')}\n`;
+  const exC = g('f_exCountry').trim();
+  if (exC) {
+    txt += `  → Country: ${exC} | Type: ${g('f_exType')||'-'} | Expiry: ${g('f_exExpiry')||'-'}\n`;
+    const exO = g('f_exOthers').trim(); if (exO) txt += `  → Also: ${exO}\n`;
+  }
+  txt += `• Previous refusal: ${r('refused')}\n`;
+  const ref = g('f_refDetails').trim(); if (ref) txt += `  → Details: ${ref}\n`;
+  const src = g('f_source'); if (src) txt += `\n📣 Source: ${src}\n`;
+
+  const waUrl = `https://api.whatsapp.com/send?phone=919998952926&text=${encodeURIComponent(txt)}`;
+  window.open(waUrl, '_blank');
+
+  // Show success
+  for(let i=1;i<=4;i++) document.getElementById('panel'+i).classList.remove('p-active');
+  document.getElementById('eqSteps').style.display = 'none';
+  document.getElementById('eqNav').style.display = 'none';
+  document.getElementById('eqSuccess').classList.add('show');
+}
+
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape') { closeEnquiry(); closeAlert(); }
+});
 </script>
 </body>
 </html>
