@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Visa Blog – Tips, Guides & Updates | VacationPe</title>
+  <meta name="description" content="Read expert visa guides, travel tips and country-specific visa information for Indian travellers." />
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --blue: #0077cc; --blue-dark: #005fa3; --blue-light: #e8f4fd;
+      --orange: #ff6b35; --green: #22c55e;
+      --text: #1a1a2e; --text-muted: #6b7280; --border: #e5e7eb;
+      --bg: #f9fafb; --white: #ffffff;
+    }
+    body { font-family: 'Inter', sans-serif; color: var(--text); background: var(--white); }
+
+    /* NAV */
+    nav { position: sticky; top: 0; z-index: 200; background: var(--white); border-bottom: 1px solid var(--border); padding: 0 24px; display: flex; align-items: center; justify-content: space-between; height: 64px; box-shadow: 0 1px 4px rgba(0,0,0,0.06); }
+    .nav-logo { font-family: 'Nunito', sans-serif; font-size: 1.5rem; font-weight: 900; color: var(--blue); text-decoration: none; }
+    .nav-logo span { color: var(--orange); }
+    .nav-links { display: flex; gap: 6px; align-items: center; }
+    .nav-links a { text-decoration: none; color: var(--text-muted); font-size: 0.9rem; font-weight: 500; padding: 8px 14px; border-radius: 8px; transition: all 0.2s; }
+    .nav-links a:hover, .nav-links a.active { background: var(--blue-light); color: var(--blue); }
+    .nav-cta { background: var(--blue); color: #fff !important; border-radius: 8px !important; padding: 8px 18px !important; }
+    .nav-cta:hover { background: var(--blue-dark) !important; }
+
+    /* PAGE HERO */
+    .page-hero { background: linear-gradient(135deg, #0f4c81 0%, #1565c0 60%, #0288d1 100%); padding: 52px 24px 48px; text-align: center; }
+    .page-hero h1 { font-family: 'Nunito', sans-serif; font-size: clamp(1.8rem, 4vw, 2.8rem); font-weight: 900; color: #fff; margin-bottom: 10px; }
+    .page-hero p { color: rgba(255,255,255,0.82); font-size: 1rem; }
+
+    /* BLOG LAYOUT */
+    .blog-wrapper { max-width: 860px; margin: 0 auto; padding: 48px 24px 80px; }
+
+    /* ARTICLE */
+    .article { border-bottom: 1px solid var(--border); padding-bottom: 56px; margin-bottom: 56px; scroll-margin-top: 80px; }
+    .article:last-child { border-bottom: none; }
+
+    .article-meta { display: flex; align-items: center; gap: 10px; margin-bottom: 14px; flex-wrap: wrap; }
+    .article-tag { background: var(--blue-light); color: var(--blue); font-size: 0.72rem; font-weight: 700; padding: 3px 10px; border-radius: 20px; text-transform: uppercase; letter-spacing: 0.5px; }
+    .article-date { color: var(--text-muted); font-size: 0.8rem; }
+    .article-flag { font-size: 1.5rem; }
+
+    .article h2 { font-family: 'Nunito', sans-serif; font-size: 1.55rem; font-weight: 900; color: var(--text); margin-bottom: 14px; line-height: 1.3; }
+    .article .intro { font-size: 1rem; color: var(--text-muted); line-height: 1.7; margin-bottom: 24px; }
+
+    .article h3 { font-family: 'Nunito', sans-serif; font-size: 1.05rem; font-weight: 800; color: var(--text); margin: 24px 0 10px; }
+    .article p { font-size: 0.95rem; line-height: 1.75; color: #374151; margin-bottom: 12px; }
+    .article ul, .article ol { padding-left: 20px; margin-bottom: 14px; }
+    .article li { font-size: 0.95rem; line-height: 1.75; color: #374151; margin-bottom: 6px; }
+
+    /* INFO BOX */
+    .info-box { background: var(--blue-light); border-left: 4px solid var(--blue); border-radius: 0 10px 10px 0; padding: 14px 18px; margin: 20px 0; }
+    .info-box p { font-size: 0.88rem; color: var(--blue-dark); margin: 0; line-height: 1.6; }
+
+    /* TABLE */
+    .table-wrap { overflow-x: auto; margin: 18px 0; border-radius: 10px; border: 1px solid var(--border); }
+    table { width: 100%; border-collapse: collapse; font-size: 0.88rem; }
+    th { background: var(--bg); font-weight: 700; color: var(--text); padding: 11px 14px; text-align: left; border-bottom: 1px solid var(--border); }
+    td { padding: 10px 14px; border-bottom: 1px solid var(--border); color: #374151; }
+    tr:last-child td { border-bottom: none; }
+    tr:hover td { background: #f0f7ff; }
+
+    /* CTA BOX */
+    .cta-box { background: linear-gradient(135deg, var(--blue) 0%, #0288d1 100%); border-radius: 14px; padding: 24px 28px; display: flex; align-items: center; justify-content: space-between; gap: 16px; margin-top: 28px; flex-wrap: wrap; }
+    .cta-box p { color: #fff; font-weight: 600; font-size: 0.95rem; margin: 0; }
+    .cta-box a { background: var(--orange); color: #fff; text-decoration: none; font-weight: 700; font-size: 0.88rem; padding: 10px 22px; border-radius: 8px; white-space: nowrap; transition: background 0.2s; }
+    .cta-box a:hover { background: #e85a24; }
+
+    /* BACK TO TOP */
+    .back-to-top { display: inline-flex; align-items: center; gap: 6px; color: var(--blue); font-size: 0.85rem; font-weight: 600; text-decoration: none; margin-bottom: 32px; }
+    .back-to-top:hover { text-decoration: underline; }
+
+    /* INDEX SIDEBAR (top) */
+    .toc { background: var(--bg); border: 1px solid var(--border); border-radius: 12px; padding: 20px 24px; margin-bottom: 48px; }
+    .toc h3 { font-family: 'Nunito', sans-serif; font-weight: 800; font-size: 1rem; margin-bottom: 14px; color: var(--text); }
+    .toc ol { padding-left: 18px; }
+    .toc li { margin-bottom: 8px; }
+    .toc a { color: var(--blue); text-decoration: none; font-size: 0.9rem; font-weight: 500; }
+    .toc a:hover { text-decoration: underline; }
+
+    /* FOOTER */
+    footer { background: #0f1923; color: rgba(255,255,255,0.7); padding: 40px 24px 24px; }
+    .footer-bottom { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; font-size: 0.82rem; flex-wrap: wrap; gap: 10px; }
+
+    @media (max-width: 768px) { nav .nav-links { display: none; } .cta-box { flex-direction: column; } }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-logo">Vacation<span>Pe</span></a>
+  <div class="nav-links">
+    <a href="hotels.html">Hotels</a>
+    <a href="visa.html">Visa</a>
+    <a href="holidays.html">Holidays</a>
+    <a href="blog.html" class="active">Blog</a>
+    <a href="business.html">Business</a>
+    <a href="visa-update.html">Visa Update</a>
+    <a href="apply.html" class="nav-cta">Apply Now</a>
+  </div>
+</nav>
+
+<div class="page-hero">
+  <h1>Visa Blog</h1>
+  <p>Expert guides, step-by-step processes & latest updates for Indian travellers</p>
+</div>
+
+<div class="blog-wrapper">
+
+  <!-- TABLE OF CONTENTS -->
+  <div class="toc">
+    <h3>📋 All Articles</h3>
+    <ol>
+      <li><a href="#schengen-guide">Complete Guide to Schengen Visa Application from India 2026</a></li>
+      <li><a href="#dubai-guide">Dubai Visa for Indians: Types, Fees & How to Apply Online</a></li>
+      <li><a href="#japan-visa">Japan Visa 2026: Documents Required & Step-by-Step Process</a></li>
+      <li><a href="#singapore-visa">Singapore Visa from India: Requirements, Fees & Processing Time</a></li>
+      <li><a href="#thailand-visa">Thailand Visa-Free for Indians 2026: What You Need to Carry</a></li>
+      <li><a href="#usa-visa">US Tourist Visa (B1/B2): Interview Tips & Common Rejection Reasons</a></li>
+    </ol>
+  </div>
+
+  <!-- ═══════════════════════════════════════════
+       ARTICLE 1 — SCHENGEN
+  ═══════════════════════════════════════════ -->
+  <article class="article" id="schengen-guide">
+    <div class="article-meta">
+      <span class="article-flag">🇪🇺</span>
+      <span class="article-tag">Schengen</span>
+      <span class="article-date">May 20, 2026</span>
+    </div>
+    <h2>Complete Guide to Schengen Visa Application from India 2026</h2>
+    <p class="intro">Planning a Europe trip? A Schengen visa allows you to travel across 27 European countries with a single visa. Here is everything you need to know before applying from India.</p>
+
+    <h3>What is a Schengen Visa?</h3>
+    <p>A Schengen visa is a short-stay visa that permits entry into any of the 27 Schengen Area member countries for up to 90 days within any 180-day period. Countries like France, Germany, Italy, Spain, Switzerland, Netherlands, and more are part of this zone.</p>
+
+    <h3>Types of Schengen Visa</h3>
+    <ul>
+      <li><strong>Tourist/Visitor Visa (Type C):</strong> For holidays, sightseeing, or visiting family</li>
+      <li><strong>Business Visa:</strong> For meetings, conferences, or trade visits</li>
+      <li><strong>Transit Visa (Type A/B):</strong> For passing through a Schengen airport</li>
+      <li><strong>Student Visa:</strong> For short-term courses or workshops</li>
+    </ul>
+
+    <h3>Which Embassy to Apply At?</h3>
+    <p>You must apply at the embassy of your <strong>main destination country</strong> — the country where you will spend the most nights. If all stays are equal, apply at the country of first entry.</p>
+
+    <div class="info-box">
+      <p>📌 <strong>Tip:</strong> France, Germany, and Italy are the most common Schengen embassies applied through from India. France has consulates in Mumbai, Delhi, Kolkata, Bengaluru, Chennai, and Hyderabad.</p>
+    </div>
+
+    <h3>Documents Required</h3>
+    <ul>
+      <li>Valid passport (at least 6 months validity, 2 blank pages)</li>
+      <li>Completed Schengen visa application form</li>
+      <li>2 recent passport-size photographs (35x45mm, white background)</li>
+      <li>Travel itinerary with confirmed flight bookings</li>
+      <li>Hotel bookings or accommodation proof for all nights</li>
+      <li>Travel insurance (minimum €30,000 medical coverage)</li>
+      <li>Last 3 months bank statements (minimum balance ₹2.5 lakh recommended)</li>
+      <li>Income tax returns (last 2 years)</li>
+      <li>Employment proof: salary slips / business registration / NOC from employer</li>
+      <li>Cover letter explaining purpose of visit</li>
+    </ul>
+
+    <h3>Schengen Visa Fees (2026)</h3>
+    <div class="table-wrap">
+      <table>
+        <tr><th>Category</th><th>Fee (EUR)</th><th>Approx. INR</th></tr>
+        <tr><td>Adults</td><td>€90</td><td>~₹8,200</td></tr>
+        <tr><td>Children (6–12 years)</td><td>€45</td><td>~₹4,100</td></tr>
+        <tr><td>Children under 6</td><td>Free</td><td>Free</td></tr>
+      </table>
+    </div>
+
+    <h3>Processing Time</h3>
+    <p>Schengen visa processing typically takes 10–15 working days. During peak season (June–September), it can take up to 30 days. Apply at least 6–8 weeks before your travel date.</p>
+
+    <h3>Common Reasons for Rejection</h3>
+    <ul>
+      <li>Insufficient bank balance or irregular financial records</li>
+      <li>Weak ties to home country (no stable job, property, or family)</li>
+      <li>Incomplete or inconsistent documents</li>
+      <li>Applying too close to travel date</li>
+      <li>Previous visa rejections not disclosed</li>
+    </ul>
+
+    <div class="cta-box">
+      <p>Need help with your Schengen Visa application? Our experts handle everything!</p>
+      <a href="https://api.whatsapp.com/send?phone=919998952926&text=I need help with Schengen Visa">Apply via WhatsApp</a>
+    </div>
+  </article>
+
+  <!-- ═══════════════════════════════════════════
+       ARTICLE 2 — DUBAI
+  ═══════════════════════════════════════════ -->
+  <article class="article" id="dubai-guide">
+    <div class="article-meta">
+      <span class="article-flag">🇦🇪</span>
+      <span class="article-tag">Dubai</span>
+      <span class="article-date">May 14, 2026</span>
+    </div>
+    <h2>Dubai Visa for Indians: Types, Fees & How to Apply Online</h2>
+    <p class="intro">Dubai is one of the most popular destinations for Indian travellers. The UAE offers multiple visa options depending on your travel purpose and duration of stay.</p>
+
+    <h3>Types of Dubai/UAE Visa for Indians</h3>
+    <div class="table-wrap">
+      <table>
+        <tr><th>Visa Type</th><th>Duration</th><th>Starting Price</th></tr>
+        <tr><td>UAE 30-Day Tourist Visa (Single Entry)</td><td>30 Days</td><td>Starting ₹3,299*</td></tr>
+        <tr><td>UAE 60-Day Tourist Visa</td><td>60 Days</td><td>Starting ₹5,499*</td></tr>
+        <tr><td>UAE 90-Day Tourist Visa</td><td>90 Days</td><td>Starting ₹7,999*</td></tr>
+        <tr><td>UAE 30-Day Multi-Entry Visa</td><td>30 Days / Multiple</td><td>Starting ₹5,999*</td></tr>
+        <tr><td>UAE Transit Visa (96 Hours)</td><td>4 Days</td><td>Starting ₹1,999*</td></tr>
+      </table>
+    </div>
+
+    <h3>Documents Required</h3>
+    <ul>
+      <li>Passport with minimum 6 months validity</li>
+      <li>Passport-size photograph (white background, recent)</li>
+      <li>Confirmed return flight tickets</li>
+      <li>Hotel booking confirmation</li>
+      <li>Bank statement of last 3 months</li>
+      <li>For salaried: salary slip + NOC from employer</li>
+    </ul>
+
+    <h3>How to Apply</h3>
+    <ol>
+      <li>Share your documents with VacationPe via WhatsApp or email</li>
+      <li>Our team verifies and submits the application online</li>
+      <li>Receive your e-Visa on your email within 24–72 hours</li>
+      <li>Print or save the visa and present at Dubai airport</li>
+    </ol>
+
+    <div class="info-box">
+      <p>⚡ <strong>Fast Processing:</strong> Most UAE tourist visas are processed within 24–48 hours. Express processing available for urgent travel needs.</p>
+    </div>
+
+    <h3>Important Points to Remember</h3>
+    <ul>
+      <li>The UAE visa is stamped on arrival — do not confuse it with a pre-stamped sticker visa</li>
+      <li>Overstaying in UAE attracts heavy fines (AED 50/day)</li>
+      <li>Carry printed copy of visa, hotel booking, and return ticket at all times</li>
+      <li>Dress modestly and respect local laws and customs</li>
+    </ul>
+
+    <div class="cta-box">
+      <p>Get your Dubai Visa in 24 hours with VacationPe!</p>
+      <a href="https://api.whatsapp.com/send?phone=919998952926&text=I need Dubai Visa">Apply Now</a>
+    </div>
+  </article>
+
+  <!-- ═══════════════════════════════════════════
+       ARTICLE 3 — JAPAN
+  ═══════════════════════════════════════════ -->
+  <article class="article" id="japan-visa">
+    <div class="article-meta">
+      <span class="article-flag">🇯🇵</span>
+      <span class="article-tag">Japan</span>
+      <span class="article-date">May 8, 2026</span>
+    </div>
+    <h2>Japan Visa 2026: Documents Required & Step-by-Step Process</h2>
+    <p class="intro">Japan has become one of the top dream destinations for Indian tourists. The country does not offer an e-Visa — you must apply at the Japanese Consulate or through an authorized travel agent. Here is the complete process.</p>
+
+    <h3>Types of Japan Visa</h3>
+    <ul>
+      <li><strong>Tourist Visa (Single Entry):</strong> 15 days, most common</li>
+      <li><strong>Tourist Visa (Double Entry):</strong> For two trips within the validity period</li>
+      <li><strong>Multiple Entry Visa:</strong> For frequent travellers (requires previous Japan visit)</li>
+    </ul>
+
+    <h3>Documents Required</h3>
+    <ul>
+      <li>Original passport (6+ months validity, at least 2 blank pages)</li>
+      <li>Visa application form (downloaded from Japanese Consulate website)</li>
+      <li>Passport-size photo (45mm x 45mm, white background, taken within 6 months)</li>
+      <li>Day-wise travel itinerary covering all cities/hotels</li>
+      <li>Return flight tickets (confirmed)</li>
+      <li>Hotel bookings for all nights</li>
+      <li>Bank statement (last 6 months, minimum balance ₹3–4 lakh recommended)</li>
+      <li>Income Tax Returns (last 2 years)</li>
+      <li>Employment certificate / business registration / student ID</li>
+      <li>Leave approval letter from employer (for salaried applicants)</li>
+    </ul>
+
+    <div class="info-box">
+      <p>📌 <strong>Note (2026):</strong> Japan now requires all applications to be submitted through authorized travel agents or consulate directly. Walk-in applications have been discontinued in Chennai and Hyderabad since March 2026.</p>
+    </div>
+
+    <h3>Visa Fee</h3>
+    <div class="table-wrap">
+      <table>
+        <tr><th>Visa Type</th><th>Consulate Fee</th><th>With VacationPe (incl. service)</th></tr>
+        <tr><td>Single Entry</td><td>₹540</td><td>Starting ₹4,999*</td></tr>
+        <tr><td>Double Entry</td><td>₹1,080</td><td>Starting ₹6,499*</td></tr>
+        <tr><td>Multiple Entry</td><td>₹1,620</td><td>Starting ₹8,499*</td></tr>
+      </table>
+    </div>
+
+    <h3>Processing Time</h3>
+    <p>Japan visa typically takes 5–7 working days once the application is submitted at the consulate. Apply at least 3–4 weeks before your departure.</p>
+
+    <h3>Best Time to Visit Japan</h3>
+    <ul>
+      <li><strong>Cherry Blossom (Sakura):</strong> Late March – April</li>
+      <li><strong>Autumn Foliage:</strong> October – November</li>
+      <li><strong>Snow & Winter:</strong> December – February (ideal for skiing)</li>
+    </ul>
+
+    <div class="cta-box">
+      <p>Let VacationPe handle your Japan Visa — hassle-free!</p>
+      <a href="https://api.whatsapp.com/send?phone=919998952926&text=I need Japan Visa">Apply Now</a>
+    </div>
+  </article>
+
+  <!-- ═══════════════════════════════════════════
+       ARTICLE 4 — SINGAPORE
+  ═══════════════════════════════════════════ -->
+  <article class="article" id="singapore-visa">
+    <div class="article-meta">
+      <span class="article-flag">🇸🇬</span>
+      <span class="article-tag">Singapore</span>
+      <span class="article-date">May 2, 2026</span>
+    </div>
+    <h2>Singapore Visa from India: Requirements, Fees & Processing Time</h2>
+    <p class="intro">Singapore is a favourite short-trip destination for Indians. The Singapore Tourist Visa (also called an Electronic Visa) is processed online and usually approved within 3–5 working days.</p>
+
+    <h3>Who Needs a Visa?</h3>
+    <p>Indian passport holders require a visa to visit Singapore. The visa is issued as an e-Visa (no sticker) and is linked electronically to your passport.</p>
+
+    <h3>Types of Singapore Visa</h3>
+    <ul>
+      <li><strong>Single Entry Visa:</strong> Valid for 30 days per entry, 2-year validity</li>
+      <li><strong>Multiple Entry Visa:</strong> Multiple visits within 2 years, 30 days each stay</li>
+    </ul>
+
+    <h3>Documents Required</h3>
+    <ul>
+      <li>Passport (valid for at least 6 months beyond date of departure)</li>
+      <li>Coloured passport-size photograph (white background)</li>
+      <li>Confirmed return flight tickets</li>
+      <li>Hotel bookings for entire stay</li>
+      <li>Bank statement – last 3 months (recommended balance ₹1.5 lakh+)</li>
+      <li>Proof of employment / business / student status</li>
+      <li>For self-employed: GST certificate or company registration</li>
+    </ul>
+
+    <h3>Visa Fee</h3>
+    <div class="table-wrap">
+      <table>
+        <tr><th>Type</th><th>VacationPe Price</th><th>Processing Time</th></tr>
+        <tr><td>Single Entry (2-Year)</td><td>Starting ₹3,799*</td><td>3–5 working days</td></tr>
+        <tr><td>Multiple Entry (2-Year)</td><td>Starting ₹5,499*</td><td>3–5 working days</td></tr>
+      </table>
+    </div>
+
+    <h3>Top Places to Visit in Singapore</h3>
+    <ul>
+      <li>Marina Bay Sands & Gardens by the Bay</li>
+      <li>Sentosa Island (Universal Studios, beaches)</li>
+      <li>Orchard Road shopping</li>
+      <li>Little India & Chinatown</li>
+      <li>Singapore Zoo & Night Safari</li>
+    </ul>
+
+    <div class="info-box">
+      <p>✈️ <strong>Tip:</strong> Singapore is a great add-on to a Malaysia trip. A Singapore–Malaysia combo holiday is one of the most popular packages for Indian families.</p>
+    </div>
+
+    <div class="cta-box">
+      <p>Get your Singapore Visa in 3 days with VacationPe!</p>
+      <a href="https://api.whatsapp.com/send?phone=919998952926&text=I need Singapore Visa">Apply Now</a>
+    </div>
+  </article>
+
+  <!-- ═══════════════════════════════════════════
+       ARTICLE 5 — THAILAND
+  ═══════════════════════════════════════════ -->
+  <article class="article" id="thailand-visa">
+    <div class="article-meta">
+      <span class="article-flag">🇹🇭</span>
+      <span class="article-tag">Thailand</span>
+      <span class="article-date">Apr 28, 2026</span>
+    </div>
+    <h2>Thailand Visa-Free for Indians 2026: What You Need to Carry</h2>
+    <p class="intro">Great news for Indian travellers — Thailand has extended visa-free entry for Indian passport holders for up to 60 days. However, there are conditions and documents you must carry to avoid being denied boarding or entry.</p>
+
+    <h3>Thailand Visa-Free Policy (2026)</h3>
+    <p>As of 2026, Indian citizens can visit Thailand without a visa for up to <strong>60 days</strong> per visit. You may also register for the TDAC (Tourist Digital Arrival Card) online before travel.</p>
+
+    <div class="info-box">
+      <p>📌 <strong>Important:</strong> Although no visa is required, immigration officers may still ask for proof of sufficient funds, return tickets, and hotel bookings. Always carry these documents.</p>
+    </div>
+
+    <h3>Documents to Carry (Even Without Visa)</h3>
+    <ul>
+      <li>Valid passport (6+ months validity from date of entry)</li>
+      <li>Confirmed return flight ticket</li>
+      <li>Hotel bookings for all nights of stay</li>
+      <li>Proof of sufficient funds: Bank statement or cash (recommended THB 10,000 per person)</li>
+      <li>TDAC registration confirmation (if applicable)</li>
+    </ul>
+
+    <h3>What is TDAC?</h3>
+    <p>The Tourist Digital Arrival Card is Thailand's digital immigration form. Travellers are encouraged to fill it online before departure to speed up the immigration process at Thai airports. VacationPe assists with TDAC registration starting at ₹250 per person.</p>
+
+    <h3>Things to Know Before Visiting Thailand</h3>
+    <ul>
+      <li>You cannot extend a visa-free stay beyond 60 days</li>
+      <li>Back-to-back visa-free entries may be questioned by immigration</li>
+      <li>Carry a printed copy of hotel bookings and tickets at immigration</li>
+      <li>The legal age for alcohol consumption in Thailand is 20 years</li>
+      <li>Disrespecting the Thai royal family is a serious criminal offence</li>
+    </ul>
+
+    <h3>Best Places to Visit in Thailand</h3>
+    <ul>
+      <li><strong>Bangkok:</strong> Grand Palace, Chatuchak Market, street food</li>
+      <li><strong>Phuket:</strong> Patong Beach, Phi Phi Islands, snorkelling</li>
+      <li><strong>Chiang Mai:</strong> Elephant sanctuaries, temples, night bazaar</li>
+      <li><strong>Krabi:</strong> Railay Beach, rock climbing, boat tours</li>
+    </ul>
+
+    <div class="cta-box">
+      <p>Need TDAC assistance or a Thailand holiday package? We're here!</p>
+      <a href="https://api.whatsapp.com/send?phone=919998952926&text=I need help with Thailand TDAC or holiday package">Contact Us</a>
+    </div>
+  </article>
+
+  <!-- ═══════════════════════════════════════════
+       ARTICLE 6 — USA
+  ═══════════════════════════════════════════ -->
+  <article class="article" id="usa-visa">
+    <div class="article-meta">
+      <span class="article-flag">🇺🇸</span>
+      <span class="article-tag">USA</span>
+      <span class="article-date">Apr 20, 2026</span>
+    </div>
+    <h2>US Tourist Visa (B1/B2): Interview Tips & Common Rejection Reasons</h2>
+    <p class="intro">Getting a US tourist visa as an Indian national involves a thorough process — from filling the DS-160 form to attending an interview at the US Consulate. Here is a complete guide to maximize your chances of approval.</p>
+
+    <h3>What is a B1/B2 Visa?</h3>
+    <p>The B-1/B-2 visa is a combined non-immigrant visa for tourism (B-2) and business (B-1) visits to the United States. It is typically issued for <strong>10 years</strong> with multiple entry privileges, allowing each stay of up to 6 months.</p>
+
+    <h3>Step-by-Step Application Process</h3>
+    <ol>
+      <li>Pay the MRV (Machine Readable Visa) fee of $185 (approximately ₹15,400)</li>
+      <li>Fill DS-160 online form on the US Consulate website</li>
+      <li>Create a profile on the US Visa appointment portal (ustraveldocs.com)</li>
+      <li>Schedule visa interview at nearest US Consulate (Delhi, Mumbai, Chennai, Kolkata, Hyderabad)</li>
+      <li>Attend the interview with all required documents</li>
+      <li>If approved, passport is returned with visa stamp within 3–10 working days</li>
+    </ol>
+
+    <h3>Documents Required for Interview</h3>
+    <ul>
+      <li>Valid passport + all old passports</li>
+      <li>DS-160 confirmation page</li>
+      <li>Appointment confirmation letter</li>
+      <li>MRV fee payment receipt</li>
+      <li>Passport-size photograph as per US specifications</li>
+      <li>Proof of financial stability: Bank statements, ITR, salary slips</li>
+      <li>Proof of strong ties to India: property documents, family, employment letter</li>
+      <li>Travel itinerary (not mandatory but recommended)</li>
+    </ul>
+
+    <h3>US Visa Interview Tips</h3>
+    <ul>
+      <li>Be confident and give short, direct answers — avoid over-explaining</li>
+      <li>Know your travel purpose clearly; rehearse but do not memorize scripted answers</li>
+      <li>Show strong reasons to return to India (job, family, property, business)</li>
+      <li>Never lie or exaggerate — consular officers are highly experienced</li>
+      <li>Dress formally and arrive early at the consulate</li>
+      <li>Carry original documents, not just photocopies</li>
+    </ul>
+
+    <h3>Common Reasons for US Visa Rejection</h3>
+    <div class="table-wrap">
+      <table>
+        <tr><th>Reason</th><th>How to Address It</th></tr>
+        <tr><td>Weak ties to home country</td><td>Provide employment letter, family proof, property papers</td></tr>
+        <tr><td>Insufficient funds</td><td>Show 6-month bank statements with consistent balance</td></tr>
+        <tr><td>Vague travel purpose</td><td>Prepare a clear, specific itinerary and purpose statement</td></tr>
+        <tr><td>Previous visa refusals</td><td>Disclose honestly; explain what has changed since then</td></tr>
+        <tr><td>Inconsistent answers</td><td>Review your DS-160 form thoroughly before interview</td></tr>
+      </table>
+    </div>
+
+    <div class="info-box">
+      <p>📌 <strong>2026 Update:</strong> US visa appointment wait times from India have increased significantly. Book your appointment slot as early as possible — ideally 3–6 months before your intended travel date.</p>
+    </div>
+
+    <div class="cta-box">
+      <p>Get expert US Visa guidance and documentation support from VacationPe!</p>
+      <a href="https://api.whatsapp.com/send?phone=919998952926&text=I need help with US Visa B1/B2">Get Expert Help</a>
+    </div>
+  </article>
+
+  <a href="#" class="back-to-top">↑ Back to Top</a>
+
+</div>
+
+<footer>
+  <div class="footer-bottom">
+    <span>© 2026 VacationPe. All rights reserved.</span>
+    <span>Made with ❤️ for Indian Travellers</span>
+  </div>
+</footer>
+
+</body>
+</html>
