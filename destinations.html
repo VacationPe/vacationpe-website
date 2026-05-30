@@ -35,16 +35,19 @@
     .tab-btn.active { background: var(--orange); border-color: var(--orange); color: var(--white); }
     .section { display: none; padding: 10px 40px 60px; max-width: 1280px; margin: 0 auto; }
     .section.visible { display: block; }
-    .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 28px; margin-top: 10px; }
+    .grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 22px; margin-top: 10px; }
+    @media (max-width: 1100px) { .grid { grid-template-columns: repeat(3, 1fr); } }
+    @media (max-width: 700px) { .grid { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 420px) { .grid { grid-template-columns: 1fr; } }
     .card { background: var(--white); border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow); transition: transform .25s, box-shadow .25s; cursor: pointer; text-decoration: none; color: inherit; display: flex; flex-direction: column; }
     .card:hover { transform: translateY(-6px); box-shadow: 0 12px 36px rgba(0,0,0,0.15); }
     .card-img-wrap { overflow: hidden; position: relative; }
-    .card-img { width: 100%; height: 190px; object-fit: cover; display: block; transition: transform .4s; }
+    .card-img { width: 100%; height: 220px; object-fit: cover; display: block; transition: transform .4s; aspect-ratio: 16/9; }
     .card:hover .card-img { transform: scale(1.05); }
     .card-badge { position: absolute; top: 12px; left: 12px; background: rgba(0,0,0,0.55); color: #fff; font-size: 18px; width: 36px; height: 36px; border-radius: 50%; display: flex; align-items: center; justify-content: center; }
-    .card-body { padding: 18px 20px 22px; flex: 1; display: flex; flex-direction: column; }
-    .card-body h3 { font-family: 'Playfair Display', serif; font-size: 20px; margin-bottom: 6px; color: var(--dark); }
-    .card-body p { font-size: 13.5px; color: var(--muted); line-height: 1.55; flex: 1; }
+    .card-body { padding: 14px 16px 18px; flex: 1; display: flex; flex-direction: column; }
+    .card-body h3 { font-family: 'Playfair Display', serif; font-size: 18px; margin-bottom: 4px; color: var(--dark); }
+    .card-body p { font-size: 12.5px; color: var(--muted); line-height: 1.5; flex: 1; }
     .card-btn { display: inline-block; margin-top: 16px; background: var(--orange); color: var(--white); font-weight: 700; font-size: 13px; padding: 9px 22px; border-radius: 30px; text-decoration: none; transition: background .2s; align-self: flex-start; }
     .card-btn:hover { background: var(--orange-dark); }
     .cta-strip { background: linear-gradient(135deg, var(--orange) 0%, #f5a623 100%); text-align: center; padding: 50px 20px; margin: 20px 0 0; }
@@ -110,537 +113,480 @@
   <button class="tab-btn" onclick="showTab('cruise', this)">🚢 Cruise</button>
 </div>
 
-<!-- ===== INTERNATIONAL — USING LOCAL .jpeg IMAGES ===== -->
+<!-- ===== INTERNATIONAL ===== -->
 <div class="section visible" id="tab-international">
   <div class="grid">
-
-    <a class="card" href="https://api.whatsapp.com/send?phone=919998952926&text=I'm interested in Australia package">
-      <div class="card-img-wrap"><img class="card-img" src="images/australia.jpeg" alt="Australia" loading="lazy"><div class="card-badge">🇦🇺</div></div>
+        <a class="card" href="contact.html?dest=Australia">
+      <div class="card-img-wrap"><img class="card-img" src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a0/Sydney_Australia._(21339175489).jpg/800px-Sydney_Australia._(21339175489).jpg" alt="Australia" loading="lazy"><div class="card-badge">🇦🇺</div></div>
       <div class="card-body"><h3>Australia</h3><p>Sydney Opera House, Great Barrier Reef & Outback adventures</p><span class="card-btn">Enquire Now</span></div>
     </a>
-
-    <a class="card" href="https://api.whatsapp.com/send?phone=919998952926&text=I'm interested in Austria package">
-      <div class="card-img-wrap"><img class="card-img" src="images/austria.jpeg" alt="Austria" loading="lazy"><div class="card-badge">🇦🇹</div></div>
+        <a class="card" href="contact.html?dest=Austria">
+      <div class="card-img-wrap"><img class="card-img" src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/09/Vienna_-_Schoenbrunn_Palace.jpg/800px-Vienna_-_Schoenbrunn_Palace.jpg" alt="Austria" loading="lazy"><div class="card-badge">🇦🇹</div></div>
       <div class="card-body"><h3>Austria</h3><p>Vienna palaces, Mozart's birthplace & Alpine scenery</p><span class="card-btn">Enquire Now</span></div>
     </a>
-
-    <a class="card" href="https://api.whatsapp.com/send?phone=919998952926&text=I'm interested in Azerbaijan package">
-      <div class="card-img-wrap"><img class="card-img" src="images/azerbaijan.jpeg" alt="Azerbaijan" loading="lazy"><div class="card-badge">🇦🇿</div></div>
+        <a class="card" href="contact.html?dest=Azerbaijan">
+      <div class="card-img-wrap"><img class="card-img" src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/42/Flame_Towers_Baku.jpg/800px-Flame_Towers_Baku.jpg" alt="Azerbaijan" loading="lazy"><div class="card-badge">🇦🇿</div></div>
       <div class="card-body"><h3>Azerbaijan</h3><p>Baku's flame towers, old city & Caspian coastline</p><span class="card-btn">Enquire Now</span></div>
     </a>
-
-    <a class="card" href="https://api.whatsapp.com/send?phone=919998952926&text=I'm interested in Belgium package">
-      <div class="card-img-wrap"><img class="card-img" src="images/belgium.jpeg" alt="Belgium" loading="lazy"><div class="card-badge">🇧🇪</div></div>
+        <a class="card" href="contact.html?dest=Belgium">
+      <div class="card-img-wrap"><img class="card-img" src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a5/Bruges_-_Panorama.jpg/800px-Bruges_-_Panorama.jpg" alt="Belgium" loading="lazy"><div class="card-badge">🇧🇪</div></div>
       <div class="card-body"><h3>Belgium</h3><p>Bruges canals, Brussels waffles & medieval architecture</p><span class="card-btn">Enquire Now</span></div>
     </a>
-
-    <a class="card" href="https://api.whatsapp.com/send?phone=919998952926&text=I'm interested in Brazil package">
-      <div class="card-img-wrap"><img class="card-img" src="images/brazil.jpeg" alt="Brazil" loading="lazy"><div class="card-badge">🇧🇷</div></div>
+        <a class="card" href="contact.html?dest=Brazil">
+      <div class="card-img-wrap"><img class="card-img" src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2a/Christ_the_Redeemer_-_Cristo_Redentor.jpg/800px-Christ_the_Redeemer_-_Cristo_Redentor.jpg" alt="Brazil" loading="lazy"><div class="card-badge">🇧🇷</div></div>
       <div class="card-body"><h3>Brazil</h3><p>Rio carnival, Amazon rainforest & Iguazu Falls</p><span class="card-btn">Enquire Now</span></div>
     </a>
-
-    <a class="card" href="https://api.whatsapp.com/send?phone=919998952926&text=I'm interested in Cambodia package">
-      <div class="card-img-wrap"><img class="card-img" src="images/cambodia.jpeg" alt="Cambodia" loading="lazy"><div class="card-badge">🇰🇭</div></div>
+        <a class="card" href="contact.html?dest=Cambodia">
+      <div class="card-img-wrap"><img class="card-img" src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/40/Angkor_Wat%2C_Angkor%2C_Cambodia.jpg/800px-Angkor_Wat%2C_Angkor%2C_Cambodia.jpg" alt="Cambodia" loading="lazy"><div class="card-badge">🇰🇭</div></div>
       <div class="card-body"><h3>Cambodia</h3><p>Angkor Wat temples, Mekong River & Khmer heritage</p><span class="card-btn">Enquire Now</span></div>
     </a>
-
-    <a class="card" href="https://api.whatsapp.com/send?phone=919998952926&text=I'm interested in Canada package">
-      <div class="card-img-wrap"><img class="card-img" src="images/canada.jpeg" alt="Canada" loading="lazy"><div class="card-badge">🇨🇦</div></div>
+        <a class="card" href="contact.html?dest=Canada">
+      <div class="card-img-wrap"><img class="card-img" src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9e/Niagara_Falls_zoom.jpg/800px-Niagara_Falls_zoom.jpg" alt="Canada" loading="lazy"><div class="card-badge">🇨🇦</div></div>
       <div class="card-body"><h3>Canada</h3><p>Niagara Falls, Banff National Park & Maple trails</p><span class="card-btn">Enquire Now</span></div>
     </a>
-
-    <a class="card" href="https://api.whatsapp.com/send?phone=919998952926&text=I'm interested in China package">
-      <div class="card-img-wrap"><img class="card-img" src="images/china.jpeg" alt="China" loading="lazy"><div class="card-badge">🇨🇳</div></div>
+        <a class="card" href="contact.html?dest=China">
+      <div class="card-img-wrap"><img class="card-img" src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/10/万里长城.jpg/800px-万里长城.jpg" alt="China" loading="lazy"><div class="card-badge">🇨🇳</div></div>
       <div class="card-body"><h3>China</h3><p>Great Wall, Shanghai skyline & Zhangjiajie peaks</p><span class="card-btn">Enquire Now</span></div>
     </a>
-
-    <a class="card" href="https://api.whatsapp.com/send?phone=919998952926&text=I'm interested in Croatia package">
-      <div class="card-img-wrap"><img class="card-img" src="images/croatia.jpeg" alt="Croatia" loading="lazy"><div class="card-badge">🇭🇷</div></div>
+        <a class="card" href="contact.html?dest=Croatia">
+      <div class="card-img-wrap"><img class="card-img" src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1e/Dubrovnik_Altstadt.jpg/800px-Dubrovnik_Altstadt.jpg" alt="Croatia" loading="lazy"><div class="card-badge">🇭🇷</div></div>
       <div class="card-body"><h3>Croatia</h3><p>Dubrovnik old city, Plitvice lakes & Adriatic coast</p><span class="card-btn">Enquire Now</span></div>
     </a>
-
-    <a class="card" href="https://api.whatsapp.com/send?phone=919998952926&text=I'm interested in Czech Republic package">
-      <div class="card-img-wrap"><img class="card-img" src="images/czech-republic.jpeg" alt="Czech Republic" loading="lazy"><div class="card-badge">🇨🇿</div></div>
+        <a class="card" href="contact.html?dest=Czech Republic">
+      <div class="card-img-wrap"><img class="card-img" src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8e/Prague_-_Hradcany.jpg/800px-Prague_-_Hradcany.jpg" alt="Czech Republic" loading="lazy"><div class="card-badge">🇨🇿</div></div>
       <div class="card-body"><h3>Czech Republic</h3><p>Prague's fairy-tale castles, Gothic bridges & beer culture</p><span class="card-btn">Enquire Now</span></div>
     </a>
-
-    <a class="card" href="https://api.whatsapp.com/send?phone=919998952926&text=I'm interested in Egypt package">
-      <div class="card-img-wrap"><img class="card-img" src="images/egypt.jpeg" alt="Egypt" loading="lazy"><div class="card-badge">🇪🇬</div></div>
+        <a class="card" href="contact.html?dest=Egypt">
+      <div class="card-img-wrap"><img class="card-img" src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e3/Kheops-Pyramid.jpg/800px-Kheops-Pyramid.jpg" alt="Egypt" loading="lazy"><div class="card-badge">🇪🇬</div></div>
       <div class="card-body"><h3>Egypt</h3><p>Pyramids of Giza, Nile cruises & ancient pharaoh temples</p><span class="card-btn">Enquire Now</span></div>
     </a>
-
-    <a class="card" href="https://api.whatsapp.com/send?phone=919998952926&text=I'm interested in Estonia package">
-      <div class="card-img-wrap"><img class="card-img" src="images/estonia.jpeg" alt="Estonia" loading="lazy"><div class="card-badge">🇪🇪</div></div>
+        <a class="card" href="contact.html?dest=Estonia">
+      <div class="card-img-wrap"><img class="card-img" src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8d/Tallinn_-_View_from_Toompea.jpg/800px-Tallinn_-_View_from_Toompea.jpg" alt="Estonia" loading="lazy"><div class="card-badge">🇪🇪</div></div>
       <div class="card-body"><h3>Estonia</h3><p>Tallinn's medieval old town, Baltic coast & digital culture</p><span class="card-btn">Enquire Now</span></div>
     </a>
-
-    <a class="card" href="https://api.whatsapp.com/send?phone=919998952926&text=I'm interested in Fiji package">
-      <div class="card-img-wrap"><img class="card-img" src="images/fiji.jpeg" alt="Fiji" loading="lazy"><div class="card-badge">🇫🇯</div></div>
+        <a class="card" href="contact.html?dest=Fiji">
+      <div class="card-img-wrap"><img class="card-img" src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/00/Fiji_beach.jpg/800px-Fiji_beach.jpg" alt="Fiji" loading="lazy"><div class="card-badge">🇫🇯</div></div>
       <div class="card-body"><h3>Fiji</h3><p>Tropical islands, coral reefs & warm Pacific hospitality</p><span class="card-btn">Enquire Now</span></div>
     </a>
-
-    <a class="card" href="https://api.whatsapp.com/send?phone=919998952926&text=I'm interested in Finland package">
-      <div class="card-img-wrap"><img class="card-img" src="images/finland.jpeg" alt="Finland" loading="lazy"><div class="card-badge">🇫🇮</div></div>
+        <a class="card" href="contact.html?dest=Finland">
+      <div class="card-img-wrap"><img class="card-img" src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2a/Northern_Lights_in_Finland.jpg/800px-Northern_Lights_in_Finland.jpg" alt="Finland" loading="lazy"><div class="card-badge">🇫🇮</div></div>
       <div class="card-body"><h3>Finland</h3><p>Northern Lights, Santa's homeland & pristine lakes</p><span class="card-btn">Enquire Now</span></div>
     </a>
-
-    <a class="card" href="https://api.whatsapp.com/send?phone=919998952926&text=I'm interested in France package">
-      <div class="card-img-wrap"><img class="card-img" src="images/france.jpeg" alt="France" loading="lazy"><div class="card-badge">🇫🇷</div></div>
+        <a class="card" href="contact.html?dest=France">
+      <div class="card-img-wrap"><img class="card-img" src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/af/Tour_eiffel_at_sunrise_from_the_trocadero.jpg/800px-Tour_eiffel_at_sunrise_from_the_trocadero.jpg" alt="France" loading="lazy"><div class="card-badge">🇫🇷</div></div>
       <div class="card-body"><h3>France</h3><p>Eiffel Tower, Loire Valley châteaux & French Riviera</p><span class="card-btn">Enquire Now</span></div>
     </a>
-
-    <a class="card" href="https://api.whatsapp.com/send?phone=919998952926&text=I'm interested in Germany package">
-      <div class="card-img-wrap"><img class="card-img" src="images/germany.jpeg" alt="Germany" loading="lazy"><div class="card-badge">🇩🇪</div></div>
+        <a class="card" href="contact.html?dest=Germany">
+      <div class="card-img-wrap"><img class="card-img" src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f2/Neuschwanstein_Castle.jpg/800px-Neuschwanstein_Castle.jpg" alt="Germany" loading="lazy"><div class="card-badge">🇩🇪</div></div>
       <div class="card-body"><h3>Germany</h3><p>Neuschwanstein Castle, Oktoberfest & Black Forest</p><span class="card-btn">Enquire Now</span></div>
     </a>
-
-    <a class="card" href="https://api.whatsapp.com/send?phone=919998952926&text=I'm interested in Greece package">
-      <div class="card-img-wrap"><img class="card-img" src="images/greece.jpeg" alt="Greece" loading="lazy"><div class="card-badge">🇬🇷</div></div>
+        <a class="card" href="contact.html?dest=Greece">
+      <div class="card-img-wrap"><img class="card-img" src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d3/Santorini_-_Oia_02.jpg/800px-Santorini_-_Oia_02.jpg" alt="Greece" loading="lazy"><div class="card-badge">🇬🇷</div></div>
       <div class="card-body"><h3>Greece</h3><p>Santorini sunsets, Acropolis & Aegean island hopping</p><span class="card-btn">Enquire Now</span></div>
     </a>
-
-    <a class="card" href="https://api.whatsapp.com/send?phone=919998952926&text=I'm interested in Hong Kong package">
-      <div class="card-img-wrap"><img class="card-img" src="images/hong-kong.jpeg" alt="Hong Kong" loading="lazy"><div class="card-badge">🇭🇰</div></div>
+        <a class="card" href="contact.html?dest=Hong Kong">
+      <div class="card-img-wrap"><img class="card-img" src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/ab/Hong_Kong_Night_Skyline.jpg/800px-Hong_Kong_Night_Skyline.jpg" alt="Hong Kong" loading="lazy"><div class="card-badge">🇭🇰</div></div>
       <div class="card-body"><h3>Hong Kong</h3><p>Victoria Harbour skyline, Peak & vibrant street markets</p><span class="card-btn">Enquire Now</span></div>
     </a>
-
-    <a class="card" href="https://api.whatsapp.com/send?phone=919998952926&text=I'm interested in Hungary package">
-      <div class="card-img-wrap"><img class="card-img" src="images/hungary.jpeg" alt="Hungary" loading="lazy"><div class="card-badge">🇭🇺</div></div>
+        <a class="card" href="contact.html?dest=Hungary">
+      <div class="card-img-wrap"><img class="card-img" src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4c/Budapest_Parliament_night.jpg/800px-Budapest_Parliament_night.jpg" alt="Hungary" loading="lazy"><div class="card-badge">🇭🇺</div></div>
       <div class="card-body"><h3>Hungary</h3><p>Budapest Parliament, thermal baths & Danube panorama</p><span class="card-btn">Enquire Now</span></div>
     </a>
-
-    <a class="card" href="https://api.whatsapp.com/send?phone=919998952926&text=I'm interested in Iceland package">
-      <div class="card-img-wrap"><img class="card-img" src="images/iceland.jpeg" alt="Iceland" loading="lazy"><div class="card-badge">🇮🇸</div></div>
+        <a class="card" href="contact.html?dest=Iceland">
+      <div class="card-img-wrap"><img class="card-img" src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2e/Northern_Lights_Iceland.jpg/800px-Northern_Lights_Iceland.jpg" alt="Iceland" loading="lazy"><div class="card-badge">🇮🇸</div></div>
       <div class="card-body"><h3>Iceland</h3><p>Northern Lights, geysers, waterfalls & volcanic landscapes</p><span class="card-btn">Enquire Now</span></div>
     </a>
-
-    <a class="card" href="https://api.whatsapp.com/send?phone=919998952926&text=I'm interested in Indonesia package">
-      <div class="card-img-wrap"><img class="card-img" src="images/indonesia.jpeg" alt="Indonesia" loading="lazy"><div class="card-badge">🇮🇩</div></div>
+        <a class="card" href="contact.html?dest=Indonesia">
+      <div class="card-img-wrap"><img class="card-img" src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1c/GunungAgungBali.jpg/800px-GunungAgungBali.jpg" alt="Indonesia" loading="lazy"><div class="card-badge">🇮🇩</div></div>
       <div class="card-body"><h3>Indonesia</h3><p>Bali temples, Komodo dragons & tropical island paradise</p><span class="card-btn">Enquire Now</span></div>
     </a>
-
-    <a class="card" href="https://api.whatsapp.com/send?phone=919998952926&text=I'm interested in Ireland package">
-      <div class="card-img-wrap"><img class="card-img" src="images/ireland.jpeg" alt="Ireland" loading="lazy"><div class="card-badge">🇮🇪</div></div>
+        <a class="card" href="contact.html?dest=Ireland">
+      <div class="card-img-wrap"><img class="card-img" src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9a/Cliffs_of_Moher_-_The_Burren.jpg/800px-Cliffs_of_Moher_-_The_Burren.jpg" alt="Ireland" loading="lazy"><div class="card-badge">🇮🇪</div></div>
       <div class="card-body"><h3>Ireland</h3><p>Cliffs of Moher, ancient castles & lush green countryside</p><span class="card-btn">Enquire Now</span></div>
     </a>
-
-    <a class="card" href="https://api.whatsapp.com/send?phone=919998952926&text=I'm interested in Israel package">
-      <div class="card-img-wrap"><img class="card-img" src="images/israel.jpeg" alt="Israel" loading="lazy"><div class="card-badge">🇮🇱</div></div>
+        <a class="card" href="contact.html?dest=Israel">
+      <div class="card-img-wrap"><img class="card-img" src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1d/Jerusalem-2013%282%29.jpg/800px-Jerusalem-2013%282%29.jpg" alt="Israel" loading="lazy"><div class="card-badge">🇮🇱</div></div>
       <div class="card-body"><h3>Israel</h3><p>Jerusalem's holy sites, Dead Sea & Tel Aviv beaches</p><span class="card-btn">Enquire Now</span></div>
     </a>
-
-    <a class="card" href="https://api.whatsapp.com/send?phone=919998952926&text=I'm interested in Italy package">
-      <div class="card-img-wrap"><img class="card-img" src="images/italy.jpeg" alt="Italy" loading="lazy"><div class="card-badge">🇮🇹</div></div>
+        <a class="card" href="contact.html?dest=Italy">
+      <div class="card-img-wrap"><img class="card-img" src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/de/Colosseo_2020.jpg/800px-Colosseo_2020.jpg" alt="Italy" loading="lazy"><div class="card-badge">🇮🇹</div></div>
       <div class="card-body"><h3>Italy</h3><p>Colosseum, Venice canals & Amalfi Coast beauty</p><span class="card-btn">Enquire Now</span></div>
     </a>
-
-    <a class="card" href="https://api.whatsapp.com/send?phone=919998952926&text=I'm interested in Japan package">
-      <div class="card-img-wrap"><img class="card-img" src="images/japan.jpeg" alt="Japan" loading="lazy"><div class="card-badge">🇯🇵</div></div>
+        <a class="card" href="contact.html?dest=Japan">
+      <div class="card-img-wrap"><img class="card-img" src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1b/Cherry_blossoms_in_Vancouver_3.jpg/800px-Cherry_blossoms_in_Vancouver_3.jpg" alt="Japan" loading="lazy"><div class="card-badge">🇯🇵</div></div>
       <div class="card-body"><h3>Japan</h3><p>Cherry blossoms, Mount Fuji & ancient samurai culture</p><span class="card-btn">Enquire Now</span></div>
     </a>
-
-    <a class="card" href="https://api.whatsapp.com/send?phone=919998952926&text=I'm interested in Jordan package">
-      <div class="card-img-wrap"><img class="card-img" src="images/jordan.jpeg" alt="Jordan" loading="lazy"><div class="card-badge">🇯🇴</div></div>
+        <a class="card" href="contact.html?dest=Jordan">
+      <div class="card-img-wrap"><img class="card-img" src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/16/Petra_Jordan_BW_21.JPG/800px-Petra_Jordan_BW_21.JPG" alt="Jordan" loading="lazy"><div class="card-badge">🇯🇴</div></div>
       <div class="card-body"><h3>Jordan</h3><p>Petra's rose-red city, Wadi Rum desert & Dead Sea</p><span class="card-btn">Enquire Now</span></div>
     </a>
-
-    <a class="card" href="https://api.whatsapp.com/send?phone=919998952926&text=I'm interested in Kazakhstan package">
-      <div class="card-img-wrap"><img class="card-img" src="images/kazakhstan.jpeg" alt="Kazakhstan" loading="lazy"><div class="card-badge">🇰🇿</div></div>
+        <a class="card" href="contact.html?dest=Kazakhstan">
+      <div class="card-img-wrap"><img class="card-img" src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e5/Almaty_Kazakhstan.jpg/800px-Almaty_Kazakhstan.jpg" alt="Kazakhstan" loading="lazy"><div class="card-badge">🇰🇿</div></div>
       <div class="card-body"><h3>Kazakhstan</h3><p>Almaty mountains, steppe landscapes & silk road heritage</p><span class="card-btn">Enquire Now</span></div>
     </a>
-
-    <a class="card" href="https://api.whatsapp.com/send?phone=919998952926&text=I'm interested in Kenya package">
-      <div class="card-img-wrap"><img class="card-img" src="images/kenya.jpeg" alt="Kenya" loading="lazy"><div class="card-badge">🇰🇪</div></div>
+        <a class="card" href="contact.html?dest=Kenya">
+      <div class="card-img-wrap"><img class="card-img" src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c9/Serengeti_wildebeest.jpg/800px-Serengeti_wildebeest.jpg" alt="Kenya" loading="lazy"><div class="card-badge">🇰🇪</div></div>
       <div class="card-body"><h3>Kenya</h3><p>Maasai Mara safari, Big Five & Great Rift Valley</p><span class="card-btn">Enquire Now</span></div>
     </a>
-
-    <a class="card" href="https://api.whatsapp.com/send?phone=919998952926&text=I'm interested in Laos package">
-      <div class="card-img-wrap"><img class="card-img" src="images/laos.jpeg" alt="Laos" loading="lazy"><div class="card-badge">🇱🇦</div></div>
+        <a class="card" href="contact.html?dest=Laos">
+      <div class="card-img-wrap"><img class="card-img" src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/17/Luang_Prabang_Wat_Xieng_Thong.jpg/800px-Luang_Prabang_Wat_Xieng_Thong.jpg" alt="Laos" loading="lazy"><div class="card-badge">🇱🇦</div></div>
       <div class="card-body"><h3>Laos</h3><p>Luang Prabang temples, Mekong sunsets & waterfall treks</p><span class="card-btn">Enquire Now</span></div>
     </a>
-
-    <a class="card" href="https://api.whatsapp.com/send?phone=919998952926&text=I'm interested in Madagascar package">
-      <div class="card-img-wrap"><img class="card-img" src="images/madagascar.jpeg" alt="Madagascar" loading="lazy"><div class="card-badge">🇲🇬</div></div>
+        <a class="card" href="contact.html?dest=Madagascar">
+      <div class="card-img-wrap"><img class="card-img" src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9c/Baobabs_near_Morondava.jpg/800px-Baobabs_near_Morondava.jpg" alt="Madagascar" loading="lazy"><div class="card-badge">🇲🇬</div></div>
       <div class="card-body"><h3>Madagascar</h3><p>Baobab avenue, unique wildlife & pristine beaches</p><span class="card-btn">Enquire Now</span></div>
     </a>
-
-    <a class="card" href="https://api.whatsapp.com/send?phone=919998952926&text=I'm interested in Malaysia package">
-      <div class="card-img-wrap"><img class="card-img" src="images/malaysia.jpeg" alt="Malaysia" loading="lazy"><div class="card-badge">🇲🇾</div></div>
+        <a class="card" href="contact.html?dest=Malaysia">
+      <div class="card-img-wrap"><img class="card-img" src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a1/Petronas_Towers.jpg/800px-Petronas_Towers.jpg" alt="Malaysia" loading="lazy"><div class="card-badge">🇲🇾</div></div>
       <div class="card-body"><h3>Malaysia</h3><p>Petronas Towers, rainforests & diverse street food</p><span class="card-btn">Enquire Now</span></div>
     </a>
-
-    <a class="card" href="https://api.whatsapp.com/send?phone=919998952926&text=I'm interested in Maldives package">
-      <div class="card-img-wrap"><img class="card-img" src="images/maldives.jpeg" alt="Maldives" loading="lazy"><div class="card-badge">🇲🇻</div></div>
+        <a class="card" href="contact.html?dest=Maldives">
+      <div class="card-img-wrap"><img class="card-img" src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/90/Maldives_beach.jpg/800px-Maldives_beach.jpg" alt="Maldives" loading="lazy"><div class="card-badge">🇲🇻</div></div>
       <div class="card-body"><h3>Maldives</h3><p>Overwater villas, coral reefs & crystal-clear lagoons</p><span class="card-btn">Enquire Now</span></div>
     </a>
-
-    <a class="card" href="https://api.whatsapp.com/send?phone=919998952926&text=I'm interested in Macau package">
-      <div class="card-img-wrap"><img class="card-img" src="images/macau.jpeg" alt="Macau" loading="lazy"><div class="card-badge">🇲🇴</div></div>
+        <a class="card" href="contact.html?dest=Macau">
+      <div class="card-img-wrap"><img class="card-img" src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/09/Macau_Ruins_of_Saint_Paul%27s.jpg/800px-Macau_Ruins_of_Saint_Paul%27s.jpg" alt="Macau" loading="lazy"><div class="card-badge">🇲🇴</div></div>
       <div class="card-body"><h3>Macau</h3><p>Historic ruins, casino glitz & Portuguese heritage</p><span class="card-btn">Enquire Now</span></div>
     </a>
-
-    <a class="card" href="https://api.whatsapp.com/send?phone=919998952926&text=I'm interested in Mauritius package">
-      <div class="card-img-wrap"><img class="card-img" src="images/mauritius.jpeg" alt="Mauritius" loading="lazy"><div class="card-badge">🇲🇺</div></div>
+        <a class="card" href="contact.html?dest=Mauritius">
+      <div class="card-img-wrap"><img class="card-img" src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/Mauritius_beach.jpg/800px-Mauritius_beach.jpg" alt="Mauritius" loading="lazy"><div class="card-badge">🇲🇺</div></div>
       <div class="card-body"><h3>Mauritius</h3><p>Pristine beaches, turquoise lagoons & luxury resorts</p><span class="card-btn">Enquire Now</span></div>
     </a>
-
-    <a class="card" href="https://api.whatsapp.com/send?phone=919998952926&text=I'm interested in Morocco package">
-      <div class="card-img-wrap"><img class="card-img" src="images/morocco.jpeg" alt="Morocco" loading="lazy"><div class="card-badge">🇲🇦</div></div>
+        <a class="card" href="contact.html?dest=Morocco">
+      <div class="card-img-wrap"><img class="card-img" src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5f/Marrakech_souks.jpg/800px-Marrakech_souks.jpg" alt="Morocco" loading="lazy"><div class="card-badge">🇲🇦</div></div>
       <div class="card-body"><h3>Morocco</h3><p>Marrakech medinas, Sahara dunes & Atlas Mountains</p><span class="card-btn">Enquire Now</span></div>
     </a>
-
-    <a class="card" href="https://api.whatsapp.com/send?phone=919998952926&text=I'm interested in Nepal package">
-      <div class="card-img-wrap"><img class="card-img" src="images/nepal.jpeg" alt="Nepal" loading="lazy"><div class="card-badge">🇳🇵</div></div>
+        <a class="card" href="contact.html?dest=Nepal">
+      <div class="card-img-wrap"><img class="card-img" src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e7/Everest_North_Face_toward_Base_Camp_Tibet_Luca_Galuzzi_2006.jpg/800px-Everest_North_Face_toward_Base_Camp_Tibet_Luca_Galuzzi_2006.jpg" alt="Nepal" loading="lazy"><div class="card-badge">🇳🇵</div></div>
       <div class="card-body"><h3>Nepal</h3><p>Everest trekking, Kathmandu temples & Himalayan views</p><span class="card-btn">Enquire Now</span></div>
     </a>
-
-    <a class="card" href="https://api.whatsapp.com/send?phone=919998952926&text=I'm interested in Netherlands package">
-      <div class="card-img-wrap"><img class="card-img" src="images/netherlands.jpeg" alt="Netherlands" loading="lazy"><div class="card-badge">🇳🇱</div></div>
+        <a class="card" href="contact.html?dest=Netherlands">
+      <div class="card-img-wrap"><img class="card-img" src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/47/Amsterdam_-_Canals.jpg/800px-Amsterdam_-_Canals.jpg" alt="Netherlands" loading="lazy"><div class="card-badge">🇳🇱</div></div>
       <div class="card-body"><h3>Netherlands</h3><p>Amsterdam canals, tulip fields & windmill landscapes</p><span class="card-btn">Enquire Now</span></div>
     </a>
-
-    <a class="card" href="https://api.whatsapp.com/send?phone=919998952926&text=I'm interested in New Zealand package">
-      <div class="card-img-wrap"><img class="card-img" src="images/new-zealand.jpeg" alt="New Zealand" loading="lazy"><div class="card-badge">🇳🇿</div></div>
+        <a class="card" href="contact.html?dest=New Zealand">
+      <div class="card-img-wrap"><img class="card-img" src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/45/Milford_Sound_morning_fog.jpg/800px-Milford_Sound_morning_fog.jpg" alt="New Zealand" loading="lazy"><div class="card-badge">🇳🇿</div></div>
       <div class="card-body"><h3>New Zealand</h3><p>Fiordland, Hobbiton & adventure sports capital</p><span class="card-btn">Enquire Now</span></div>
     </a>
-
-    <a class="card" href="https://api.whatsapp.com/send?phone=919998952926&text=I'm interested in Norway package">
-      <div class="card-img-wrap"><img class="card-img" src="images/norway.jpeg" alt="Norway" loading="lazy"><div class="card-badge">🇳🇴</div></div>
+        <a class="card" href="contact.html?dest=Norway">
+      <div class="card-img-wrap"><img class="card-img" src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/56/Geiranger_fjord%2C_Norway.jpg/800px-Geiranger_fjord%2C_Norway.jpg" alt="Norway" loading="lazy"><div class="card-badge">🇳🇴</div></div>
       <div class="card-body"><h3>Norway</h3><p>Fjords, Northern Lights & Viking heritage</p><span class="card-btn">Enquire Now</span></div>
     </a>
-
-    <a class="card" href="https://api.whatsapp.com/send?phone=919998952926&text=I'm interested in Oman package">
-      <div class="card-img-wrap"><img class="card-img" src="images/oman.jpeg" alt="Oman" loading="lazy"><div class="card-badge">🇴🇲</div></div>
+        <a class="card" href="contact.html?dest=Oman">
+      <div class="card-img-wrap"><img class="card-img" src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b1/Muscat_Oman.jpg/800px-Muscat_Oman.jpg" alt="Oman" loading="lazy"><div class="card-badge">🇴🇲</div></div>
       <div class="card-body"><h3>Oman</h3><p>Muscat palaces, desert dunes & wadis of Arabia</p><span class="card-btn">Enquire Now</span></div>
     </a>
-
-    <a class="card" href="https://api.whatsapp.com/send?phone=919998952926&text=I'm interested in Peru package">
-      <div class="card-img-wrap"><img class="card-img" src="images/peru.jpeg" alt="Peru" loading="lazy"><div class="card-badge">🇵🇪</div></div>
+        <a class="card" href="contact.html?dest=Peru">
+      <div class="card-img-wrap"><img class="card-img" src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/eb/Machu_Picchu%2C_Peru.jpg/800px-Machu_Picchu%2C_Peru.jpg" alt="Peru" loading="lazy"><div class="card-badge">🇵🇪</div></div>
       <div class="card-body"><h3>Peru</h3><p>Machu Picchu, Amazon basin & Inca Trail treks</p><span class="card-btn">Enquire Now</span></div>
     </a>
-
-    <a class="card" href="https://api.whatsapp.com/send?phone=919998952926&text=I'm interested in Philippines package">
-      <div class="card-img-wrap"><img class="card-img" src="images/philippines.jpeg" alt="Philippines" loading="lazy"><div class="card-badge">🇵🇭</div></div>
+        <a class="card" href="contact.html?dest=Philippines">
+      <div class="card-img-wrap"><img class="card-img" src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/14/Palawan_Philippines.jpg/800px-Palawan_Philippines.jpg" alt="Philippines" loading="lazy"><div class="card-badge">🇵🇭</div></div>
       <div class="card-body"><h3>Philippines</h3><p>Palawan islands, Chocolate Hills & pristine dive spots</p><span class="card-btn">Enquire Now</span></div>
     </a>
-
-    <a class="card" href="https://api.whatsapp.com/send?phone=919998952926&text=I'm interested in Poland package">
-      <div class="card-img-wrap"><img class="card-img" src="images/poland.jpeg" alt="Poland" loading="lazy"><div class="card-badge">🇵🇱</div></div>
+        <a class="card" href="contact.html?dest=Poland">
+      <div class="card-img-wrap"><img class="card-img" src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/05/Krakow_-_Rynek_Glowny.jpg/800px-Krakow_-_Rynek_Glowny.jpg" alt="Poland" loading="lazy"><div class="card-badge">🇵🇱</div></div>
       <div class="card-body"><h3>Poland</h3><p>Kraków's old town, Wieliczka salt mines & castle trails</p><span class="card-btn">Enquire Now</span></div>
     </a>
-
-    <a class="card" href="https://api.whatsapp.com/send?phone=919998952926&text=I'm interested in Portugal package">
-      <div class="card-img-wrap"><img class="card-img" src="images/portugal.jpeg" alt="Portugal" loading="lazy"><div class="card-badge">🇵🇹</div></div>
+        <a class="card" href="contact.html?dest=Portugal">
+      <div class="card-img-wrap"><img class="card-img" src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/17/Lisboa_Alfama.jpg/800px-Lisboa_Alfama.jpg" alt="Portugal" loading="lazy"><div class="card-badge">🇵🇹</div></div>
       <div class="card-body"><h3>Portugal</h3><p>Lisbon trams, Algarve cliffs & port wine valleys</p><span class="card-btn">Enquire Now</span></div>
     </a>
-
-    <a class="card" href="https://api.whatsapp.com/send?phone=919998952926&text=I'm interested in Russia package">
-      <div class="card-img-wrap"><img class="card-img" src="images/russia.jpeg" alt="Russia" loading="lazy"><div class="card-badge">🇷🇺</div></div>
+        <a class="card" href="contact.html?dest=Russia">
+      <div class="card-img-wrap"><img class="card-img" src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8d/Red_Square_Moscow.jpg/800px-Red_Square_Moscow.jpg" alt="Russia" loading="lazy"><div class="card-badge">🇷🇺</div></div>
       <div class="card-body"><h3>Russia</h3><p>Red Square, St. Petersburg palaces & Trans-Siberian railway</p><span class="card-btn">Enquire Now</span></div>
     </a>
-
-    <a class="card" href="https://api.whatsapp.com/send?phone=919998952926&text=I'm interested in Seychelles package">
-      <div class="card-img-wrap"><img class="card-img" src="images/seychelles.jpeg" alt="Seychelles" loading="lazy"><div class="card-badge">🇸🇨</div></div>
+        <a class="card" href="contact.html?dest=Seychelles">
+      <div class="card-img-wrap"><img class="card-img" src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/fc/Seychelles_Anse_Source_d%27Argent.jpg/800px-Seychelles_Anse_Source_d%27Argent.jpg" alt="Seychelles" loading="lazy"><div class="card-badge">🇸🇨</div></div>
       <div class="card-body"><h3>Seychelles</h3><p>Granite boulders, turquoise beaches & rare wildlife</p><span class="card-btn">Enquire Now</span></div>
     </a>
-
-    <a class="card" href="https://api.whatsapp.com/send?phone=919998952926&text=I'm interested in Singapore package">
-      <div class="card-img-wrap"><img class="card-img" src="images/singapore.jpeg" alt="Singapore" loading="lazy"><div class="card-badge">🇸🇬</div></div>
+        <a class="card" href="contact.html?dest=Singapore">
+      <div class="card-img-wrap"><img class="card-img" src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/44/Marina_Bay_Sands.jpg/800px-Marina_Bay_Sands.jpg" alt="Singapore" loading="lazy"><div class="card-badge">🇸🇬</div></div>
       <div class="card-body"><h3>Singapore</h3><p>Marina Bay Sands, Gardens by the Bay & Sentosa Island</p><span class="card-btn">Enquire Now</span></div>
     </a>
-
-    <a class="card" href="https://api.whatsapp.com/send?phone=919998952926&text=I'm interested in Slovenia package">
-      <div class="card-img-wrap"><img class="card-img" src="images/slovenia.jpeg" alt="Slovenia" loading="lazy"><div class="card-badge">🇸🇮</div></div>
+        <a class="card" href="contact.html?dest=Slovenia">
+      <div class="card-img-wrap"><img class="card-img" src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/70/Lake_Bled%2C_Slovenia.jpg/800px-Lake_Bled%2C_Slovenia.jpg" alt="Slovenia" loading="lazy"><div class="card-badge">🇸🇮</div></div>
       <div class="card-body"><h3>Slovenia</h3><p>Lake Bled, Triglav National Park & charming Ljubljana</p><span class="card-btn">Enquire Now</span></div>
     </a>
-
-    <a class="card" href="https://api.whatsapp.com/send?phone=919998952926&text=I'm interested in South Africa package">
-      <div class="card-img-wrap"><img class="card-img" src="images/south-africa.jpeg" alt="South Africa" loading="lazy"><div class="card-badge">🇿🇦</div></div>
+        <a class="card" href="contact.html?dest=South Africa">
+      <div class="card-img-wrap"><img class="card-img" src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1c/Table_Mountain_DanieVDM.jpg/800px-Table_Mountain_DanieVDM.jpg" alt="South Africa" loading="lazy"><div class="card-badge">🇿🇦</div></div>
       <div class="card-body"><h3>South Africa</h3><p>Safari, Cape Town, Table Mountain & wine valleys</p><span class="card-btn">Enquire Now</span></div>
     </a>
-
-    <a class="card" href="https://api.whatsapp.com/send?phone=919998952926&text=I'm interested in Spain package">
-      <div class="card-img-wrap"><img class="card-img" src="images/spain.jpeg" alt="Spain" loading="lazy"><div class="card-badge">🇪🇸</div></div>
+        <a class="card" href="contact.html?dest=Spain">
+      <div class="card-img-wrap"><img class="card-img" src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e6/Sagrada_Familia_nave_roof_detail.jpg/800px-Sagrada_Familia_nave_roof_detail.jpg" alt="Spain" loading="lazy"><div class="card-badge">🇪🇸</div></div>
       <div class="card-body"><h3>Spain</h3><p>Sagrada Familia, Alhambra palace & Costa del Sol</p><span class="card-btn">Enquire Now</span></div>
     </a>
-
-    <a class="card" href="https://api.whatsapp.com/send?phone=919998952926&text=I'm interested in Sri Lanka package">
-      <div class="card-img-wrap"><img class="card-img" src="images/sri-lanka.jpeg" alt="Sri Lanka" loading="lazy"><div class="card-badge">🇱🇰</div></div>
+        <a class="card" href="contact.html?dest=Sri Lanka">
+      <div class="card-img-wrap"><img class="card-img" src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/11/Sigiriya_mirror_wall.jpg/800px-Sigiriya_mirror_wall.jpg" alt="Sri Lanka" loading="lazy"><div class="card-badge">🇱🇰</div></div>
       <div class="card-body"><h3>Sri Lanka</h3><p>Sigiriya rock fortress, tea estates & whale watching</p><span class="card-btn">Enquire Now</span></div>
     </a>
-
-    <a class="card" href="https://api.whatsapp.com/send?phone=919998952926&text=I'm interested in Sweden package">
-      <div class="card-img-wrap"><img class="card-img" src="images/sweden.jpeg" alt="Sweden" loading="lazy"><div class="card-badge">🇸🇪</div></div>
+        <a class="card" href="contact.html?dest=Sweden">
+      <div class="card-img-wrap"><img class="card-img" src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/80/Stockholm_archipelago.jpg/800px-Stockholm_archipelago.jpg" alt="Sweden" loading="lazy"><div class="card-badge">🇸🇪</div></div>
       <div class="card-body"><h3>Sweden</h3><p>Stockholm archipelago, ABBA Museum & Midnight Sun</p><span class="card-btn">Enquire Now</span></div>
     </a>
-
-    <a class="card" href="https://api.whatsapp.com/send?phone=919998952926&text=I'm interested in Switzerland package">
-      <div class="card-img-wrap"><img class="card-img" src="images/switzerland.jpeg" alt="Switzerland" loading="lazy"><div class="card-badge">🇨🇭</div></div>
+        <a class="card" href="contact.html?dest=Switzerland">
+      <div class="card-img-wrap"><img class="card-img" src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b9/Above_Matterhorn.jpg/800px-Above_Matterhorn.jpg" alt="Switzerland" loading="lazy"><div class="card-badge">🇨🇭</div></div>
       <div class="card-body"><h3>Switzerland</h3><p>Alpine peaks, Jungfrau & scenic chocolate-box villages</p><span class="card-btn">Enquire Now</span></div>
     </a>
-
-    <a class="card" href="https://api.whatsapp.com/send?phone=919998952926&text=I'm interested in Tanzania package">
-      <div class="card-img-wrap"><img class="card-img" src="images/tanzania.jpeg" alt="Tanzania" loading="lazy"><div class="card-badge">🇹🇿</div></div>
+        <a class="card" href="contact.html?dest=Tanzania">
+      <div class="card-img-wrap"><img class="card-img" src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9c/Serengeti_wildebeest.jpg/800px-Serengeti_wildebeest.jpg" alt="Tanzania" loading="lazy"><div class="card-badge">🇹🇿</div></div>
       <div class="card-body"><h3>Tanzania</h3><p>Serengeti, Kilimanjaro & Zanzibar spice islands</p><span class="card-btn">Enquire Now</span></div>
     </a>
-
-    <a class="card" href="https://api.whatsapp.com/send?phone=919998952926&text=I'm interested in Thailand package">
-      <div class="card-img-wrap"><img class="card-img" src="images/thailand.jpeg" alt="Thailand" loading="lazy"><div class="card-badge">🇹🇭</div></div>
+        <a class="card" href="contact.html?dest=Thailand">
+      <div class="card-img-wrap"><img class="card-img" src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a0/Wat_Phra_Kaew%2C_Bangkok.jpg/800px-Wat_Phra_Kaew%2C_Bangkok.jpg" alt="Thailand" loading="lazy"><div class="card-badge">🇹🇭</div></div>
       <div class="card-body"><h3>Thailand</h3><p>Grand Palace, Phi Phi Islands & vibrant street food</p><span class="card-btn">Enquire Now</span></div>
     </a>
-
-    <a class="card" href="https://api.whatsapp.com/send?phone=919998952926&text=I'm interested in Turkey package">
-      <div class="card-img-wrap"><img class="card-img" src="images/turkey.jpeg" alt="Turkey" loading="lazy"><div class="card-badge">🇹🇷</div></div>
+        <a class="card" href="contact.html?dest=Turkey">
+      <div class="card-img-wrap"><img class="card-img" src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/af/Cappadocia_Balloon.jpg/800px-Cappadocia_Balloon.jpg" alt="Turkey" loading="lazy"><div class="card-badge">🇹🇷</div></div>
       <div class="card-body"><h3>Turkey</h3><p>Cappadocia hot-air balloons, Pamukkale & Bosphorus</p><span class="card-btn">Enquire Now</span></div>
     </a>
-
-    <a class="card" href="https://api.whatsapp.com/send?phone=919998952926&text=I'm interested in UAE package">
-      <div class="card-img-wrap"><img class="card-img" src="images/uae.jpeg" alt="UAE" loading="lazy"><div class="card-badge">🇦🇪</div></div>
+        <a class="card" href="contact.html?dest=UAE">
+      <div class="card-img-wrap"><img class="card-img" src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/93/Burj_Khalifa.jpg/800px-Burj_Khalifa.jpg" alt="UAE" loading="lazy"><div class="card-badge">🇦🇪</div></div>
       <div class="card-body"><h3>UAE</h3><p>Burj Khalifa, desert safaris & world-class luxury</p><span class="card-btn">Enquire Now</span></div>
     </a>
-
-    <a class="card" href="https://api.whatsapp.com/send?phone=919998952926&text=I'm interested in Uganda package">
-      <div class="card-img-wrap"><img class="card-img" src="images/uganda.jpeg" alt="Uganda" loading="lazy"><div class="card-badge">🇺🇬</div></div>
+        <a class="card" href="contact.html?dest=Uganda">
+      <div class="card-img-wrap"><img class="card-img" src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/bf/Mountain_gorilla.jpg/800px-Mountain_gorilla.jpg" alt="Uganda" loading="lazy"><div class="card-badge">🇺🇬</div></div>
       <div class="card-body"><h3>Uganda</h3><p>Mountain gorilla trekking, Nile source & Bwindi forest</p><span class="card-btn">Enquire Now</span></div>
     </a>
-
-    <a class="card" href="https://api.whatsapp.com/send?phone=919998952926&text=I'm interested in United Kingdom package">
-      <div class="card-img-wrap"><img class="card-img" src="images/united-kingdom.jpeg" alt="United Kingdom" loading="lazy"><div class="card-badge">🇬🇧</div></div>
+        <a class="card" href="contact.html?dest=United Kingdom">
+      <div class="card-img-wrap"><img class="card-img" src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9b/Big_Ben_Clock_Tower.jpg/800px-Big_Ben_Clock_Tower.jpg" alt="United Kingdom" loading="lazy"><div class="card-badge">🇬🇧</div></div>
       <div class="card-body"><h3>United Kingdom</h3><p>Big Ben, Scottish Highlands & royal palaces</p><span class="card-btn">Enquire Now</span></div>
     </a>
-
-    <a class="card" href="https://api.whatsapp.com/send?phone=919998952926&text=I'm interested in USA package">
-      <div class="card-img-wrap"><img class="card-img" src="images/usa.jpeg" alt="USA" loading="lazy"><div class="card-badge">🇺🇸</div></div>
+        <a class="card" href="contact.html?dest=USA">
+      <div class="card-img-wrap"><img class="card-img" src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/05/Southwest_corner_of_Central_Park%2C_looking_east%2C_NYC.jpg/800px-Southwest_corner_of_Central_Park%2C_looking_east%2C_NYC.jpg" alt="USA" loading="lazy"><div class="card-badge">🇺🇸</div></div>
       <div class="card-body"><h3>USA</h3><p>New York, Grand Canyon, Vegas & coast-to-coast wonders</p><span class="card-btn">Enquire Now</span></div>
     </a>
-
-    <a class="card" href="https://api.whatsapp.com/send?phone=919998952926&text=I'm interested in Vietnam package">
-      <div class="card-img-wrap"><img class="card-img" src="images/vietnam.jpeg" alt="Vietnam" loading="lazy"><div class="card-badge">🇻🇳</div></div>
+        <a class="card" href="contact.html?dest=Vietnam">
+      <div class="card-img-wrap"><img class="card-img" src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0a/Ha_Long_Bay.jpg/800px-Ha_Long_Bay.jpg" alt="Vietnam" loading="lazy"><div class="card-badge">🇻🇳</div></div>
       <div class="card-body"><h3>Vietnam</h3><p>Halong Bay, Hoi An lanterns & Mekong Delta</p><span class="card-btn">Enquire Now</span></div>
     </a>
-
   </div>
 </div>
 
-<!-- ===== DOMESTIC — UNCHANGED ===== -->
+<!-- ===== DOMESTIC ===== -->
 <div class="section" id="tab-domestic">
   <div class="grid">
-
-    <a class="card" href="https://api.whatsapp.com/send?phone=919998952926&text=I'm interested in Andhra Pradesh package">
-      <div class="card-img-wrap"><img class="card-img" src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?q=80&w=800&auto=format&fit=crop" alt="Andhra Pradesh" loading="lazy"><div class="card-badge">🦚</div></div>
+        <a class="card" href="contact.html?dest=Andhra Pradesh">
+      <div class="card-img-wrap"><img class="card-img" src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/21/Tirupati_temple.jpg/800px-Tirupati_temple.jpg" alt="Andhra Pradesh" loading="lazy"><div class="card-badge">🦚</div></div>
       <div class="card-body"><h3>Andhra Pradesh</h3><p>Tirupati, Araku Valley & Visakhapatnam coastline</p><span class="card-btn">Enquire Now</span></div>
     </a>
-
-    <a class="card" href="https://api.whatsapp.com/send?phone=919998952926&text=I'm interested in Arunachal Pradesh package">
-      <div class="card-img-wrap"><img class="card-img" src="https://images.unsplash.com/photo-1593528800296-5b21ace1a1e0?q=80&w=800&auto=format&fit=crop" alt="Arunachal Pradesh" loading="lazy"><div class="card-badge">🦅</div></div>
+        <a class="card" href="contact.html?dest=Arunachal Pradesh">
+      <div class="card-img-wrap"><img class="card-img" src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3f/Tawang_Monastery.jpg/800px-Tawang_Monastery.jpg" alt="Arunachal Pradesh" loading="lazy"><div class="card-badge">🦅</div></div>
       <div class="card-body"><h3>Arunachal Pradesh</h3><p>Tawang monastery & the scenic Ziro Valley</p><span class="card-btn">Enquire Now</span></div>
     </a>
-
-    <a class="card" href="https://api.whatsapp.com/send?phone=919998952926&text=I'm interested in Assam package">
-      <div class="card-img-wrap"><img class="card-img" src="https://images.unsplash.com/photo-1622397933015-d1a48d2b67b7?q=80&w=800&auto=format&fit=crop" alt="Assam" loading="lazy"><div class="card-badge">🦏</div></div>
+        <a class="card" href="contact.html?dest=Assam">
+      <div class="card-img-wrap"><img class="card-img" src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4d/Kaziranga_rhino.jpg/800px-Kaziranga_rhino.jpg" alt="Assam" loading="lazy"><div class="card-badge">🦏</div></div>
       <div class="card-body"><h3>Assam</h3><p>Kaziranga, Majuli island & Guwahati on the Brahmaputra</p><span class="card-btn">Enquire Now</span></div>
     </a>
-
-    <a class="card" href="https://api.whatsapp.com/send?phone=919998952926&text=I'm interested in Bihar package">
-      <div class="card-img-wrap"><img class="card-img" src="https://images.unsplash.com/photo-1590574510678-4b71eb3b7e6d?q=80&w=800&auto=format&fit=crop" alt="Bihar" loading="lazy"><div class="card-badge">🛕</div></div>
+        <a class="card" href="contact.html?dest=Bihar">
+      <div class="card-img-wrap"><img class="card-img" src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d1/Mahabodhi_Temple.jpg/800px-Mahabodhi_Temple.jpg" alt="Bihar" loading="lazy"><div class="card-badge">🛕</div></div>
       <div class="card-body"><h3>Bihar</h3><p>Bodh Gaya, Rajgir & the ancient ruins of Nalanda</p><span class="card-btn">Enquire Now</span></div>
     </a>
-
-    <a class="card" href="https://api.whatsapp.com/send?phone=919998952926&text=I'm interested in Chhattisgarh package">
-      <div class="card-img-wrap"><img class="card-img" src="https://images.unsplash.com/photo-1680444481955-bda2e0d3e7bb?q=80&w=800&auto=format&fit=crop" alt="Chhattisgarh" loading="lazy"><div class="card-badge">🌊</div></div>
+        <a class="card" href="contact.html?dest=Chhattisgarh">
+      <div class="card-img-wrap"><img class="card-img" src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d2/Chitrakote_Falls.jpg/800px-Chitrakote_Falls.jpg" alt="Chhattisgarh" loading="lazy"><div class="card-badge">🌊</div></div>
       <div class="card-body"><h3>Chhattisgarh</h3><p>Chitrakote Falls, tribal heartland & Bastar forests</p><span class="card-btn">Enquire Now</span></div>
     </a>
-
-    <a class="card" href="https://api.whatsapp.com/send?phone=919998952926&text=I'm interested in Goa package">
-      <div class="card-img-wrap"><img class="card-img" src="https://images.unsplash.com/photo-1512343879784-a960bf40e7f2?q=80&w=800&auto=format&fit=crop" alt="Goa" loading="lazy"><div class="card-badge">🏖️</div></div>
+        <a class="card" href="contact.html?dest=Goa">
+      <div class="card-img-wrap"><img class="card-img" src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/65/Goa_beach.jpg/800px-Goa_beach.jpg" alt="Goa" loading="lazy"><div class="card-badge">🏖️</div></div>
       <div class="card-body"><h3>Goa</h3><p>North Goa beaches, South Goa retreats & vibrant nightlife</p><span class="card-btn">Enquire Now</span></div>
     </a>
-
-    <a class="card" href="https://api.whatsapp.com/send?phone=919998952926&text=I'm interested in Gujarat package">
-      <div class="card-img-wrap"><img class="card-img" src="https://images.unsplash.com/photo-1591017403286-fd8493524e1e?q=80&w=800&auto=format&fit=crop" alt="Gujarat" loading="lazy"><div class="card-badge">🗿</div></div>
+        <a class="card" href="contact.html?dest=Gujarat">
+      <div class="card-img-wrap"><img class="card-img" src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/32/Rann_of_Kutch.jpg/800px-Rann_of_Kutch.jpg" alt="Gujarat" loading="lazy"><div class="card-badge">🗿</div></div>
       <div class="card-body"><h3>Gujarat</h3><p>Statue of Unity, Rann of Kutch & Gir National Park</p><span class="card-btn">Enquire Now</span></div>
     </a>
-
-    <a class="card" href="https://api.whatsapp.com/send?phone=919998952926&text=I'm interested in Haryana package">
-      <div class="card-img-wrap"><img class="card-img" src="https://images.unsplash.com/photo-1548013146-72479768bada?q=80&w=800&auto=format&fit=crop" alt="Haryana" loading="lazy"><div class="card-badge">🌾</div></div>
+        <a class="card" href="contact.html?dest=Haryana">
+      <div class="card-img-wrap"><img class="card-img" src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/13/Kurukshetra_Brahma_Sarovar.jpg/800px-Kurukshetra_Brahma_Sarovar.jpg" alt="Haryana" loading="lazy"><div class="card-badge">🌾</div></div>
       <div class="card-body"><h3>Haryana</h3><p>Kurukshetra's sacred ghats & Sultanpur Bird Sanctuary</p><span class="card-btn">Enquire Now</span></div>
     </a>
-
-    <a class="card" href="https://api.whatsapp.com/send?phone=919998952926&text=I'm interested in Himachal Pradesh package">
-      <div class="card-img-wrap"><img class="card-img" src="https://images.unsplash.com/photo-1626621341517-bbf3d9990a23?q=80&w=800&auto=format&fit=crop" alt="Himachal Pradesh" loading="lazy"><div class="card-badge">⛰️</div></div>
+        <a class="card" href="contact.html?dest=Himachal Pradesh">
+      <div class="card-img-wrap"><img class="card-img" src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a1/Rohtang_Pass.jpg/800px-Rohtang_Pass.jpg" alt="Himachal Pradesh" loading="lazy"><div class="card-badge">⛰️</div></div>
       <div class="card-body"><h3>Himachal Pradesh</h3><p>Manali, Shimla hill station & remote Spiti Valley</p><span class="card-btn">Enquire Now</span></div>
     </a>
-
-    <a class="card" href="https://api.whatsapp.com/send?phone=919998952926&text=I'm interested in Jharkhand package">
-      <div class="card-img-wrap"><img class="card-img" src="https://images.unsplash.com/photo-1585135497273-1a86b09fe70e?q=80&w=800&auto=format&fit=crop" alt="Jharkhand" loading="lazy"><div class="card-badge">🌿</div></div>
+        <a class="card" href="contact.html?dest=Jharkhand">
+      <div class="card-img-wrap"><img class="card-img" src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2f/Hundru_Falls.jpg/800px-Hundru_Falls.jpg" alt="Jharkhand" loading="lazy"><div class="card-badge">🌿</div></div>
       <div class="card-body"><h3>Jharkhand</h3><p>Netarhat hills, Deoghar pilgrimage & Betla forest</p><span class="card-btn">Enquire Now</span></div>
     </a>
-
-    <a class="card" href="https://api.whatsapp.com/send?phone=919998952926&text=I'm interested in Karnataka package">
-      <div class="card-img-wrap"><img class="card-img" src="https://images.unsplash.com/photo-1582510003544-4d00b7f74220?q=80&w=800&auto=format&fit=crop" alt="Karnataka" loading="lazy"><div class="card-badge">🌺</div></div>
+        <a class="card" href="contact.html?dest=Karnataka">
+      <div class="card-img-wrap"><img class="card-img" src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/19/Hampi_Virupaksha_Temple.jpg/800px-Hampi_Virupaksha_Temple.jpg" alt="Karnataka" loading="lazy"><div class="card-badge">🌺</div></div>
       <div class="card-body"><h3>Karnataka</h3><p>Coorg coffee estates, Hampi ruins & Chikmagalur hills</p><span class="card-btn">Enquire Now</span></div>
     </a>
-
-    <a class="card" href="https://api.whatsapp.com/send?phone=919998952926&text=I'm interested in Kerala package">
-      <div class="card-img-wrap"><img class="card-img" src="https://images.unsplash.com/photo-1602216056096-3b40cc0c9944?q=80&w=800&auto=format&fit=crop" alt="Kerala" loading="lazy"><div class="card-badge">🌴</div></div>
+        <a class="card" href="contact.html?dest=Kerala">
+      <div class="card-img-wrap"><img class="card-img" src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/27/Alleppey_backwaters.jpg/800px-Alleppey_backwaters.jpg" alt="Kerala" loading="lazy"><div class="card-badge">🌴</div></div>
       <div class="card-body"><h3>Kerala</h3><p>Munnar tea gardens, Alleppey backwaters & Wayanad</p><span class="card-btn">Enquire Now</span></div>
     </a>
-
-    <a class="card" href="https://api.whatsapp.com/send?phone=919998952926&text=I'm interested in Ladakh package">
-      <div class="card-img-wrap"><img class="card-img" src="https://images.unsplash.com/photo-1597466599360-3b9775841aec?q=80&w=800&auto=format&fit=crop" alt="Ladakh" loading="lazy"><div class="card-badge">🏔️</div></div>
+        <a class="card" href="contact.html?dest=Ladakh">
+      <div class="card-img-wrap"><img class="card-img" src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6b/Pangong_tso.jpg/800px-Pangong_tso.jpg" alt="Ladakh" loading="lazy"><div class="card-badge">🏔️</div></div>
       <div class="card-body"><h3>Ladakh</h3><p>Pangong Lake, moonscapes & ancient monastery trails</p><span class="card-btn">Enquire Now</span></div>
     </a>
-
-    <a class="card" href="https://api.whatsapp.com/send?phone=919998952926&text=I'm interested in Madhya Pradesh package">
-      <div class="card-img-wrap"><img class="card-img" src="https://images.unsplash.com/photo-1585135497273-1a86b09fe70e?q=80&w=800&auto=format&fit=crop" alt="Madhya Pradesh" loading="lazy"><div class="card-badge">🦁</div></div>
+        <a class="card" href="contact.html?dest=Madhya Pradesh">
+      <div class="card-img-wrap"><img class="card-img" src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9f/Khajuraho_temple_2.jpg/800px-Khajuraho_temple_2.jpg" alt="Madhya Pradesh" loading="lazy"><div class="card-badge">🦁</div></div>
       <div class="card-body"><h3>Madhya Pradesh</h3><p>Khajuraho temples, Maheshwar ghats & Kanha tigers</p><span class="card-btn">Enquire Now</span></div>
     </a>
-
-    <a class="card" href="https://api.whatsapp.com/send?phone=919998952926&text=I'm interested in Maharashtra package">
-      <div class="card-img-wrap"><img class="card-img" src="https://images.unsplash.com/photo-1567157577867-05ccb1388e66?q=80&w=800&auto=format&fit=crop" alt="Maharashtra" loading="lazy"><div class="card-badge">🌆</div></div>
+        <a class="card" href="contact.html?dest=Maharashtra">
+      <div class="card-img-wrap"><img class="card-img" src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3a/Ajanta_Caves.jpg/800px-Ajanta_Caves.jpg" alt="Maharashtra" loading="lazy"><div class="card-badge">🌆</div></div>
       <div class="card-body"><h3>Maharashtra</h3><p>Mahabaleshwar, Lonavala hill stations & Ajanta-Ellora caves</p><span class="card-btn">Enquire Now</span></div>
     </a>
-
-    <a class="card" href="https://api.whatsapp.com/send?phone=919998952926&text=I'm interested in Manipur package">
-      <div class="card-img-wrap"><img class="card-img" src="https://images.unsplash.com/photo-1593528800296-5b21ace1a1e0?q=80&w=800&auto=format&fit=crop" alt="Manipur" loading="lazy"><div class="card-badge">💧</div></div>
-      <div class="card-body"><h3>Manipor</h3><p>Loktak Lake, floating islands & serene northeast landscapes</p><span class="card-btn">Enquire Now</span></div>
+        <a class="card" href="contact.html?dest=Manipur">
+      <div class="card-img-wrap"><img class="card-img" src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b0/Loktak_Lake.jpg/800px-Loktak_Lake.jpg" alt="Manipur" loading="lazy"><div class="card-badge">💧</div></div>
+      <div class="card-body"><h3>Manipur</h3><p>Loktak Lake, floating islands & serene northeast landscapes</p><span class="card-btn">Enquire Now</span></div>
     </a>
-
-    <a class="card" href="https://api.whatsapp.com/send?phone=919998952926&text=I'm interested in Meghalaya package">
-      <div class="card-img-wrap"><img class="card-img" src="https://images.unsplash.com/photo-1624369671826-a6b0049db5b5?q=80&w=800&auto=format&fit=crop" alt="Meghalaya" loading="lazy"><div class="card-badge">☁️</div></div>
+        <a class="card" href="contact.html?dest=Meghalaya">
+      <div class="card-img-wrap"><img class="card-img" src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/13/Living_root_bridge.jpg/800px-Living_root_bridge.jpg" alt="Meghalaya" loading="lazy"><div class="card-badge">☁️</div></div>
       <div class="card-body"><h3>Meghalaya</h3><p>Shillong, Cherrapunji waterfalls & living root bridges</p><span class="card-btn">Enquire Now</span></div>
     </a>
-
-    <a class="card" href="https://api.whatsapp.com/send?phone=919998952926&text=I'm interested in Mizoram package">
-      <div class="card-img-wrap"><img class="card-img" src="https://images.unsplash.com/photo-1593528800296-5b21ace1a1e0?q=80&w=800&auto=format&fit=crop" alt="Mizoram" loading="lazy"><div class="card-badge">🏞️</div></div>
+        <a class="card" href="contact.html?dest=Mizoram">
+      <div class="card-img-wrap"><img class="card-img" src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5d/Aizawl_panorama.jpg/800px-Aizawl_panorama.jpg" alt="Mizoram" loading="lazy"><div class="card-badge">🏞️</div></div>
       <div class="card-body"><h3>Mizoram</h3><p>Aizawl's hilltop city & the scenic Reiek trek</p><span class="card-btn">Enquire Now</span></div>
     </a>
-
-    <a class="card" href="https://api.whatsapp.com/send?phone=919998952926&text=I'm interested in Nagaland package">
-      <div class="card-img-wrap"><img class="card-img" src="https://images.unsplash.com/photo-1580674684081-7617fbf3d745?q=80&w=800&auto=format&fit=crop" alt="Nagaland" loading="lazy"><div class="card-badge">🎋</div></div>
+        <a class="card" href="contact.html?dest=Nagaland">
+      <div class="card-img-wrap"><img class="card-img" src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8e/Hornbill_Festival_Nagaland_India.jpg/800px-Hornbill_Festival_Nagaland_India.jpg" alt="Nagaland" loading="lazy"><div class="card-badge">🎋</div></div>
       <div class="card-body"><h3>Nagaland</h3><p>Kohima war memorial, Hornbill Festival & Dzukou Valley</p><span class="card-btn">Enquire Now</span></div>
     </a>
-
-    <a class="card" href="https://api.whatsapp.com/send?phone=919998952926&text=I'm interested in Odisha package">
-      <div class="card-img-wrap"><img class="card-img" src="https://images.unsplash.com/photo-1680444481955-bda2e0d3e7bb?q=80&w=800&auto=format&fit=crop" alt="Odisha" loading="lazy"><div class="card-badge">🌊</div></div>
+        <a class="card" href="contact.html?dest=Odisha">
+      <div class="card-img-wrap"><img class="card-img" src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2c/Konark_Sun_Temple.jpg/800px-Konark_Sun_Temple.jpg" alt="Odisha" loading="lazy"><div class="card-badge">🌊</div></div>
       <div class="card-body"><h3>Odisha</h3><p>Puri beach, Konark Sun Temple & Bhubaneswar</p><span class="card-btn">Enquire Now</span></div>
     </a>
-
-    <a class="card" href="https://api.whatsapp.com/send?phone=919998952926&text=I'm interested in Punjab package">
-      <div class="card-img-wrap"><img class="card-img" src="https://images.unsplash.com/photo-1609920658906-8223bd289001?q=80&w=800&auto=format&fit=crop" alt="Punjab" loading="lazy"><div class="card-badge">🛕</div></div>
+        <a class="card" href="contact.html?dest=Punjab">
+      <div class="card-img-wrap"><img class="card-img" src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/94/Golden_Temple_Amritsar.jpg/800px-Golden_Temple_Amritsar.jpg" alt="Punjab" loading="lazy"><div class="card-badge">🛕</div></div>
       <div class="card-body"><h3>Punjab</h3><p>Golden Temple Amritsar & the iconic Wagah Border ceremony</p><span class="card-btn">Enquire Now</span></div>
     </a>
-
-    <a class="card" href="https://api.whatsapp.com/send?phone=919998952926&text=I'm interested in Rajasthan package">
-      <div class="card-img-wrap"><img class="card-img" src="https://images.unsplash.com/photo-1524492412937-b28074a5d7da?q=80&w=800&auto=format&fit=crop" alt="Rajasthan" loading="lazy"><div class="card-badge">🏰</div></div>
+        <a class="card" href="contact.html?dest=Rajasthan">
+      <div class="card-img-wrap"><img class="card-img" src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/17/Jaisalmer_fort.jpg/800px-Jaisalmer_fort.jpg" alt="Rajasthan" loading="lazy"><div class="card-badge">🏰</div></div>
       <div class="card-body"><h3>Rajasthan</h3><p>Jaipur palaces, Udaipur lakes & Jaisalmer desert safari</p><span class="card-btn">Enquire Now</span></div>
     </a>
-
-    <a class="card" href="https://api.whatsapp.com/send?phone=919998952926&text=I'm interested in Sikkim package">
-      <div class="card-img-wrap"><img class="card-img" src="https://images.unsplash.com/photo-1606847958595-9e617f5cf174?q=80&w=800&auto=format&fit=crop" alt="Sikkim" loading="lazy"><div class="card-badge">🏔️</div></div>
+        <a class="card" href="contact.html?dest=Sikkim">
+      <div class="card-img-wrap"><img class="card-img" src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8e/Yumthang_Valley.jpg/800px-Yumthang_Valley.jpg" alt="Sikkim" loading="lazy"><div class="card-badge">🏔️</div></div>
       <div class="card-body"><h3>Sikkim</h3><p>Gangtok, Nathula Pass & Yumthang Valley of flowers</p><span class="card-btn">Enquire Now</span></div>
     </a>
-
-    <a class="card" href="https://api.whatsapp.com/send?phone=919998952926&text=I'm interested in Tamil Nadu package">
-      <div class="card-img-wrap"><img class="card-img" src="https://images.unsplash.com/photo-1582510003544-4d00b7f74220?q=80&w=800&auto=format&fit=crop" alt="Tamil Nadu" loading="lazy"><div class="card-badge">🛕</div></div>
+        <a class="card" href="contact.html?dest=Tamil Nadu">
+      <div class="card-img-wrap"><img class="card-img" src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5b/Meenakshi_Amman_Temple.jpg/800px-Meenakshi_Amman_Temple.jpg" alt="Tamil Nadu" loading="lazy"><div class="card-badge">🛕</div></div>
       <div class="card-body"><h3>Tamil Nadu</h3><p>Ooty hills, Kodaikanal & the grand Rameswaram temple</p><span class="card-btn">Enquire Now</span></div>
     </a>
-
-    <a class="card" href="https://api.whatsapp.com/send?phone=919998952926&text=I'm interested in Telangana package">
-      <div class="card-img-wrap"><img class="card-img" src="https://images.unsplash.com/photo-1567157577867-05ccb1388e66?q=80&w=800&auto=format&fit=crop" alt="Telangana" loading="lazy"><div class="card-badge">🏯</div></div>
+        <a class="card" href="contact.html?dest=Telangana">
+      <div class="card-img-wrap"><img class="card-img" src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/74/Charminar.jpg/800px-Charminar.jpg" alt="Telangana" loading="lazy"><div class="card-badge">🏯</div></div>
       <div class="card-body"><h3>Telangana</h3><p>Hyderabad's Charminar, biryani culture & Warangal fort</p><span class="card-btn">Enquire Now</span></div>
     </a>
-
-    <a class="card" href="https://api.whatsapp.com/send?phone=919998952926&text=I'm interested in Tripura package">
-      <div class="card-img-wrap"><img class="card-img" src="https://images.unsplash.com/photo-1593528800296-5b21ace1a1e0?q=80&w=800&auto=format&fit=crop" alt="Tripura" loading="lazy"><div class="card-badge">🏛️</div></div>
+        <a class="card" href="contact.html?dest=Tripura">
+      <div class="card-img-wrap"><img class="card-img" src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/42/Neermahal_Palace.jpg/800px-Neermahal_Palace.jpg" alt="Tripura" loading="lazy"><div class="card-badge">🏛️</div></div>
       <div class="card-body"><h3>Tripura</h3><p>Ujjayanta Palace, Neermahal water palace & tribal culture</p><span class="card-btn">Enquire Now</span></div>
     </a>
-
-    <a class="card" href="https://api.whatsapp.com/send?phone=919998952926&text=I'm interested in Uttar Pradesh package">
-      <div class="card-img-wrap"><img class="card-img" src="https://images.unsplash.com/photo-1564507592333-c60657eea523?q=80&w=800&auto=format&fit=crop" alt="Uttar Pradesh" loading="lazy"><div class="card-badge">🕌</div></div>
+        <a class="card" href="contact.html?dest=Uttar Pradesh">
+      <div class="card-img-wrap"><img class="card-img" src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1d/TajMahal_2012.jpg/800px-TajMahal_2012.jpg" alt="Uttar Pradesh" loading="lazy"><div class="card-badge">🕌</div></div>
       <div class="card-body"><h3>Uttar Pradesh</h3><p>Varanasi ghats, Taj Mahal Agra & Ayodhya pilgrimage</p><span class="card-btn">Enquire Now</span></div>
     </a>
-
-    <a class="card" href="https://api.whatsapp.com/send?phone=919998952926&text=I'm interested in Uttarakhand package">
-      <div class="card-img-wrap"><img class="card-img" src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?q=80&w=800&auto=format&fit=crop" alt="Uttarakhand" loading="lazy"><div class="card-badge">🌿</div></div>
+        <a class="card" href="contact.html?dest=Uttarakhand">
+      <div class="card-img-wrap"><img class="card-img" src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/73/Kedarnath_Temple.jpg/800px-Kedarnath_Temple.jpg" alt="Uttarakhand" loading="lazy"><div class="card-badge">🌿</div></div>
       <div class="card-body"><h3>Uttarakhand</h3><p>Rishikesh yoga, Auli skiing & Nainital lake retreat</p><span class="card-btn">Enquire Now</span></div>
     </a>
-
-    <a class="card" href="https://api.whatsapp.com/send?phone=919998952926&text=I'm interested in West Bengal package">
-      <div class="card-img-wrap"><img class="card-img" src="https://images.unsplash.com/photo-1558431382-27e303142255?q=80&w=800&auto=format&fit=crop" alt="West Bengal" loading="lazy"><div class="card-badge">🎨</div></div>
+        <a class="card" href="contact.html?dest=West Bengal">
+      <div class="card-img-wrap"><img class="card-img" src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/01/Tea_garden_darjeeling.jpg/800px-Tea_garden_darjeeling.jpg" alt="West Bengal" loading="lazy"><div class="card-badge">🎨</div></div>
       <div class="card-body"><h3>West Bengal</h3><p>Darjeeling tea hills, Sundarbans delta & Kolkata heritage</p><span class="card-btn">Enquire Now</span></div>
     </a>
-
-    <a class="card" href="https://api.whatsapp.com/send?phone=919998952926&text=I'm interested in Kashmir package">
-      <div class="card-img-wrap"><img class="card-img" src="https://images.unsplash.com/photo-1566837945700-30057527ade0?q=80&w=800&auto=format&fit=crop" alt="Kashmir" loading="lazy"><div class="card-badge">🏔️</div></div>
+        <a class="card" href="contact.html?dest=Kashmir">
+      <div class="card-img-wrap"><img class="card-img" src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/11/Dal_Lake_Kashmir.jpg/800px-Dal_Lake_Kashmir.jpg" alt="Kashmir" loading="lazy"><div class="card-badge">🏔️</div></div>
       <div class="card-body"><h3>Kashmir</h3><p>Heaven on Earth – Dal Lake, Gulmarg & Pahalgam</p><span class="card-btn">Enquire Now</span></div>
     </a>
-
   </div>
 </div>
 
-<!-- ===== CRUISE — USING LOCAL .jpg IMAGES ===== -->
+<!-- ===== CRUISE ===== -->
 <div class="section" id="tab-cruise">
   <div class="grid">
 
-    <a class="card" href="https://api.whatsapp.com/send?phone=919998952926&text=I'm interested in Avalon Cruises package">
-      <div class="card-img-wrap"><img class="card-img" src="images/avalon.jpg" alt="Avalon Cruises" loading="lazy" onerror="this.src='https://images.unsplash.com/photo-1548115184-bc6544d06a58?q=80&w=800&auto=format&fit=crop'"><div class="card-badge">🚢</div></div>
-      <div class="card-body"><h3>Avalon Cruises</h3><p>Luxury river & ocean cruising with world-class amenities</p><span class="card-btn">Enquire Now</span></div>
+    <a class="card" href="contact.html?dest=Avalon Cruises">
+      <div class="card-img-wrap">
+        <img class="card-img" src="images/avalon.jpg" alt="Avalon Cruises" loading="lazy">
+        <div class="card-badge">🚢</div>
+      </div>
+      <div class="card-body">
+        <h3>Avalon Cruises</h3>
+        <p>Luxury river & ocean cruising with world-class amenities</p>
+        <span class="card-btn">Enquire Now</span>
+      </div>
     </a>
 
-    <a class="card" href="https://api.whatsapp.com/send?phone=919998952926&text=I'm interested in Carnival Cruises package">
-      <div class="card-img-wrap"><img class="card-img" src="images/carnival.jpg" alt="Carnival Cruises" loading="lazy" onerror="this.src='https://images.unsplash.com/photo-1599640842225-85d111c60e6b?q=80&w=800&auto=format&fit=crop'"><div class="card-badge">🎉</div></div>
-      <div class="card-body"><h3>Carnival Cruises</h3><p>Fun-filled voyages to Caribbean, Mexico & Bahamas</p><span class="card-btn">Enquire Now</span></div>
+    <a class="card" href="contact.html?dest=Carnival Cruises">
+      <div class="card-img-wrap">
+        <img class="card-img" src="images/carnival.jpg" alt="Carnival Cruises" loading="lazy">
+        <div class="card-badge">🎉</div>
+      </div>
+      <div class="card-body">
+        <h3>Carnival Cruises</h3>
+        <p>Fun-filled voyages to Caribbean, Mexico & Bahamas</p>
+        <span class="card-btn">Enquire Now</span>
+      </div>
     </a>
 
-    <a class="card" href="https://api.whatsapp.com/send?phone=919998952926&text=I'm interested in Cordelia Cruises package">
-      <div class="card-img-wrap"><img class="card-img" src="images/cordelia.jpg" alt="Cordelia Cruises" loading="lazy" onerror="this.src='https://images.unsplash.com/photo-1578894381163-e72c17f2d45f?q=80&w=800&auto=format&fit=crop'"><div class="card-badge">🇮🇳</div></div>
-      <div class="card-body"><h3>Cordelia Cruises</h3><p>India's premier cruise line – Goa, Mumbai & Lakshadweep</p><span class="card-btn">Enquire Now</span></div>
+    <a class="card" href="contact.html?dest=Cordelia Cruises">
+      <div class="card-img-wrap">
+        <img class="card-img" src="images/cordelia.jpg" alt="Cordelia Cruises" loading="lazy">
+        <div class="card-badge">🇮🇳</div>
+      </div>
+      <div class="card-body">
+        <h3>Cordelia Cruises</h3>
+        <p>India's premier cruise line – Goa, Mumbai & Lakshadweep</p>
+        <span class="card-btn">Enquire Now</span>
+      </div>
     </a>
 
-    <a class="card" href="https://api.whatsapp.com/send?phone=919998952926&text=I'm interested in Genting Dream Cruises package">
-      <div class="card-img-wrap"><img class="card-img" src="images/genting.jpg" alt="Genting Dream Cruises" loading="lazy" onerror="this.src='https://images.unsplash.com/photo-1548115184-bc6544d06a58?q=80&w=800&auto=format&fit=crop'"><div class="card-badge">🌏</div></div>
-      <div class="card-body"><h3>Genting Dream Cruises</h3><p>Asia's luxury cruising experience across Southeast Asian ports</p><span class="card-btn">Enquire Now</span></div>
+    <a class="card" href="contact.html?dest=Genting Dream Cruises">
+      <div class="card-img-wrap">
+        <img class="card-img" src="images/genting.jpg" alt="Genting Dream Cruises" loading="lazy">
+        <div class="card-badge">🌏</div>
+      </div>
+      <div class="card-body">
+        <h3>Genting Dream Cruises</h3>
+        <p>Asia's luxury cruising experience across Southeast Asian ports</p>
+        <span class="card-btn">Enquire Now</span>
+      </div>
     </a>
 
-    <a class="card" href="https://api.whatsapp.com/send?phone=919998952926&text=I'm interested in Holland America Cruises package">
-      <div class="card-img-wrap"><img class="card-img" src="images/holland.jpg" alt="Holland America Cruises" loading="lazy" onerror="this.src='https://images.unsplash.com/photo-1513635269975-59663e0ac1ad?q=80&w=800&auto=format&fit=crop'"><div class="card-badge">⚓</div></div>
-      <div class="card-body"><h3>Holland America Cruises</h3><p>Premium voyages through Alaska, Europe & the Pacific</p><span class="card-btn">Enquire Now</span></div>
+    <a class="card" href="contact.html?dest=Holland America Cruises">
+      <div class="card-img-wrap">
+        <img class="card-img" src="images/holland.jpg" alt="Holland America Cruises" loading="lazy">
+        <div class="card-badge">⚓</div>
+      </div>
+      <div class="card-body">
+        <h3>Holland America Cruises</h3>
+        <p>Premium voyages through Alaska, Europe & the Pacific</p>
+        <span class="card-btn">Enquire Now</span>
+      </div>
     </a>
 
-    <a class="card" href="https://api.whatsapp.com/send?phone=919998952926&text=I'm interested in Norwegian Cruises package">
-      <div class="card-img-wrap"><img class="card-img" src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c6/Norwegian_Getaway_at_Port_of_Miami.jpg/1280px-Norwegian_Getaway_at_Port_of_Miami.jpg" alt="Norwegian Cruises" loading="lazy" onerror="this.src='https://images.unsplash.com/photo-1512343879784-a960bf40e7f2?q=80&w=800&auto=format&fit=crop'"><div class="card-badge">🌊</div></div>
-      <div class="card-body"><h3>Norwegian Cruises</h3><p>Freestyle cruising to Caribbean, Mediterranean & beyond</p><span class="card-btn">Enquire Now</span></div>
+    <a class="card" href="contact.html?dest=Norwegian Cruises">
+      <div class="card-img-wrap">
+        <img class="card-img" src="images/norwegian.jpg" alt="Norwegian Cruises" loading="lazy">
+        <div class="card-badge">🌊</div>
+      </div>
+      <div class="card-body">
+        <h3>Norwegian Cruises</h3>
+        <p>Freestyle cruising to Caribbean, Mediterranean & beyond</p>
+        <span class="card-btn">Enquire Now</span>
+      </div>
     </a>
 
-    <a class="card" href="https://api.whatsapp.com/send?phone=919998952926&text=I'm interested in Princess Cruises package">
-      <div class="card-img-wrap"><img class="card-img" src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8b/Crown_Princess_Malta.jpg/1280px-Crown_Princess_Malta.jpg" alt="Princess Cruises" loading="lazy" onerror="this.src='https://images.unsplash.com/photo-1544644181-1484b3fdfc62?q=80&w=800&auto=format&fit=crop'"><div class="card-badge">👑</div></div>
-      <div class="card-body"><h3>Princess Cruises</h3><p>Iconic voyages to Alaska, Europe, Asia & South America</p><span class="card-btn">Enquire Now</span></div>
+    <a class="card" href="contact.html?dest=Princess Cruises">
+      <div class="card-img-wrap">
+        <img class="card-img" src="images/princess.jpg" alt="Princess Cruises" loading="lazy">
+        <div class="card-badge">👑</div>
+      </div>
+      <div class="card-body">
+        <h3>Princess Cruises</h3>
+        <p>Iconic voyages to Alaska, Europe, Asia & South America</p>
+        <span class="card-btn">Enquire Now</span>
+      </div>
     </a>
 
-    <a class="card" href="https://api.whatsapp.com/send?phone=919998952926&text=I'm interested in Royal Caribbean Cruises package">
-      <div class="card-img-wrap"><img class="card-img" src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2f/Wonder_of_the_Seas_2022.jpg/1280px-Wonder_of_the_Seas_2022.jpg" alt="Royal Caribbean Cruises" loading="lazy" onerror="this.src='https://images.unsplash.com/photo-1548115184-bc6544d06a58?q=80&w=800&auto=format&fit=crop'"><div class="card-badge">⛵</div></div>
-      <div class="card-body"><h3>Royal Caribbean Cruises</h3><p>World's largest ships with thrilling onboard experiences</p><span class="card-btn">Enquire Now</span></div>
-    </a>
-
-    <a class="card" href="https://api.whatsapp.com/send?phone=919998952926&text=I'm interested in Mediterranean Cruise package">
-      <div class="card-img-wrap"><img class="card-img" src="https://images.unsplash.com/photo-1499856871958-5b9627545d1a?q=80&w=800&auto=format&fit=crop" alt="Mediterranean Cruise" loading="lazy"><div class="card-badge">🌍</div></div>
-      <div class="card-body"><h3>Mediterranean Cruise</h3><p>Europe's finest coastlines & ports</p><span class="card-btn">Enquire Now</span></div>
-    </a>
-
-    <a class="card" href="https://api.whatsapp.com/send?phone=919998952926&text=I'm interested in Indian Ocean Cruise package">
-      <div class="card-img-wrap"><img class="card-img" src="https://images.unsplash.com/photo-1537996194471-e657df975ab4?q=80&w=800&auto=format&fit=crop" alt="Indian Ocean Cruise" loading="lazy"><div class="card-badge">🏝️</div></div>
-      <div class="card-body"><h3>Indian Ocean Cruise</h3><p>Exotic island hopping & tropical ports</p><span class="card-btn">Enquire Now</span></div>
-    </a>
-
-    <a class="card" href="https://api.whatsapp.com/send?phone=919998952926&text=I'm interested in Southeast Asia Cruise package">
-      <div class="card-img-wrap"><img class="card-img" src="https://images.unsplash.com/photo-1508009603885-50cf7c579365?q=80&w=800&auto=format&fit=crop" alt="Southeast Asia Cruise" loading="lazy"><div class="card-badge">🌏</div></div>
-      <div class="card-body"><h3>Southeast Asia Cruise</h3><p>Singapore to Bali by sea</p><span class="card-btn">Enquire Now</span></div>
-    </a>
-
-    <a class="card" href="https://api.whatsapp.com/send?phone=919998952926&text=I'm interested in Arabian Sea Cruise package">
-      <div class="card-img-wrap"><img class="card-img" src="https://images.unsplash.com/photo-1512343879784-a960bf40e7f2?q=80&w=800&auto=format&fit=crop" alt="Arabian Sea Cruise" loading="lazy"><div class="card-badge">🌊</div></div>
-      <div class="card-body"><h3>Arabian Sea Cruise</h3><p>Mumbai, Goa & Lakshadweep</p><span class="card-btn">Enquire Now</span></div>
+    <a class="card" href="contact.html?dest=Royal Caribbean Cruises">
+      <div class="card-img-wrap">
+        <img class="card-img" src="images/royal-caribbean.jpg" alt="Royal Caribbean Cruises" loading="lazy">
+        <div class="card-badge">👑</div>
+      </div>
+      <div class="card-body">
+        <h3>Royal Caribbean Cruises</h3>
+        <p>World-class ships, entertainment & unforgettable global voyages</p>
+        <span class="card-btn">Enquire Now</span>
+      </div>
     </a>
 
   </div>
@@ -649,7 +595,7 @@
 <div class="cta-strip">
   <h2>Don't see your dream destination?</h2>
   <p>We customize tours for any location worldwide!</p>
-  <a class="cta-btn" href="https://api.whatsapp.com/send?phone=919998952926">💬 Enquire About Any Destination →</a>
+  <a class="cta-btn" href="contact.html">📩 Send Us an Enquiry →</a>
 </div>
 
 <footer>
