@@ -699,14 +699,15 @@
         </div>
       </div>
 
-      <!-- ── SUCCESS SCREEN ── -->
       <div class="eq-success" id="eqSuccess">
         <div class="s-icon">✅</div>
         <h3>Enquiry Submitted Successfully!</h3>
         <div class="s-box">
           <p>
             <strong>Thank you for contacting VacationPe!</strong><br/><br/>
-            We have received your visa enquiry. Our visa specialist will review your requirements and contact you shortly.<br/><br/>
+            ✅ &nbsp;Your details have been sent to <strong>info@vacationpe.com</strong><br/>
+            💬 &nbsp;WhatsApp has been opened for a quick chat<br/>
+            ⏱️ &nbsp;Our visa specialist will contact you within <strong>2 hours</strong><br/><br/>
             For urgent assistance, please call or WhatsApp us directly.<br/><br/>
             <strong>VacationPe — Personalized Holidays &amp; Visa Assistance</strong>
           </p>
@@ -1125,63 +1126,135 @@ function closeAlert() {
   document.getElementById('naOverlay').classList.remove('open');
 }
 
-function submitEnquiry() {
+async function submitEnquiry() {
   if (!validateStep(4)) return;
 
   const g = id => (document.getElementById(id)||{}).value||'';
-  const r = name => document.querySelector(`input[name="${name}"]:checked`)?.value || 'Not specified';
+  const r = nm => document.querySelector(`input[name="${nm}"]:checked`)?.value || 'Not specified';
 
-  const name      = g('f_name').trim();
-  const mobile    = g('f_mobile').trim();
-  const email     = g('f_email').trim();
+  const name   = g('f_name').trim();
+  const mobile = g('f_mobile').trim();
+  const email  = g('f_email').trim();
   if (!name || !mobile || !email || !g('f_destination').trim()) {
     alert('Please complete required fields before submitting.'); return;
   }
 
+  // ── Collect all field values ──
+  const wa        = g('f_wa').trim();
+  const nat       = g('f_nationality');
+  const city      = g('f_city').trim();
+  const dest      = g('f_destination').trim();
+  const td        = g('f_traveldate');
+  const rd        = g('f_returndate');
+  const travelers = g('f_travelers');
+  const purpose   = g('f_purpose');
+  const tnotes    = g('f_travelNotes').trim();
+  const visatype  = g('f_visatype') || 'Not specified';
+  const urgency   = g('f_urgency');
+  const passport  = r('hasPassport');
+  const msg       = g('f_message').trim();
+  const traveled  = r('traveled');
+  const prev      = g('f_prevCountries').trim();
+  const hasVisa   = r('hasVisa');
+  const exC       = g('f_exCountry').trim();
+  const exT       = g('f_exType').trim();
+  const exExp     = g('f_exExpiry');
+  const exO       = g('f_exOthers').trim();
+  const refused   = r('refused');
+  const ref       = g('f_refDetails').trim();
+  const src       = g('f_source');
+
+  // Format travel date nicely for email
+  const fmtDate = raw => {
+    if (!raw) return '—';
+    const d = new Date(raw);
+    return d.toLocaleDateString('en-IN', { day:'numeric', month:'long', year:'numeric' });
+  };
+
+  // ── Disable submit button while processing ──
+  const btnNext = document.getElementById('btnNext');
+  const origText = btnNext.textContent;
+  btnNext.textContent = '⏳ Submitting…';
+  btnNext.disabled = true;
+
+  // ── 1. Send email via Web3Forms ──
+  try {
+    await fetch('https://api.web3forms.com/submit', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+      body: JSON.stringify({
+        access_key:           '721020ce-7cbe-45d0-9c51-8f1afa45e36a',
+        subject:              `New Visa Enquiry from ${name} – VacationPe`,
+        from_name:            'VacationPe Visa Form',
+        // ── Personal ──
+        'Full Name':          name,
+        'Mobile Number':      mobile,
+        'WhatsApp Number':    wa || '(same as mobile)',
+        'Email Address':      email,
+        'Nationality':        nat,
+        'City of Residence':  city || '—',
+        // ── Travel ──
+        'Destination':        dest,
+        'Travel Date':        fmtDate(td),
+        'Return Date':        fmtDate(rd),
+        'No. of Travellers':  travelers,
+        'Purpose of Visit':   purpose || '—',
+        'Travel Notes':       tnotes || '—',
+        // ── Visa ──
+        'Visa Type':          visatype,
+        'Processing Urgency': urgency,
+        'Passport Status':    passport,
+        'Special Message':    msg || '—',
+        // ── History ──
+        'Travelled Before':   traveled,
+        'Countries Visited':  prev || '—',
+        'Holds Valid Visa':   hasVisa,
+        'Existing Visa Country': exC || '—',
+        'Existing Visa Type':    exT || '—',
+        'Existing Visa Expiry':  fmtDate(exExp),
+        'Additional Visas':      exO || '—',
+        'Previous Refusal':      refused,
+        'Refusal Details':       ref || '—',
+        'Source / Referral':     src || '—',
+      })
+    });
+  } catch(err) {
+    console.warn('Web3Forms error:', err);
+  }
+
+  // ── 2. Build WhatsApp message ──
   let txt = `🛂 *VISA ASSISTANCE REQUEST — VacationPe*\n`;
   txt += `━━━━━━━━━━━━━━━━━━━━━━━━\n\n`;
-
   txt += `👤 *PERSONAL DETAILS*\n`;
-  txt += `• Name: ${name}\n`;
-  txt += `• Mobile: ${mobile}\n`;
-  const wa = g('f_wa').trim();
+  txt += `• Name: ${name}\n• Mobile: ${mobile}\n`;
   if (wa) txt += `• WhatsApp: ${wa}\n`;
-  txt += `• Email: ${email}\n`;
-  txt += `• Nationality: ${g('f_nationality')}\n`;
-  const city = g('f_city').trim();
+  txt += `• Email: ${email}\n• Nationality: ${nat}\n`;
   if (city) txt += `• City: ${city}\n`;
-
   txt += `\n✈️ *TRAVEL DETAILS*\n`;
-  txt += `• Destination: ${g('f_destination')}\n`;
-  const td = g('f_traveldate'); if (td) txt += `• Travel Date: ${td}\n`;
-  const rd = g('f_returndate'); if (rd) txt += `• Return Date: ${rd}\n`;
-  txt += `• Travellers: ${g('f_travelers')}\n`;
-  const purpose = g('f_purpose'); if (purpose) txt += `• Purpose: ${purpose}\n`;
-  const tnotes = g('f_travelNotes').trim(); if (tnotes) txt += `• Travel Notes: ${tnotes}\n`;
-
+  txt += `• Destination: ${dest}\n`;
+  if (td) txt += `• Travel Date: ${fmtDate(td)}\n`;
+  if (rd) txt += `• Return Date: ${fmtDate(rd)}\n`;
+  txt += `• Travellers: ${travelers}\n`;
+  if (purpose) txt += `• Purpose: ${purpose}\n`;
+  if (tnotes) txt += `• Travel Notes: ${tnotes}\n`;
   txt += `\n🗂️ *VISA DETAILS*\n`;
-  txt += `• Visa Type: ${g('f_visatype')||'Not specified'}\n`;
-  txt += `• Urgency: ${g('f_urgency')}\n`;
-  txt += `• Valid Passport: ${r('hasPassport')}\n`;
-  const msg = g('f_message').trim(); if (msg) txt += `• Message: ${msg}\n`;
-
+  txt += `• Visa Type: ${visatype}\n• Urgency: ${urgency}\n• Passport: ${passport}\n`;
+  if (msg) txt += `• Message: ${msg}\n`;
   txt += `\n🌐 *TRAVEL & VISA HISTORY*\n`;
-  txt += `• Travelled before: ${r('traveled')}\n`;
-  const prev = g('f_prevCountries').trim(); if (prev) txt += `• Countries visited: ${prev}\n`;
-  txt += `• Holds valid visa: ${r('hasVisa')}\n`;
-  const exC = g('f_exCountry').trim();
+  txt += `• Travelled before: ${traveled}\n`;
+  if (prev) txt += `• Countries visited: ${prev}\n`;
+  txt += `• Holds valid visa: ${hasVisa}\n`;
   if (exC) {
-    txt += `  → Country: ${exC} | Type: ${g('f_exType')||'-'} | Expiry: ${g('f_exExpiry')||'-'}\n`;
-    const exO = g('f_exOthers').trim(); if (exO) txt += `  → Also: ${exO}\n`;
+    txt += `  → Country: ${exC} | Type: ${exT||'-'} | Expiry: ${fmtDate(exExp)}\n`;
+    if (exO) txt += `  → Also: ${exO}\n`;
   }
-  txt += `• Previous refusal: ${r('refused')}\n`;
-  const ref = g('f_refDetails').trim(); if (ref) txt += `  → Details: ${ref}\n`;
-  const src = g('f_source'); if (src) txt += `\n📣 Source: ${src}\n`;
+  txt += `• Previous refusal: ${refused}\n`;
+  if (ref) txt += `  → Details: ${ref}\n`;
+  if (src) txt += `\n📣 Source: ${src}\n`;
 
-  const waUrl = `https://api.whatsapp.com/send?phone=919998952926&text=${encodeURIComponent(txt)}`;
-  window.open(waUrl, '_blank');
+  window.open(`https://api.whatsapp.com/send?phone=919998952926&text=${encodeURIComponent(txt)}`, '_blank');
 
-  // Show success
+  // ── 3. Show success screen ──
   for(let i=1;i<=4;i++) document.getElementById('panel'+i).classList.remove('p-active');
   document.getElementById('eqSteps').style.display = 'none';
   document.getElementById('eqNav').style.display = 'none';
