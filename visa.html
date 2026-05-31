@@ -193,6 +193,7 @@
       outline: none; border-color: var(--blue); box-shadow: 0 0 0 3px rgba(0,119,204,0.1);
     }
     .fg input.err, .fg select.err { border-color: #ef4444 !important; box-shadow: 0 0 0 3px rgba(239,68,68,0.12) !important; }
+    .err-tip { font-size: 0.72rem; color: #ef4444; margin-top: 2px; display: block; }
     .fg textarea { resize: vertical; min-height: 76px; }
 
     .gr2 { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 12px; }
@@ -596,29 +597,18 @@
 
         <div class="fg" style="margin-bottom:12px;">
           <label>Do you have a valid passport?</label>
-          <div class="radio-row" id="passportRadios">
-            <label class="radio-chip"><input type="radio" name="hasPassport" value="Yes"><span class="radio-chip-dot"></span> Yes</label>
-            <label class="radio-chip"><input type="radio" name="hasPassport" value="No"><span class="radio-chip-dot"></span> No — need guidance</label>
-            <label class="radio-chip"><input type="radio" name="hasPassport" value="Expiring soon"><span class="radio-chip-dot"></span> Expiring soon</label>
+          <div class="radio-row" style="flex-direction:column;gap:8px;" id="passportRadios">
+            <label class="radio-chip" style="width:100%;justify-content:flex-start;"><input type="radio" name="hasPassport" value="Yes - valid 6+ months" onchange="handlePassportChange(this)"><span class="radio-chip-dot"></span> ✅ Yes — valid with more than 6 months remaining</label>
+            <label class="radio-chip" style="width:100%;justify-content:flex-start;"><input type="radio" name="hasPassport" value="Yes - expiring under 6 months" onchange="handlePassportChange(this)"><span class="radio-chip-dot"></span> ⚠️ Yes — expiring within 6 months (renewal recommended)</label>
+            <label class="radio-chip" style="width:100%;justify-content:flex-start;"><input type="radio" name="hasPassport" value="No - need help to get passport" onchange="handlePassportChange(this)"><span class="radio-chip-dot"></span> ❌ No — need help to get a passport</label>
           </div>
-        </div>
-
-        <!-- Passport details (show if Yes or Expiring soon) -->
-        <div class="cond" id="passportCond">
-          <div class="eq-section-title" style="font-size:0.72rem;margin-bottom:10px;">📘 Passport Details</div>
-          <div class="gr3">
-            <div class="fg">
-              <label>Passport Number</label>
-              <input type="text" id="f_ppNum" placeholder="A1234567" style="text-transform:uppercase;" />
-            </div>
-            <div class="fg">
-              <label>Issue Date</label>
-              <input type="date" id="f_ppIssue" />
-            </div>
-            <div class="fg">
-              <label>Expiry Date</label>
-              <input type="date" id="f_ppExpiry" />
-            </div>
+          <!-- Alert for expiring soon -->
+          <div class="cond" id="ppExpiryCond" style="background:#fffbeb;border-color:#fcd34d;">
+            <p style="font-size:0.82rem;color:#92400e;">⚠️ <strong>Important:</strong> Most countries require your passport to be valid for at least 6 months beyond your travel date. We strongly recommend renewing your passport before applying for a visa. Our team will guide you on this.</p>
+          </div>
+          <!-- Alert for no passport -->
+          <div class="cond" id="ppNoCond" style="background:#fef2f2;border-color:#fca5a5;">
+            <p style="font-size:0.82rem;color:#991b1b;">📘 <strong>No worries!</strong> Our team can guide you through the passport application process as well. Please mention this in your message below so we can assist you accordingly.</p>
           </div>
         </div>
 
@@ -955,6 +945,14 @@ function openEnquiry(destName) {
   currentStep = 1;
   resetForm();
   if (destName) document.getElementById('f_destination').value = destName;
+  // Set min dates to today so browser date picker also blocks past dates
+  const todayStr = new Date().toISOString().split('T')[0];
+  document.getElementById('f_traveldate').min = todayStr;
+  document.getElementById('f_returndate').min = todayStr;
+  // Also update return min when travel date changes
+  document.getElementById('f_traveldate').onchange = function() {
+    document.getElementById('f_returndate').min = this.value || todayStr;
+  };
   renderStep(1);
   document.getElementById('eqSuccess').classList.remove('show');
   document.getElementById('eqSteps').style.display = 'flex';
@@ -978,10 +976,10 @@ function overlayClick(e) {
 
 function resetForm() {
   const ids = ['f_name','f_mobile','f_email','f_city','f_wa','f_destination',
-    'f_travelNotes','f_message','f_ppNum','f_prevCountries',
-    'f_exCountry','f_exType','f_exOthers','f_refDetails'];
+    'f_travelNotes','f_message',
+    'f_prevCountries','f_exCountry','f_exType','f_exOthers','f_refDetails'];
   ids.forEach(id => { const el=document.getElementById(id); if(el) el.value=''; });
-  const dates = ['f_traveldate','f_returndate','f_ppIssue','f_ppExpiry','f_exExpiry'];
+  const dates = ['f_traveldate','f_returndate','f_exExpiry'];
   dates.forEach(id => { const el=document.getElementById(id); if(el) el.value=''; });
   document.getElementById('f_nationality').value = 'Indian';
   document.getElementById('f_travelers').value = '1';
@@ -1034,25 +1032,73 @@ function goStep(n) {
   renderStep(n);
 }
 
+function setErr(el, msg) {
+  if (!el) return;
+  el.classList.add('err');
+  // show inline error tip if not already
+  let tip = el.parentElement.querySelector('.err-tip');
+  if (!tip) { tip = document.createElement('span'); tip.className = 'err-tip'; tip.style.cssText='font-size:0.72rem;color:#ef4444;margin-top:2px;display:block;'; el.parentElement.appendChild(tip); }
+  tip.textContent = msg;
+  const clear = () => { el.classList.remove('err'); tip.textContent=''; el.removeEventListener('input',clear); el.removeEventListener('change',clear); };
+  el.addEventListener('input', clear);
+  el.addEventListener('change', clear);
+}
+
 function validateStep(step) {
   let ok = true;
-  const req = {
-    1: ['f_name','f_mobile','f_email','f_nationality'],
-    2: ['f_destination'],
-    3: ['f_visatype'],
-    4: []
-  };
-  (req[step]||[]).forEach(id => {
-    const el = document.getElementById(id);
-    if (!el || !el.value.trim()) {
-      el && el.classList.add('err');
-      el && el.addEventListener('input', () => el.classList.remove('err'), {once:true});
-      ok = false;
+
+  function fail(el, msg) { setErr(el, msg); ok = false; }
+
+  if (step === 1) {
+    const name = document.getElementById('f_name');
+    const mobile = document.getElementById('f_mobile');
+    const email = document.getElementById('f_email');
+    const nat = document.getElementById('f_nationality');
+
+    if (!name.value.trim()) fail(name, 'Please enter your full name.');
+    else if (name.value.trim().length < 3) fail(name, 'Name must be at least 3 characters.');
+
+    // Mobile: must be 10 digits (optionally prefixed with +91 or 0)
+    const rawMobile = mobile.value.replace(/[\s\-]/g,'');
+    const mobileDigits = rawMobile.replace(/^\+?91|^0/,'');
+    if (!rawMobile) fail(mobile, 'Please enter your mobile number.');
+    else if (!/^\d{10}$/.test(mobileDigits)) fail(mobile, 'Enter a valid 10-digit Indian mobile number.');
+
+    // Email: strict pattern
+    const emailVal = email.value.trim();
+    if (!emailVal) fail(email, 'Please enter your email address.');
+    else if (!/^[a-zA-Z0-9._%+\-]+@[a-zA-Z0-9.\-]+\.[a-zA-Z]{2,}$/.test(emailVal)) fail(email, 'Enter a valid email (e.g. name@example.com).');
+
+    if (!nat.value) fail(nat, 'Please select your nationality.');
+  }
+
+  if (step === 2) {
+    const dest = document.getElementById('f_destination');
+    if (!dest.value.trim()) fail(dest, 'Please enter your destination country.');
+
+    // Travel date must be today or future
+    const tdate = document.getElementById('f_traveldate');
+    if (tdate.value) {
+      const chosen = new Date(tdate.value);
+      const today = new Date(); today.setHours(0,0,0,0);
+      if (chosen < today) fail(tdate, 'Travel date cannot be in the past.');
     }
-  });
+
+    // Return date must be after travel date
+    const rdate = document.getElementById('f_returndate');
+    if (rdate.value && tdate.value) {
+      if (new Date(rdate.value) < new Date(tdate.value)) fail(rdate, 'Return date must be after travel date.');
+    }
+  }
+
+  if (step === 3) {
+    const vtype = document.getElementById('f_visatype');
+    if (!vtype.value) fail(vtype, 'Please select a visa type.');
+  }
+
   if (!ok) {
     const firstErr = document.querySelector('.fg input.err, .fg select.err');
-    if (firstErr) firstErr.focus();
+    if (firstErr) { firstErr.focus(); firstErr.scrollIntoView({behavior:'smooth',block:'center'}); }
   }
   return ok;
 }
@@ -1061,13 +1107,11 @@ function toggleCond(blockId, triggerVal, radio) {
   document.getElementById(blockId).classList.toggle('show', radio.value === triggerVal);
 }
 
-// Passport radio — show passport details if Yes or Expiring soon
-document.querySelectorAll('input[name="hasPassport"]').forEach(r => {
-  r.addEventListener('change', () => {
-    const show = r.value === 'Yes' || r.value === 'Expiring soon';
-    document.getElementById('passportCond').classList.toggle('show', show && r.checked);
-  });
-});
+// Passport radio handler
+function handlePassportChange(radio) {
+  document.getElementById('ppExpiryCond').classList.toggle('show', radio.value === 'Yes - expiring under 6 months');
+  document.getElementById('ppNoCond').classList.toggle('show', radio.value === 'No - need help to get passport');
+}
 
 function checkVisaType(val) {
   if (RESTRICTED.includes(val)) {
@@ -1119,12 +1163,6 @@ function submitEnquiry() {
   txt += `• Visa Type: ${g('f_visatype')||'Not specified'}\n`;
   txt += `• Urgency: ${g('f_urgency')}\n`;
   txt += `• Valid Passport: ${r('hasPassport')}\n`;
-  const ppNum = g('f_ppNum').trim();
-  if (ppNum) {
-    txt += `• Passport No: ${ppNum}\n`;
-    const ppI = g('f_ppIssue'); if (ppI) txt += `• PP Issue: ${ppI}\n`;
-    const ppE = g('f_ppExpiry'); if (ppE) txt += `• PP Expiry: ${ppE}\n`;
-  }
   const msg = g('f_message').trim(); if (msg) txt += `• Message: ${msg}\n`;
 
   txt += `\n🌐 *TRAVEL & VISA HISTORY*\n`;
