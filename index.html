@@ -4,18 +4,170 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>VacationPe – Dream.. Click.. Travel..</title>
-  <meta name="description" content="VacationPe – Your trusted travel partner in Jaipur. Customized holiday packages, flights, hotels, visa &amp; more. Talk to Bajrang Singh Shekhawat today." />
-  <link rel="stylesheet" href="style.css" />
+  <meta name="description" content="VacationPe – Your trusted travel partner in Jaipur. Customized holiday packages, flights, hotels, visa & more. Talk to Bajrang Singh Shekhawat today." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
   <style>
-    /* Destination card image styles */
-    .dest-card-img { overflow: hidden; padding: 0 !important; background: none !important; }
+    :root {
+      --primary:    #0B2545;
+      --secondary:  #13315C;
+      --accent:     #E07B39;
+      --accent2:    #F4A261;
+      --teal:       #1B7A6F;
+      --teal-light: #2AB5A3;
+      --light:      #F5F3EE;
+      --cream:      #FDF8F2;
+      --text:       #1A1A2E;
+      --muted:      #6B7280;
+      --white:      #FFFFFF;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'DM Sans', sans-serif; color: var(--text); background: var(--cream); overflow-x: hidden; }
+
+    /* TOPBAR */
+    .topbar { background: var(--primary); color: rgba(255,255,255,0.85); display: flex; justify-content: space-between; align-items: center; padding: 9px 40px; font-size: 13px; }
+    .topbar a { color: rgba(255,255,255,0.82); text-decoration: none; margin-right: 20px; transition: color 0.2s; }
+    .topbar a:hover { color: var(--accent2); }
+    .topbar-right a { margin-right: 0; margin-left: 20px; }
+
+    /* NAVBAR */
+    nav { position: sticky; top: 0; z-index: 100; background: rgba(255,255,255,0.97); backdrop-filter: blur(12px); display: flex; align-items: center; justify-content: space-between; padding: 0 40px; height: 68px; box-shadow: 0 2px 20px rgba(11,37,69,0.10); border-bottom: 2px solid var(--accent); }
+    .logo { font-family: 'Playfair Display', serif; font-size: 26px; font-weight: 900; color: var(--primary); text-decoration: none; display: flex; flex-direction: column; line-height: 1; }
+    .logo span { color: var(--accent); }
+    .logo small { font-family: 'DM Sans', sans-serif; font-size: 10px; font-weight: 400; letter-spacing: 0.18em; color: var(--muted); text-transform: uppercase; margin-top: 3px; }
+    .nav-links { display: flex; align-items: center; list-style: none; gap: 4px; }
+    .nav-links a { text-decoration: none; color: var(--primary); font-size: 14px; font-weight: 500; padding: 8px 12px; border-radius: 6px; transition: all 0.2s; }
+    .nav-links a:hover { background: var(--light); color: var(--accent); }
+    .nav-links .btn-nav { background: var(--accent); color: #fff !important; padding: 10px 20px; border-radius: 50px; font-weight: 600; margin-left: 8px; }
+    .nav-links .btn-nav:hover { background: var(--primary) !important; transform: translateY(-1px); }
+    .blog-link { display: flex; align-items: center; gap: 5px; }
+    .blog-link svg { width: 14px; height: 14px; flex-shrink: 0; }
+    .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; }
+    .hamburger span { width: 24px; height: 2px; background: var(--primary); border-radius: 2px; }
+
+    /* HERO */
+    .hero { position: relative; min-height: 92vh; display: flex; align-items: center; overflow: hidden; }
+    .hero-video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+    .hero-overlay { position: absolute; inset: 0; background: linear-gradient(105deg, rgba(11,37,69,0.88) 0%, rgba(11,37,69,0.55) 60%, rgba(26,119,111,0.3) 100%); }
+    .hero-content { position: relative; z-index: 2; max-width: 680px; padding: 0 60px; animation: fadeUp 1s ease both; }
+    @keyframes fadeUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+    .hero-badge { display: inline-flex; align-items: center; gap: 8px; background: rgba(224,123,57,0.18); border: 1px solid rgba(224,123,57,0.5); color: var(--accent2); font-size: 12px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; padding: 7px 16px; border-radius: 50px; margin-bottom: 22px; }
+    .hero-content h1 { font-family: 'Playfair Display', serif; font-size: clamp(48px, 7vw, 80px); font-weight: 900; color: #fff; line-height: 1.08; margin-bottom: 20px; }
+    .hero-content h1 em { font-style: italic; color: var(--accent2); display: block; }
+    .hero-content p { color: rgba(255,255,255,0.82); font-size: 16px; line-height: 1.7; margin-bottom: 34px; max-width: 500px; }
+    .hero-btns { display: flex; gap: 14px; flex-wrap: wrap; }
+    .btn-primary { background: var(--accent); color: #fff; padding: 14px 28px; border-radius: 50px; font-weight: 600; font-size: 15px; text-decoration: none; display: inline-flex; align-items: center; gap: 8px; transition: all 0.25s; box-shadow: 0 4px 20px rgba(224,123,57,0.4); }
+    .btn-primary:hover { background: var(--accent2); transform: translateY(-2px); }
+    .btn-outline { border: 2px solid rgba(255,255,255,0.6); color: #fff; padding: 12px 26px; border-radius: 50px; font-weight: 600; font-size: 15px; text-decoration: none; transition: all 0.25s; }
+    .btn-outline:hover { background: rgba(255,255,255,0.15); border-color: #fff; }
+
+    /* STATS */
+    .stats-bar { display: flex; justify-content: center; flex-wrap: wrap; background: var(--primary); }
+    .stat-item { flex: 1; min-width: 140px; text-align: center; padding: 28px 20px; border-right: 1px solid rgba(255,255,255,0.1); transition: background 0.2s; }
+    .stat-item:last-child { border-right: none; }
+    .stat-item:hover { background: var(--secondary); }
+    .stat-item .num { font-family: 'Playfair Display', serif; font-size: 32px; font-weight: 700; color: var(--accent2); line-height: 1; }
+    .stat-item .label { font-size: 12px; font-weight: 500; color: rgba(255,255,255,0.65); text-transform: uppercase; letter-spacing: 0.08em; margin-top: 6px; }
+
+    /* SERVICES STRIP */
+    .services-strip { display: flex; gap: 10px; overflow-x: auto; padding: 18px 40px; background: var(--teal); scrollbar-width: none; }
+    .services-strip::-webkit-scrollbar { display: none; }
+    .service-tag { white-space: nowrap; background: rgba(255,255,255,0.12); border: 1px solid rgba(255,255,255,0.25); color: #fff; padding: 8px 18px; border-radius: 50px; font-size: 13px; font-weight: 500; }
+
+    /* SECTIONS */
+    .section { padding: 80px 40px; }
+    .section-header { text-align: center; margin-bottom: 50px; }
+    .eyebrow { display: inline-block; font-size: 11px; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: var(--teal-light); margin-bottom: 12px; background: rgba(27,122,111,0.08); padding: 5px 14px; border-radius: 50px; border: 1px solid rgba(27,122,111,0.2); }
+    .section-header h2 { font-family: 'Playfair Display', serif; font-size: clamp(28px, 4vw, 44px); font-weight: 900; color: var(--primary); margin-bottom: 12px; }
+    .section-header p { color: var(--muted); font-size: 16px; }
+
+    /* TABS */
+    .tab-btns { display: flex; justify-content: center; gap: 10px; margin-bottom: 36px; }
+    .tab-btn { padding: 10px 26px; border-radius: 50px; border: 2px solid #d1d5db; background: transparent; font-size: 14px; font-weight: 600; font-family: 'DM Sans', sans-serif; color: var(--muted); cursor: pointer; transition: all 0.2s; }
+    .tab-btn:hover { border-color: var(--accent); color: var(--accent); }
+    .tab-btn.active { background: var(--accent); border-color: var(--accent); color: #fff; }
+
+    /* DESTINATION GRID */
+    .dest-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 20px; max-width: 1200px; margin: 0 auto; }
+    .tab-content { display: none; }
+    .tab-content.active { display: grid; }
+    .dest-card { text-decoration: none; border-radius: 16px; overflow: hidden; background: #fff; box-shadow: 0 2px 16px rgba(11,37,69,0.08); transition: transform 0.3s, box-shadow 0.3s; }
+    .dest-card:hover { transform: translateY(-6px); box-shadow: 0 12px 40px rgba(11,37,69,0.16); }
+    .dest-card-img { overflow: hidden; height: 170px; background: var(--light); }
     .dest-card-img img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.4s; }
-    .dest-card:hover .dest-card-img img { transform: scale(1.06); }
+    .dest-card:hover .dest-card-img img { transform: scale(1.07); }
+    .dest-card-body { padding: 16px; }
+    .dest-card-body h4 { font-family: 'Playfair Display', serif; font-size: 18px; font-weight: 700; color: var(--primary); margin-bottom: 4px; }
+    .dest-card-body p { font-size: 13px; color: var(--muted); }
+
+    /* REVIEWS */
+    .rating-summary { display: flex; justify-content: center; gap: 24px; margin-bottom: 40px; flex-wrap: wrap; }
+    .rating-badge { display: flex; align-items: center; gap: 14px; background: #fff; border: 1px solid #e5e7eb; border-radius: 14px; padding: 16px 28px; box-shadow: 0 2px 12px rgba(11,37,69,0.07); }
+    .rating-badge .platform { font-size: 28px; }
+    .rating-badge .score { font-family: 'Playfair Display', serif; font-size: 26px; font-weight: 700; color: var(--primary); }
+    .rating-badge .sub { font-size: 12px; color: var(--muted); font-weight: 500; }
+    .reviews-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 20px; max-width: 1200px; margin: 0 auto; }
+    .review-card { background: #fff; border-radius: 16px; padding: 24px; box-shadow: 0 2px 16px rgba(11,37,69,0.06); border: 1px solid rgba(11,37,69,0.06); transition: box-shadow 0.2s; }
+    .review-card:hover { box-shadow: 0 8px 32px rgba(11,37,69,0.12); }
+    .reviewer-head { display: flex; align-items: center; gap: 12px; margin-bottom: 12px; }
+    .reviewer-avatar { width: 42px; height: 42px; border-radius: 50%; background: linear-gradient(135deg, var(--teal), var(--primary)); color: #fff; font-weight: 700; font-size: 16px; display: flex; align-items: center; justify-content: center; }
+    .reviewer-name { font-weight: 600; color: var(--primary); font-size: 15px; }
+    .reviewer-date { font-size: 12px; color: var(--muted); }
+    .stars { color: #F59E0B; font-size: 15px; margin-bottom: 10px; }
+    .review-text { font-size: 14px; color: #4B5563; line-height: 1.65; }
+
+    /* VIDEO GRID */
+    .video-grid { display: flex; gap: 16px; overflow-x: auto; padding-bottom: 8px; max-width: 1200px; margin: 0 auto; }
+    .video-thumb { flex: 0 0 220px; height: 300px; border-radius: 16px; display: flex; align-items: center; justify-content: center; text-decoration: none; transition: transform 0.3s; }
+    .video-thumb:hover { transform: scale(1.03); }
+    .play-btn { width: 56px; height: 56px; background: rgba(255,255,255,0.25); backdrop-filter: blur(8px); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #fff; font-size: 20px; border: 2px solid rgba(255,255,255,0.5); }
+
+    /* CTA */
+    .cta-section { background: linear-gradient(135deg, var(--primary) 0%, var(--teal) 100%); text-align: center; padding: 80px 40px; }
+    .cta-section h2 { font-family: 'Playfair Display', serif; font-size: clamp(28px, 4vw, 44px); font-weight: 900; color: #fff; margin-bottom: 14px; }
+    .cta-section p { color: rgba(255,255,255,0.8); font-size: 16px; margin-bottom: 34px; }
+    .cta-btns { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+    .btn-cta-white { background: #fff; color: var(--primary); padding: 14px 30px; border-radius: 50px; font-weight: 700; font-size: 15px; text-decoration: none; transition: all 0.25s; }
+    .btn-cta-white:hover { background: var(--accent2); transform: translateY(-2px); }
+    .btn-cta-outline { border: 2px solid rgba(255,255,255,0.6); color: #fff; padding: 12px 28px; border-radius: 50px; font-weight: 600; font-size: 15px; text-decoration: none; transition: all 0.25s; }
+    .btn-cta-outline:hover { background: rgba(255,255,255,0.1); border-color: #fff; }
+
+    /* FOOTER */
+    footer { background: var(--primary); color: rgba(255,255,255,0.75); padding: 60px 40px 0; }
+    .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 40px; max-width: 1200px; margin: 0 auto; padding-bottom: 50px; border-bottom: 1px solid rgba(255,255,255,0.1); }
+    .footer-brand .logo { color: #fff; }
+    .footer-brand p { font-size: 14px; line-height: 1.7; margin-top: 14px; }
+    .footer-col h5 { font-family: 'Playfair Display', serif; font-size: 16px; font-weight: 700; color: #fff; margin-bottom: 16px; }
+    .footer-col ul { list-style: none; }
+    .footer-col ul li { margin-bottom: 10px; }
+    .footer-col ul li a { text-decoration: none; color: rgba(255,255,255,0.65); font-size: 14px; transition: color 0.2s; }
+    .footer-col ul li a:hover { color: var(--accent2); }
+    .social-links { display: flex; gap: 10px; margin-top: 18px; }
+    .social-link { width: 38px; height: 38px; background: rgba(255,255,255,0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center; text-decoration: none; font-size: 16px; transition: background 0.2s; }
+    .social-link:hover { background: var(--accent); }
+    .footer-bottom { text-align: center; padding: 20px; font-size: 13px; color: rgba(255,255,255,0.4); }
+    .wa-float { position: fixed; bottom: 28px; right: 28px; width: 56px; height: 56px; background: #25D366; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 26px; text-decoration: none; box-shadow: 0 4px 20px rgba(37,211,102,0.5); z-index: 1000; transition: transform 0.2s; }
+    .wa-float:hover { transform: scale(1.1); }
+
+    @media (max-width: 900px) {
+      .footer-grid { grid-template-columns: 1fr 1fr; }
+      .topbar { padding: 8px 20px; font-size: 12px; }
+      nav { padding: 0 20px; }
+      .nav-links { display: none; }
+      .hamburger { display: flex; }
+      .section { padding: 60px 20px; }
+      .hero-content { padding: 0 30px; }
+      .services-strip { padding: 14px 20px; }
+    }
+    @media (max-width: 600px) {
+      .footer-grid { grid-template-columns: 1fr; }
+      .stats-bar { flex-direction: column; }
+      .stat-item { border-right: none; border-bottom: 1px solid rgba(255,255,255,0.1); }
+    }
   </style>
 </head>
 <body>
 
-  <!-- TOPBAR -->
   <div class="topbar">
     <div class="topbar-left">
       <a href="tel:+919998952926">📞 +91 9998952926</a>
@@ -28,27 +180,28 @@
     </div>
   </div>
 
-<!-- NAVBAR -->
-<nav>
-  <a href="index.html" class="logo">
-    Vacation<span>Pe</span>
-    <small>Dream.. Click.. Travel..</small>
-  </a>
-  <div class="hamburger">
-    <span></span><span></span><span></span>
-  </div>
-  <ul class="nav-links">
-    <li><a href="index.html">Home</a></li>
-    <li><a href="destinations.html">Destinations</a></li>
-    <li><a href="visa.html">Visa</a></li>
-    <li><a href="about.html">About Us</a></li>
-    <li><a href="contact.html">Contact</a></li>
-    <li><a href="payment.html">Payment</a></li>
-    <li><a href="https://api.whatsapp.com/send?phone=919998952926" class="btn-nav" target="_blank">💬 Book Now</a></li>
-  </ul>
-</nav>
+  <nav>
+    <a href="index.html" class="logo">Vacation<span>Pe</span><small>Dream.. Click.. Travel..</small></a>
+    <div class="hamburger"><span></span><span></span><span></span></div>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="destinations.html">Destinations</a></li>
+      <li><a href="visa.html">Visa</a></li>
+      <li>
+        <a href="blog.html" class="blog-link">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4 12.5-12.5z"/>
+          </svg>
+          Blog
+        </a>
+      </li>
+      <li><a href="about.html">About Us</a></li>
+      <li><a href="contact.html">Contact</a></li>
+      <li><a href="payment.html">Payment</a></li>
+      <li><a href="https://api.whatsapp.com/send?phone=919998952926" class="btn-nav" target="_blank">💬 Book Now</a></li>
+    </ul>
+  </nav>
 
-  <!-- HERO -->
   <section class="hero">
     <video class="hero-video" autoplay muted loop playsinline>
       <source src="images/intro_video.mp4" type="video/mp4" />
@@ -65,31 +218,14 @@
     </div>
   </section>
 
-  <!-- STATS -->
   <div class="stats-bar">
-    <div class="stat-item">
-      <div class="num"><span class="counter" data-target="750" data-suffix="+">0</span></div>
-      <div class="label">Happy Tourists</div>
-    </div>
-    <div class="stat-item">
-      <div class="num"><span class="counter" data-target="30" data-suffix="+">0</span></div>
-      <div class="label">Destinations</div>
-    </div>
-    <div class="stat-item">
-      <div class="num"><span class="counter" data-target="13" data-suffix="+">0</span></div>
-      <div class="label">Years in Industry</div>
-    </div>
-    <div class="stat-item">
-      <div class="num">24/7</div>
-      <div class="label">Customer Support</div>
-    </div>
-    <div class="stat-item">
-      <div class="num">Est. <span class="counter" data-target="2019">0</span></div>
-      <div class="label">Company Founded</div>
-    </div>
+    <div class="stat-item"><div class="num"><span class="counter" data-target="1500" data-suffix="+">0</span></div><div class="label">Happy Tourists</div></div>
+    <div class="stat-item"><div class="num"><span class="counter" data-target="70" data-suffix="+">0</span></div><div class="label">Destinations</div></div>
+    <div class="stat-item"><div class="num"><span class="counter" data-target="13" data-suffix="+">0</span></div><div class="label">Years in Industry</div></div>
+    <div class="stat-item"><div class="num">24/7</div><div class="label">Customer Support</div></div>
+    <div class="stat-item"><div class="num">Est. <span class="counter" data-target="2019">0</span></div><div class="label">Company Founded</div></div>
   </div>
 
-  <!-- SERVICES STRIP -->
   <div class="services-strip">
     <span class="service-tag">✈️ Flight Booking</span>
     <span class="service-tag">🏨 Hotel Reservation</span>
@@ -114,17 +250,75 @@
       <button class="tab-btn" data-tab="tab-cruise">Cruise</button>
     </div>
 
+    <!-- INTERNATIONAL: all images from Unsplash via direct photo IDs -->
     <div id="tab-intl" class="tab-content active dest-grid">
-      <a class="dest-card" href="contact.html?dest=Thailand"><div class="dest-card-img"><img src="images/thailand.jpeg" alt="Thailand" /></div><div class="dest-card-body"><h4>Thailand</h4><p>Temples, beaches &amp; street food</p></div></a>
-      <a class="dest-card" href="contact.html?dest=Malaysia"><div class="dest-card-img"><img src="images/malaysia.jpeg" alt="Malaysia" /></div><div class="dest-card-body"><h4>Malaysia</h4><p>Culture, rainforests &amp; Petronas</p></div></a>
-      <a class="dest-card" href="contact.html?dest=Singapore"><div class="dest-card-img"><img src="images/singapore.jpeg" alt="Singapore" /></div><div class="dest-card-body"><h4>Singapore</h4><p>Futuristic city-state wonder</p></div></a>
-      <a class="dest-card" href="contact.html?dest=Dubai"><div class="dest-card-img"><img src="images/uae.jpeg" alt="Dubai" /></div><div class="dest-card-body"><h4>Dubai</h4><p>Desert luxury &amp; skyline views</p></div></a>
-      <a class="dest-card" href="contact.html?dest=Bali"><div class="dest-card-img"><img src="images/indonesia.jpeg" alt="Bali" /></div><div class="dest-card-body"><h4>Bali</h4><p>Tropical paradise &amp; temples</p></div></a>
-      <a class="dest-card" href="contact.html?dest=Mauritius"><div class="dest-card-img"><img src="images/mauritius.jpeg" alt="Mauritius" /></div><div class="dest-card-body"><h4>Mauritius</h4><p>Pristine beaches &amp; lagoons</p></div></a>
-      <a class="dest-card" href="contact.html?dest=Maldives"><div class="dest-card-img"><img src="images/maldives.jpeg" alt="Maldives" /></div><div class="dest-card-body"><h4>Maldives</h4><p>Overwater bliss &amp; coral reefs</p></div></a>
-      <a class="dest-card" href="contact.html?dest=Europe Customised"><div class="dest-card-img"><img src="images/france.jpeg" alt="Europe Customised" /></div><div class="dest-card-body"><h4>Europe Customised</h4><p>Tailor-made European journeys</p></div></a>
+
+      <!-- Thailand: temples at sunset by Mauro Lima -->
+      <a class="dest-card" href="contact.html?dest=Thailand">
+        <div class="dest-card-img">
+          <img src="https://images.unsplash.com/photo-1747396379098-714c21bde6f7?w=600&h=400&fit=crop&auto=format&q=80" alt="Thailand" loading="lazy" />
+        </div>
+        <div class="dest-card-body"><h4>Thailand</h4><p>Temples, beaches &amp; street food</p></div>
+      </a>
+
+      <!-- Malaysia: Petronas Twin Towers by Carles Rabada -->
+      <a class="dest-card" href="contact.html?dest=Malaysia">
+        <div class="dest-card-img">
+          <img src="https://images.unsplash.com/photo-1526083798706-7cd7e3f45c9b?w=600&h=400&fit=crop&auto=format&q=80" alt="Malaysia" loading="lazy" />
+        </div>
+        <div class="dest-card-body"><h4>Malaysia</h4><p>Culture, rainforests &amp; Petronas</p></div>
+      </a>
+
+      <!-- Singapore: Marina Bay Sands by K8 -->
+      <a class="dest-card" href="contact.html?dest=Singapore">
+        <div class="dest-card-img">
+          <img src="https://images.unsplash.com/photo-1525625293386-3f8f99389edd?w=600&h=400&fit=crop&auto=format&q=80" alt="Singapore" loading="lazy" />
+        </div>
+        <div class="dest-card-body"><h4>Singapore</h4><p>Futuristic city-state wonder</p></div>
+      </a>
+
+      <!-- Dubai: Burj Khalifa skyline by Shinzan Murray -->
+      <a class="dest-card" href="contact.html?dest=Dubai">
+        <div class="dest-card-img">
+          <img src="https://images.unsplash.com/photo-1519451241324-20b4ea2c4220?w=600&h=400&fit=crop&auto=format&q=80" alt="Dubai" loading="lazy" />
+        </div>
+        <div class="dest-card-body"><h4>Dubai</h4><p>Desert luxury &amp; skyline views</p></div>
+      </a>
+
+      <!-- Bali: rice terraces by Radoslav Bali -->
+      <a class="dest-card" href="contact.html?dest=Bali">
+        <div class="dest-card-img">
+          <img src="https://images.unsplash.com/photo-1558005137-d9619a5c539f?w=600&h=400&fit=crop&auto=format&q=80" alt="Bali" loading="lazy" />
+        </div>
+        <div class="dest-card-body"><h4>Bali</h4><p>Tropical paradise &amp; temples</p></div>
+      </a>
+
+      <!-- Mauritius: turquoise beach & lagoon -->
+      <a class="dest-card" href="contact.html?dest=Mauritius">
+        <div class="dest-card-img">
+          <img src="https://images.unsplash.com/photo-1541480601022-2308c0f02487?w=600&h=400&fit=crop&auto=format&q=80" alt="Mauritius" loading="lazy" />
+        </div>
+        <div class="dest-card-body"><h4>Mauritius</h4><p>Pristine beaches &amp; lagoons</p></div>
+      </a>
+
+      <!-- Maldives: overwater bungalows -->
+      <a class="dest-card" href="contact.html?dest=Maldives">
+        <div class="dest-card-img">
+          <img src="https://images.unsplash.com/photo-1573843981267-be1999ff37cd?w=600&h=400&fit=crop&auto=format&q=80" alt="Maldives" loading="lazy" />
+        </div>
+        <div class="dest-card-body"><h4>Maldives</h4><p>Overwater bliss &amp; coral reefs</p></div>
+      </a>
+
+      <!-- Europe: Eiffel Tower / Paris -->
+      <a class="dest-card" href="contact.html?dest=Europe Customised">
+        <div class="dest-card-img">
+          <img src="https://images.unsplash.com/photo-1502602898657-3e91760cbb34?w=600&h=400&fit=crop&auto=format&q=80" alt="Europe Customised" loading="lazy" />
+        </div>
+        <div class="dest-card-body"><h4>Europe Customised</h4><p>Tailor-made European journeys</p></div>
+      </a>
     </div>
 
+    <!-- DOMESTIC: use local images folder as before -->
     <div id="tab-dom" class="tab-content dest-grid">
       <a class="dest-card" href="contact.html?dest=Goa"><div class="dest-card-img"><img src="images/goa.jpeg" alt="Goa" /></div><div class="dest-card-body"><h4>Goa</h4><p>Beaches, sun &amp; vibrant nights</p></div></a>
       <a class="dest-card" href="contact.html?dest=Rajasthan"><div class="dest-card-img"><img src="images/rajasthan.jpeg" alt="Rajasthan" /></div><div class="dest-card-body"><h4>Rajasthan</h4><p>Forts, palaces &amp; desert safari</p></div></a>
@@ -136,10 +330,32 @@
       <a class="dest-card" href="contact.html?dest=Uttarakhand"><div class="dest-card-img"><img src="images/uttarakhand.jpeg" alt="Uttarakhand" /></div><div class="dest-card-body"><h4>Uttarakhand</h4><p>Yoga, Ganga &amp; Himalayan treks</p></div></a>
     </div>
 
+    <!-- CRUISE: online images -->
     <div id="tab-cruise" class="tab-content dest-grid">
-      <a class="dest-card" href="contact.html?dest=Mediterranean Cruise"><div class="dest-card-img"><img src="images/carnival.jpg" alt="Mediterranean Cruise" /></div><div class="dest-card-body"><h4>Mediterranean Cruise</h4><p>Europe's finest coastlines</p></div></a>
-      <a class="dest-card" href="contact.html?dest=Indian Ocean Cruise"><div class="dest-card-img"><img src="images/cordelia.jpg" alt="Indian Ocean Cruise" /></div><div class="dest-card-body"><h4>Indian Ocean Cruise</h4><p>Exotic island hopping</p></div></a>
-      <a class="dest-card" href="contact.html?dest=Southeast Asia Cruise"><div class="dest-card-img"><img src="images/genting.jpg" alt="Southeast Asia Cruise" /></div><div class="dest-card-body"><h4>Southeast Asia Cruise</h4><p>Singapore to Bali by sea</p></div></a>
+
+      <!-- Mediterranean Cruise: Celebrity Edge in Cannes by redcharlie -->
+      <a class="dest-card" href="contact.html?dest=Mediterranean Cruise">
+        <div class="dest-card-img">
+          <img src="https://images.unsplash.com/photo-1580541832626-2a7131ee809f?w=600&h=400&fit=crop&auto=format&q=80" alt="Mediterranean Cruise" loading="lazy" />
+        </div>
+        <div class="dest-card-body"><h4>Mediterranean Cruise</h4><p>Europe's finest coastlines</p></div>
+      </a>
+
+      <!-- Indian Ocean Cruise: cruise at sunset by Peter Hansen -->
+      <a class="dest-card" href="contact.html?dest=Indian Ocean Cruise">
+        <div class="dest-card-img">
+          <img src="https://images.unsplash.com/photo-1511316695145-4992006ffddb?w=600&h=400&fit=crop&auto=format&q=80" alt="Indian Ocean Cruise" loading="lazy" />
+        </div>
+        <div class="dest-card-body"><h4>Indian Ocean Cruise</h4><p>Exotic island hopping</p></div>
+      </a>
+
+      <!-- Southeast Asia Cruise: cruise ship in ocean by Andrew Hall -->
+      <a class="dest-card" href="contact.html?dest=Southeast Asia Cruise">
+        <div class="dest-card-img">
+          <img src="https://images.unsplash.com/photo-1548574505-5e239809ee19?w=600&h=400&fit=crop&auto=format&q=80" alt="Southeast Asia Cruise" loading="lazy" />
+        </div>
+        <div class="dest-card-body"><h4>Southeast Asia Cruise</h4><p>Singapore to Bali by sea</p></div>
+      </a>
     </div>
 
     <div style="text-align:center;margin-top:40px;">
@@ -152,49 +368,25 @@
     <div class="section-header">
       <div class="eyebrow">What Clients Say</div>
       <h2>Real Experiences, Real Smiles</h2>
-      <p>Trusted by 750+ happy travellers across India and beyond</p>
+      <p>Trusted by 1500+ happy travellers across India and beyond</p>
     </div>
     <div class="rating-summary">
       <div class="rating-badge">
         <div class="platform">⭐</div>
-        <div><div class="score">4.8/5</div><div class="sub">Google Reviews</div></div>
+        <div><div class="score">5/5</div><div class="sub">Google Reviews</div></div>
       </div>
       <div class="rating-badge">
         <div class="platform">📘</div>
-        <div><div class="score">4.7/5</div><div class="sub">Facebook Reviews</div></div>
+        <div><div class="score">5/5</div><div class="sub">Facebook Reviews</div></div>
       </div>
     </div>
     <div class="reviews-grid">
-      <div class="review-card">
-        <div class="reviewer-head"><div class="reviewer-avatar">P</div><div><div class="reviewer-name">Priya Sharma</div><div class="reviewer-date">1 month ago</div></div></div>
-        <div class="stars">★★★★★</div>
-        <p class="review-text">Booked our Bali trip through VacationPe and it was absolutely magical! Bajrang sir handled every detail — hotels, transfers, sightseeing. Zero stress, 100% memories. Will definitely book again!</p>
-      </div>
-      <div class="review-card">
-        <div class="reviewer-head"><div class="reviewer-avatar">R</div><div><div class="reviewer-name">Rohit Verma</div><div class="reviewer-date">3 weeks ago</div></div></div>
-        <div class="stars">★★★★★</div>
-        <p class="review-text">Our Kashmir trip was a dream come true. VacationPe planned everything perfectly — from houseboat stays to Gulmarg. Bajrang Singh is extremely responsive and knowledgeable. Highly recommended!</p>
-      </div>
-      <div class="review-card">
-        <div class="reviewer-head"><div class="reviewer-avatar">S</div><div><div class="reviewer-name">Sunita Agarwal</div><div class="reviewer-date">2 months ago</div></div></div>
-        <div class="stars">★★★★★</div>
-        <p class="review-text">We did a family trip to Kerala through VacationPe. The backwater cruise, spice plantation visit, and Munnar stays were perfectly arranged. Great value for money and excellent support throughout!</p>
-      </div>
-      <div class="review-card">
-        <div class="reviewer-head"><div class="reviewer-avatar">A</div><div><div class="reviewer-name">Arjun Mehta</div><div class="reviewer-date">2 months ago</div></div></div>
-        <div class="stars">★★★★★</div>
-        <p class="review-text">Dubai trip with VacationPe was seamless from start to finish. Visa assistance, forex, flights, hotel — everything was handled. Bajrang bhai is genuinely passionate about making your trip perfect!</p>
-      </div>
-      <div class="review-card">
-        <div class="reviewer-head"><div class="reviewer-avatar">N</div><div><div class="reviewer-name">Neha Joshi</div><div class="reviewer-date">5 months ago</div></div></div>
-        <div class="stars">★★★★★</div>
-        <p class="review-text">Took a customised Rajasthan tour — Jaipur, Jodhpur, Jaisalmer. VacationPe arranged the best hotels and an amazing desert safari. As a Jaipur-based company they really know Rajasthan inside out!</p>
-      </div>
-      <div class="review-card">
-        <div class="reviewer-head"><div class="reviewer-avatar">V</div><div><div class="reviewer-name">Vikram Choudhary</div><div class="reviewer-date">4 months ago</div></div></div>
-        <div class="stars">★★★★★</div>
-        <p class="review-text">Ladakh bike trip packaged beautifully by VacationPe. Permits, stays at Pangong, Nubra — every logistical challenge solved. Bajrang Singh's experience in the industry truly shows. 10/10!</p>
-      </div>
+      <div class="review-card"><div class="reviewer-head"><div class="reviewer-avatar">P</div><div><div class="reviewer-name">Priya Sharma</div><div class="reviewer-date">1 month ago</div></div></div><div class="stars">★★★★★</div><p class="review-text">Booked our Bali trip through VacationPe and it was absolutely magical! Bajrang sir handled every detail — hotels, transfers, sightseeing. Zero stress, 100% memories. Will definitely book again!</p></div>
+      <div class="review-card"><div class="reviewer-head"><div class="reviewer-avatar">R</div><div><div class="reviewer-name">Rohit Verma</div><div class="reviewer-date">3 weeks ago</div></div></div><div class="stars">★★★★★</div><p class="review-text">Our Kashmir trip was a dream come true. VacationPe planned everything perfectly — from houseboat stays to Gulmarg. Bajrang Singh is extremely responsive and knowledgeable. Highly recommended!</p></div>
+      <div class="review-card"><div class="reviewer-head"><div class="reviewer-avatar">S</div><div><div class="reviewer-name">Sunita Agarwal</div><div class="reviewer-date">2 months ago</div></div></div><div class="stars">★★★★★</div><p class="review-text">We did a family trip to Kerala through VacationPe. The backwater cruise, spice plantation visit, and Munnar stays were perfectly arranged. Great value for money and excellent support throughout!</p></div>
+      <div class="review-card"><div class="reviewer-head"><div class="reviewer-avatar">A</div><div><div class="reviewer-name">Arjun Mehta</div><div class="reviewer-date">2 months ago</div></div></div><div class="stars">★★★★★</div><p class="review-text">Dubai trip with VacationPe was seamless from start to finish. Visa assistance, forex, flights, hotel — everything was handled. Bajrang bhai is genuinely passionate about making your trip perfect!</p></div>
+      <div class="review-card"><div class="reviewer-head"><div class="reviewer-avatar">N</div><div><div class="reviewer-name">Neha Joshi</div><div class="reviewer-date">5 months ago</div></div></div><div class="stars">★★★★★</div><p class="review-text">Took a customised Rajasthan tour — Jaipur, Jodhpur, Jaisalmer. VacationPe arranged the best hotels and an amazing desert safari. As a Jaipur-based company they really know Rajasthan inside out!</p></div>
+      <div class="review-card"><div class="reviewer-head"><div class="reviewer-avatar">V</div><div><div class="reviewer-name">Vikram Choudhary</div><div class="reviewer-date">4 months ago</div></div></div><div class="stars">★★★★★</div><p class="review-text">Ladakh bike trip packaged beautifully by VacationPe. Permits, stays at Pangong, Nubra — every logistical challenge solved. Bajrang Singh's experience in the industry truly shows. 10/10!</p></div>
     </div>
     <div style="text-align:center;margin-top:34px;">
       <a href="https://www.google.com/maps/place/VacationPe" target="_blank" class="btn-primary" style="display:inline-flex;">⭐ Leave Us a Review</a>
@@ -209,15 +401,14 @@
       <p>Watch real experiences from our happy travellers</p>
     </div>
     <div class="video-grid">
-      <a class="video-thumb" href="https://www.instagram.com/vacationpe/" target="_blank" style="background:linear-gradient(135deg,#1a3c5e,#2a9d8f)"><div class="play-btn">▶</div></a>
-      <a class="video-thumb" href="https://www.instagram.com/vacationpe/" target="_blank" style="background:linear-gradient(135deg,#e8873a,#1a3c5e)"><div class="play-btn">▶</div></a>
-      <a class="video-thumb" href="https://www.instagram.com/vacationpe/" target="_blank" style="background:linear-gradient(135deg,#2a9d8f,#0f1f30)"><div class="play-btn">▶</div></a>
-      <a class="video-thumb" href="https://www.instagram.com/vacationpe/" target="_blank" style="background:linear-gradient(135deg,#0f1f30,#e8873a)"><div class="play-btn">▶</div></a>
-      <a class="video-thumb" href="https://www.instagram.com/vacationpe/" target="_blank" style="background:linear-gradient(135deg,#1a3c5e,#e8873a)"><div class="play-btn">▶</div></a>
+      <a class="video-thumb" href="https://www.instagram.com/vacationpe/" target="_blank" style="background:linear-gradient(135deg,#0B2545,#1B7A6F)"><div class="play-btn">▶</div></a>
+      <a class="video-thumb" href="https://www.instagram.com/vacationpe/" target="_blank" style="background:linear-gradient(135deg,#E07B39,#0B2545)"><div class="play-btn">▶</div></a>
+      <a class="video-thumb" href="https://www.instagram.com/vacationpe/" target="_blank" style="background:linear-gradient(135deg,#1B7A6F,#0f1f30)"><div class="play-btn">▶</div></a>
+      <a class="video-thumb" href="https://www.instagram.com/vacationpe/" target="_blank" style="background:linear-gradient(135deg,#13315C,#E07B39)"><div class="play-btn">▶</div></a>
+      <a class="video-thumb" href="https://www.instagram.com/vacationpe/" target="_blank" style="background:linear-gradient(135deg,#0B2545,#F4A261)"><div class="play-btn">▶</div></a>
     </div>
   </section>
 
-  <!-- CTA -->
   <section class="cta-section">
     <h2>Ready to Plan Your Dream Trip?</h2>
     <p>Talk to Bajrang Singh Shekhawat directly — call, WhatsApp, or email us today!</p>
@@ -227,7 +418,6 @@
     </div>
   </section>
 
-  <!-- FOOTER -->
   <footer>
     <div class="footer-grid">
       <div class="footer-brand">
@@ -245,6 +435,7 @@
         <ul>
           <li><a href="index.html">Home</a></li>
           <li><a href="destinations.html">Destinations</a></li>
+          <li><a href="blog.html">Blog</a></li>
           <li><a href="about.html">About Us</a></li>
           <li><a href="contact.html">Contact</a></li>
           <li><a href="payment.html">Payment</a></li>
@@ -275,9 +466,46 @@
     </div>
   </footer>
 
-  <!-- WhatsApp Float -->
   <a class="wa-float" href="https://api.whatsapp.com/send?phone=919998952926" target="_blank" title="Chat on WhatsApp">💬</a>
 
-  <script src="main.js"></script>
+  <script>
+    // Counter animation
+    const counters = document.querySelectorAll('.counter');
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const el = entry.target;
+          const target = +el.dataset.target;
+          const suffix = el.dataset.suffix || '';
+          const duration = 1600;
+          const step = target / (duration / 16);
+          let current = 0;
+          const timer = setInterval(() => {
+            current += step;
+            if (current >= target) { current = target; clearInterval(timer); }
+            el.textContent = Math.floor(current) + suffix;
+          }, 16);
+          observer.unobserve(el);
+        }
+      });
+    }, { threshold: 0.3 });
+    counters.forEach(c => observer.observe(c));
+
+    // Tabs
+    document.querySelectorAll('.tab-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+        document.querySelectorAll('.tab-content').forEach(t => t.classList.remove('active'));
+        btn.classList.add('active');
+        document.getElementById(btn.dataset.tab).classList.add('active');
+      });
+    });
+
+    // Hamburger
+    document.querySelector('.hamburger').addEventListener('click', () => {
+      const links = document.querySelector('.nav-links');
+      links.style.display = links.style.display === 'flex' ? 'none' : 'flex';
+    });
+  </script>
 </body>
 </html>
