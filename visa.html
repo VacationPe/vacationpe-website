@@ -315,7 +315,17 @@
     <a href="index.html">Home</a>
     <a href="index.html#destinations">Destinations</a>
     <a href="visa.html" class="active">Visa</a>
-    <a href="blog.html">Blog</a>
+    <div class="nav-item-dropdown" id="blogDdVisa" style="position:relative;display:inline-block;">
+    <a href="#" id="blogToggleVisa" style="text-decoration:none;color:var(--text-muted);font-size:0.9rem;font-weight:500;padding:8px 14px;border-radius:8px;transition:all 0.2s;display:inline-block;">Blog ▾</a>
+  <div id="blogMenuVisa" style="display:none;position:absolute;top:calc(100% + 8px);left:0;background:#fff;border:1px solid var(--border);border-radius:10px;box-shadow:0 8px 24px rgba(0,0,0,0.1);min-width:220px;z-index:999;padding:6px 0;">
+    <a href="blog.html#schengen-guide" style="display:block;padding:10px 16px;color:var(--text);font-size:0.88rem;text-decoration:none;">🇪🇺 Schengen Visa Guide</a>
+    <a href="blog.html#dubai-guide" style="display:block;padding:10px 16px;color:var(--text);font-size:0.88rem;text-decoration:none;">🇦🇪 Dubai Visa Guide</a>
+    <a href="blog.html#japan-visa" style="display:block;padding:10px 16px;color:var(--text);font-size:0.88rem;text-decoration:none;">🇯🇵 Japan Visa Guide</a>
+    <a href="blog.html#singapore-visa" style="display:block;padding:10px 16px;color:var(--text);font-size:0.88rem;text-decoration:none;">🇸🇬 Singapore Visa Guide</a>
+    <a href="blog.html#thailand-visa" style="display:block;padding:10px 16px;color:var(--text);font-size:0.88rem;text-decoration:none;">🇹🇭 Thailand Visa-Free Guide</a>
+    <a href="blog.html#usa-visa" style="display:block;padding:10px 16px;color:var(--text);font-size:0.88rem;text-decoration:none;">🇺🇸 US Tourist Visa Guide</a>
+  </div>
+</div>
     <a href="about.html">About Us</a>
     <a href="contact.html">Contact</a>
     <a href="payment.html">Payment</a>
@@ -1265,6 +1275,22 @@ async function submitEnquiry() {
 document.addEventListener('keydown', e => {
   if (e.key === 'Escape') { closeEnquiry(); closeAlert(); }
 });
+</script>
+  <script>
+  (function(){
+    var toggle = document.getElementById('blogToggleVisa');
+    var menu = document.getElementById('blogMenuVisa');
+    toggle.addEventListener('click', function(e){
+      e.preventDefault();
+      e.stopPropagation();
+      menu.style.display = menu.style.display === 'block' ? 'none' : 'block';
+    });
+    document.addEventListener('click', function(e){
+      if (!menu.contains(e.target) && e.target !== toggle) {
+        menu.style.display = 'none';
+      }
+    });
+  })();
 </script>
 </body>
 </html>
